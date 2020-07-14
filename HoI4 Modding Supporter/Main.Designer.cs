@@ -33,7 +33,6 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
@@ -249,7 +248,6 @@
             // 
             this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem1,
-            this.menuItem2,
             this.menuItem3,
             this.menuItem4});
             // 
@@ -266,14 +264,9 @@
             this.menuItem6.Text = "終了(&E)";
             this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
             // 
-            // menuItem2
-            // 
-            this.menuItem2.Index = 1;
-            this.menuItem2.Text = "編集(&E)";
-            // 
             // menuItem3
             // 
-            this.menuItem3.Index = 2;
+            this.menuItem3.Index = 1;
             this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem5});
             this.menuItem3.Text = "ツール(&T)";
@@ -286,7 +279,7 @@
             // 
             // menuItem4
             // 
-            this.menuItem4.Index = 3;
+            this.menuItem4.Index = 2;
             this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem7});
             this.menuItem4.Text = "ヘルプ(&H)";
@@ -490,6 +483,7 @@
             this.button13.TabIndex = 5;
             this.button13.Text = "生成";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // groupBox6
             // 
@@ -1188,6 +1182,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.textBox1.Location = new System.Drawing.Point(70, 12);
             this.textBox1.MaxLength = 3;
@@ -1792,14 +1787,14 @@
             // 
             this.textBox29.Location = new System.Drawing.Point(59, 43);
             this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(102, 19);
+            this.textBox29.Size = new System.Drawing.Size(145, 19);
             this.textBox29.TabIndex = 3;
             // 
             // textBox30
             // 
             this.textBox30.Location = new System.Drawing.Point(59, 18);
             this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(102, 19);
+            this.textBox30.Size = new System.Drawing.Size(145, 19);
             this.textBox30.TabIndex = 2;
             // 
             // groupBox17
@@ -1837,14 +1832,14 @@
             // 
             this.textBox28.Location = new System.Drawing.Point(59, 43);
             this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(102, 19);
+            this.textBox28.Size = new System.Drawing.Size(145, 19);
             this.textBox28.TabIndex = 3;
             // 
             // textBox31
             // 
             this.textBox31.Location = new System.Drawing.Point(59, 18);
             this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(102, 19);
+            this.textBox31.Size = new System.Drawing.Size(145, 19);
             this.textBox31.TabIndex = 2;
             // 
             // groupBox18
@@ -1882,14 +1877,14 @@
             // 
             this.textBox32.Location = new System.Drawing.Point(59, 43);
             this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(102, 19);
+            this.textBox32.Size = new System.Drawing.Size(145, 19);
             this.textBox32.TabIndex = 3;
             // 
             // textBox33
             // 
             this.textBox33.Location = new System.Drawing.Point(59, 18);
             this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(102, 19);
+            this.textBox33.Size = new System.Drawing.Size(145, 19);
             this.textBox33.TabIndex = 2;
             // 
             // groupBox19
@@ -1927,14 +1922,14 @@
             // 
             this.textBox34.Location = new System.Drawing.Point(59, 43);
             this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(102, 19);
+            this.textBox34.Size = new System.Drawing.Size(145, 19);
             this.textBox34.TabIndex = 3;
             // 
             // textBox35
             // 
             this.textBox35.Location = new System.Drawing.Point(59, 18);
             this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(102, 19);
+            this.textBox35.Size = new System.Drawing.Size(145, 19);
             this.textBox35.TabIndex = 2;
             // 
             // checkBox2
@@ -1950,6 +1945,7 @@
             // 
             // textBox36
             // 
+            this.textBox36.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox36.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.textBox36.Location = new System.Drawing.Point(118, 222);
             this.textBox36.MaxLength = 3;
@@ -1968,6 +1964,7 @@
             // 
             // textBox37
             // 
+            this.textBox37.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox37.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.textBox37.Location = new System.Drawing.Point(118, 264);
             this.textBox37.MaxLength = 3;
@@ -1997,6 +1994,7 @@
             // 
             // textBox38
             // 
+            this.textBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox38.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.textBox38.Location = new System.Drawing.Point(118, 289);
             this.textBox38.MaxLength = 3;
@@ -2120,7 +2118,6 @@
         private System.Windows.Forms.MainMenu mainMenu1;
         private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.MenuItem menuItem6;
-        private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem menuItem5;
         private System.Windows.Forms.MenuItem menuItem4;

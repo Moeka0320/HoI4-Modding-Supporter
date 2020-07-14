@@ -43,6 +43,8 @@ namespace HoI4_Modding_Supporter
 
             // 配色
             colorChange();
+            // 初期政党支持率の合計
+            partiesSupportTotal();
         }
 
         /// <summary>
@@ -239,6 +241,202 @@ namespace HoI4_Modding_Supporter
             }
         }
 
+        /// <summary>
+        /// 生成直前に入るチェック
+        /// 入力ミスなどを検知する
+        /// </summary>
+        public void check()
+        {
+            // hoi4ディレクトリ・modディレクトリ
+            if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
+            {
+                errorMessage("HoI4本体のディレクトリ、またはmodディレクトリが設定されていません。\n[ツール] - [設定]からフォルダーパスを設定してください。");
+                return;
+            }
+
+            // 国家タグ
+            // テキストボックスが空っぽまたはスペース、大文字ではない
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                errorMessage("国家タグが無効です。");
+                return;
+            }
+
+            // 国名
+            // 内部処理用
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                errorMessage("[国名] - [内部処理用]が無効です。");
+                return;
+            }
+
+            // 中道主義
+            // 表示名
+            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            {
+                errorMessage("[国名] - [中道主義] - [表示名]が無効です。");
+                return;
+            }
+            // イベント表示名
+            if (string.IsNullOrWhiteSpace(textBox4.Text))
+            {
+                errorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
+                return;
+            }
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox5.Text))
+            {
+                errorMessage("[国名] - [中道主義] - [通称名]が無効です。");
+                return;
+            }
+
+            // 民主主義
+            // 表示名
+            if (string.IsNullOrWhiteSpace(textBox8.Text))
+            {
+                errorMessage("[国名] - [民主主義] - [表示名]が無効です。");
+                return;
+            }
+            // イベント表示名
+            if (string.IsNullOrWhiteSpace(textBox7.Text))
+            {
+                errorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
+                return;
+            }
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox6.Text))
+            {
+                errorMessage("[国名] - [民主主義] - [通称名]が無効です。");
+                return;
+            }
+
+            // ファシズム
+            // 表示名
+            if (string.IsNullOrWhiteSpace(textBox11.Text))
+            {
+                errorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
+                return;
+            }
+            // イベント表示名
+            if (string.IsNullOrWhiteSpace(textBox10.Text))
+            {
+                errorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
+                return;
+            }
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox9.Text))
+            {
+                errorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
+                return;
+            }
+
+            // 共産主義
+            // 表示名
+            if (string.IsNullOrWhiteSpace(textBox14.Text))
+            {
+                errorMessage("[国名] - [共産主義] - [表示名]が無効です。");
+                return;
+            }
+            // イベント表示名
+            if (string.IsNullOrWhiteSpace(textBox13.Text))
+            {
+                errorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
+                return;
+            }
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox12.Text))
+            {
+                errorMessage("[国名] - [共産主義] - [通称名]が無効です。");
+                return;
+            }
+
+            // 国旗はファイルパスが指定されてなくてもOK
+
+            // 政党名
+            // 中道主義政党
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox30.Text))
+            {
+                errorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
+                return;
+            }
+            // 正式名
+            if (string.IsNullOrWhiteSpace(textBox29.Text))
+            {
+                errorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
+                return;
+            }
+            // 民主主義政党
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox35.Text))
+            {
+                errorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
+                return;
+            }
+            // 正式名
+            if (string.IsNullOrWhiteSpace(textBox34.Text))
+            {
+                errorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
+                return;
+            }
+            // ファシズム政党
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox31.Text))
+            {
+                errorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
+                return;
+            }
+            // 正式名
+            if (string.IsNullOrWhiteSpace(textBox28.Text))
+            {
+                errorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
+                return;
+            }
+            // 共産主義政党
+            // 通称名
+            if (string.IsNullOrWhiteSpace(textBox33.Text))
+            {
+                errorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
+                return;
+            }
+            // 正式名
+            if (string.IsNullOrWhiteSpace(textBox32.Text))
+            {
+                errorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
+                return;
+            }
+
+            // 各種設定
+            // 汎用顔グラフィックの地域設定
+            if (comboBox1.SelectedItem == null)
+            {
+                errorMessage("[各種設定] - [汎用顔グラフィックの地域設定]が設定されていません。");
+                return;
+            }
+            // 初期政党支持率（の合計が100%ではない場合）
+            partiesSupportTotal();
+            int total = int.Parse(textBox27.Text);
+            if (total != 100)
+            {
+                errorMessage("[各種設定] - [初期政党支持率]の合計が100%ではありません。\n[合計]の値を確認してください。");
+                return;
+            }
+            // 初期与党
+            if (comboBox2.SelectedItem == null)
+            {
+                errorMessage("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
+                return;
+            }
+        }
+
+        /// <summary>
+        /// エラーメッセージボックスを表示
+        /// </summary>
+        public void errorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void menuItem5_Click(object sender, EventArgs e)
         {
             Settings settings = new Settings();
@@ -379,6 +577,11 @@ namespace HoI4_Modding_Supporter
         private void button15_Click(object sender, EventArgs e)
         {
             allClear();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            check();
         }
     }
 }

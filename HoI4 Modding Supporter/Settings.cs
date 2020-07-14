@@ -16,6 +16,8 @@ namespace HoI4_Modding_Supporter
         public Settings()
         {
             InitializeComponent();
+            textBox1.Text = Properties.Settings.Default.hoi4dir;
+            textBox2.Text = Properties.Settings.Default.moddir;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +56,11 @@ namespace HoI4_Modding_Supporter
             else
             {
                 // ここで設定を保存
+                Properties.Settings.Default.hoi4dir = textBox1.Text;
+                Properties.Settings.Default.moddir = textBox2.Text;
+
+                Properties.Settings.Default.Save();
+                
                 this.Close();
             }
         }
