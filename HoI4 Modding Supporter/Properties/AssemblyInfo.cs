@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HoI4 Modding Supporter")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright (C) 2020 - Zakki")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

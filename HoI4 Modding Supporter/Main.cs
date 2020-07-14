@@ -582,6 +582,13 @@ namespace HoI4_Modding_Supporter
         private void button13_Click(object sender, EventArgs e)
         {
             check();
+            MessageBox.Show("国家の生成を行います。");
+        }
+
+        private void menuItem7_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
