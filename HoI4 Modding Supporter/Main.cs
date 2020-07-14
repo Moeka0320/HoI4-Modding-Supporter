@@ -427,6 +427,254 @@ namespace HoI4_Modding_Supporter
                 errorMessage("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
                 return;
             }
+            // 従属国である場合
+            if (checkBox2.Checked == true)
+            {
+                if (string.IsNullOrWhiteSpace(textBox36.Text))
+                {
+                    errorMessage("[各種設定] - [宗主国の国家タグ]が無効です。");
+                }
+            }
+            // 宗主国である場合
+            if (checkBox3.Checked == true)
+            {
+                if (string.IsNullOrWhiteSpace(textBox37.Text))
+                {
+                    errorMessage("[各種設定] - [従属国の国家タグ]が無効です。");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 新規国家の書き込み処理
+        /// </summary>
+        public void generateCountry()
+        {
+            // フォルダパス
+            string hoi4dir = Properties.Settings.Default.hoi4dir + "\\";
+            string moddir = Properties.Settings.Default.moddir + "\\";
+
+            // データ
+            // 国家タグ
+            string countryTag = textBox1.Text;
+            // 内部処理用国名
+            string countryName = textBox2.Text;
+            // 中道主義
+            // 表示名
+            string n_ViewName = textBox3.Text;
+            // イベント表示名
+            string n_EventViewName = textBox4.Text;
+            // 通称名
+            string n_AliasName = textBox5.Text;
+            // 民主主義
+            // 表示名
+            string d_ViewName = textBox8.Text;
+            // イベント表示名
+            string d_EventViewName = textBox7.Text;
+            // 通称名
+            string d_AliasName = textBox6.Text;
+            // ファシズム
+            // 表示名
+            string f_ViewName = textBox11.Text;
+            // イベント表示名
+            string f_EventViewName = textBox10.Text;
+            // 通称名
+            string f_AliasName = textBox9.Text;
+            // 共産主義
+            // 表示名
+            string c_ViewName = textBox14.Text;
+            // イベント表示名
+            string c_EventViewName = textBox13.Text;
+            // 通称名
+            string c_AliasName = textBox12.Text;
+            // 国旗ファイルパス
+            // 中道主義
+            // 大
+            string n_FlagBig = textBox17.Text;
+            // 中
+            string n_FlagMid = textBox16.Text;
+            // 小
+            string n_FlagSma = textBox15.Text;
+            // 民主主義
+            // 大
+            string d_FlagBig = textBox23.Text;
+            // 中
+            string d_FlagMid = textBox22.Text;
+            // 小
+            string d_FlagSma = textBox21.Text;
+            // ファシズム
+            // 大
+            string f_FlagBig = textBox20.Text;
+            // 中
+            string f_FlagMid = textBox19.Text;
+            // 小
+            string f_FlagSma = textBox18.Text;
+            // 共産主義
+            // 大
+            string c_FlagBig = textBox26.Text;
+            // 中
+            string c_FlagMid = textBox25.Text;
+            // 小
+            string c_FlagSma = textBox24.Text;
+            // 政党名
+            // 中道主義
+            // 通称名
+            string n_PartyAliasName = textBox30.Text;
+            // 正式名
+            string n_PartyFullName = textBox29.Text;
+            // 民主主義
+            // 通称名
+            string d_PartyAliasName = textBox35.Text;
+            // 正式名
+            string d_PartyFullName = textBox34.Text;
+            // ファシズム
+            // 通称名
+            string f_PartyAliasName = textBox31.Text;
+            // 正式名
+            string f_PartyFullName = textBox28.Text;
+            // 共産主義
+            // 通称名
+            string c_PartyAliasName = textBox33.Text;
+            // 正式名
+            string c_PartyFullName = textBox32.Text;
+            // 配色
+            int colorR = (int)numericUpDown1.Value;
+            int colorG = (int)numericUpDown2.Value;
+            int colorB = (int)numericUpDown3.Value;
+            // 汎用顔グラフィック
+            string graphicalCulture;
+            string graphicalCulture2d;
+            if (comboBox1.SelectedIndex == 0)
+            {
+                // 東ヨーロッパ
+                graphicalCulture = "eastern_european_gfx";
+                graphicalCulture2d = "eastern_european_2d";
+            }
+            else if (comboBox1.SelectedIndex == 1)
+            {
+                // 西ヨーロッパ
+                graphicalCulture = "western_european_gfx";
+                graphicalCulture2d = "western_european_2d";
+            }
+            else if (comboBox1.SelectedIndex == 2)
+            {
+                // 中東
+                graphicalCulture = "middle_eastern_gfx";
+                graphicalCulture2d = "middle_eastern_2d";
+            }
+            else if (comboBox1.SelectedIndex == 3)
+            {
+                // 南アメリカ
+                graphicalCulture = "southamerican_gfx";
+                graphicalCulture2d = "southamerican_2d";
+            }
+            else if (comboBox1.SelectedIndex == 4)
+            {
+                // アジア
+                graphicalCulture = "asian_gfx";
+                graphicalCulture2d = "asian_2d";
+            }
+            else if (comboBox1.SelectedIndex == 5)
+            {
+                // アフリカ
+                graphicalCulture = "african_gfx";
+                graphicalCulture2d = "african_2d";
+            }
+            else if (comboBox1.SelectedIndex == 6)
+            {
+                // イギリス連邦
+                graphicalCulture = "commonwealth_gfx";
+                graphicalCulture2d = "commonwealth_2d";
+            }
+
+            // 首都を含む州ID
+            int stateIDWithCapital = (int)numericUpDown4.Value;
+            // 研究スロット数
+            int studySlot = (int)numericUpDown5.Value;
+            // 初期安定度（100分率）
+            double stability = (int)numericUpDown6.Value * 0.01;
+            // 初期戦争協力度
+            double warCoop = (int)numericUpDown7.Value * 0.01;
+            // 初期政治力
+            int politicalPower = (int)numericUpDown8.Value;
+            // 初期輸送船数
+            int transportShip = (int)numericUpDown13.Value;
+            // この国が従属国かどうか
+            bool dependentCountry = checkBox2.Checked;
+            // 宗主国の国家タグ（存在しない場合はnull）
+            string sovereignCountryTag = null;
+
+            if (dependentCountry == true)
+            {
+                sovereignCountryTag = textBox36.Text;
+            }
+
+            // この国が宗主国かどうか
+            bool sovereignCountry = checkBox3.Checked;
+            // 従属国の国家タグ（存在しない場合はnull）
+            string dependentCountryTag1 = null;
+            string dependentCountryTag2 = null;
+
+            if (dependentCountry == true)
+            {
+                dependentCountryTag1 = textBox37.Text;
+
+                if (string.IsNullOrWhiteSpace(textBox38.Text) != true)
+                {
+                    dependentCountryTag2 = textBox38.Text;
+                }
+            }
+
+            // 初期政党支持率
+            // 中道主義
+            double n_Popularity = (int)numericUpDown12.Value * 0.01;
+            // 民主主義
+            double d_Popularity = (int)numericUpDown11.Value * 0.01;
+            // ファシズム
+            double f_Popularity = (int)numericUpDown10.Value * 0.01;
+            // 共産主義
+            double c_Popularity = (int)numericUpDown9.Value * 0.01;
+
+            // 初期与党
+            // イデオロギー
+            string startIdeology;
+            if (comboBox2.SelectedIndex == 0)
+            {
+                // 中道主義
+                startIdeology = "neutrality";
+
+            }
+            else if (comboBox2.SelectedIndex == 1)
+            {
+                // 民主主義
+                startIdeology = "democratic";
+
+            }
+            else if (comboBox2.SelectedIndex == 2)
+            {
+                // ファシズム
+                startIdeology = "fascism";
+
+            }
+            else if (comboBox2.SelectedIndex == 3)
+            {
+                // 共産主義
+                startIdeology = "communism";
+
+            }
+
+            // 前回の選挙
+            // YYYY
+            int lastElectionYYYY = (int)numericUpDown16.Value;
+            // MM
+            int lastElectionMM = (int)numericUpDown15.Value;
+            // DD
+            int lastElectionDD = (int)numericUpDown14.Value;
+            // YYYY.MM.DD
+            string lastElection = lastElectionYYYY.ToString() + "." + lastElectionMM.ToString() + "." + lastElectionDD.ToString();
+
+            // 選挙がないかどうか（true -> なし）
+            bool noElection = checkBox1.Checked;
         }
 
         /// <summary>
@@ -581,8 +829,9 @@ namespace HoI4_Modding_Supporter
 
         private void button13_Click(object sender, EventArgs e)
         {
-            check();
+            //check();
             MessageBox.Show("国家の生成を行います。");
+            generateCountry();
         }
 
         private void menuItem7_Click(object sender, EventArgs e)
