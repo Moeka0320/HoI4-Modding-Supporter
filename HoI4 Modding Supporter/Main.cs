@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,71 @@ namespace HoI4_Modding_Supporter
 {
     public partial class Main : Form
     {
+        // データ格納用変数
+        public string hoi4dir;
+        public string moddir;
+        public string countryTag;
+        public string countryName;
+        public string n_ViewName;
+        public string n_EventViewName;
+        public string n_AliasName;
+        public string d_ViewName;
+        public string d_EventViewName;
+        public string d_AliasName;
+        public string f_ViewName;
+        public string f_EventViewName;
+        public string f_AliasName;
+        public string c_ViewName;
+        public string c_EventViewName;
+        public string c_AliasName;
+        public string n_FlagBig;
+        public string n_FlagMid;
+        public string n_FlagSma;
+        public string d_FlagBig;
+        public string d_FlagMid;
+        public string d_FlagSma;
+        public string f_FlagBig;
+        public string f_FlagMid;
+        public string f_FlagSma;
+        public string c_FlagBig;
+        public string c_FlagMid;
+        public string c_FlagSma;
+        public string n_PartyAliasName;
+        public string n_PartyFullName;
+        public string d_PartyAliasName;
+        public string d_PartyFullName;
+        public string f_PartyAliasName;
+        public string f_PartyFullName;
+        public string c_PartyAliasName;
+        public string c_PartyFullName;
+        public int colorR;
+        public int colorG;
+        public int colorB;
+        public string graphicalCulture;
+        public string graphicalCulture2d;
+        public int stateIDWithCapital;
+        public int studySlot;
+        public double stability;
+        public double warCoop;
+        public int politicalPower;
+        public int transportShip;
+        public bool dependentCountry;
+        public string sovereignCountryTag;
+        public bool sovereignCountry;
+        public string dependentCountryTag1;
+        public string dependentCountryTag2;
+        public double n_Popularity;
+        public double d_Popularity;
+        public double f_Popularity;
+        public double c_Popularity;
+        public string startIdeology;
+        public int lastElectionYYYY;
+        public int lastElectionMM;
+        public int lastElectionDD;
+        public string lastElection;
+        public bool noElection;
+
+
         public Main()
         {
             InitializeComponent();
@@ -446,104 +512,102 @@ namespace HoI4_Modding_Supporter
         }
 
         /// <summary>
-        /// 新規国家の書き込み処理
+        /// データの変数化処理
         /// </summary>
-        public void generateCountry()
+        public void dataAssignment()
         {
             // フォルダパス
-            string hoi4dir = Properties.Settings.Default.hoi4dir + "\\";
-            string moddir = Properties.Settings.Default.moddir + "\\";
+            hoi4dir = Properties.Settings.Default.hoi4dir;
+            moddir = Properties.Settings.Default.moddir;
 
             // データ
             // 国家タグ
-            string countryTag = textBox1.Text;
+            countryTag = textBox1.Text;
             // 内部処理用国名
-            string countryName = textBox2.Text;
+            countryName = textBox2.Text;
             // 中道主義
             // 表示名
-            string n_ViewName = textBox3.Text;
+            n_ViewName = textBox3.Text;
             // イベント表示名
-            string n_EventViewName = textBox4.Text;
+            n_EventViewName = textBox4.Text;
             // 通称名
-            string n_AliasName = textBox5.Text;
+            n_AliasName = textBox5.Text;
             // 民主主義
             // 表示名
-            string d_ViewName = textBox8.Text;
+            d_ViewName = textBox8.Text;
             // イベント表示名
-            string d_EventViewName = textBox7.Text;
+            d_EventViewName = textBox7.Text;
             // 通称名
-            string d_AliasName = textBox6.Text;
+            d_AliasName = textBox6.Text;
             // ファシズム
             // 表示名
-            string f_ViewName = textBox11.Text;
+            f_ViewName = textBox11.Text;
             // イベント表示名
-            string f_EventViewName = textBox10.Text;
+            f_EventViewName = textBox10.Text;
             // 通称名
-            string f_AliasName = textBox9.Text;
+            f_AliasName = textBox9.Text;
             // 共産主義
             // 表示名
-            string c_ViewName = textBox14.Text;
+            c_ViewName = textBox14.Text;
             // イベント表示名
-            string c_EventViewName = textBox13.Text;
+            c_EventViewName = textBox13.Text;
             // 通称名
-            string c_AliasName = textBox12.Text;
+            c_AliasName = textBox12.Text;
             // 国旗ファイルパス
             // 中道主義
             // 大
-            string n_FlagBig = textBox17.Text;
+            n_FlagBig = textBox17.Text;
             // 中
-            string n_FlagMid = textBox16.Text;
+            n_FlagMid = textBox16.Text;
             // 小
-            string n_FlagSma = textBox15.Text;
+            n_FlagSma = textBox15.Text;
             // 民主主義
             // 大
-            string d_FlagBig = textBox23.Text;
+            d_FlagBig = textBox23.Text;
             // 中
-            string d_FlagMid = textBox22.Text;
+            d_FlagMid = textBox22.Text;
             // 小
-            string d_FlagSma = textBox21.Text;
+            d_FlagSma = textBox21.Text;
             // ファシズム
             // 大
-            string f_FlagBig = textBox20.Text;
+            f_FlagBig = textBox20.Text;
             // 中
-            string f_FlagMid = textBox19.Text;
+            f_FlagMid = textBox19.Text;
             // 小
-            string f_FlagSma = textBox18.Text;
+            f_FlagSma = textBox18.Text;
             // 共産主義
             // 大
-            string c_FlagBig = textBox26.Text;
+            c_FlagBig = textBox26.Text;
             // 中
-            string c_FlagMid = textBox25.Text;
+            c_FlagMid = textBox25.Text;
             // 小
-            string c_FlagSma = textBox24.Text;
+            c_FlagSma = textBox24.Text;
             // 政党名
             // 中道主義
             // 通称名
-            string n_PartyAliasName = textBox30.Text;
+            n_PartyAliasName = textBox30.Text;
             // 正式名
-            string n_PartyFullName = textBox29.Text;
+            n_PartyFullName = textBox29.Text;
             // 民主主義
             // 通称名
-            string d_PartyAliasName = textBox35.Text;
+            d_PartyAliasName = textBox35.Text;
             // 正式名
-            string d_PartyFullName = textBox34.Text;
+            d_PartyFullName = textBox34.Text;
             // ファシズム
             // 通称名
-            string f_PartyAliasName = textBox31.Text;
+            f_PartyAliasName = textBox31.Text;
             // 正式名
-            string f_PartyFullName = textBox28.Text;
+            f_PartyFullName = textBox28.Text;
             // 共産主義
             // 通称名
-            string c_PartyAliasName = textBox33.Text;
+            c_PartyAliasName = textBox33.Text;
             // 正式名
-            string c_PartyFullName = textBox32.Text;
+            c_PartyFullName = textBox32.Text;
             // 配色
-            int colorR = (int)numericUpDown1.Value;
-            int colorG = (int)numericUpDown2.Value;
-            int colorB = (int)numericUpDown3.Value;
+            colorR = (int)numericUpDown1.Value;
+            colorG = (int)numericUpDown2.Value;
+            colorB = (int)numericUpDown3.Value;
             // 汎用顔グラフィック
-            string graphicalCulture;
-            string graphicalCulture2d;
             if (comboBox1.SelectedIndex == 0)
             {
                 // 東ヨーロッパ
@@ -588,34 +652,34 @@ namespace HoI4_Modding_Supporter
             }
 
             // 首都を含む州ID
-            int stateIDWithCapital = (int)numericUpDown4.Value;
+            stateIDWithCapital = (int)numericUpDown4.Value;
             // 研究スロット数
-            int studySlot = (int)numericUpDown5.Value;
+            studySlot = (int)numericUpDown5.Value;
             // 初期安定度（100分率）
-            double stability = (int)numericUpDown6.Value * 0.01;
+            stability = (int)numericUpDown6.Value * 0.01;
             // 初期戦争協力度
-            double warCoop = (int)numericUpDown7.Value * 0.01;
+            warCoop = (int)numericUpDown7.Value * 0.01;
             // 初期政治力
-            int politicalPower = (int)numericUpDown8.Value;
+            politicalPower = (int)numericUpDown8.Value;
             // 初期輸送船数
-            int transportShip = (int)numericUpDown13.Value;
+            transportShip = (int)numericUpDown13.Value;
             // この国が従属国かどうか
-            bool dependentCountry = checkBox2.Checked;
+            dependentCountry = checkBox2.Checked;
             // 宗主国の国家タグ（存在しない場合はnull）
-            string sovereignCountryTag = null;
+            sovereignCountryTag = null;
 
-            if (dependentCountry == true)
+            if (checkBox2.Checked == true)
             {
                 sovereignCountryTag = textBox36.Text;
             }
 
             // この国が宗主国かどうか
-            bool sovereignCountry = checkBox3.Checked;
+            sovereignCountry = checkBox3.Checked;
             // 従属国の国家タグ（存在しない場合はnull）
-            string dependentCountryTag1 = null;
-            string dependentCountryTag2 = null;
+            dependentCountryTag1 = null;
+            dependentCountryTag2 = null;
 
-            if (dependentCountry == true)
+            if (checkBox3.Checked == true)
             {
                 dependentCountryTag1 = textBox37.Text;
 
@@ -627,17 +691,16 @@ namespace HoI4_Modding_Supporter
 
             // 初期政党支持率
             // 中道主義
-            double n_Popularity = (int)numericUpDown12.Value * 0.01;
+            n_Popularity = (int)numericUpDown12.Value * 0.01;
             // 民主主義
-            double d_Popularity = (int)numericUpDown11.Value * 0.01;
+            d_Popularity = (int)numericUpDown11.Value * 0.01;
             // ファシズム
-            double f_Popularity = (int)numericUpDown10.Value * 0.01;
+            f_Popularity = (int)numericUpDown10.Value * 0.01;
             // 共産主義
-            double c_Popularity = (int)numericUpDown9.Value * 0.01;
+            c_Popularity = (int)numericUpDown9.Value * 0.01;
 
             // 初期与党
             // イデオロギー
-            string startIdeology;
             if (comboBox2.SelectedIndex == 0)
             {
                 // 中道主義
@@ -665,16 +728,85 @@ namespace HoI4_Modding_Supporter
 
             // 前回の選挙
             // YYYY
-            int lastElectionYYYY = (int)numericUpDown16.Value;
+            lastElectionYYYY = (int)numericUpDown16.Value;
             // MM
-            int lastElectionMM = (int)numericUpDown15.Value;
+            lastElectionMM = (int)numericUpDown15.Value;
             // DD
-            int lastElectionDD = (int)numericUpDown14.Value;
+            lastElectionDD = (int)numericUpDown14.Value;
             // YYYY.MM.DD
-            string lastElection = lastElectionYYYY.ToString() + "." + lastElectionMM.ToString() + "." + lastElectionDD.ToString();
+            lastElection = lastElectionYYYY.ToString() + "." + lastElectionMM.ToString() + "." + lastElectionDD.ToString();
 
             // 選挙がないかどうか（true -> なし）
-            bool noElection = checkBox1.Checked;
+            noElection = checkBox1.Checked;
+        }
+
+        /// <summary>
+        /// 国家を生成します
+        /// </summary>
+        public void generateCountry()
+        {
+            // MODFOLDER/commonディレクトリパス
+            string commonDir = moddir + @"\common";
+            // MODFOLDER/common/countriesディレクトリパス
+            string countriesDir = commonDir + @"\countries";
+            // MODFOLDER/common/countries/COUNTRY.txtファイルパス
+            string countryFilePath = countriesDir + @"\" + countryName + ".txt";
+            // 書き込み用エンコード指定（UTF-8）
+            Encoding enc = Encoding.UTF8;
+
+
+            // 1.国別ファイルの作成
+
+            // MODFOLDER/common ディレクトリが存在しない場合
+            if (Directory.Exists(commonDir) == false)
+            {
+                Directory.CreateDirectory(commonDir);
+            }
+
+            // MODFOLDER/common/countries ディレクトリが存在しない場合
+            if (Directory.Exists(countriesDir) == false)
+            {
+                Directory.CreateDirectory(countriesDir);
+            }
+            
+            // ../countries の中に国別ファイルを作成
+            if (File.Exists(countryFilePath) == true)
+            {
+                errorMessage("ファイル\"" + countryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                return;
+            }
+            else
+            {
+                try
+                {
+                    FileStream fs = File.Create(countryFilePath);
+                    fs.Close();
+                }
+                catch(Exception e)
+                {
+                    errorMessage(e.ToString());
+                    return;
+                }
+            }
+
+            // COUNTRY.txtに書き込む
+            try
+            {
+                using (StreamWriter sr = new StreamWriter(countryFilePath, false, enc))
+                {
+                    sr.WriteLine(graphicalCulture);
+                    sr.WriteLine(graphicalCulture2d);
+                }
+            }
+            catch(Exception e)
+            {
+                errorMessage(e.ToString());
+                return;
+            }
+
+            // 2.色定義ファイルの作成
+
+
         }
 
         /// <summary>
@@ -829,8 +961,9 @@ namespace HoI4_Modding_Supporter
 
         private void button13_Click(object sender, EventArgs e)
         {
-            //check();
+            check();
             MessageBox.Show("国家の生成を行います。");
+            dataAssignment();
             generateCountry();
         }
 
