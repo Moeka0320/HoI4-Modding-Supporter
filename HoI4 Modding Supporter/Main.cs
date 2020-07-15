@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -72,8 +74,8 @@ namespace HoI4_Modding_Supporter
         public double c_Popularity;
         public string startIdeology;
         public int lastElectionYYYY;
-        public int lastElectionMM;
-        public int lastElectionDD;
+        public int lastElectionM;
+        public int lastElectionD;
         public string lastElection;
         public bool noElection;
 
@@ -730,27 +732,41 @@ namespace HoI4_Modding_Supporter
             // YYYY
             lastElectionYYYY = (int)numericUpDown16.Value;
             // MM
-            lastElectionMM = (int)numericUpDown15.Value;
+            lastElectionM = (int)numericUpDown15.Value;
             // DD
-            lastElectionDD = (int)numericUpDown14.Value;
+            lastElectionD = (int)numericUpDown14.Value;
             // YYYY.MM.DD
-            lastElection = lastElectionYYYY.ToString() + "." + lastElectionMM.ToString() + "." + lastElectionDD.ToString();
+            lastElection = lastElectionYYYY.ToString() + "." + lastElectionM.ToString() + "." + lastElectionD.ToString();
 
             // 選挙がないかどうか（true -> なし）
             noElection = checkBox1.Checked;
         }
 
         /// <summary>
-        /// 国家を生成します
+        /// 国家の生成（ファイル書き込み処理）
         /// </summary>
         public void generateCountry()
         {
             // MODFOLDER/commonディレクトリパス
             string commonDir = moddir + @"\common";
             // MODFOLDER/common/countriesディレクトリパス
-            string countriesDir = commonDir + @"\countries";
+            string commonCountriesDir = commonDir + @"\countries";
             // MODFOLDER/common/countries/COUNTRY.txtファイルパス
-            string countryFilePath = countriesDir + @"\" + countryName + ".txt";
+            string commonCountryFilePath = commonCountriesDir + @"\" + countryName + ".txt";
+            // MODFOLDER/common/countries/colors.txtファイルパス
+            string commonColorsFilePath = commonCountriesDir + @"\colors.txt";
+            // HOI4FOLDER/common/countries/colors.txtファイルパス
+            string colorsHoi4FilePath = hoi4dir + @"\common\countries\colors.txt";
+            // MODFOLDER/common/country_tagsディレクトリパス
+            string commonCountry_tagsDir = commonDir + @"\country_tags";
+            // MODFOLDER/common/country_tags/01_countries.txtファイルパス
+            string commonCountriesFilePath = commonCountry_tagsDir + @"01_countries.txt";
+            // MODFOLDER/historyディレクトリパス
+            string histryDir = moddir + @"\history";
+            // MODFOLDER/history/countriesディレクトリパス
+            string historyCountriesDir = histryDir + @"\countries";
+            // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
+            string historyCountrisFilePath = historyCountriesDir + "\\" + countryTag + " - " + countryName + ".txt";
             // 書き込み用エンコード指定（UTF-8）
             Encoding enc = Encoding.UTF8;
 
@@ -760,53 +776,209 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/common ディレクトリが存在しない場合
             if (Directory.Exists(commonDir) == false)
             {
-                Directory.CreateDirectory(commonDir);
+                try
+                {
+                    Directory.CreateDirectory(commonDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
             }
 
             // MODFOLDER/common/countries ディレクトリが存在しない場合
-            if (Directory.Exists(countriesDir) == false)
+            if (Directory.Exists(commonCountriesDir) == false)
             {
-                Directory.CreateDirectory(countriesDir);
+                try
+                {
+                    Directory.CreateDirectory(commonCountriesDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
             }
             
             // ../countries の中に国別ファイルを作成
-            if (File.Exists(countryFilePath) == true)
+            if (File.Exists(commonCountryFilePath) == true)
             {
-                errorMessage("ファイル\"" + countryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                errorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
                 return;
             }
             else
             {
                 try
                 {
-                    FileStream fs = File.Create(countryFilePath);
+                    FileStream fs = File.Create(commonCountryFilePath);
                     fs.Close();
                 }
                 catch(Exception e)
                 {
-                    errorMessage(e.ToString());
-                    return;
+                    // 起こりうる例外すべて
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
                 }
             }
 
             // COUNTRY.txtに書き込む
             try
             {
-                using (StreamWriter sr = new StreamWriter(countryFilePath, false, enc))
-                {
-                    sr.WriteLine(graphicalCulture);
-                    sr.WriteLine(graphicalCulture2d);
-                }
+                StreamWriter sr = new StreamWriter(commonCountryFilePath, false, enc);
+                sr.WriteLine(graphicalCulture);
+                sr.WriteLine(graphicalCulture2d);
+                sr.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                errorMessage(e.ToString());
-                return;
+                if (e is ObjectDisposedException ||
+                    e is IOException)
+                {
+                    errorMessage(e.Message);
+                    return;
+                }
             }
 
             // 2.色定義ファイルの作成
 
+            // ../countries/colors.txtをhoi4本体ディレクトリからコピー
+            // 既に存在する場合はそのファイルに書き込み
+            if (File.Exists(commonColorsFilePath) == false)
+            {
+                try
+                {
+                    File.Copy(colorsHoi4FilePath, commonColorsFilePath);
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is FileNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
+            }
 
+            // colors.txtに追記
+            try
+            {
+                string color = colorR + " " + colorG + " " + colorB;
+                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = {" + color + " }\n}", enc) ;
+            }
+            catch (Exception e)
+            {
+                if (e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is NotSupportedException ||
+                    e is SecurityException)
+                {
+                    errorMessage(e.Message);
+                    return;
+                }
+            }
+
+            // 3.国家タグ定義ファイルの作成
+            // ../common/country_tagsディレクトリが存在しない場合
+            if (Directory.Exists(commonCountry_tagsDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(commonCountry_tagsDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
+            }
+
+            // ../country_tags/01_countries.txtを作成
+            try
+            {
+                FileStream fs = File.Create(commonCountriesFilePath);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return;
+                }
+            }
+
+            // 01_countries.txtを編集
+            try
+            {
+                StreamWriter sw = new StreamWriter(commonCountriesFilePath, false, enc);
+                sw.WriteLine(countryTag + "= \"countries/" + countryName + ".txt\"" );
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                if (e is ObjectDisposedException ||
+                    e is IOException)
+                {
+                    errorMessage(e.Message);
+                    return;
+                }
+            }
+
+            // 4.国家ファイルの作成
         }
 
         /// <summary>

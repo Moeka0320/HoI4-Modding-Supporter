@@ -719,9 +719,9 @@
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(6, 44);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(151, 12);
+            this.label51.Size = new System.Drawing.Size(134, 12);
             this.label51.TabIndex = 18;
-            this.label51.Text = "前回の選挙(YYYY/MM/DD)：";
+            this.label51.Text = "前回の選挙(YYYY/M/D)：";
             // 
             // numericUpDown16
             // 
