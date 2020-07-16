@@ -51,7 +51,14 @@ namespace HoI4_Modding_Supporter
         {
             if (textBox1.Text == "" || textBox2.Text == "")
             {
-                MessageBox.Show("ディレクトリが選択されていません。", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("ディレクトリが選択されていません。", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ↓仮の処理
+                Properties.Settings.Default.hoi4dir = textBox1.Text;
+                Properties.Settings.Default.moddir = textBox2.Text;
+
+                Properties.Settings.Default.Save();
+
+                this.Close();
             }
             else
             {
@@ -63,6 +70,13 @@ namespace HoI4_Modding_Supporter
                 
                 this.Close();
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // デバッグ用
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
     }
 }

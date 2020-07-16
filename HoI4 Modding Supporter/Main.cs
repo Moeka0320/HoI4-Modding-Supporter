@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -77,6 +78,7 @@ namespace HoI4_Modding_Supporter
         public int lastElectionM;
         public int lastElectionD;
         public string lastElection;
+        public int electionFrequency;
         public bool noElection;
 
 
@@ -693,13 +695,13 @@ namespace HoI4_Modding_Supporter
 
             // 初期政党支持率
             // 中道主義
-            n_Popularity = (int)numericUpDown12.Value * 0.01;
+            n_Popularity = (int)numericUpDown12.Value;
             // 民主主義
-            d_Popularity = (int)numericUpDown11.Value * 0.01;
+            d_Popularity = (int)numericUpDown11.Value;
             // ファシズム
-            f_Popularity = (int)numericUpDown10.Value * 0.01;
+            f_Popularity = (int)numericUpDown10.Value;
             // 共産主義
-            c_Popularity = (int)numericUpDown9.Value * 0.01;
+            c_Popularity = (int)numericUpDown9.Value;
 
             // 初期与党
             // イデオロギー
@@ -738,6 +740,9 @@ namespace HoI4_Modding_Supporter
             // YYYY.MM.DD
             lastElection = lastElectionYYYY.ToString() + "." + lastElectionM.ToString() + "." + lastElectionD.ToString();
 
+            // 選挙を行う間隔
+            electionFrequency = (int)numericUpDown17.Value;
+
             // 選挙がないかどうか（true -> なし）
             noElection = checkBox1.Checked;
         }
@@ -760,14 +765,14 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/common/country_tagsディレクトリパス
             string commonCountry_tagsDir = commonDir + @"\country_tags";
             // MODFOLDER/common/country_tags/01_countries.txtファイルパス
-            string commonCountriesFilePath = commonCountry_tagsDir + @"01_countries.txt";
+            string commonCountriesFilePath = commonCountry_tagsDir + @"\01_countries.txt";
             // MODFOLDER/historyディレクトリパス
-            string histryDir = moddir + @"\history";
+            string historyDir = moddir + @"\history";
             // MODFOLDER/history/countriesディレクトリパス
-            string historyCountriesDir = histryDir + @"\countries";
+            string historyCountriesDir = historyDir + @"\countries";
             // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
             string historyCountrisFilePath = historyCountriesDir + "\\" + countryTag + " - " + countryName + ".txt";
-            // 書き込み用エンコード指定（UTF-8）
+            // 書き込み用エンコード指定（UTF-8 BOM付き）
             Encoding enc = Encoding.UTF8;
 
 
@@ -852,9 +857,9 @@ namespace HoI4_Modding_Supporter
             // COUNTRY.txtに書き込む
             try
             {
-                StreamWriter sr = new StreamWriter(commonCountryFilePath, false, enc);
-                sr.WriteLine(graphicalCulture);
-                sr.WriteLine(graphicalCulture2d);
+                StreamWriter sr = new StreamWriter(commonCountryFilePath, false);
+                sr.WriteLine("graphical_culture = " + graphicalCulture);
+                sr.WriteLine("graphical_culture_2d = " + graphicalCulture2d);
                 sr.Close();
             }
             catch (Exception e)
@@ -898,7 +903,7 @@ namespace HoI4_Modding_Supporter
             try
             {
                 string color = colorR + " " + colorG + " " + colorB;
-                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = {" + color + " }\n}", enc) ;
+                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = { " + color + " }\n}") ;
             }
             catch (Exception e)
             {
@@ -940,10 +945,98 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
-            // ../country_tags/01_countries.txtを作成
+            // そんざいしない場合、../country_tags/01_countries.txtを作成
+            if (File.Exists(commonCountriesFilePath) == false)
+            {
+                try
+                {
+                    FileStream fs = File.Create(commonCountriesFilePath);
+                    fs.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
+            }
+
+            // 01_countries.txtを編集
             try
             {
-                FileStream fs = File.Create(commonCountriesFilePath);
+                StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
+                sw.WriteLine(countryTag + " = \"countries/" + countryName + ".txt\"" );
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                if (e is ObjectDisposedException ||
+                    e is IOException)
+                {
+                    errorMessage(e.Message);
+                    return;
+                }
+            }
+
+            // 4.国家ファイルの作成
+            // MODDIR/historyディレクトリが存在しない場合
+            if (Directory.Exists(historyDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(historyDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
+            }
+
+            // MODDIR/hitsory/countriesディレクトリが存在しない場合
+            if (Directory.Exists(historyCountriesDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(historyCountriesDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return;
+                    }
+                }
+            }
+
+            // 国家ファイルを作成
+            try
+            {
+                FileStream fs = File.Create(historyCountrisFilePath);
                 fs.Close();
             }
             catch (Exception e)
@@ -961,11 +1054,46 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
-            // 01_countries.txtを編集
+            // 作成された国家ファイルを編集
             try
             {
-                StreamWriter sw = new StreamWriter(commonCountriesFilePath, false, enc);
-                sw.WriteLine(countryTag + "= \"countries/" + countryName + ".txt\"" );
+                StreamWriter sw = new StreamWriter(historyCountrisFilePath, false);
+                // 首都州ID
+                sw.WriteLine("capital = " + stateIDWithCapital);
+                // ユニットファイル（コメントアウト）
+                sw.WriteLine("#obb = \"\"");
+                // 研究スロット数
+                sw.WriteLine("set_research_slots = " + studySlot);
+                // 安定度
+                sw.WriteLine("set_stability = " + stability);
+                // 戦争協力度
+                sw.WriteLine("set_war_support = " + warCoop);
+                // 輸送船
+                sw.WriteLine("set_convoys = " + transportShip);
+                // 研究完了済み技術（コメントアウト）
+                sw.WriteLine("#set_technology = {}");
+                // 政党関連
+                sw.WriteLine("set_politics = {");
+                sw.WriteLine("\truling_party = " + startIdeology);
+                sw.WriteLine("\tlast_election = " + lastElection);
+                sw.WriteLine("\telection_frequency = " + electionFrequency);
+                if (noElection == true)
+                {
+                    sw.WriteLine("\telections_allowed = no");
+                }
+                else
+                {
+                    sw.WriteLine("\telections_allowed = yes");
+                }
+                sw.WriteLine("}");
+                // 政党支持率
+                sw.WriteLine("set_popularities = {");
+                sw.WriteLine("\tdemocratic = " + d_Popularity);
+                sw.WriteLine("\tfascism = " + f_Popularity);
+                sw.WriteLine("\tcommunism = " + c_Popularity);
+                sw.WriteLine("\tneutrality = " + n_Popularity);
+                sw.WriteLine("}");
+                // 国家指導者の書き込みは現時点では未実装
                 sw.Close();
             }
             catch (Exception e)
@@ -977,8 +1105,6 @@ namespace HoI4_Modding_Supporter
                     return;
                 }
             }
-
-            // 4.国家ファイルの作成
         }
 
         /// <summary>
