@@ -775,6 +775,18 @@ namespace HoI4_Modding_Supporter
             string historyCountriesDir = historyDir + @"\countries";
             // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
             string historyCountrisFilePath = historyCountriesDir + "\\" + countryTag + " - " + countryName + ".txt";
+            // MODFOLDER/localisationディレクトリパス
+            string localisationDir = moddir + @"\localisation";
+            // MODFOLDER/localisation/replaceディレクトリパス
+            string localisationReplaceDir = localisationDir + @"\replace";
+            // MODFOLDER/localisation/mod_countries_l_english.ymlファイルパス
+            string localisationCountriesFilePath = localisationDir + @"\mod_countries_l_english.yml";
+            // MODFOLDER/localisation/mod_parties_l_english.ymlファイルパス
+            string localisationPartiesFilePath = localisationDir + @"\mod_parties_l_english.yml";
+            // MODFOLDER/localisation/replace/mod_countries_l_english.ymlファイルパス
+            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\mod_countries_l_english.yml";
+            // MODFOLDER/localisation/replace/mod_parties_l_english.ymlファイルパス
+            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\mod_parties_l_english.yml";
             // 書き込み用エンコード指定（UTF-8 BOM付き）
             Encoding enc = Encoding.UTF8;
 
@@ -948,7 +960,7 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
-            // そんざいしない場合、../country_tags/01_countries.txtを作成
+            // 存在しない場合、../country_tags/01_countries.txtを作成
             if (File.Exists(commonCountriesFilePath) == false)
             {
                 try
@@ -970,22 +982,44 @@ namespace HoI4_Modding_Supporter
                         return 1;
                     }
                 }
-            }
 
-            // 01_countries.txtを編集
-            try
-            {
-                StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
-                sw.WriteLine(countryTag + " = \"countries/" + countryName + ".txt\"" );
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                if (e is ObjectDisposedException ||
-                    e is IOException)
+                // 01_countries.txtを編集
+                try
                 {
-                    errorMessage(e.Message);
-                    return 1;
+                    StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
+                    sw.WriteLine(countryTag + " = \"countries/" + countryName + ".txt\"");
+                    sw.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is ObjectDisposedException ||
+                        e is IOException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.WriteAllText(commonColorsFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
+                }
+                catch (Exception e)
+                {
+                    if (e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is NotSupportedException ||
+                        e is SecurityException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
                 }
             }
 
@@ -1108,6 +1142,253 @@ namespace HoI4_Modding_Supporter
                     return 1;
                 }
             }
+
+            // 5.国名・政党名の設定
+            // localisationディレクトリが存在しない場合
+            if (Directory.Exists(localisationDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(localisationDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../localisation/mod_countries_l_english.yml
+            if (File.Exists(localisationCountriesFilePath) == false)
+            {
+                try
+                {
+                    FileStream fs = File.Create(localisationCountriesFilePath);
+                    fs.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+
+                try
+                {
+                    StreamWriter sw = new StreamWriter(localisationCountriesFilePath, false, enc);
+                    sw.WriteLine("l_english:");
+                    sw.WriteLine("");
+                    sw.WriteLine(" " + countryTag + "_neutrality:0 = \"" + n_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality_DEF:0 = \"" + n_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality_ADJ:0 = \"" + n_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic:0 = \"" + d_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_DEF:0 = \"" + d_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_ADJ:0 = \"" + d_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism:0 = \"" + f_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_DEF:0 = \"" + f_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_ADJ:0 = \"" + f_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism:0 = \"" + c_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_DEF:0 = \"" + c_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_ADJ:0 = \"" + c_AliasName + "\"");
+                    sw.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is PathTooLongException ||
+                        e is SecurityException ||
+                        e is ObjectDisposedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 = \"" + n_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_neutrality_DEF:0 = \"" + n_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_neutrality_ADJ:0 = \"" + n_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_democratic:0 = \"" + d_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_DEF:0 = \"" + d_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_ADJ:0 = \"" + d_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_fascism:0 = \"" + f_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_DEF:0 = \"" + f_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_ADJ:0 = \"" + f_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_communism:0 = \"" + c_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_communism_DEF:0 = \"" + c_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_communism_ADJ:0 = \"" + c_AliasName + "\"");
+                }
+                catch (Exception e)
+                {
+                    if (e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is NotSupportedException ||
+                        e is SecurityException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../localisation/mod_parties_l_english.yml
+            if (File.Exists(localisationPartiesFilePath) == false)
+            {
+                try
+                {
+                    FileStream fs = File.Create(localisationPartiesFilePath);
+                    fs.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+
+                try
+                {
+                    StreamWriter sw = new StreamWriter(localisationPartiesFilePath, false, enc);
+                    sw.WriteLine("l_english:");
+                    sw.WriteLine("");
+                    sw.WriteLine(" " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
+                    sw.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is PathTooLongException ||
+                        e is SecurityException ||
+                        e is ObjectDisposedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
+                                                                      " " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"\n" +
+                                                                      " " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"\n" +
+                                                                      " " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
+                }
+                catch (Exception e)
+                {
+                    if (e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is NotSupportedException ||
+                        e is SecurityException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../localisation/replaceディレクトリが存在しない場合
+            if (Directory.Exists(localisationReplaceDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(localisationReplaceDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // mod_countries_l_english.ymlとmod_parties_l_english.ymlをreplaceディレクトリ内にコピー
+            try
+            {
+                File.Copy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
+                File.Copy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is FileNotFoundException ||
+                        e is IOException ||
+                        e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            // 6.国旗の生成
 
             return 0;
         }
