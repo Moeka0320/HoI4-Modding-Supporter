@@ -35,16 +35,16 @@ namespace HoI4_Modding_Supporter
         public string c_EventViewName;
         public string c_AliasName;
         public string n_FlagBig;
-        public string n_FlagMid;
+        public string n_FlagMed;
         public string n_FlagSma;
         public string d_FlagBig;
-        public string d_FlagMid;
+        public string d_FlagMed;
         public string d_FlagSma;
         public string f_FlagBig;
-        public string f_FlagMid;
+        public string f_FlagMed;
         public string f_FlagSma;
         public string c_FlagBig;
-        public string c_FlagMid;
+        public string c_FlagMed;
         public string c_FlagSma;
         public string n_PartyAliasName;
         public string n_PartyFullName;
@@ -566,28 +566,28 @@ namespace HoI4_Modding_Supporter
             // 大
             n_FlagBig = textBox17.Text;
             // 中
-            n_FlagMid = textBox16.Text;
+            n_FlagMed = textBox16.Text;
             // 小
             n_FlagSma = textBox15.Text;
             // 民主主義
             // 大
             d_FlagBig = textBox23.Text;
             // 中
-            d_FlagMid = textBox22.Text;
+            d_FlagMed = textBox22.Text;
             // 小
             d_FlagSma = textBox21.Text;
             // ファシズム
             // 大
             f_FlagBig = textBox20.Text;
             // 中
-            f_FlagMid = textBox19.Text;
+            f_FlagMed = textBox19.Text;
             // 小
             f_FlagSma = textBox18.Text;
             // 共産主義
             // 大
             c_FlagBig = textBox26.Text;
             // 中
-            c_FlagMid = textBox25.Text;
+            c_FlagMed = textBox25.Text;
             // 小
             c_FlagSma = textBox24.Text;
             // 政党名
@@ -821,46 +821,20 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/common ディレクトリが存在しない場合
             if (Directory.Exists(commonDir) == false)
             {
-                try
+                int fcResult = FolderCreate(commonDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(commonDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // MODFOLDER/common/countries ディレクトリが存在しない場合
             if (Directory.Exists(commonCountriesDir) == false)
             {
-                try
+                int fcResult = FolderCreate(commonCountriesDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(commonCountriesDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
             
@@ -872,25 +846,10 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                try
+                int fcResult = FileCreate(commonCountryFilePath);
+                if (fcResult == 1)
                 {
-                    FileStream fs = File.Create(commonCountryFilePath);
-                    fs.Close();
-                }
-                catch(Exception e)
-                {
-                    // 起こりうる例外すべて
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
@@ -918,26 +877,13 @@ namespace HoI4_Modding_Supporter
             // 既に存在する場合はそのファイルに書き込み
             if (File.Exists(commonColorsFilePath) == false)
             {
-                try
+                int fcOutResult = FileCopy(colorsHoi4FilePath, commonColorsFilePath);
+                if (fcOutResult == 1)
                 {
-                    File.Copy(colorsHoi4FilePath, commonColorsFilePath);
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is FileNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
+
 
             // colors.txtに追記
             try
@@ -965,48 +911,22 @@ namespace HoI4_Modding_Supporter
             // ../common/country_tagsディレクトリが存在しない場合
             if (Directory.Exists(commonCountry_tagsDir) == false)
             {
-                try
+                int fcResult = FolderCreate(commonCountry_tagsDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(commonCountry_tagsDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // 存在しない場合、../country_tags/01_countries.txtを作成
             if (File.Exists(commonCountriesFilePath) == false)
             {
-                try
+                int fcResult = FileCreate(commonCountriesFilePath);
+                if (fcResult == 1)
                 {
-                    FileStream fs = File.Create(commonCountriesFilePath);
-                    fs.Close();
+                    return 1;
                 }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
+
 
                 // 01_countries.txtを編集
                 try
@@ -1052,69 +972,30 @@ namespace HoI4_Modding_Supporter
             // MODDIR/historyディレクトリが存在しない場合
             if (Directory.Exists(historyDir) == false)
             {
-                try
+                int fcResult = FolderCreate(historyDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(historyDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // MODDIR/hitsory/countriesディレクトリが存在しない場合
             if (Directory.Exists(historyCountriesDir) == false)
             {
-                try
+                int fcResult = FolderCreate(historyCountriesDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(historyCountriesDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // 国家ファイルを作成
-            try
+            int fcOutResult2 = FileCreate(historyCountrisFilePath);
+            if (fcOutResult2 == 1)
             {
-                FileStream fs = File.Create(historyCountrisFilePath);
-                fs.Close();
+                return 1;
             }
-            catch (Exception e)
-            {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
+
 
             // 作成された国家ファイルを編集
             try
@@ -1172,47 +1053,20 @@ namespace HoI4_Modding_Supporter
             // localisationディレクトリが存在しない場合
             if (Directory.Exists(localisationDir) == false)
             {
-                try
+                int fcResult = FolderCreate(localisationDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(localisationDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../localisation/mod_countries_l_english.yml
             if (File.Exists(localisationCountriesFilePath) == false)
             {
-                try
+                int fcResult = FileCreate(localisationCountriesFilePath);
+                if (fcResult == 1)
                 {
-                    FileStream fs = File.Create(localisationCountriesFilePath);
-                    fs.Close();
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
 
                 try
@@ -1287,24 +1141,10 @@ namespace HoI4_Modding_Supporter
             // ../localisation/mod_parties_l_english.yml
             if (File.Exists(localisationPartiesFilePath) == false)
             {
-                try
+                int fcResult = FileCreate(localisationPartiesFilePath);
+                if (fcResult == 1)
                 {
-                    FileStream fs = File.Create(localisationPartiesFilePath);
-                    fs.Close();
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
 
                 try
@@ -1371,238 +1211,107 @@ namespace HoI4_Modding_Supporter
             // ../localisation/replaceディレクトリが存在しない場合
             if (Directory.Exists(localisationReplaceDir) == false)
             {
-                try
+                int fcResult = FolderCreate(localisationReplaceDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(localisationReplaceDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // mod_countries_l_english.ymlとmod_parties_l_english.ymlをreplaceディレクトリ内にコピー
-            try
+            int fcOutResult3 = FileCopy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
+            if (fcOutResult3 == 1)
             {
-                File.Copy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
-                File.Copy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
+                return 1;
             }
-            catch (Exception e)
+            int fcOutResult4 = FileCopy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
+            if (fcOutResult4 == 1)
             {
-                if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is FileNotFoundException ||
-                        e is IOException ||
-                        e is NotSupportedException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
+                return 1;
             }
 
             // 6.国旗の生成
             // ../gfxディレクトリが存在しない場合
             if (Directory.Exists(gfxDir) == false)
             {
-                try
+                int fcResult = FolderCreate(gfxDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(gfxDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../gfx/flagsディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsDir) == false)
             {
-                try
+                int fcResult = FolderCreate(gfxFlagsDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(gfxFlagsDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../gfx/flags/mediumディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsMediumDir) == false)
             {
-                try
+                int fcResult = FolderCreate(gfxFlagsMediumDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(gfxFlagsMediumDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../gfx/flags/smallディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsSmallDir) == false)
             {
-                try
+                int fcResult = FolderCreate(gfxFlagsSmallDir);
+                if (fcResult == 1)
                 {
-                    Directory.CreateDirectory(gfxFlagsSmallDir);
-                }
-                catch (Exception e)
-                {
-                    if (e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../gfx/flagsディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_Flags) == false)
             {
-                try
+                if (n_FlagBig != "")
                 {
-                    if (n_FlagBig != "")
+                    int fcResult = FileCopy(n_FlagBig, n_Flags);
+                    if (fcResult == 1)
                     {
-                        File.Copy(n_FlagBig, n_Flags);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(d_Flags) == false)
             {
-                try
+                if (d_FlagBig != "")
                 {
-                    if (d_FlagBig != "")
+                    int fcResult = FileCopy(d_FlagBig, d_Flags);
+                    if (fcResult == 1)
                     {
-                        File.Copy(d_FlagBig, d_Flags);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(f_Flags) == false)
             {
-                try
+                if (f_FlagBig != "")
                 {
-                    if (f_FlagBig != "")
+                    int fcResult = FileCopy(f_FlagBig, f_Flags);
+                    if (fcResult == 1)
                     {
-                        File.Copy(f_FlagBig, f_Flags);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(c_Flags) == false)
             {
-                try
+                if (c_FlagBig != "")
                 {
-                    if (c_FlagBig != "")
+                    int fcResult = FileCopy(c_FlagBig, c_Flags);
+                    if (fcResult == 1)
                     {
-                        File.Copy(c_FlagBig, c_Flags);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -1611,100 +1320,44 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/mediumディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_FlagsMedium) == false)
             {
-                try
+                if (n_FlagMed != "")
                 {
-                    if (n_FlagMid != "")
+                    int fcResult = FileCopy(n_FlagMed, n_FlagsMedium);
+                    if (fcResult == 1)
                     {
-                        File.Copy(n_FlagMid, n_FlagsMedium);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(d_FlagsMedium) == false)
             {
-                try
+                if (d_FlagMed != "")
                 {
-                    if (d_FlagMid != "")
+                    int fcResult = FileCopy(d_FlagMed, d_FlagsMedium);
+                    if (fcResult == 1)
                     {
-                        File.Copy(d_FlagMid, d_FlagsMedium);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(f_FlagsMedium) == false)
             {
-                try
+                if (f_FlagMed != "")
                 {
-                    if (f_FlagMid != "")
+                    int fcResult = FileCopy(f_FlagMed, f_FlagsMedium);
+                    if (fcResult == 1)
                     {
-                        File.Copy(f_FlagMid, f_FlagsMedium);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(c_FlagsMedium) == false)
             {
-                try
+                if (c_FlagMed != "")
                 {
-                    if (c_FlagMid != "")
+                    int fcResult = FileCopy(c_FlagMed, c_FlagsMedium);
+                    if (fcResult == 1)
                     {
-                        File.Copy(c_FlagMid, c_FlagsMedium);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -1713,100 +1366,44 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/smallディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_FlagsSmall) == false)
             {
-                try
+                if (n_FlagSma != "")
                 {
-                    if (n_FlagSma != "")
+                    int fcResult = FileCopy(n_FlagSma, n_FlagsSmall);
+                    if (fcResult == 1)
                     {
-                        File.Copy(n_FlagSma, n_FlagsSmall);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(d_FlagsSmall) == false)
             {
-                try
+                if (d_FlagSma != "")
                 {
-                    if (d_FlagSma != "")
+                    int fcResult = FileCopy(d_FlagSma, d_FlagsSmall);
+                    if (fcResult == 1)
                     {
-                        File.Copy(d_FlagSma, d_FlagsSmall);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(f_FlagsSmall) == false)
             {
-                try
+                if (f_FlagSma != "")
                 {
-                    if (f_FlagSma != "")
+                    int fcResult = FileCopy(f_FlagSma, f_FlagsSmall);
+                    if (fcResult == 1)
                     {
-                        File.Copy(f_FlagSma, f_FlagsSmall);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
             }
             if (File.Exists(c_FlagsSmall) == false)
             {
-                try
+                if (c_FlagSma != "")
                 {
-                    if (c_FlagSma != "")
+                    int fcResult = FileCopy(c_FlagSma, c_FlagsSmall);
+                    if (fcResult == 1)
                     {
-                        File.Copy(c_FlagSma, c_FlagsSmall);
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                    {
-                        errorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -1814,6 +1411,84 @@ namespace HoI4_Modding_Supporter
 
             MessageBox.Show("生成が完了しました。");
             Process.Start(moddir);
+            return 0;
+        }
+
+        /// <summary>
+        /// ファイルをコピー
+        /// </summary>
+        /// <returns></returns>
+        public int FileCopy(string source, string dest)
+        {
+            try
+            {
+                File.Copy(source, dest);
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        public int FolderCreate(string folderPath)
+        {
+            try
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            catch (Exception e)
+            {
+                if (e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        public int FileCreate(string filePath)
+        {
+            try
+            {
+                FileStream fs = File.Create(filePath);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
             return 0;
         }
 
