@@ -1074,18 +1074,18 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationCountriesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    sw.WriteLine(" " + countryTag + "_neutrality:0 = \"" + n_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_neutrality_DEF:0 = \"" + n_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_neutrality_ADJ:0 = \"" + n_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic:0 = \"" + d_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_DEF:0 = \"" + d_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_ADJ:0 = \"" + d_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism:0 = \"" + f_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_DEF:0 = \"" + f_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_ADJ:0 = \"" + f_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism:0 = \"" + c_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_DEF:0 = \"" + c_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_ADJ:0 = \"" + c_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic:0 \"" + d_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism:0 \"" + f_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism:0 \"" + c_ViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"");
+                    sw.WriteLine(" " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
                     sw.Close();
                 }
                 catch (Exception e)
@@ -1108,18 +1108,18 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 = \"" + n_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_DEF:0 = \"" + n_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_ADJ:0 = \"" + n_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_democratic:0 = \"" + d_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_DEF:0 = \"" + d_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_ADJ:0 = \"" + d_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_fascism:0 = \"" + f_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_DEF:0 = \"" + f_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_ADJ:0 = \"" + f_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_communism:0 = \"" + c_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_DEF:0 = \"" + c_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_ADJ:0 = \"" + c_AliasName + "\"");
+                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_democratic:0 \"" + d_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_fascism:0 \"" + f_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"\n" +
+                                                                      " " + countryTag + "_communism:0 \"" + c_ViewName + "\"\n" +
+                                                                      " " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"\n" +
+                                                                      " " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
                 }
                 catch (Exception e)
                 {

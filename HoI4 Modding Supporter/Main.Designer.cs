@@ -59,12 +59,16 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button18 = new System.Windows.Forms.Button();
             this.textBox38 = new System.Windows.Forms.TextBox();
             this.label66 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
             this.textBox37 = new System.Windows.Forms.TextBox();
             this.label65 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.textBox36 = new System.Windows.Forms.TextBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label50 = new System.Windows.Forms.Label();
@@ -190,21 +194,17 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -548,6 +548,17 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
             // 
+            // button18
+            // 
+            this.button18.Enabled = false;
+            this.button18.Location = new System.Drawing.Point(8, 327);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(110, 23);
+            this.button18.TabIndex = 18;
+            this.button18.TabStop = false;
+            this.button18.Text = "国家指導者の設定";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
             // textBox38
             // 
             this.textBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -567,6 +578,28 @@
             this.label66.Size = new System.Drawing.Size(104, 12);
             this.label66.TabIndex = 24;
             this.label66.Text = "従属国の国家タグ2：";
+            // 
+            // button17
+            // 
+            this.button17.Enabled = false;
+            this.button17.Location = new System.Drawing.Point(240, 327);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(110, 23);
+            this.button17.TabIndex = 17;
+            this.button17.TabStop = false;
+            this.button17.Text = "研究済技術の設定";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Enabled = false;
+            this.button16.Location = new System.Drawing.Point(8, 356);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(110, 23);
+            this.button16.TabIndex = 16;
+            this.button16.TabStop = false;
+            this.button16.Text = "NFエディター";
+            this.button16.UseVisualStyleBackColor = true;
             // 
             // textBox37
             // 
@@ -610,6 +643,17 @@
             this.textBox36.Size = new System.Drawing.Size(40, 19);
             this.textBox36.TabIndex = 20;
             this.textBox36.TabStop = false;
+            // 
+            // button14
+            // 
+            this.button14.Enabled = false;
+            this.button14.Location = new System.Drawing.Point(124, 327);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(110, 23);
+            this.button14.TabIndex = 15;
+            this.button14.TabStop = false;
+            this.button14.Text = "ユニットの設定";
+            this.button14.UseVisualStyleBackColor = true;
             // 
             // label64
             // 
@@ -2001,6 +2045,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "中道主義";
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(93, 43);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(151, 19);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.TabStop = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -2035,14 +2087,6 @@
             this.textBox5.Size = new System.Drawing.Size(151, 19);
             this.textBox5.TabIndex = 4;
             this.textBox5.TabStop = false;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(93, 43);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(151, 19);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TabStop = false;
             // 
             // textBox3
             // 
@@ -2097,50 +2141,6 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // button14
-            // 
-            this.button14.Enabled = false;
-            this.button14.Location = new System.Drawing.Point(124, 327);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(110, 23);
-            this.button14.TabIndex = 15;
-            this.button14.TabStop = false;
-            this.button14.Text = "ユニットの設定";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Enabled = false;
-            this.button16.Location = new System.Drawing.Point(8, 356);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(110, 23);
-            this.button16.TabIndex = 16;
-            this.button16.TabStop = false;
-            this.button16.Text = "NFエディター";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            this.button17.Enabled = false;
-            this.button17.Location = new System.Drawing.Point(240, 327);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(110, 23);
-            this.button17.TabIndex = 17;
-            this.button17.TabStop = false;
-            this.button17.Text = "研究済技術の設定";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Enabled = false;
-            this.button18.Location = new System.Drawing.Point(8, 327);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(110, 23);
-            this.button18.TabIndex = 18;
-            this.button18.TabStop = false;
-            this.button18.Text = "国家指導者の設定";
-            this.button18.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
