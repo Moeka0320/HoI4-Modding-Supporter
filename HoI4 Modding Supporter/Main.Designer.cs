@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
@@ -202,8 +201,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -241,7 +242,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -357,6 +357,7 @@
             this.textBox32.Name = "textBox32";
             this.textBox32.Size = new System.Drawing.Size(145, 19);
             this.textBox32.TabIndex = 3;
+            this.textBox32.TabStop = false;
             // 
             // textBox33
             // 
@@ -364,6 +365,7 @@
             this.textBox33.Name = "textBox33";
             this.textBox33.Size = new System.Drawing.Size(145, 19);
             this.textBox33.TabIndex = 2;
+            this.textBox33.TabStop = false;
             // 
             // groupBox19
             // 
@@ -402,6 +404,7 @@
             this.textBox34.Name = "textBox34";
             this.textBox34.Size = new System.Drawing.Size(145, 19);
             this.textBox34.TabIndex = 3;
+            this.textBox34.TabStop = false;
             // 
             // textBox35
             // 
@@ -409,6 +412,7 @@
             this.textBox35.Name = "textBox35";
             this.textBox35.Size = new System.Drawing.Size(145, 19);
             this.textBox35.TabIndex = 2;
+            this.textBox35.TabStop = false;
             // 
             // groupBox17
             // 
@@ -447,6 +451,7 @@
             this.textBox28.Name = "textBox28";
             this.textBox28.Size = new System.Drawing.Size(145, 19);
             this.textBox28.TabIndex = 3;
+            this.textBox28.TabStop = false;
             // 
             // textBox31
             // 
@@ -454,6 +459,7 @@
             this.textBox31.Name = "textBox31";
             this.textBox31.Size = new System.Drawing.Size(145, 19);
             this.textBox31.TabIndex = 2;
+            this.textBox31.TabStop = false;
             // 
             // groupBox16
             // 
@@ -493,6 +499,7 @@
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(145, 19);
             this.textBox29.TabIndex = 3;
+            this.textBox29.TabStop = false;
             // 
             // textBox30
             // 
@@ -500,15 +507,20 @@
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new System.Drawing.Size(145, 19);
             this.textBox30.TabIndex = 2;
+            this.textBox30.TabStop = false;
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.button18);
             this.groupBox12.Controls.Add(this.textBox38);
             this.groupBox12.Controls.Add(this.label66);
+            this.groupBox12.Controls.Add(this.button17);
+            this.groupBox12.Controls.Add(this.button16);
             this.groupBox12.Controls.Add(this.textBox37);
             this.groupBox12.Controls.Add(this.label65);
             this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.textBox36);
+            this.groupBox12.Controls.Add(this.button14);
             this.groupBox12.Controls.Add(this.label64);
             this.groupBox12.Controls.Add(this.checkBox2);
             this.groupBox12.Controls.Add(this.label50);
@@ -531,7 +543,7 @@
             this.groupBox12.Controls.Add(this.label30);
             this.groupBox12.Location = new System.Drawing.Point(772, 37);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(378, 330);
+            this.groupBox12.Size = new System.Drawing.Size(378, 467);
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
@@ -545,6 +557,7 @@
             this.textBox38.Name = "textBox38";
             this.textBox38.Size = new System.Drawing.Size(40, 19);
             this.textBox38.TabIndex = 25;
+            this.textBox38.TabStop = false;
             // 
             // label66
             // 
@@ -564,6 +577,7 @@
             this.textBox37.Name = "textBox37";
             this.textBox37.Size = new System.Drawing.Size(40, 19);
             this.textBox37.TabIndex = 23;
+            this.textBox37.TabStop = false;
             // 
             // label65
             // 
@@ -581,6 +595,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(60, 16);
             this.checkBox3.TabIndex = 21;
+            this.checkBox3.TabStop = false;
             this.checkBox3.Text = "宗主国";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
@@ -594,6 +609,7 @@
             this.textBox36.Name = "textBox36";
             this.textBox36.Size = new System.Drawing.Size(40, 19);
             this.textBox36.TabIndex = 20;
+            this.textBox36.TabStop = false;
             // 
             // label64
             // 
@@ -611,6 +627,7 @@
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(60, 16);
             this.checkBox2.TabIndex = 18;
+            this.checkBox2.TabStop = false;
             this.checkBox2.Text = "従属国";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -635,6 +652,7 @@
             this.numericUpDown13.Name = "numericUpDown13";
             this.numericUpDown13.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown13.TabIndex = 16;
+            this.numericUpDown13.TabStop = false;
             this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown13.Value = new decimal(new int[] {
             1,
@@ -670,6 +688,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(67, 16);
             this.checkBox1.TabIndex = 18;
+            this.checkBox1.TabStop = false;
             this.checkBox1.Text = "選挙なし";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -707,6 +726,7 @@
             this.numericUpDown17.Name = "numericUpDown17";
             this.numericUpDown17.Size = new System.Drawing.Size(59, 19);
             this.numericUpDown17.TabIndex = 19;
+            this.numericUpDown17.TabStop = false;
             this.numericUpDown17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown17.Value = new decimal(new int[] {
             1,
@@ -739,6 +759,7 @@
             this.numericUpDown16.Name = "numericUpDown16";
             this.numericUpDown16.Size = new System.Drawing.Size(45, 19);
             this.numericUpDown16.TabIndex = 22;
+            this.numericUpDown16.TabStop = false;
             this.numericUpDown16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown16.Value = new decimal(new int[] {
             1000,
@@ -762,6 +783,7 @@
             this.numericUpDown15.Name = "numericUpDown15";
             this.numericUpDown15.Size = new System.Drawing.Size(34, 19);
             this.numericUpDown15.TabIndex = 21;
+            this.numericUpDown15.TabStop = false;
             this.numericUpDown15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown15.Value = new decimal(new int[] {
             1,
@@ -803,6 +825,7 @@
             this.numericUpDown14.Name = "numericUpDown14";
             this.numericUpDown14.Size = new System.Drawing.Size(34, 19);
             this.numericUpDown14.TabIndex = 20;
+            this.numericUpDown14.TabStop = false;
             this.numericUpDown14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown14.Value = new decimal(new int[] {
             1,
@@ -832,6 +855,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
             this.comboBox2.TabIndex = 17;
+            this.comboBox2.TabStop = false;
             // 
             // groupBox13
             // 
@@ -884,6 +908,7 @@
             this.textBox27.ReadOnly = true;
             this.textBox27.Size = new System.Drawing.Size(39, 19);
             this.textBox27.TabIndex = 16;
+            this.textBox27.TabStop = false;
             this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label47
@@ -937,6 +962,7 @@
             this.numericUpDown9.Name = "numericUpDown9";
             this.numericUpDown9.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown9.TabIndex = 15;
+            this.numericUpDown9.TabStop = false;
             this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown9.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
             // 
@@ -946,6 +972,7 @@
             this.numericUpDown10.Name = "numericUpDown10";
             this.numericUpDown10.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown10.TabIndex = 16;
+            this.numericUpDown10.TabStop = false;
             this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown10.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
             // 
@@ -955,6 +982,7 @@
             this.numericUpDown11.Name = "numericUpDown11";
             this.numericUpDown11.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown11.TabIndex = 17;
+            this.numericUpDown11.TabStop = false;
             this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown11.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
             // 
@@ -964,6 +992,7 @@
             this.numericUpDown12.Name = "numericUpDown12";
             this.numericUpDown12.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown12.TabIndex = 18;
+            this.numericUpDown12.TabStop = false;
             this.numericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown12.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
             // 
@@ -1023,6 +1052,7 @@
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown8.TabIndex = 12;
+            this.numericUpDown8.TabStop = false;
             this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label35
@@ -1040,6 +1070,7 @@
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown7.TabIndex = 10;
+            this.numericUpDown7.TabStop = false;
             this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label36
@@ -1066,6 +1097,7 @@
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(39, 19);
             this.numericUpDown6.TabIndex = 7;
+            this.numericUpDown6.TabStop = false;
             this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label33
@@ -1088,6 +1120,7 @@
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown4.TabIndex = 3;
+            this.numericUpDown4.TabStop = false;
             this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label32
@@ -1115,6 +1148,7 @@
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown5.TabIndex = 4;
+            this.numericUpDown5.TabStop = false;
             this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown5.Value = new decimal(new int[] {
             1,
@@ -1147,6 +1181,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(171, 20);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.TabStop = false;
             // 
             // label30
             // 
@@ -1201,6 +1236,7 @@
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown3.TabIndex = 11;
+            this.numericUpDown3.TabStop = false;
             this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
@@ -1224,6 +1260,7 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown2.TabIndex = 10;
+            this.numericUpDown2.TabStop = false;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
@@ -1247,6 +1284,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(56, 19);
             this.numericUpDown1.TabIndex = 9;
+            this.numericUpDown1.TabStop = false;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -1256,6 +1294,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(75, 23);
             this.button15.TabIndex = 7;
+            this.button15.TabStop = false;
             this.button15.Text = "クリア";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
@@ -1266,6 +1305,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(75, 23);
             this.button13.TabIndex = 5;
+            this.button13.TabStop = false;
             this.button13.Text = "生成";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
@@ -1327,6 +1367,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 23);
             this.button10.TabIndex = 9;
+            this.button10.TabStop = false;
             this.button10.Text = "参照";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
@@ -1337,6 +1378,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 23);
             this.button11.TabIndex = 8;
+            this.button11.TabStop = false;
             this.button11.Text = "参照";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
@@ -1347,6 +1389,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(75, 23);
             this.button12.TabIndex = 7;
+            this.button12.TabStop = false;
             this.button12.Text = "参照";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
@@ -1385,6 +1428,7 @@
             this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(128, 19);
             this.textBox24.TabIndex = 4;
+            this.textBox24.TabStop = false;
             // 
             // textBox25
             // 
@@ -1393,6 +1437,7 @@
             this.textBox25.ReadOnly = true;
             this.textBox25.Size = new System.Drawing.Size(128, 19);
             this.textBox25.TabIndex = 3;
+            this.textBox25.TabStop = false;
             // 
             // textBox26
             // 
@@ -1401,6 +1446,7 @@
             this.textBox26.ReadOnly = true;
             this.textBox26.Size = new System.Drawing.Size(128, 19);
             this.textBox26.TabIndex = 2;
+            this.textBox26.TabStop = false;
             // 
             // groupBox9
             // 
@@ -1426,6 +1472,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 9;
+            this.button7.TabStop = false;
             this.button7.Text = "参照";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -1436,6 +1483,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 8;
+            this.button8.TabStop = false;
             this.button8.Text = "参照";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
@@ -1446,6 +1494,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 7;
+            this.button9.TabStop = false;
             this.button9.Text = "参照";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
@@ -1484,6 +1533,7 @@
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(128, 19);
             this.textBox21.TabIndex = 4;
+            this.textBox21.TabStop = false;
             // 
             // textBox22
             // 
@@ -1492,6 +1542,7 @@
             this.textBox22.ReadOnly = true;
             this.textBox22.Size = new System.Drawing.Size(128, 19);
             this.textBox22.TabIndex = 3;
+            this.textBox22.TabStop = false;
             // 
             // textBox23
             // 
@@ -1500,6 +1551,7 @@
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(128, 19);
             this.textBox23.TabIndex = 2;
+            this.textBox23.TabStop = false;
             // 
             // groupBox8
             // 
@@ -1525,6 +1577,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 9;
+            this.button4.TabStop = false;
             this.button4.Text = "参照";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -1535,6 +1588,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 8;
+            this.button5.TabStop = false;
             this.button5.Text = "参照";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -1545,6 +1599,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 7;
+            this.button6.TabStop = false;
             this.button6.Text = "参照";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -1583,6 +1638,7 @@
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(128, 19);
             this.textBox18.TabIndex = 4;
+            this.textBox18.TabStop = false;
             // 
             // textBox19
             // 
@@ -1591,6 +1647,7 @@
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(128, 19);
             this.textBox19.TabIndex = 3;
+            this.textBox19.TabStop = false;
             // 
             // textBox20
             // 
@@ -1599,6 +1656,7 @@
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(128, 19);
             this.textBox20.TabIndex = 2;
+            this.textBox20.TabStop = false;
             // 
             // groupBox7
             // 
@@ -1624,6 +1682,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 9;
+            this.button3.TabStop = false;
             this.button3.Text = "参照";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -1634,6 +1693,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
+            this.button2.TabStop = false;
             this.button2.Text = "参照";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -1644,6 +1704,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
+            this.button1.TabStop = false;
             this.button1.Text = "参照";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -1682,6 +1743,7 @@
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(128, 19);
             this.textBox15.TabIndex = 4;
+            this.textBox15.TabStop = false;
             // 
             // textBox16
             // 
@@ -1690,6 +1752,7 @@
             this.textBox16.ReadOnly = true;
             this.textBox16.Size = new System.Drawing.Size(128, 19);
             this.textBox16.TabIndex = 3;
+            this.textBox16.TabStop = false;
             // 
             // textBox17
             // 
@@ -1698,6 +1761,7 @@
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(128, 19);
             this.textBox17.TabIndex = 2;
+            this.textBox17.TabStop = false;
             // 
             // groupBox1
             // 
@@ -1772,6 +1836,7 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(151, 19);
             this.textBox12.TabIndex = 4;
+            this.textBox12.TabStop = false;
             // 
             // textBox13
             // 
@@ -1779,6 +1844,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(151, 19);
             this.textBox13.TabIndex = 3;
+            this.textBox13.TabStop = false;
             // 
             // textBox14
             // 
@@ -1786,6 +1852,7 @@
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(151, 19);
             this.textBox14.TabIndex = 2;
+            this.textBox14.TabStop = false;
             // 
             // groupBox4
             // 
@@ -1835,6 +1902,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(151, 19);
             this.textBox9.TabIndex = 4;
+            this.textBox9.TabStop = false;
             // 
             // textBox10
             // 
@@ -1842,6 +1910,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(151, 19);
             this.textBox10.TabIndex = 3;
+            this.textBox10.TabStop = false;
             // 
             // textBox11
             // 
@@ -1849,6 +1918,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(151, 19);
             this.textBox11.TabIndex = 2;
+            this.textBox11.TabStop = false;
             // 
             // groupBox3
             // 
@@ -1898,6 +1968,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(151, 19);
             this.textBox6.TabIndex = 4;
+            this.textBox6.TabStop = false;
             // 
             // textBox7
             // 
@@ -1905,6 +1976,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(151, 19);
             this.textBox7.TabIndex = 3;
+            this.textBox7.TabStop = false;
             // 
             // textBox8
             // 
@@ -1912,14 +1984,15 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(151, 19);
             this.textBox8.TabIndex = 2;
+            this.textBox8.TabStop = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Location = new System.Drawing.Point(8, 37);
             this.groupBox2.Name = "groupBox2";
@@ -1961,6 +2034,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(151, 19);
             this.textBox5.TabIndex = 4;
+            this.textBox5.TabStop = false;
             // 
             // textBox4
             // 
@@ -1968,6 +2042,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(151, 19);
             this.textBox4.TabIndex = 3;
+            this.textBox4.TabStop = false;
             // 
             // textBox3
             // 
@@ -1975,6 +2050,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(151, 19);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TabStop = false;
             // 
             // textBox2
             // 
@@ -1982,6 +2058,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(151, 19);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TabStop = false;
             // 
             // label2
             // 
@@ -2001,6 +2078,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(40, 19);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TabStop = false;
             // 
             // label1
             // 
@@ -2013,8 +2091,6 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 536);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1162, 22);
@@ -2022,22 +2098,49 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripDropDownButton1
+            // button14
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(68, 20);
-            this.toolStripDropDownButton1.Text = "編集項目";
+            this.button14.Enabled = false;
+            this.button14.Location = new System.Drawing.Point(124, 327);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(110, 23);
+            this.button14.TabIndex = 15;
+            this.button14.TabStop = false;
+            this.button14.Text = "ユニットの設定";
+            this.button14.UseVisualStyleBackColor = true;
             // 
-            // toolStripMenuItem1
+            // button16
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
-            this.toolStripMenuItem1.Text = "新規国家の追加";
+            this.button16.Enabled = false;
+            this.button16.Location = new System.Drawing.Point(8, 356);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(110, 23);
+            this.button16.TabIndex = 16;
+            this.button16.TabStop = false;
+            this.button16.Text = "NFエディター";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Enabled = false;
+            this.button17.Location = new System.Drawing.Point(240, 327);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(110, 23);
+            this.button17.TabIndex = 17;
+            this.button17.TabStop = false;
+            this.button17.Text = "研究済技術の設定";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Enabled = false;
+            this.button18.Location = new System.Drawing.Point(8, 327);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(110, 23);
+            this.button18.TabIndex = 18;
+            this.button18.TabStop = false;
+            this.button18.Text = "国家指導者の設定";
+            this.button18.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -2107,8 +2210,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2125,8 +2226,6 @@
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label12;
@@ -2290,6 +2389,10 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
     }
 }
 

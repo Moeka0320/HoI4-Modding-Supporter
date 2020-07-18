@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -774,7 +775,7 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/history/countriesディレクトリパス
             string historyCountriesDir = historyDir + @"\countries";
             // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
-            string historyCountrisFilePath = historyCountriesDir + "\\" + countryTag + " - " + countryName + ".txt";
+            string historyCountrisFilePath = historyCountriesDir + @"\" + countryTag + " - " + countryName + ".txt";
             // MODFOLDER/localisationディレクトリパス
             string localisationDir = moddir + @"\localisation";
             // MODFOLDER/localisation/replaceディレクトリパス
@@ -787,6 +788,30 @@ namespace HoI4_Modding_Supporter
             string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\mod_countries_l_english.yml";
             // MODFOLDER/localisation/replace/mod_parties_l_english.ymlファイルパス
             string localisationReplacePartiesFilePath = localisationReplaceDir + @"\mod_parties_l_english.yml";
+            // MODFOLDER/gfxディレクトリパス
+            string gfxDir = moddir + @"\gfx";
+            // MODFOLDER/gfx/flagsディレクトリパス
+            string gfxFlagsDir = gfxDir + @"\flags";
+            // MODFOLDER/gfx/flags/mediumディレクトリパス
+            string gfxFlagsMediumDir = gfxFlagsDir + @"\medium";
+            // MODFOLDER/gfx/flags/smallディレクトリパス
+            string gfxFlagsSmallDir = gfxFlagsDir + @"\small";
+            // 中道主義国旗（大・中・小）
+            string n_Flags = gfxFlagsDir + @"\" + countryTag + "_neutrality.tga";
+            string n_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_neutrality.tga";
+            string n_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_neutrality.tga";
+            // 民主主義国旗（大・中・小）
+            string d_Flags = gfxFlagsDir + @"\" + countryTag + "_democratic.tga";
+            string d_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_democratic.tga";
+            string d_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_democratic.tga";
+            // ファシズム国旗（大・中・小）
+            string f_Flags = gfxFlagsDir + @"\" + countryTag + "_fascism.tga";
+            string f_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_fascism.tga";
+            string f_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_fascism.tga";
+            // 共産主義国旗（大・中・小）
+            string c_Flags = gfxFlagsDir + @"\" + countryTag + "_communism.tga";
+            string c_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_communism.tga";
+            string c_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_communism.tga";
             // 書き込み用エンコード指定（UTF-8 BOM付き）
             Encoding enc = Encoding.UTF8;
 
@@ -1389,7 +1414,406 @@ namespace HoI4_Modding_Supporter
             }
 
             // 6.国旗の生成
+            // ../gfxディレクトリが存在しない場合
+            if (Directory.Exists(gfxDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(gfxDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
 
+            // ../gfx/flagsディレクトリが存在しない場合
+            if (Directory.Exists(gfxFlagsDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(gfxFlagsDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../gfx/flags/mediumディレクトリが存在しない場合
+            if (Directory.Exists(gfxFlagsMediumDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(gfxFlagsMediumDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../gfx/flags/smallディレクトリが存在しない場合
+            if (Directory.Exists(gfxFlagsSmallDir) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(gfxFlagsSmallDir);
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../gfx/flagsディレクトリ内に国旗ファイルをコピー
+            if (File.Exists(n_Flags) == false)
+            {
+                try
+                {
+                    if (n_FlagBig != "")
+                    {
+                        File.Copy(n_FlagBig, n_Flags);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(d_Flags) == false)
+            {
+                try
+                {
+                    if (d_FlagBig != "")
+                    {
+                        File.Copy(d_FlagBig, d_Flags);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(f_Flags) == false)
+            {
+                try
+                {
+                    if (f_FlagBig != "")
+                    {
+                        File.Copy(f_FlagBig, f_Flags);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(c_Flags) == false)
+            {
+                try
+                {
+                    if (c_FlagBig != "")
+                    {
+                        File.Copy(c_FlagBig, c_Flags);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../gfx/flags/mediumディレクトリ内に国旗ファイルをコピー
+            if (File.Exists(n_FlagsMedium) == false)
+            {
+                try
+                {
+                    if (n_FlagMid != "")
+                    {
+                        File.Copy(n_FlagMid, n_FlagsMedium);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(d_FlagsMedium) == false)
+            {
+                try
+                {
+                    if (d_FlagMid != "")
+                    {
+                        File.Copy(d_FlagMid, d_FlagsMedium);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(f_FlagsMedium) == false)
+            {
+                try
+                {
+                    if (f_FlagMid != "")
+                    {
+                        File.Copy(f_FlagMid, f_FlagsMedium);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(c_FlagsMedium) == false)
+            {
+                try
+                {
+                    if (c_FlagMid != "")
+                    {
+                        File.Copy(c_FlagMid, c_FlagsMedium);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            // ../gfx/flags/smallディレクトリ内に国旗ファイルをコピー
+            if (File.Exists(n_FlagsSmall) == false)
+            {
+                try
+                {
+                    if (n_FlagSma != "")
+                    {
+                        File.Copy(n_FlagSma, n_FlagsSmall);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(d_FlagsSmall) == false)
+            {
+                try
+                {
+                    if (d_FlagSma != "")
+                    {
+                        File.Copy(d_FlagSma, d_FlagsSmall);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(f_FlagsSmall) == false)
+            {
+                try
+                {
+                    if (f_FlagSma != "")
+                    {
+                        File.Copy(f_FlagSma, f_FlagsSmall);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            if (File.Exists(c_FlagsSmall) == false)
+            {
+                try
+                {
+                    if (c_FlagSma != "")
+                    {
+                        File.Copy(c_FlagSma, c_FlagsSmall);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                            e is ArgumentException ||
+                            e is ArgumentNullException ||
+                            e is PathTooLongException ||
+                            e is DirectoryNotFoundException ||
+                            e is FileNotFoundException ||
+                            e is IOException ||
+                            e is NotSupportedException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
+            MessageBox.Show("生成が完了しました。");
+            Process.Start(moddir);
             return 0;
         }
 
