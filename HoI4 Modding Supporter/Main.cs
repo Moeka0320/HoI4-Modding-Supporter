@@ -949,7 +949,7 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.WriteAllText(commonColorsFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
+                    File.AppendAllText(commonCountriesFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
                 }
                 catch (Exception e)
                 {
@@ -1182,7 +1182,7 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
+                    File.AppendAllText(localisationPartiesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
                                                                       " " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"\n" +
                                                                       " " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"\n" +
                                                                       " " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"\n" +
@@ -1422,7 +1422,7 @@ namespace HoI4_Modding_Supporter
         {
             try
             {
-                File.Copy(source, dest);
+                File.Copy(source, dest, true);
             }
             catch (Exception e)
             {
