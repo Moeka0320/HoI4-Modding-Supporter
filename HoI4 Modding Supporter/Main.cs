@@ -81,6 +81,7 @@ namespace HoI4_Modding_Supporter
         public string lastElection;
         public int electionFrequency;
         public bool noElection;
+        public string modName;
 
 
         public Main()
@@ -514,6 +515,12 @@ namespace HoI4_Modding_Supporter
                     errorMessage("[各種設定] - [従属国の国家タグ]が無効です。");
                 }
             }
+            // mod名
+            if (string.IsNullOrWhiteSpace(textBox39.Text))
+            {
+                errorMessage("[Mod名]が無効です。");
+                return 1;
+            }
 
             MessageBox.Show("エラーチェックが完了しました。");
             return 0;
@@ -529,6 +536,8 @@ namespace HoI4_Modding_Supporter
             moddir = Properties.Settings.Default.moddir;
 
             // データ
+            // mod名
+            modName = textBox39.Text;
             // 国家タグ
             countryTag = textBox1.Text;
             // 内部処理用国名
@@ -781,13 +790,13 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/localisation/replaceディレクトリパス
             string localisationReplaceDir = localisationDir + @"\replace";
             // MODFOLDER/localisation/mod_countries_l_english.ymlファイルパス
-            string localisationCountriesFilePath = localisationDir + @"\mod_countries_l_english.yml";
+            string localisationCountriesFilePath = localisationDir + @"\" + modName + "_countries_l_english.yml";
             // MODFOLDER/localisation/mod_parties_l_english.ymlファイルパス
-            string localisationPartiesFilePath = localisationDir + @"\mod_parties_l_english.yml";
-            // MODFOLDER/localisation/replace/mod_countries_l_english.ymlファイルパス
-            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\mod_countries_l_english.yml";
-            // MODFOLDER/localisation/replace/mod_parties_l_english.ymlファイルパス
-            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\mod_parties_l_english.yml";
+            string localisationPartiesFilePath = localisationDir + @"\" + modName + "_parties_l_english.yml";
+            // MODFOLDER/localisation/replace/MODNAME_countries_l_english.ymlファイルパス
+            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + modName + "_countries_l_english.yml";
+            // MODFOLDER/localisation/replace/MODNAME_parties_l_english.ymlファイルパス
+            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + modName +"_parties_l_english.yml";
             // MODFOLDER/gfxディレクトリパス
             string gfxDir = moddir + @"\gfx";
             // MODFOLDER/gfx/flagsディレクトリパス

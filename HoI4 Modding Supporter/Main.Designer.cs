@@ -205,6 +205,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -292,6 +295,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label71);
+            this.panel1.Controls.Add(this.textBox39);
+            this.panel1.Controls.Add(this.label70);
             this.panel1.Controls.Add(this.groupBox15);
             this.panel1.Controls.Add(this.groupBox12);
             this.panel1.Controls.Add(this.groupBox11);
@@ -1376,7 +1382,7 @@
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(258, 24);
             this.label69.TabIndex = 10;
-            this.label69.Text = "※国旗画像がmodフォルダー内に既に存在する場合、\r\nファイルパスは指定しないでください";
+            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nファイルパスは指定しないでください";
             // 
             // label68
             // 
@@ -2142,6 +2148,33 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(131, 15);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(44, 12);
+            this.label70.TabIndex = 15;
+            this.label70.Text = "Mod名：";
+            // 
+            // textBox39
+            // 
+            this.textBox39.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox39.Location = new System.Drawing.Point(181, 12);
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(68, 19);
+            this.textBox39.TabIndex = 16;
+            this.textBox39.TabStop = false;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(255, 15);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(154, 12);
+            this.label71.TabIndex = 17;
+            this.label71.Text = "※ファイル名などで使用されます";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2393,6 +2426,9 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.Label label70;
     }
 }
 
