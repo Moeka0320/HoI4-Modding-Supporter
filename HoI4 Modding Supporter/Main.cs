@@ -825,6 +825,27 @@ namespace HoI4_Modding_Supporter
             Encoding enc = Encoding.UTF8;
 
 
+            // 0.国家タグがダブってないか確認する
+
+            // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
+            string[] hoi4Files = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", countryTag + " - *.txt");
+            if (hoi4Files != null)
+            {
+                errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                return 1;
+            }
+
+            // MODDIR/history/countries内で国家タグが一致するファイルがあるかを検索
+            if (Directory.Exists(historyDir) == true)
+            {
+                string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, countryTag + "- *.txt");
+                if (modFiles != null)
+                {
+                    errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    return 1;
+                }
+            }
+
             // 1.国別ファイルの作成
 
             // MODFOLDER/common ディレクトリが存在しない場合
@@ -917,6 +938,7 @@ namespace HoI4_Modding_Supporter
             }
 
             // 3.国家タグ定義ファイルの作成
+
             // ../common/country_tagsディレクトリが存在しない場合
             if (Directory.Exists(commonCountry_tagsDir) == false)
             {
@@ -978,6 +1000,7 @@ namespace HoI4_Modding_Supporter
             }
 
             // 4.国家ファイルの作成
+
             // MODDIR/historyディレクトリが存在しない場合
             if (Directory.Exists(historyDir) == false)
             {
@@ -1059,6 +1082,7 @@ namespace HoI4_Modding_Supporter
             }
 
             // 5.国名・政党名の設定
+
             // localisationディレクトリが存在しない場合
             if (Directory.Exists(localisationDir) == false)
             {
@@ -1240,6 +1264,7 @@ namespace HoI4_Modding_Supporter
             }
 
             // 6.国旗の生成
+
             // ../gfxディレクトリが存在しない場合
             if (Directory.Exists(gfxDir) == false)
             {
