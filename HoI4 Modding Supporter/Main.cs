@@ -829,7 +829,7 @@ namespace HoI4_Modding_Supporter
 
             // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
             string[] hoi4Files = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", countryTag + " - *.txt");
-            if (hoi4Files != null)
+            if (hoi4Files.Length != 0)
             {
                 errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                 return 1;
@@ -839,7 +839,7 @@ namespace HoI4_Modding_Supporter
             if (Directory.Exists(historyDir) == true)
             {
                 string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, countryTag + "- *.txt");
-                if (modFiles != null)
+                if (modFiles.Length != 0)
                 {
                     errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
@@ -1683,11 +1683,11 @@ namespace HoI4_Modding_Supporter
 
         private void button13_Click(object sender, EventArgs e)
         {
-            int cResult = check();
-            if (cResult == 1)
-            {
-                return;
-            }
+            //int cResult = check();
+            //if (cResult == 1)
+            //{
+            //    return;
+            //}
             dataAssignment();
             int gcResult = generateCountry();
             if (gcResult == 1)
