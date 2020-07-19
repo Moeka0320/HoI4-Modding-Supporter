@@ -63,13 +63,8 @@
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.label66 = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.label65 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
@@ -545,13 +540,8 @@
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.button18);
-            this.groupBox12.Controls.Add(this.textBox38);
-            this.groupBox12.Controls.Add(this.label66);
             this.groupBox12.Controls.Add(this.button17);
             this.groupBox12.Controls.Add(this.button16);
-            this.groupBox12.Controls.Add(this.textBox37);
-            this.groupBox12.Controls.Add(this.label65);
-            this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.textBox36);
             this.groupBox12.Controls.Add(this.button14);
             this.groupBox12.Controls.Add(this.label64);
@@ -592,26 +582,6 @@
             this.button18.Text = "国家指導者の設定";
             this.button18.UseVisualStyleBackColor = true;
             // 
-            // textBox38
-            // 
-            this.textBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox38.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.textBox38.Location = new System.Drawing.Point(118, 289);
-            this.textBox38.MaxLength = 3;
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(40, 19);
-            this.textBox38.TabIndex = 25;
-            this.textBox38.TabStop = false;
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(6, 292);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(104, 12);
-            this.label66.TabIndex = 24;
-            this.label66.Text = "従属国の国家タグ2：";
-            // 
             // button17
             // 
             this.button17.Enabled = false;
@@ -633,38 +603,6 @@
             this.button16.TabStop = false;
             this.button16.Text = "NFエディター";
             this.button16.UseVisualStyleBackColor = true;
-            // 
-            // textBox37
-            // 
-            this.textBox37.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox37.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.textBox37.Location = new System.Drawing.Point(118, 264);
-            this.textBox37.MaxLength = 3;
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(40, 19);
-            this.textBox37.TabIndex = 23;
-            this.textBox37.TabStop = false;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(6, 267);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(104, 12);
-            this.label65.TabIndex = 22;
-            this.label65.Text = "従属国の国家タグ1：";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(8, 248);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(60, 16);
-            this.checkBox3.TabIndex = 21;
-            this.checkBox3.TabStop = false;
-            this.checkBox3.Text = "宗主国";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // textBox36
             // 
@@ -2411,11 +2349,6 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.TextBox textBox37;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.CheckBox checkBox2;

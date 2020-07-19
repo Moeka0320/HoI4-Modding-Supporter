@@ -101,18 +101,6 @@ namespace HoI4_Modding_Supporter
                 textBox36.Enabled = true;
             }
 
-            // 宗主国オプション
-            if (checkBox3.Checked == false)
-            {
-                textBox37.Enabled = false;
-                textBox38.Enabled = false;
-            }
-            else if (checkBox3.Checked == true)
-            {
-                textBox37.Enabled = true;
-                textBox38.Enabled = true;
-            }
-
             // 配色
             colorChange();
             // 初期政党支持率の合計
@@ -160,8 +148,6 @@ namespace HoI4_Modding_Supporter
             textBox34.Text = "";
             textBox35.Text = "";
             textBox36.Text = "";
-            textBox37.Text = "";
-            textBox38.Text = "";
             numericUpDown1.Value = 0;
             numericUpDown2.Value = 0;
             numericUpDown3.Value = 0;
@@ -181,7 +167,6 @@ namespace HoI4_Modding_Supporter
             numericUpDown17.Value = 1;
             checkBox1.Checked = false;
             checkBox2.Checked = false;
-            checkBox3.Checked = false;
             comboBox1.SelectedItem = null;
             comboBox2.SelectedItem = null;
         }
@@ -507,14 +492,6 @@ namespace HoI4_Modding_Supporter
                     errorMessage("[各種設定] - [宗主国の国家タグ]が無効です。");
                 }
             }
-            // 宗主国である場合
-            if (checkBox3.Checked == true)
-            {
-                if (string.IsNullOrWhiteSpace(textBox37.Text))
-                {
-                    errorMessage("[各種設定] - [従属国の国家タグ]が無効です。");
-                }
-            }
             // mod名
             if (string.IsNullOrWhiteSpace(textBox39.Text))
             {
@@ -690,22 +667,6 @@ namespace HoI4_Modding_Supporter
                 sovereignCountryTag = textBox36.Text;
             }
 
-            // この国が宗主国かどうか
-            sovereignCountry = checkBox3.Checked;
-            // 従属国の国家タグ（存在しない場合はnull）
-            dependentCountryTag1 = null;
-            dependentCountryTag2 = null;
-
-            if (checkBox3.Checked == true)
-            {
-                dependentCountryTag1 = textBox37.Text;
-
-                if (string.IsNullOrWhiteSpace(textBox38.Text) != true)
-                {
-                    dependentCountryTag2 = textBox38.Text;
-                }
-            }
-
             // 初期政党支持率
             // 中道主義
             n_Popularity = (int)numericUpDown12.Value;
@@ -828,21 +789,53 @@ namespace HoI4_Modding_Supporter
             // 0.国家タグがダブってないか確認する
 
             // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
-            string[] hoi4Files = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", countryTag + " - *.txt");
-            if (hoi4Files.Length != 0)
+            try
             {
-                errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
-                return 1;
+                string[] hoi4Files = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", countryTag + " - *.txt");
+                if (hoi4Files.Length != 0)
+                {
+                    errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    return 1;
+                }
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is IOException ||
+                    e is DirectoryNotFoundException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
             }
 
             // MODDIR/history/countries内で国家タグが一致するファイルがあるかを検索
             if (Directory.Exists(historyDir) == true)
             {
-                string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, countryTag + "- *.txt");
-                if (modFiles.Length != 0)
+                try
                 {
-                    errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
-                    return 1;
+                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, countryTag + "- *.txt");
+                    if (modFiles.Length != 0)
+                    {
+                        errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        return 1;
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is IOException ||
+                        e is DirectoryNotFoundException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
                 }
             }
 
@@ -1443,6 +1436,118 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
+            // この国が従属国
+            if (dependentCountry == true)
+            {
+                try
+                {
+                    // modフォルダー内の宗主国にしたい国家ファイルを検索し、存在しなければHOI4ディレクトリからコピーする
+                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, sovereignCountryTag + " - *.txt");
+                    if (modFiles.Length == 0)
+                    {
+                        try
+                        {
+                            string[] rawCountryFile = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", sovereignCountryTag + " - *.txt");
+                            if (rawCountryFile.Length != 0)
+                            {
+                                string countryFileName = rawCountryFile[0].Replace(hoi4dir + @"\history\countries", "");
+                                FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName);
+                            }
+                            else
+                            {
+                                errorMessage("国家ファイルが見つかりませんでした。");
+                                return 1;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            if (e is UnauthorizedAccessException ||
+                                e is ArgumentException ||
+                                e is ArgumentNullException ||
+                                e is PathTooLongException ||
+                                e is IOException ||
+                                e is DirectoryNotFoundException)
+                            {
+                                errorMessage(e.Message);
+                                return 1;
+                            }
+                        }
+
+                        try
+                        {
+                            string[] sovereignCountryFile = Directory.GetFileSystemEntries(historyCountriesDir, sovereignCountryTag + " - *.txt");
+                            try
+                            {
+                                File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                            }
+                            catch (Exception e)
+                            {
+                                if (e is ArgumentException ||
+                                    e is ArgumentNullException ||
+                                    e is PathTooLongException ||
+                                    e is DirectoryNotFoundException ||
+                                    e is IOException ||
+                                    e is UnauthorizedAccessException ||
+                                    e is NotSupportedException ||
+                                    e is SecurityException)
+                                {
+                                    errorMessage(e.Message);
+                                    return 1;
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            if (e is UnauthorizedAccessException ||
+                                e is ArgumentException ||
+                                e is ArgumentNullException ||
+                                e is PathTooLongException ||
+                                e is IOException ||
+                                e is DirectoryNotFoundException)
+                            {
+                                errorMessage(e.Message);
+                                return 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                        }
+                        catch (Exception e)
+                        {
+                            if (e is ArgumentException ||
+                                e is ArgumentNullException ||
+                                e is PathTooLongException ||
+                                e is DirectoryNotFoundException ||
+                                e is IOException ||
+                                e is UnauthorizedAccessException ||
+                                e is NotSupportedException ||
+                                e is SecurityException)
+                            {
+                                errorMessage(e.Message);
+                                return 1;
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is IOException ||
+                        e is DirectoryNotFoundException)
+                    {
+                        errorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
             MessageBox.Show("生成が完了しました。");
             Process.Start(moddir);
             return 0;
@@ -1584,16 +1689,6 @@ namespace HoI4_Modding_Supporter
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked == false)
-            {
-                textBox37.Enabled = false;
-                textBox38.Enabled = false;
-            }
-            else if (checkBox3.Checked == true)
-            {
-                textBox37.Enabled = true;
-                textBox38.Enabled = true;
-            }
         }
 
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
