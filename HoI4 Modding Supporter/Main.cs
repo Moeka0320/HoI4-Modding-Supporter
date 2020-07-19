@@ -1476,6 +1476,11 @@ namespace HoI4_Modding_Supporter
             return 0;
         }
 
+        /// <summary>
+        /// 新しいファイルを作成
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public int FileCreate(string filePath)
         {
             try

@@ -37,6 +37,9 @@
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.label60 = new System.Windows.Forms.Label();
@@ -205,9 +208,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.label70 = new System.Windows.Forms.Label();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -312,6 +312,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1162, 558);
             this.panel1.TabIndex = 1;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(255, 15);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(154, 12);
+            this.label71.TabIndex = 17;
+            this.label71.Text = "※ファイル名などで使用されます";
+            // 
+            // textBox39
+            // 
+            this.textBox39.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox39.Location = new System.Drawing.Point(181, 12);
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(68, 19);
+            this.textBox39.TabIndex = 16;
+            this.textBox39.TabStop = false;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(131, 15);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(44, 12);
+            this.label70.TabIndex = 15;
+            this.label70.Text = "Mod名：";
             // 
             // groupBox15
             // 
@@ -2147,33 +2174,6 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(131, 15);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(44, 12);
-            this.label70.TabIndex = 15;
-            this.label70.Text = "Mod名：";
-            // 
-            // textBox39
-            // 
-            this.textBox39.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox39.Location = new System.Drawing.Point(181, 12);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(68, 19);
-            this.textBox39.TabIndex = 16;
-            this.textBox39.TabStop = false;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(255, 15);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(154, 12);
-            this.label71.TabIndex = 17;
-            this.label71.Text = "※ファイル名などで使用されます";
             // 
             // Main
             // 
