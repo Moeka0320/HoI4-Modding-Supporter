@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Security;
-using System.Security.AccessControl;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HoI4_Modding_Supporter
@@ -757,7 +750,7 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/localisation/replace/MODNAME_countries_l_english.ymlファイルパス
             string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + modName + "_countries_l_english.yml";
             // MODFOLDER/localisation/replace/MODNAME_parties_l_english.ymlファイルパス
-            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + modName +"_parties_l_english.yml";
+            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + modName + "_parties_l_english.yml";
             // MODFOLDER/gfxディレクトリパス
             string gfxDir = moddir + @"\gfx";
             // MODFOLDER/gfx/flagsディレクトリパス
@@ -860,7 +853,7 @@ namespace HoI4_Modding_Supporter
                     return 1;
                 }
             }
-            
+
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
@@ -912,7 +905,7 @@ namespace HoI4_Modding_Supporter
             try
             {
                 string color = colorR + " " + colorG + " " + colorB;
-                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}") ;
+                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
             }
             catch (Exception e)
             {
@@ -1455,7 +1448,7 @@ namespace HoI4_Modding_Supporter
                             }
                             else
                             {
-                                errorMessage("国家ファイルが見つかりませんでした。");
+                                errorMessage("宗主国の国家ファイルが見つかりませんでした。");
                                 return 1;
                             }
                         }
