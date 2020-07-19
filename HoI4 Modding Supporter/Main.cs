@@ -1683,11 +1683,11 @@ namespace HoI4_Modding_Supporter
 
         private void button13_Click(object sender, EventArgs e)
         {
-            //int cResult = check();
-            //if (cResult == 1)
-            //{
-            //    return;
-            //}
+            int cResult = check();
+            if (cResult == 1)
+            {
+                return;
+            }
             dataAssignment();
             int gcResult = generateCountry();
             if (gcResult == 1)
