@@ -669,11 +669,6 @@
             this.numericUpDown13.TabIndex = 16;
             this.numericUpDown13.TabStop = false;
             this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown13.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // groupBox14
             // 
