@@ -777,6 +777,10 @@ namespace HoI4_Modding_Supporter
             string c_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_communism.tga";
             // 書き込み用エンコード指定（UTF-8 BOM付き）
             Encoding enc = Encoding.UTF8;
+            // 関数の戻り値用
+            int fcResult;
+            int taResult;
+            int dcResult;
 
 
             // 0.国家タグがダブってないか確認する
@@ -837,8 +841,8 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/common ディレクトリが存在しない場合
             if (Directory.Exists(commonDir) == false)
             {
-                int fcResult = FolderCreate(commonDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(commonDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -847,8 +851,8 @@ namespace HoI4_Modding_Supporter
             // MODFOLDER/common/countries ディレクトリが存在しない場合
             if (Directory.Exists(commonCountriesDir) == false)
             {
-                int fcResult = FolderCreate(commonCountriesDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(commonCountriesDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -862,7 +866,7 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                int fcResult = FileCreate(commonCountryFilePath);
+                fcResult = FileCreate(commonCountryFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -893,8 +897,8 @@ namespace HoI4_Modding_Supporter
             // 既に存在する場合はそのファイルに書き込み
             if (File.Exists(commonColorsFilePath) == false)
             {
-                int fcOutResult = FileCopy(colorsHoi4FilePath, commonColorsFilePath);
-                if (fcOutResult == 1)
+                fcResult = FileCopy(colorsHoi4FilePath, commonColorsFilePath);
+                if (fcResult == 1)
                 {
                     return 1;
                 }
@@ -902,25 +906,12 @@ namespace HoI4_Modding_Supporter
 
 
             // colors.txtに追記
-            try
+            string color = colorR + " " + colorG + " " + colorB;
+
+            taResult = TextAppend(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
+            if (taResult == 1)
             {
-                string color = colorR + " " + colorG + " " + colorB;
-                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
-            }
-            catch (Exception e)
-            {
-                if (e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is NotSupportedException ||
-                    e is SecurityException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
+                return 1;
             }
 
             // 3.国家タグ定義ファイルの作成
@@ -928,8 +919,8 @@ namespace HoI4_Modding_Supporter
             // ../common/country_tagsディレクトリが存在しない場合
             if (Directory.Exists(commonCountry_tagsDir) == false)
             {
-                int fcResult = FolderCreate(commonCountry_tagsDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(commonCountry_tagsDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -938,7 +929,7 @@ namespace HoI4_Modding_Supporter
             // 存在しない場合、../country_tags/01_countries.txtを作成
             if (File.Exists(commonCountriesFilePath) == false)
             {
-                int fcResult = FileCreate(commonCountriesFilePath);
+                fcResult = FileCreate(commonCountriesFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -964,24 +955,10 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                try
+                taResult = TextAppend(commonCountriesFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
+                if (taResult == 1)
                 {
-                    File.AppendAllText(commonCountriesFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
@@ -990,8 +967,8 @@ namespace HoI4_Modding_Supporter
             // MODDIR/historyディレクトリが存在しない場合
             if (Directory.Exists(historyDir) == false)
             {
-                int fcResult = FolderCreate(historyDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(historyDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1000,16 +977,16 @@ namespace HoI4_Modding_Supporter
             // MODDIR/hitsory/countriesディレクトリが存在しない場合
             if (Directory.Exists(historyCountriesDir) == false)
             {
-                int fcResult = FolderCreate(historyCountriesDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(historyCountriesDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
             }
 
             // 国家ファイルを作成
-            int fcOutResult2 = FileCreate(historyCountrisFilePath);
-            if (fcOutResult2 == 1)
+            fcResult = FileCreate(historyCountrisFilePath);
+            if (fcResult == 1)
             {
                 return 1;
             }
@@ -1072,8 +1049,8 @@ namespace HoI4_Modding_Supporter
             // localisationディレクトリが存在しない場合
             if (Directory.Exists(localisationDir) == false)
             {
-                int fcResult = FolderCreate(localisationDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(localisationDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1082,7 +1059,7 @@ namespace HoI4_Modding_Supporter
             // ../localisation/mod_countries_l_english.yml
             if (File.Exists(localisationCountriesFilePath) == false)
             {
-                int fcResult = FileCreate(localisationCountriesFilePath);
+                fcResult = FileCreate(localisationCountriesFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -1125,42 +1102,28 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                try
+                taResult = TextAppend(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"\n" +
+                                                                     " " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"\n" +
+                                                                     " " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"\n" +
+                                                                     " " + countryTag + "_democratic:0 \"" + d_ViewName + "\"\n" +
+                                                                     " " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"\n" +
+                                                                     " " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"\n" +
+                                                                     " " + countryTag + "_fascism:0 \"" + f_ViewName + "\"\n" +
+                                                                     " " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"\n" +
+                                                                     " " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"\n" +
+                                                                     " " + countryTag + "_communism:0 \"" + c_ViewName + "\"\n" +
+                                                                     " " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"\n" +
+                                                                     " " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
+                if (taResult == 1)
                 {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_democratic:0 \"" + d_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_fascism:0 \"" + f_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_communism:0 \"" + c_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../localisation/mod_parties_l_english.yml
             if (File.Exists(localisationPartiesFilePath) == false)
             {
-                int fcResult = FileCreate(localisationPartiesFilePath);
+                fcResult = FileCreate(localisationPartiesFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -1199,52 +1162,38 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                try
+                taResult = TextAppend(localisationPartiesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
+                                                                   " " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"\n" +
+                                                                   " " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"\n" +
+                                                                   " " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"\n" +
+                                                                   " " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"\n" +
+                                                                   " " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"\n" +
+                                                                   " " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"\n" +
+                                                                   " " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
+                if (taResult == 1)
                 {
-                    File.AppendAllText(localisationPartiesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
+                    return 1;
                 }
             }
 
             // ../localisation/replaceディレクトリが存在しない場合
             if (Directory.Exists(localisationReplaceDir) == false)
             {
-                int fcResult = FolderCreate(localisationReplaceDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(localisationReplaceDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
             }
 
             // mod_countries_l_english.ymlとmod_parties_l_english.ymlをreplaceディレクトリ内にコピー
-            int fcOutResult3 = FileCopy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
-            if (fcOutResult3 == 1)
+            fcResult = FileCopy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
+            if (fcResult == 1)
             {
                 return 1;
             }
-            int fcOutResult4 = FileCopy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
-            if (fcOutResult4 == 1)
+            fcResult = FileCopy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
+            if (fcResult == 1)
             {
                 return 1;
             }
@@ -1254,8 +1203,8 @@ namespace HoI4_Modding_Supporter
             // ../gfxディレクトリが存在しない場合
             if (Directory.Exists(gfxDir) == false)
             {
-                int fcResult = FolderCreate(gfxDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(gfxDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1264,8 +1213,8 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flagsディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsDir) == false)
             {
-                int fcResult = FolderCreate(gfxFlagsDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(gfxFlagsDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1274,8 +1223,8 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/mediumディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsMediumDir) == false)
             {
-                int fcResult = FolderCreate(gfxFlagsMediumDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(gfxFlagsMediumDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1284,8 +1233,8 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/smallディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsSmallDir) == false)
             {
-                int fcResult = FolderCreate(gfxFlagsSmallDir);
-                if (fcResult == 1)
+                dcResult = DirectoryCreate(gfxFlagsSmallDir);
+                if (dcResult == 1)
                 {
                     return 1;
                 }
@@ -1296,7 +1245,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (n_FlagBig != "")
                 {
-                    int fcResult = FileCopy(n_FlagBig, n_Flags);
+                    fcResult = FileCopy(n_FlagBig, n_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1307,7 +1256,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (d_FlagBig != "")
                 {
-                    int fcResult = FileCopy(d_FlagBig, d_Flags);
+                    fcResult = FileCopy(d_FlagBig, d_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1318,7 +1267,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (f_FlagBig != "")
                 {
-                    int fcResult = FileCopy(f_FlagBig, f_Flags);
+                    fcResult = FileCopy(f_FlagBig, f_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1329,7 +1278,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (c_FlagBig != "")
                 {
-                    int fcResult = FileCopy(c_FlagBig, c_Flags);
+                    fcResult = FileCopy(c_FlagBig, c_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1342,7 +1291,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (n_FlagMed != "")
                 {
-                    int fcResult = FileCopy(n_FlagMed, n_FlagsMedium);
+                    fcResult = FileCopy(n_FlagMed, n_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1353,7 +1302,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (d_FlagMed != "")
                 {
-                    int fcResult = FileCopy(d_FlagMed, d_FlagsMedium);
+                    fcResult = FileCopy(d_FlagMed, d_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1364,7 +1313,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (f_FlagMed != "")
                 {
-                    int fcResult = FileCopy(f_FlagMed, f_FlagsMedium);
+                    fcResult = FileCopy(f_FlagMed, f_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1375,7 +1324,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (c_FlagMed != "")
                 {
-                    int fcResult = FileCopy(c_FlagMed, c_FlagsMedium);
+                    fcResult = FileCopy(c_FlagMed, c_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1388,7 +1337,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (n_FlagSma != "")
                 {
-                    int fcResult = FileCopy(n_FlagSma, n_FlagsSmall);
+                    fcResult = FileCopy(n_FlagSma, n_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1399,7 +1348,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (d_FlagSma != "")
                 {
-                    int fcResult = FileCopy(d_FlagSma, d_FlagsSmall);
+                    fcResult = FileCopy(d_FlagSma, d_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1410,7 +1359,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (f_FlagSma != "")
                 {
-                    int fcResult = FileCopy(f_FlagSma, f_FlagsSmall);
+                    fcResult = FileCopy(f_FlagSma, f_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1421,7 +1370,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (c_FlagSma != "")
                 {
-                    int fcResult = FileCopy(c_FlagSma, c_FlagsSmall);
+                    fcResult = FileCopy(c_FlagSma, c_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -1469,24 +1418,11 @@ namespace HoI4_Modding_Supporter
                         try
                         {
                             string[] sovereignCountryFile = Directory.GetFileSystemEntries(historyCountriesDir, sovereignCountryTag + " - *.txt");
-                            try
+
+                            taResult = TextAppend(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                            if (taResult == 1)
                             {
-                                File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
-                            }
-                            catch (Exception e)
-                            {
-                                if (e is ArgumentException ||
-                                    e is ArgumentNullException ||
-                                    e is PathTooLongException ||
-                                    e is DirectoryNotFoundException ||
-                                    e is IOException ||
-                                    e is UnauthorizedAccessException ||
-                                    e is NotSupportedException ||
-                                    e is SecurityException)
-                                {
-                                    errorMessage(e.Message);
-                                    return 1;
-                                }
+                                return 1;
                             }
                         }
                         catch (Exception e)
@@ -1505,24 +1441,10 @@ namespace HoI4_Modding_Supporter
                     }
                     else
                     {
-                        try
+                        taResult = TextAppend(modFiles[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                        if (taResult == 1)
                         {
-                            File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is DirectoryNotFoundException ||
-                                e is IOException ||
-                                e is UnauthorizedAccessException ||
-                                e is NotSupportedException ||
-                                e is SecurityException)
-                            {
-                                errorMessage(e.Message);
-                                return 1;
-                            }
+                            return 1;
                         }
                     }
                 }
@@ -1575,7 +1497,12 @@ namespace HoI4_Modding_Supporter
             return 0;
         }
 
-        public int FolderCreate(string folderPath)
+        /// <summary>
+        /// ディレクトリを作成
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
+        public int DirectoryCreate(string folderPath)
         {
             try
             {
@@ -1620,6 +1547,37 @@ namespace HoI4_Modding_Supporter
                     e is DirectoryNotFoundException ||
                     e is IOException ||
                     e is NotSupportedException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// テキストに追記
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="AddText"></param>
+        /// <returns></returns>
+        public int TextAppend(string filePath, string AddText)
+        {
+            try
+            {
+                File.AppendAllText(filePath, AddText);
+            }
+            catch (Exception e)
+            {
+                if (e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is NotSupportedException ||
+                    e is SecurityException)
                 {
                     errorMessage(e.Message);
                     return 1;
