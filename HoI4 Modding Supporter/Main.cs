@@ -492,7 +492,7 @@ namespace HoI4_Modding_Supporter
                 return 1;
             }
 
-            MessageBox.Show("エラーチェックが完了しました。");
+            MessageBox.Show("入力ミスのチェックが完了しました。");
             return 0;
         }
 

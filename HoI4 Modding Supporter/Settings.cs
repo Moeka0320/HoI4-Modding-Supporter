@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HoI4_Modding_Supporter
@@ -60,7 +53,7 @@ namespace HoI4_Modding_Supporter
                 Properties.Settings.Default.moddir = textBox2.Text;
 
                 Properties.Settings.Default.Save();
-                
+
                 this.Close();
             }
         }
