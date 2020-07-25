@@ -573,7 +573,6 @@
             // 
             // button18
             // 
-            this.button18.Enabled = false;
             this.button18.Location = new System.Drawing.Point(8, 327);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(110, 23);
@@ -581,6 +580,7 @@
             this.button18.TabStop = false;
             this.button18.Text = "国家指導者の設定";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // button17
             // 

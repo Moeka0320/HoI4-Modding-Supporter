@@ -3,8 +3,11 @@
     // 変数専用クラス
     class Variable
     {
+        // Application Settings
         public string hoi4dir;
         public string moddir;
+
+        // Main
         public string countryTag;
         public string countryName;
         public string n_ViewName;
@@ -64,5 +67,8 @@
         public int electionFrequency;
         public bool noElection;
         public string modName;
+
+        // NationalLeaderSettings
+        public bool customLeaderEnabled;
     }
 }

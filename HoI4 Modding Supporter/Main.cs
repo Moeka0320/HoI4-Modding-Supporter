@@ -807,5 +807,11 @@ namespace HoI4_Modding_Supporter
             About about = new About();
             about.ShowDialog();
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            NationalLeaderSettings nls = new NationalLeaderSettings();
+            nls.ShowDialog();
+        }
     }
 }
