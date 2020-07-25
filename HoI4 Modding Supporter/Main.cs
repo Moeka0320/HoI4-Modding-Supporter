@@ -1,82 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Security;
-using System.Text;
 using System.Windows.Forms;
 
 namespace HoI4_Modding_Supporter
 {
     public partial class Main : Form
     {
-        // データ格納用変数
-        public string hoi4dir;
-        public string moddir;
-        public string countryTag;
-        public string countryName;
-        public string n_ViewName;
-        public string n_EventViewName;
-        public string n_AliasName;
-        public string d_ViewName;
-        public string d_EventViewName;
-        public string d_AliasName;
-        public string f_ViewName;
-        public string f_EventViewName;
-        public string f_AliasName;
-        public string c_ViewName;
-        public string c_EventViewName;
-        public string c_AliasName;
-        public string n_FlagBig;
-        public string n_FlagMed;
-        public string n_FlagSma;
-        public string d_FlagBig;
-        public string d_FlagMed;
-        public string d_FlagSma;
-        public string f_FlagBig;
-        public string f_FlagMed;
-        public string f_FlagSma;
-        public string c_FlagBig;
-        public string c_FlagMed;
-        public string c_FlagSma;
-        public string n_PartyAliasName;
-        public string n_PartyFullName;
-        public string d_PartyAliasName;
-        public string d_PartyFullName;
-        public string f_PartyAliasName;
-        public string f_PartyFullName;
-        public string c_PartyAliasName;
-        public string c_PartyFullName;
-        public int colorR;
-        public int colorG;
-        public int colorB;
-        public string graphicalCulture;
-        public string graphicalCulture2d;
-        public int stateIDWithCapital;
-        public int studySlot;
-        public double stability;
-        public double warCoop;
-        public int politicalPower;
-        public int transportShip;
-        public bool dependentCountry;
-        public string sovereignCountryTag;
-        public bool sovereignCountry;
-        public string dependentCountryTag1;
-        public string dependentCountryTag2;
-        public double n_Popularity;
-        public double d_Popularity;
-        public double f_Popularity;
-        public double c_Popularity;
-        public string startIdeology;
-        public int lastElectionYYYY;
-        public int lastElectionM;
-        public int lastElectionD;
-        public string lastElection;
-        public int electionFrequency;
-        public bool noElection;
-        public string modName;
-
-
         public Main()
         {
             InitializeComponent();
@@ -501,1132 +430,219 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public void dataAssignment()
         {
+            Variable variable = new Variable();
+
             // フォルダパス
-            hoi4dir = Properties.Settings.Default.hoi4dir;
-            moddir = Properties.Settings.Default.moddir;
+            variable.hoi4dir = Properties.Settings.Default.hoi4dir;
+            variable.moddir = Properties.Settings.Default.moddir;
 
             // データ
             // mod名
-            modName = textBox39.Text;
+            variable.modName = textBox39.Text;
             // 国家タグ
-            countryTag = textBox1.Text;
+            variable.countryTag = textBox1.Text;
             // 内部処理用国名
-            countryName = textBox2.Text;
+            variable.countryName = textBox2.Text;
             // 中道主義
             // 表示名
-            n_ViewName = textBox3.Text;
+            variable.n_ViewName = textBox3.Text;
             // イベント表示名
-            n_EventViewName = textBox4.Text;
+            variable.n_EventViewName = textBox4.Text;
             // 通称名
-            n_AliasName = textBox5.Text;
+            variable.n_AliasName = textBox5.Text;
             // 民主主義
             // 表示名
-            d_ViewName = textBox8.Text;
+            variable.d_ViewName = textBox8.Text;
             // イベント表示名
-            d_EventViewName = textBox7.Text;
+            variable.d_EventViewName = textBox7.Text;
             // 通称名
-            d_AliasName = textBox6.Text;
+            variable.d_AliasName = textBox6.Text;
             // ファシズム
             // 表示名
-            f_ViewName = textBox11.Text;
+            variable.f_ViewName = textBox11.Text;
             // イベント表示名
-            f_EventViewName = textBox10.Text;
+            variable.f_EventViewName = textBox10.Text;
             // 通称名
-            f_AliasName = textBox9.Text;
+            variable.f_AliasName = textBox9.Text;
             // 共産主義
             // 表示名
-            c_ViewName = textBox14.Text;
+            variable.c_ViewName = textBox14.Text;
             // イベント表示名
-            c_EventViewName = textBox13.Text;
+            variable.c_EventViewName = textBox13.Text;
             // 通称名
-            c_AliasName = textBox12.Text;
+            variable.c_AliasName = textBox12.Text;
             // 国旗ファイルパス
             // 中道主義
             // 大
-            n_FlagBig = textBox17.Text;
+            variable.n_FlagBig = textBox17.Text;
             // 中
-            n_FlagMed = textBox16.Text;
+            variable.n_FlagMed = textBox16.Text;
             // 小
-            n_FlagSma = textBox15.Text;
+            variable.n_FlagSma = textBox15.Text;
             // 民主主義
             // 大
-            d_FlagBig = textBox23.Text;
+            variable.d_FlagBig = textBox23.Text;
             // 中
-            d_FlagMed = textBox22.Text;
+            variable.d_FlagMed = textBox22.Text;
             // 小
-            d_FlagSma = textBox21.Text;
+            variable.d_FlagSma = textBox21.Text;
             // ファシズム
             // 大
-            f_FlagBig = textBox20.Text;
+            variable.f_FlagBig = textBox20.Text;
             // 中
-            f_FlagMed = textBox19.Text;
+            variable.f_FlagMed = textBox19.Text;
             // 小
-            f_FlagSma = textBox18.Text;
+            variable.f_FlagSma = textBox18.Text;
             // 共産主義
             // 大
-            c_FlagBig = textBox26.Text;
+            variable.c_FlagBig = textBox26.Text;
             // 中
-            c_FlagMed = textBox25.Text;
+            variable.c_FlagMed = textBox25.Text;
             // 小
-            c_FlagSma = textBox24.Text;
+            variable.c_FlagSma = textBox24.Text;
             // 政党名
             // 中道主義
             // 通称名
-            n_PartyAliasName = textBox30.Text;
+            variable.n_PartyAliasName = textBox30.Text;
             // 正式名
-            n_PartyFullName = textBox29.Text;
+            variable.n_PartyFullName = textBox29.Text;
             // 民主主義
             // 通称名
-            d_PartyAliasName = textBox35.Text;
+            variable.d_PartyAliasName = textBox35.Text;
             // 正式名
-            d_PartyFullName = textBox34.Text;
+            variable.d_PartyFullName = textBox34.Text;
             // ファシズム
             // 通称名
-            f_PartyAliasName = textBox31.Text;
+            variable.f_PartyAliasName = textBox31.Text;
             // 正式名
-            f_PartyFullName = textBox28.Text;
+            variable.f_PartyFullName = textBox28.Text;
             // 共産主義
             // 通称名
-            c_PartyAliasName = textBox33.Text;
+            variable.c_PartyAliasName = textBox33.Text;
             // 正式名
-            c_PartyFullName = textBox32.Text;
+            variable.c_PartyFullName = textBox32.Text;
             // 配色
-            colorR = (int)numericUpDown1.Value;
-            colorG = (int)numericUpDown2.Value;
-            colorB = (int)numericUpDown3.Value;
+            variable.colorR = (int)numericUpDown1.Value;
+            variable.colorG = (int)numericUpDown2.Value;
+            variable.colorB = (int)numericUpDown3.Value;
             // 汎用顔グラフィック
             if (comboBox1.SelectedIndex == 0)
             {
                 // 東ヨーロッパ
-                graphicalCulture = "eastern_european_gfx";
-                graphicalCulture2d = "eastern_european_2d";
+                variable.graphicalCulture = "eastern_european_gfx";
+                variable.graphicalCulture2d = "eastern_european_2d";
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 // 西ヨーロッパ
-                graphicalCulture = "western_european_gfx";
-                graphicalCulture2d = "western_european_2d";
+                variable.graphicalCulture = "western_european_gfx";
+                variable.graphicalCulture2d = "western_european_2d";
             }
             else if (comboBox1.SelectedIndex == 2)
             {
                 // 中東
-                graphicalCulture = "middle_eastern_gfx";
-                graphicalCulture2d = "middle_eastern_2d";
+                variable.graphicalCulture = "middle_eastern_gfx";
+                variable.graphicalCulture2d = "middle_eastern_2d";
             }
             else if (comboBox1.SelectedIndex == 3)
             {
                 // 南アメリカ
-                graphicalCulture = "southamerican_gfx";
-                graphicalCulture2d = "southamerican_2d";
+                variable.graphicalCulture = "southamerican_gfx";
+                variable.graphicalCulture2d = "southamerican_2d";
             }
             else if (comboBox1.SelectedIndex == 4)
             {
                 // アジア
-                graphicalCulture = "asian_gfx";
-                graphicalCulture2d = "asian_2d";
+                variable.graphicalCulture = "asian_gfx";
+                variable.graphicalCulture2d = "asian_2d";
             }
             else if (comboBox1.SelectedIndex == 5)
             {
                 // アフリカ
-                graphicalCulture = "african_gfx";
-                graphicalCulture2d = "african_2d";
+                variable.graphicalCulture = "african_gfx";
+                variable.graphicalCulture2d = "african_2d";
             }
             else if (comboBox1.SelectedIndex == 6)
             {
                 // イギリス連邦
-                graphicalCulture = "commonwealth_gfx";
-                graphicalCulture2d = "commonwealth_2d";
+                variable.graphicalCulture = "commonwealth_gfx";
+                variable.graphicalCulture2d = "commonwealth_2d";
             }
 
             // 首都を含む州ID
-            stateIDWithCapital = (int)numericUpDown4.Value;
+            variable.stateIDWithCapital = (int)numericUpDown4.Value;
             // 研究スロット数
-            studySlot = (int)numericUpDown5.Value;
+            variable.studySlot = (int)numericUpDown5.Value;
             // 初期安定度（100分率）
-            stability = (int)numericUpDown6.Value * 0.01;
+            variable.stability = (int)numericUpDown6.Value * 0.01;
             // 初期戦争協力度
-            warCoop = (int)numericUpDown7.Value * 0.01;
+            variable.warCoop = (int)numericUpDown7.Value * 0.01;
             // 初期政治力
-            politicalPower = (int)numericUpDown8.Value;
+            variable.politicalPower = (int)numericUpDown8.Value;
             // 初期輸送船数
-            transportShip = (int)numericUpDown13.Value;
+            variable.transportShip = (int)numericUpDown13.Value;
             // この国が従属国かどうか
-            dependentCountry = checkBox2.Checked;
+            variable.dependentCountry = checkBox2.Checked;
             // 宗主国の国家タグ（存在しない場合はnull）
-            sovereignCountryTag = null;
+            variable.sovereignCountryTag = null;
 
             if (checkBox2.Checked == true)
             {
-                sovereignCountryTag = textBox36.Text;
+                variable.sovereignCountryTag = textBox36.Text;
             }
 
             // 初期政党支持率
             // 中道主義
-            n_Popularity = (int)numericUpDown12.Value;
+            variable.n_Popularity = (int)numericUpDown12.Value;
             // 民主主義
-            d_Popularity = (int)numericUpDown11.Value;
+            variable.d_Popularity = (int)numericUpDown11.Value;
             // ファシズム
-            f_Popularity = (int)numericUpDown10.Value;
+            variable.f_Popularity = (int)numericUpDown10.Value;
             // 共産主義
-            c_Popularity = (int)numericUpDown9.Value;
+            variable.c_Popularity = (int)numericUpDown9.Value;
 
             // 初期与党
             // イデオロギー
             if (comboBox2.SelectedIndex == 0)
             {
                 // 中道主義
-                startIdeology = "neutrality";
+                variable.startIdeology = "neutrality";
 
             }
             else if (comboBox2.SelectedIndex == 1)
             {
                 // 民主主義
-                startIdeology = "democratic";
+                variable.startIdeology = "democratic";
 
             }
             else if (comboBox2.SelectedIndex == 2)
             {
                 // ファシズム
-                startIdeology = "fascism";
+                variable.startIdeology = "fascism";
 
             }
             else if (comboBox2.SelectedIndex == 3)
             {
                 // 共産主義
-                startIdeology = "communism";
+                variable.startIdeology = "communism";
 
             }
 
             // 前回の選挙
             // YYYY
-            lastElectionYYYY = (int)numericUpDown16.Value;
+            variable.lastElectionYYYY = (int)numericUpDown16.Value;
             // MM
-            lastElectionM = (int)numericUpDown15.Value;
+            variable.lastElectionM = (int)numericUpDown15.Value;
             // DD
-            lastElectionD = (int)numericUpDown14.Value;
+            variable.lastElectionD = (int)numericUpDown14.Value;
             // YYYY.MM.DD
-            lastElection = lastElectionYYYY.ToString() + "." + lastElectionM.ToString() + "." + lastElectionD.ToString();
+            variable.lastElection = variable.lastElectionYYYY.ToString() + "." + variable.lastElectionM.ToString() + "." + variable.lastElectionD.ToString();
 
             // 選挙を行う間隔
-            electionFrequency = (int)numericUpDown17.Value;
+            variable.electionFrequency = (int)numericUpDown17.Value;
 
             // 選挙がないかどうか（true -> なし）
-            noElection = checkBox1.Checked;
-        }
-
-        /// <summary>
-        /// 国家の生成（ファイル書き込み処理）
-        /// </summary>
-        public int generateCountry()
-        {
-            // MODFOLDER/commonディレクトリパス
-            string commonDir = moddir + @"\common";
-            // MODFOLDER/common/countriesディレクトリパス
-            string commonCountriesDir = commonDir + @"\countries";
-            // MODFOLDER/common/countries/COUNTRY.txtファイルパス
-            string commonCountryFilePath = commonCountriesDir + @"\" + countryName + ".txt";
-            // MODFOLDER/common/countries/colors.txtファイルパス
-            string commonColorsFilePath = commonCountriesDir + @"\colors.txt";
-            // HOI4FOLDER/common/countries/colors.txtファイルパス
-            string colorsHoi4FilePath = hoi4dir + @"\common\countries\colors.txt";
-            // MODFOLDER/common/country_tagsディレクトリパス
-            string commonCountry_tagsDir = commonDir + @"\country_tags";
-            // MODFOLDER/common/country_tags/01_countries.txtファイルパス
-            string commonCountriesFilePath = commonCountry_tagsDir + @"\01_countries.txt";
-            // MODFOLDER/historyディレクトリパス
-            string historyDir = moddir + @"\history";
-            // MODFOLDER/history/countriesディレクトリパス
-            string historyCountriesDir = historyDir + @"\countries";
-            // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
-            string historyCountrisFilePath = historyCountriesDir + @"\" + countryTag + " - " + countryName + ".txt";
-            // MODFOLDER/localisationディレクトリパス
-            string localisationDir = moddir + @"\localisation";
-            // MODFOLDER/localisation/replaceディレクトリパス
-            string localisationReplaceDir = localisationDir + @"\replace";
-            // MODFOLDER/localisation/mod_countries_l_english.ymlファイルパス
-            string localisationCountriesFilePath = localisationDir + @"\" + modName + "_countries_l_english.yml";
-            // MODFOLDER/localisation/mod_parties_l_english.ymlファイルパス
-            string localisationPartiesFilePath = localisationDir + @"\" + modName + "_parties_l_english.yml";
-            // MODFOLDER/localisation/replace/MODNAME_countries_l_english.ymlファイルパス
-            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + modName + "_countries_l_english.yml";
-            // MODFOLDER/localisation/replace/MODNAME_parties_l_english.ymlファイルパス
-            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + modName + "_parties_l_english.yml";
-            // MODFOLDER/gfxディレクトリパス
-            string gfxDir = moddir + @"\gfx";
-            // MODFOLDER/gfx/flagsディレクトリパス
-            string gfxFlagsDir = gfxDir + @"\flags";
-            // MODFOLDER/gfx/flags/mediumディレクトリパス
-            string gfxFlagsMediumDir = gfxFlagsDir + @"\medium";
-            // MODFOLDER/gfx/flags/smallディレクトリパス
-            string gfxFlagsSmallDir = gfxFlagsDir + @"\small";
-            // 中道主義国旗（大・中・小）
-            string n_Flags = gfxFlagsDir + @"\" + countryTag + "_neutrality.tga";
-            string n_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_neutrality.tga";
-            string n_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_neutrality.tga";
-            // 民主主義国旗（大・中・小）
-            string d_Flags = gfxFlagsDir + @"\" + countryTag + "_democratic.tga";
-            string d_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_democratic.tga";
-            string d_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_democratic.tga";
-            // ファシズム国旗（大・中・小）
-            string f_Flags = gfxFlagsDir + @"\" + countryTag + "_fascism.tga";
-            string f_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_fascism.tga";
-            string f_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_fascism.tga";
-            // 共産主義国旗（大・中・小）
-            string c_Flags = gfxFlagsDir + @"\" + countryTag + "_communism.tga";
-            string c_FlagsMedium = gfxFlagsMediumDir + @"\" + countryTag + "_communism.tga";
-            string c_FlagsSmall = gfxFlagsSmallDir + @"\" + countryTag + "_communism.tga";
-            // 書き込み用エンコード指定（UTF-8 BOM付き）
-            Encoding enc = Encoding.UTF8;
-
-
-            // 0.国家タグがダブってないか確認する
-
-            // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
-            try
-            {
-                string[] hoi4Files = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", countryTag + " - *.txt");
-                if (hoi4Files.Length != 0)
-                {
-                    errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
-                    return 1;
-                }
-            }
-            catch (Exception e)
-            {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is IOException ||
-                    e is DirectoryNotFoundException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            // MODDIR/history/countries内で国家タグが一致するファイルがあるかを検索
-            if (Directory.Exists(historyDir) == true)
-            {
-                try
-                {
-                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, countryTag + "- *.txt");
-                    if (modFiles.Length != 0)
-                    {
-                        errorMessage("国家タグ\"" + countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
-                        return 1;
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is IOException ||
-                        e is DirectoryNotFoundException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-
-            // 1.国別ファイルの作成
-
-            // MODFOLDER/common ディレクトリが存在しない場合
-            if (Directory.Exists(commonDir) == false)
-            {
-                int fcResult = FolderCreate(commonDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // MODFOLDER/common/countries ディレクトリが存在しない場合
-            if (Directory.Exists(commonCountriesDir) == false)
-            {
-                int fcResult = FolderCreate(commonCountriesDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../countries の中に国別ファイルを作成
-            if (File.Exists(commonCountryFilePath) == true)
-            {
-                errorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
-                return 1;
-            }
-            else
-            {
-                int fcResult = FileCreate(commonCountryFilePath);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // COUNTRY.txtに書き込む
-            try
-            {
-                StreamWriter sr = new StreamWriter(commonCountryFilePath, false);
-                sr.WriteLine("graphical_culture = " + graphicalCulture);
-                sr.WriteLine("graphical_culture_2d = " + graphicalCulture2d);
-                sr.Close();
-            }
-            catch (Exception e)
-            {
-                if (e is ObjectDisposedException ||
-                    e is IOException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            // 2.色定義ファイルの作成
-
-            // ../countries/colors.txtをhoi4本体ディレクトリからコピー
-            // 既に存在する場合はそのファイルに書き込み
-            if (File.Exists(commonColorsFilePath) == false)
-            {
-                int fcOutResult = FileCopy(colorsHoi4FilePath, commonColorsFilePath);
-                if (fcOutResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-
-            // colors.txtに追記
-            try
-            {
-                string color = colorR + " " + colorG + " " + colorB;
-                File.AppendAllText(commonColorsFilePath, "\n" + countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
-            }
-            catch (Exception e)
-            {
-                if (e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is NotSupportedException ||
-                    e is SecurityException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            // 3.国家タグ定義ファイルの作成
-
-            // ../common/country_tagsディレクトリが存在しない場合
-            if (Directory.Exists(commonCountry_tagsDir) == false)
-            {
-                int fcResult = FolderCreate(commonCountry_tagsDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // 存在しない場合、../country_tags/01_countries.txtを作成
-            if (File.Exists(commonCountriesFilePath) == false)
-            {
-                int fcResult = FileCreate(commonCountriesFilePath);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-
-
-                // 01_countries.txtを編集
-                try
-                {
-                    StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
-                    sw.WriteLine(countryTag + " = \"countries/" + countryName + ".txt\"");
-                    sw.Close();
-                }
-                catch (Exception e)
-                {
-                    if (e is ObjectDisposedException ||
-                        e is IOException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.AppendAllText(commonCountriesFilePath, "\n" + countryTag + " = \"countries/" + countryName + ".txt\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-
-            // 4.国家ファイルの作成
-
-            // MODDIR/historyディレクトリが存在しない場合
-            if (Directory.Exists(historyDir) == false)
-            {
-                int fcResult = FolderCreate(historyDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // MODDIR/hitsory/countriesディレクトリが存在しない場合
-            if (Directory.Exists(historyCountriesDir) == false)
-            {
-                int fcResult = FolderCreate(historyCountriesDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // 国家ファイルを作成
-            int fcOutResult2 = FileCreate(historyCountrisFilePath);
-            if (fcOutResult2 == 1)
-            {
-                return 1;
-            }
-
-
-            // 作成された国家ファイルを編集
-            try
-            {
-                StreamWriter sw = new StreamWriter(historyCountrisFilePath, false);
-                // 首都州ID
-                sw.WriteLine("capital = " + stateIDWithCapital);
-                // ユニットファイル（コメントアウト）
-                sw.WriteLine("#obb = \"\"");
-                // 研究スロット数
-                sw.WriteLine("set_research_slots = " + studySlot);
-                // 安定度
-                sw.WriteLine("set_stability = " + stability);
-                // 戦争協力度
-                sw.WriteLine("set_war_support = " + warCoop);
-                // 輸送船
-                sw.WriteLine("set_convoys = " + transportShip);
-                // 研究完了済み技術（コメントアウト）
-                sw.WriteLine("#set_technology = {}");
-                // 政党関連
-                sw.WriteLine("set_politics = {");
-                sw.WriteLine("\truling_party = " + startIdeology);
-                sw.WriteLine("\tlast_election = " + lastElection);
-                sw.WriteLine("\telection_frequency = " + electionFrequency);
-                if (noElection == true)
-                {
-                    sw.WriteLine("\telections_allowed = no");
-                }
-                else
-                {
-                    sw.WriteLine("\telections_allowed = yes");
-                }
-                sw.WriteLine("}");
-                // 政党支持率
-                sw.WriteLine("set_popularities = {");
-                sw.WriteLine("\tdemocratic = " + d_Popularity);
-                sw.WriteLine("\tfascism = " + f_Popularity);
-                sw.WriteLine("\tcommunism = " + c_Popularity);
-                sw.WriteLine("\tneutrality = " + n_Popularity);
-                sw.WriteLine("}");
-                // 国家指導者の書き込みは現時点では未実装
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                if (e is ObjectDisposedException ||
-                    e is IOException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            // 5.国名・政党名の設定
-
-            // localisationディレクトリが存在しない場合
-            if (Directory.Exists(localisationDir) == false)
-            {
-                int fcResult = FolderCreate(localisationDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../localisation/mod_countries_l_english.yml
-            if (File.Exists(localisationCountriesFilePath) == false)
-            {
-                int fcResult = FileCreate(localisationCountriesFilePath);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-
-                try
-                {
-                    StreamWriter sw = new StreamWriter(localisationCountriesFilePath, false, enc);
-                    sw.WriteLine("l_english:");
-                    sw.WriteLine("");
-                    sw.WriteLine(" " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic:0 \"" + d_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism:0 \"" + f_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism:0 \"" + c_ViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
-                    sw.Close();
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is PathTooLongException ||
-                        e is SecurityException ||
-                        e is ObjectDisposedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + countryTag + "_neutrality:0 \"" + n_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_DEF:0 \"" + n_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_ADJ:0 \"" + n_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_democratic:0 \"" + d_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_DEF:0 \"" + d_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_ADJ:0 \"" + d_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_fascism:0 \"" + f_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_DEF:0 \"" + f_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_ADJ:0 \"" + f_AliasName + "\"\n" +
-                                                                      " " + countryTag + "_communism:0 \"" + c_ViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_DEF:0 \"" + c_EventViewName + "\"\n" +
-                                                                      " " + countryTag + "_communism_ADJ:0 \"" + c_AliasName + "\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-
-            // ../localisation/mod_parties_l_english.yml
-            if (File.Exists(localisationPartiesFilePath) == false)
-            {
-                int fcResult = FileCreate(localisationPartiesFilePath);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-
-                try
-                {
-                    StreamWriter sw = new StreamWriter(localisationPartiesFilePath, false, enc);
-                    sw.WriteLine("l_english:");
-                    sw.WriteLine("");
-                    sw.WriteLine(" " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"");
-                    sw.WriteLine(" " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
-                    sw.Close();
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is PathTooLongException ||
-                        e is SecurityException ||
-                        e is ObjectDisposedException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    File.AppendAllText(localisationPartiesFilePath, "\n " + countryTag + "_neutrality_party:0 \"" + n_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_neutrality_party_long:0 \"" + n_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_party:0 \"" + d_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_democratic_party_long:0 \"" + d_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_party:0 \"" + f_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_fascism_party_long:0 \"" + f_PartyFullName + "\"\n" +
-                                                                      " " + countryTag + "_communism_party:0 \"" + c_PartyAliasName + "\"\n" +
-                                                                      " " + countryTag + "_communism_party_long:0 \"" + c_PartyFullName + "\"");
-                }
-                catch (Exception e)
-                {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-
-            // ../localisation/replaceディレクトリが存在しない場合
-            if (Directory.Exists(localisationReplaceDir) == false)
-            {
-                int fcResult = FolderCreate(localisationReplaceDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // mod_countries_l_english.ymlとmod_parties_l_english.ymlをreplaceディレクトリ内にコピー
-            int fcOutResult3 = FileCopy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
-            if (fcOutResult3 == 1)
-            {
-                return 1;
-            }
-            int fcOutResult4 = FileCopy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
-            if (fcOutResult4 == 1)
-            {
-                return 1;
-            }
-
-            // 6.国旗の生成
-
-            // ../gfxディレクトリが存在しない場合
-            if (Directory.Exists(gfxDir) == false)
-            {
-                int fcResult = FolderCreate(gfxDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../gfx/flagsディレクトリが存在しない場合
-            if (Directory.Exists(gfxFlagsDir) == false)
-            {
-                int fcResult = FolderCreate(gfxFlagsDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../gfx/flags/mediumディレクトリが存在しない場合
-            if (Directory.Exists(gfxFlagsMediumDir) == false)
-            {
-                int fcResult = FolderCreate(gfxFlagsMediumDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../gfx/flags/smallディレクトリが存在しない場合
-            if (Directory.Exists(gfxFlagsSmallDir) == false)
-            {
-                int fcResult = FolderCreate(gfxFlagsSmallDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // ../gfx/flagsディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_Flags) == false)
-            {
-                if (n_FlagBig != "")
-                {
-                    int fcResult = FileCopy(n_FlagBig, n_Flags);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(d_Flags) == false)
-            {
-                if (d_FlagBig != "")
-                {
-                    int fcResult = FileCopy(d_FlagBig, d_Flags);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(f_Flags) == false)
-            {
-                if (f_FlagBig != "")
-                {
-                    int fcResult = FileCopy(f_FlagBig, f_Flags);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(c_Flags) == false)
-            {
-                if (c_FlagBig != "")
-                {
-                    int fcResult = FileCopy(c_FlagBig, c_Flags);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-
-            // ../gfx/flags/mediumディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_FlagsMedium) == false)
-            {
-                if (n_FlagMed != "")
-                {
-                    int fcResult = FileCopy(n_FlagMed, n_FlagsMedium);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(d_FlagsMedium) == false)
-            {
-                if (d_FlagMed != "")
-                {
-                    int fcResult = FileCopy(d_FlagMed, d_FlagsMedium);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(f_FlagsMedium) == false)
-            {
-                if (f_FlagMed != "")
-                {
-                    int fcResult = FileCopy(f_FlagMed, f_FlagsMedium);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(c_FlagsMedium) == false)
-            {
-                if (c_FlagMed != "")
-                {
-                    int fcResult = FileCopy(c_FlagMed, c_FlagsMedium);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-
-            // ../gfx/flags/smallディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_FlagsSmall) == false)
-            {
-                if (n_FlagSma != "")
-                {
-                    int fcResult = FileCopy(n_FlagSma, n_FlagsSmall);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(d_FlagsSmall) == false)
-            {
-                if (d_FlagSma != "")
-                {
-                    int fcResult = FileCopy(d_FlagSma, d_FlagsSmall);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(f_FlagsSmall) == false)
-            {
-                if (f_FlagSma != "")
-                {
-                    int fcResult = FileCopy(f_FlagSma, f_FlagsSmall);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(c_FlagsSmall) == false)
-            {
-                if (c_FlagSma != "")
-                {
-                    int fcResult = FileCopy(c_FlagSma, c_FlagsSmall);
-                    if (fcResult == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-
-            // この国が従属国
-            if (dependentCountry == true)
-            {
-                try
-                {
-                    // modフォルダー内の宗主国にしたい国家ファイルを検索し、存在しなければHOI4ディレクトリからコピーする
-                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, sovereignCountryTag + " - *.txt");
-                    if (modFiles.Length == 0)
-                    {
-                        try
-                        {
-                            string[] rawCountryFile = Directory.GetFileSystemEntries(hoi4dir + @"\history\countries", sovereignCountryTag + " - *.txt");
-                            if (rawCountryFile.Length != 0)
-                            {
-                                string countryFileName = rawCountryFile[0].Replace(hoi4dir + @"\history\countries", "");
-                                FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName);
-                            }
-                            else
-                            {
-                                errorMessage("宗主国の国家ファイルが見つかりませんでした。");
-                                return 1;
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is UnauthorizedAccessException ||
-                                e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is IOException ||
-                                e is DirectoryNotFoundException)
-                            {
-                                errorMessage(e.Message);
-                                return 1;
-                            }
-                        }
-
-                        try
-                        {
-                            string[] sovereignCountryFile = Directory.GetFileSystemEntries(historyCountriesDir, sovereignCountryTag + " - *.txt");
-                            try
-                            {
-                                File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
-                            }
-                            catch (Exception e)
-                            {
-                                if (e is ArgumentException ||
-                                    e is ArgumentNullException ||
-                                    e is PathTooLongException ||
-                                    e is DirectoryNotFoundException ||
-                                    e is IOException ||
-                                    e is UnauthorizedAccessException ||
-                                    e is NotSupportedException ||
-                                    e is SecurityException)
-                                {
-                                    errorMessage(e.Message);
-                                    return 1;
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is UnauthorizedAccessException ||
-                                e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is IOException ||
-                                e is DirectoryNotFoundException)
-                            {
-                                errorMessage(e.Message);
-                                return 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is DirectoryNotFoundException ||
-                                e is IOException ||
-                                e is UnauthorizedAccessException ||
-                                e is NotSupportedException ||
-                                e is SecurityException)
-                            {
-                                errorMessage(e.Message);
-                                return 1;
-                            }
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is IOException ||
-                        e is DirectoryNotFoundException)
-                    {
-                        errorMessage(e.Message);
-                        return 1;
-                    }
-                }
-            }
-
-            MessageBox.Show("生成が完了しました。");
-            Process.Start(moddir);
-            return 0;
-        }
-
-        /// <summary>
-        /// ファイルをコピー
-        /// </summary>
-        /// <returns></returns>
-        public int FileCopy(string source, string dest)
-        {
-            try
-            {
-                File.Copy(source, dest, true);
-            }
-            catch (Exception e)
-            {
-                if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            return 0;
-        }
-
-        public int FolderCreate(string folderPath)
-        {
-            try
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-            catch (Exception e)
-            {
-                if (e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is NotSupportedException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            return 0;
-        }
-
-        /// <summary>
-        /// 新しいファイルを作成
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        public int FileCreate(string filePath)
-        {
-            try
-            {
-                FileStream fs = File.Create(filePath);
-                fs.Close();
-            }
-            catch (Exception e)
-            {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    errorMessage(e.Message);
-                    return 1;
-                }
-            }
-
-            return 0;
+            variable.noElection = checkBox1.Checked;
         }
 
         /// <summary>
@@ -1771,13 +787,15 @@ namespace HoI4_Modding_Supporter
 
         private void button13_Click(object sender, EventArgs e)
         {
+            Generate generate = new Generate();
+
             int cResult = check();
             if (cResult == 1)
             {
                 return;
             }
             dataAssignment();
-            int gcResult = generateCountry();
+            int gcResult = generate.generateCountry();
             if (gcResult == 1)
             {
                 return;
