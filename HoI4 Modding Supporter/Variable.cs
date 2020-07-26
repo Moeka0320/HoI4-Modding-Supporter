@@ -70,5 +70,10 @@
 
         // NationalLeaderSettings
         public bool customLeaderEnabled;
+        public string leaderName;
+        public string leaderDesc;
+        public string leaderPicturePath;
+        public string leaderIdeology;
+        public int willNotAppear;
     }
 }
