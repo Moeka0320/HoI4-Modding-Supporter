@@ -20,6 +20,162 @@ namespace HoI4_Modding_Supporter
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// 入力ミスなどを検知する
+        /// </summary>
+        /// <returns></returns>
+        public int check()
+        {
+            // 名前
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                errorMessage("[名前]が無効です。");
+                return 1;
+            }
+            // 説明
+            else if (string.IsNullOrWhiteSpace(richTextBox1.Text))
+            {
+                errorMessage("[説明]が無効です。");
+                return 1;
+            }
+            // 画像
+            else if (string.IsNullOrWhiteSpace(textBox17.Text))
+            {
+                errorMessage("[画像]のファイルパスが無効です。");
+                return 1;
+            }
+            // イデオロギー
+            else if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
+            {
+                errorMessage("[イデオロギー]が設定されていません。");
+                return 1;
+            }
+
+            MessageBox.Show("入力ミスのチェックが完了しました。");
+            return 0;
+        }
+
+        /// <summary>
+        /// データの変数化処理
+        /// </summary>
+        public void dataAssignment()
+        {
+            Variable variable = new Variable();
+
+            // カスタム国家指導者の有効化
+            variable.customLeaderEnabled = checkBox1.Checked;
+            // 名前
+            variable.leaderName = textBox1.Text;
+            // 説明
+            variable.leaderDesc = richTextBox1.Text;
+            // 画像
+            variable.leaderPicturePath = textBox17.Text;
+            // 画像ファイル名（指導者名がファイル名になります）
+            variable.leaderPictureName = variable.leaderName.Replace(" ", "_") + ".dds";
+            // イデオロギー
+            if (comboBox1.SelectedIndex == 0)
+            {
+                // despotism
+                if (comboBox2.SelectedIndex == 0)
+                {
+                    variable.leaderIdeology = "despotism";
+                }
+                // oligarchism
+                else if (comboBox2.SelectedIndex == 1)
+                {
+                    variable.leaderIdeology = "oligarchism";
+                }
+                // anarchism
+                else if (comboBox2.SelectedIndex == 2)
+                {
+                    variable.leaderIdeology = "anarchism";
+                }
+                // moderatism
+                else if (comboBox2.SelectedIndex == 3)
+                {
+                    variable.leaderIdeology = "moderatism";
+                }
+                // centrism
+                else if (comboBox2.SelectedIndex == 4)
+                {
+                    variable.leaderIdeology = "centrism";
+                }
+            }
+            else if (comboBox1.SelectedIndex == 1)
+            {
+                // conservatism
+                if (comboBox2.SelectedIndex == 0)
+                {
+                    variable.leaderIdeology = "conservatism";
+                }
+                // liberalism
+                else if (comboBox2.SelectedIndex == 1)
+                {
+                    variable.leaderIdeology = "liberalism";
+                }
+                // socialism
+                else if (comboBox2.SelectedIndex == 2)
+                {
+                    variable.leaderIdeology = "socialism";
+                }
+            }
+            else if (comboBox1.SelectedIndex == 2)
+            {
+                // nazism
+                if (comboBox2.SelectedIndex == 0)
+                {
+                    variable.leaderIdeology = "nazism";
+                }
+                // fascism_ideology
+                else if (comboBox2.SelectedIndex == 1)
+                {
+                    variable.leaderIdeology = "fascism_ideology";
+                }
+                // falangism
+                else if (comboBox2.SelectedIndex == 2)
+                {
+                    variable.leaderIdeology = "falangism";
+                }
+                // rexism
+                else if (comboBox2.SelectedIndex == 3)
+                {
+                    variable.leaderIdeology = "rexism";
+                }
+                
+            }
+            else
+            {
+                //marxism
+                if (comboBox2.SelectedIndex == 0)
+                {
+                    variable.leaderIdeology = "marxism";
+                }
+                // leninism
+                else if (comboBox2.SelectedIndex == 1)
+                {
+                    variable.leaderIdeology = "leninism";
+                }
+                // stalinism
+                else if (comboBox2.SelectedIndex == 2)
+                {
+                    variable.leaderIdeology = "stalinism";
+                }
+                // anti_revisionism
+                else if (comboBox2.SelectedIndex == 3)
+                {
+                    variable.leaderIdeology = "anti_revisionism";
+                }
+                // anarchist_communism
+                else if (comboBox2.SelectedIndex == 4)
+                {
+                    variable.leaderIdeology = "anarchist_communism";
+                }
+            }
+
+            // 登場しなくなる年月日 (YYYY/M/D)
+            variable.willNotAppear = numericUpDown16.Value.ToString() + "." + numericUpDown15.Value.ToString() + "." + numericUpDown14.Value.ToString();
+        }
+
         public NationalLeaderSettings()
         {
             InitializeComponent();
@@ -73,6 +229,19 @@ namespace HoI4_Modding_Supporter
             if (checkBox1.Checked == false)
             {
                 this.Close();
+            }
+            else
+            {
+                int cResult = check();
+                if (cResult == 1)
+                {
+                    return;
+                }
+                else
+                {
+                    dataAssignment();
+                    this.Close();
+                }
             }
         }
 

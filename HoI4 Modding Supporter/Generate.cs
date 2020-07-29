@@ -838,8 +838,62 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
+            // カスタム国家指導者が有効化されている場合
+            if (variable.customLeaderEnabled == true)
+            {
+                int nlgResult = NationalLeaderGenerate(historyCountrisFilePath);
+                if(nlgResult == 1)
+                {
+                    return 1;
+                }
+            }
+
             MessageBox.Show("生成が完了しました。");
             Process.Start(variable.moddir);
+            return 0;
+        }
+
+        /// <summary>
+        /// 国家指導者を生成
+        /// </summary>
+        /// <returns></returns>
+        public int NationalLeaderGenerate(string historyCountriesFilePath)
+        {
+            Variable variable = new Variable();
+
+            // 国家ファイルに書き込み
+            try
+            {
+                File.AppendAllText(historyCountriesFilePath, "\ncreate_country_leader = {\n" +
+                                                             "\tname = \"" + variable.leaderName + "\"\n" +
+                                                             "\tdesc = \"" + variable.leaderDesc + "\"\n" +
+                                                             "\tpicture = \"" + variable.leaderPictureName + "\"\n" +
+                                                             "\texpire = \"" + variable.willNotAppear + "\"\n" +
+                                                             "\tideology = " + variable.leaderIdeology + "\n" +
+                                                             "\ttraits = {}\n" +
+                                                             "}");
+            }
+            catch (Exception e)
+            {
+                if (e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is NotSupportedException ||
+                    e is SecurityException)
+                {
+                    errorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+
+            // ../gfx/leadersディレクトリが存在しない場合にフォルダを作成
+            // ../gfx/leaders/[国家タグ]ディレクトリが存在しない場合にファルダを作成
+            // 画像ファイルを ../gfx/leaders/[国家タグ]/[国家指導者名].ddsにコピー
+
             return 0;
         }
 

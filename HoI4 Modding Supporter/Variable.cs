@@ -73,7 +73,8 @@
         public string leaderName;
         public string leaderDesc;
         public string leaderPicturePath;
+        public string leaderPictureName;
         public string leaderIdeology;
-        public int willNotAppear;
+        public string willNotAppear;
     }
 }
