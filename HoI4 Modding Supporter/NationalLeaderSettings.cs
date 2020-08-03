@@ -180,16 +180,155 @@ namespace HoI4_Modding_Supporter
         {
             InitializeComponent();
 
-            checkBox1.Checked = false;
-            textBox1.Enabled = false;
-            textBox17.Enabled = false;
-            richTextBox1.Enabled = false;
-            button3.Enabled = false;
-            comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
-            numericUpDown16.Enabled = false;
-            numericUpDown15.Enabled = false;
-            numericUpDown14.Enabled = false;
+            Variable variable = new Variable();
+
+            if (variable.LeaderName == null)
+            {
+                textBox1.Text = "";
+            }
+            else
+            {
+                textBox1.Text = variable.LeaderName;
+            }
+
+            if (variable.LeaderDesc == null)
+            {
+                richTextBox1.Text = "";
+            }
+            else
+            {
+                richTextBox1.Text = variable.LeaderDesc;
+            }
+
+            if (variable.LeaderPicturePath == null)
+            {
+                textBox17.Text = "";
+            }
+            else
+            {
+                textBox17.Text = variable.LeaderPicturePath;
+            }
+
+            if (variable.LeaderIdeology == null)
+            {
+                comboBox1.SelectedItem = null;
+                comboBox2.SelectedItem = null;
+            }
+            else
+            {
+                if (variable.LeaderIdeology == "despotism")
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox2.SelectedIndex = 0;
+                }
+                else if (variable.LeaderIdeology == "oligarchism")
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox2.SelectedIndex = 1;
+                }
+                else if (variable.LeaderIdeology == "anarchism")
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox2.SelectedIndex = 2;
+                }
+                else if (variable.LeaderIdeology == "moderatism")
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox2.SelectedIndex = 3;
+                }
+                else if (variable.LeaderIdeology == "centrism")
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox2.SelectedIndex = 4;
+                }
+                else if (variable.LeaderIdeology == "conservatism")
+                {
+                    comboBox1.SelectedIndex = 1;
+                    comboBox2.SelectedIndex = 0;
+                }
+                else if (variable.LeaderIdeology == "liberalism")
+                {
+                    comboBox1.SelectedIndex = 1;
+                    comboBox2.SelectedIndex = 1;
+                }
+                else if (variable.LeaderIdeology == "socialism")
+                {
+                    comboBox1.SelectedIndex = 1;
+                    comboBox2.SelectedIndex = 2;
+                }
+                else if (variable.LeaderIdeology == "nazism")
+                {
+                    comboBox1.SelectedIndex = 2;
+                    comboBox2.SelectedIndex = 0;
+                }
+                else if (variable.LeaderIdeology == "fascism_ideology")
+                {
+                    comboBox1.SelectedIndex = 2;
+                    comboBox2.SelectedIndex = 1;
+                }
+                else if (variable.LeaderIdeology == "falangism")
+                {
+                    comboBox1.SelectedIndex = 2;
+                    comboBox2.SelectedIndex = 2;
+                }
+                else if (variable.LeaderIdeology == "rexism")
+                {
+                    comboBox1.SelectedIndex = 2;
+                    comboBox2.SelectedIndex = 3;
+                }
+                else if (variable.LeaderIdeology == "marxism")
+                {
+                    comboBox1.SelectedIndex = 3;
+                    comboBox2.SelectedIndex = 0;
+                }
+                else if (variable.LeaderIdeology == "leninism")
+                {
+                    comboBox1.SelectedIndex = 3;
+                    comboBox2.SelectedIndex = 1;
+                }
+                else if (variable.LeaderIdeology == "stalinism")
+                {
+                    comboBox1.SelectedIndex = 3;
+                    comboBox2.SelectedIndex = 2;
+                }
+                else if (variable.LeaderIdeology == "anti_revisionism")
+                {
+                    comboBox1.SelectedIndex = 3;
+                    comboBox2.SelectedIndex = 3;
+                }
+                else if (variable.LeaderIdeology == "anarchist_communism")
+                {
+                    comboBox1.SelectedIndex = 3;
+                    comboBox2.SelectedIndex = 4;
+                }
+            }
+
+            if (variable.CustomLeaderEnabled == false)
+            {
+                checkBox1.Checked = false;
+                textBox1.Enabled = false;
+                richTextBox1.Enabled = false;
+                textBox17.Enabled = false;
+                button3.Enabled = false;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                numericUpDown16.Enabled = false;
+                numericUpDown15.Enabled = false;
+                numericUpDown14.Enabled = false;
+            }
+            else
+            {
+                checkBox1.Checked = true;
+                textBox1.Enabled = true;
+                richTextBox1.Enabled = true;
+                textBox17.Enabled = true;
+                button3.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                numericUpDown16.Enabled = true;
+                numericUpDown15.Enabled = true;
+                numericUpDown14.Enabled = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -227,8 +366,11 @@ namespace HoI4_Modding_Supporter
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Variable variable = new Variable();
+
             if (checkBox1.Checked == false)
             {
+                variable.CustomLeaderEnabled = false;
                 this.Close();
             }
             else
@@ -244,17 +386,6 @@ namespace HoI4_Modding_Supporter
                     this.Close();
                 }
             }
-
-            //Properties.Settings.Default.customLeaderEnabled = checkBox1.Checked;
-            //Properties.Settings.Default.leaderName = textBox1.Text;
-            //Properties.Settings.Default.leaderDesc = richTextBox1.Text;
-            //Properties.Settings.Default.leaderPicturePath = textBox17.Text;
-            //Properties.Settings.Default.willNotApperYYYY = (int)numericUpDown16.Value;
-            //Properties.Settings.Default.willnotApperM = (int)numericUpDown15.Value;
-            //Properties.Settings.Default.willnotApperD = (int)numericUpDown14.Value;
-            //Properties.Settings.Default.LeaderIdeologyIndex1 = comboBox1.SelectedIndex;
-            //Properties.Settings.Default.LeaderIdeologyIndex2 = comboBox2.SelectedIndex;
-            //Properties.Settings.Default.Save();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -314,18 +445,16 @@ namespace HoI4_Modding_Supporter
             }
         }
 
-        private void NationalLeaderSettings_Load(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            //checkBox1.Checked = false;
-            //textBox1.Enabled = false;
-            //textBox17.Enabled = false;
-            //richTextBox1.Enabled = false;
-            //button3.Enabled = false;
-            //comboBox1.Enabled = false;
-            //comboBox2.Enabled = false;
-            //numericUpDown16.Enabled = false;
-            //numericUpDown15.Enabled = false;
-            //numericUpDown14.Enabled = false;
+            textBox1.Text = "";
+            richTextBox1.Text = "";
+            textBox17.Text = "";
+            comboBox1.SelectedItem = null;
+            comboBox2.SelectedItem = null;
+            numericUpDown16.Value = 1000;
+            numericUpDown15.Value = 1;
+            numericUpDown14.Value = 1;
         }
     }
 }

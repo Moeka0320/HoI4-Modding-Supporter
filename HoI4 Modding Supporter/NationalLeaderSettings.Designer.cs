@@ -47,6 +47,7 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
@@ -279,11 +280,22 @@
             0,
             0});
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(113, 277);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 29;
+            this.button4.Text = "クリア";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // NationalLeaderSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 312);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.numericUpDown16);
             this.Controls.Add(this.label51);
             this.Controls.Add(this.numericUpDown15);
@@ -308,7 +320,6 @@
             this.MinimizeBox = false;
             this.Name = "NationalLeaderSettings";
             this.Text = "国家指導者の設定 - HoI4 Modding Supporter";
-            this.Load += new System.EventHandler(this.NationalLeaderSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
@@ -338,5 +349,6 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.NumericUpDown numericUpDown14;
+        private System.Windows.Forms.Button button4;
     }
 }

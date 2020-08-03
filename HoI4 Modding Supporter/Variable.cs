@@ -481,7 +481,5 @@
             set { willNotAppear = value; }
             get { return willNotAppear; }
         }
-
-
     }
 }
