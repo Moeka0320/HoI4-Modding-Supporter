@@ -11,9 +11,9 @@ hoi4のmod製作を支援するソフトです。<br>
 ### v1.1
 * 国家指導者の設定に対応
 
-[HOI4 Modding Supporter v1.1 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.1/HoI4-Modding-Supporter.zip)
+[HoI4 Modding Supporter v1.1 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.1/HoI4-Modding-Supporter.zip)
 ### v1.0
-[HOI4 Modding Supporter v1.0 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.0/HoI4_Modding_Supporter.zip)
+[HoI4 Modding Supporter v1.0 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.0/HoI4_Modding_Supporter.zip)
 ## 注意
 * 生成時にエラーが発生したとき、modフォルダー内を全部削除してから再生成を行う必要がある場合があります<br>
 * modフォルダーのバックアップをしっかり取った上で生成を行ってください
