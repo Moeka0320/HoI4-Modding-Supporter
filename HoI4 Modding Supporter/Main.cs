@@ -433,216 +433,216 @@ namespace HoI4_Modding_Supporter
             Variable variable = new Variable();
 
             // フォルダパス
-            variable.hoi4dir = Properties.Settings.Default.hoi4dir;
-            variable.moddir = Properties.Settings.Default.moddir;
+            variable.Hoi4dir = Properties.Settings.Default.hoi4dir;
+            variable.Moddir = Properties.Settings.Default.moddir;
 
             // データ
             // mod名
-            variable.modName = textBox39.Text;
+            variable.ModName = textBox39.Text;
             // 国家タグ
-            variable.countryTag = textBox1.Text;
+            variable.CountryTag = textBox1.Text;
             // 内部処理用国名
-            variable.countryName = textBox2.Text;
+            variable.CountryName = textBox2.Text;
             // 中道主義
             // 表示名
-            variable.n_ViewName = textBox3.Text;
+            variable.N_ViewName = textBox3.Text;
             // イベント表示名
-            variable.n_EventViewName = textBox4.Text;
+            variable.N_EventViewName = textBox4.Text;
             // 通称名
-            variable.n_AliasName = textBox5.Text;
+            variable.N_AliasName = textBox5.Text;
             // 民主主義
             // 表示名
-            variable.d_ViewName = textBox8.Text;
+            variable.D_ViewName = textBox8.Text;
             // イベント表示名
-            variable.d_EventViewName = textBox7.Text;
+            variable.D_EventViewName = textBox7.Text;
             // 通称名
-            variable.d_AliasName = textBox6.Text;
+            variable.D_AliasName = textBox6.Text;
             // ファシズム
             // 表示名
-            variable.f_ViewName = textBox11.Text;
+            variable.F_ViewName = textBox11.Text;
             // イベント表示名
-            variable.f_EventViewName = textBox10.Text;
+            variable.F_EventViewName = textBox10.Text;
             // 通称名
-            variable.f_AliasName = textBox9.Text;
+            variable.F_AliasName = textBox9.Text;
             // 共産主義
             // 表示名
-            variable.c_ViewName = textBox14.Text;
+            variable.C_ViewName = textBox14.Text;
             // イベント表示名
-            variable.c_EventViewName = textBox13.Text;
+            variable.C_EventViewName = textBox13.Text;
             // 通称名
-            variable.c_AliasName = textBox12.Text;
+            variable.C_AliasName = textBox12.Text;
             // 国旗ファイルパス
             // 中道主義
             // 大
-            variable.n_FlagBig = textBox17.Text;
+            variable.N_FlagBig = textBox17.Text;
             // 中
-            variable.n_FlagMed = textBox16.Text;
+            variable.N_FlagMed = textBox16.Text;
             // 小
-            variable.n_FlagSma = textBox15.Text;
+            variable.N_FlagSma = textBox15.Text;
             // 民主主義
             // 大
-            variable.d_FlagBig = textBox23.Text;
+            variable.D_FlagBig = textBox23.Text;
             // 中
-            variable.d_FlagMed = textBox22.Text;
+            variable.D_FlagMed = textBox22.Text;
             // 小
-            variable.d_FlagSma = textBox21.Text;
+            variable.D_FlagSma = textBox21.Text;
             // ファシズム
             // 大
-            variable.f_FlagBig = textBox20.Text;
+            variable.F_FlagBig = textBox20.Text;
             // 中
-            variable.f_FlagMed = textBox19.Text;
+            variable.F_FlagMed = textBox19.Text;
             // 小
-            variable.f_FlagSma = textBox18.Text;
+            variable.F_FlagSma = textBox18.Text;
             // 共産主義
             // 大
-            variable.c_FlagBig = textBox26.Text;
+            variable.C_FlagBig = textBox26.Text;
             // 中
-            variable.c_FlagMed = textBox25.Text;
+            variable.C_FlagMed = textBox25.Text;
             // 小
-            variable.c_FlagSma = textBox24.Text;
+            variable.C_FlagSma = textBox24.Text;
             // 政党名
             // 中道主義
             // 通称名
-            variable.n_PartyAliasName = textBox30.Text;
+            variable.N_PartyAliasName = textBox30.Text;
             // 正式名
-            variable.n_PartyFullName = textBox29.Text;
+            variable.N_PartyFullName = textBox29.Text;
             // 民主主義
             // 通称名
-            variable.d_PartyAliasName = textBox35.Text;
+            variable.D_PartyAliasName = textBox35.Text;
             // 正式名
-            variable.d_PartyFullName = textBox34.Text;
+            variable.D_PartyFullName = textBox34.Text;
             // ファシズム
             // 通称名
-            variable.f_PartyAliasName = textBox31.Text;
+            variable.F_PartyAliasName = textBox31.Text;
             // 正式名
-            variable.f_PartyFullName = textBox28.Text;
+            variable.F_PartyFullName = textBox28.Text;
             // 共産主義
             // 通称名
-            variable.c_PartyAliasName = textBox33.Text;
+            variable.C_PartyAliasName = textBox33.Text;
             // 正式名
-            variable.c_PartyFullName = textBox32.Text;
+            variable.C_PartyFullName = textBox32.Text;
             // 配色
-            variable.colorR = (int)numericUpDown1.Value;
-            variable.colorG = (int)numericUpDown2.Value;
-            variable.colorB = (int)numericUpDown3.Value;
+            variable.ColorR = (int)numericUpDown1.Value;
+            variable.ColorG = (int)numericUpDown2.Value;
+            variable.ColorB = (int)numericUpDown3.Value;
             // 汎用顔グラフィック
             if (comboBox1.SelectedIndex == 0)
             {
                 // 東ヨーロッパ
-                variable.graphicalCulture = "eastern_european_gfx";
-                variable.graphicalCulture2d = "eastern_european_2d";
+                variable.GraphicalCulture = "eastern_european_gfx";
+                variable.GraphicalCulture2d = "eastern_european_2d";
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 // 西ヨーロッパ
-                variable.graphicalCulture = "western_european_gfx";
-                variable.graphicalCulture2d = "western_european_2d";
+                variable.GraphicalCulture = "western_european_gfx";
+                variable.GraphicalCulture2d = "western_european_2d";
             }
             else if (comboBox1.SelectedIndex == 2)
             {
                 // 中東
-                variable.graphicalCulture = "middle_eastern_gfx";
-                variable.graphicalCulture2d = "middle_eastern_2d";
+                variable.GraphicalCulture = "middle_eastern_gfx";
+                variable.GraphicalCulture2d = "middle_eastern_2d";
             }
             else if (comboBox1.SelectedIndex == 3)
             {
                 // 南アメリカ
-                variable.graphicalCulture = "southamerican_gfx";
-                variable.graphicalCulture2d = "southamerican_2d";
+                variable.GraphicalCulture = "southamerican_gfx";
+                variable.GraphicalCulture2d = "southamerican_2d";
             }
             else if (comboBox1.SelectedIndex == 4)
             {
                 // アジア
-                variable.graphicalCulture = "asian_gfx";
-                variable.graphicalCulture2d = "asian_2d";
+                variable.GraphicalCulture = "asian_gfx";
+                variable.GraphicalCulture2d = "asian_2d";
             }
             else if (comboBox1.SelectedIndex == 5)
             {
                 // アフリカ
-                variable.graphicalCulture = "african_gfx";
-                variable.graphicalCulture2d = "african_2d";
+                variable.GraphicalCulture = "african_gfx";
+                variable.GraphicalCulture2d = "african_2d";
             }
             else if (comboBox1.SelectedIndex == 6)
             {
                 // イギリス連邦
-                variable.graphicalCulture = "commonwealth_gfx";
-                variable.graphicalCulture2d = "commonwealth_2d";
+                variable.GraphicalCulture = "commonwealth_gfx";
+                variable.GraphicalCulture2d = "commonwealth_2d";
             }
 
             // 首都を含む州ID
-            variable.stateIDWithCapital = (int)numericUpDown4.Value;
+            variable.StateIDWithCapital = (int)numericUpDown4.Value;
             // 研究スロット数
-            variable.studySlot = (int)numericUpDown5.Value;
+            variable.StudySlot = (int)numericUpDown5.Value;
             // 初期安定度（100分率）
-            variable.stability = (int)numericUpDown6.Value * 0.01;
+            variable.Stability = (int)numericUpDown6.Value * 0.01;
             // 初期戦争協力度
-            variable.warCoop = (int)numericUpDown7.Value * 0.01;
+            variable.WarCoop = (int)numericUpDown7.Value * 0.01;
             // 初期政治力
-            variable.politicalPower = (int)numericUpDown8.Value;
+            variable.PoliticalPower = (int)numericUpDown8.Value;
             // 初期輸送船数
-            variable.transportShip = (int)numericUpDown13.Value;
+            variable.TransportShip = (int)numericUpDown13.Value;
             // この国が従属国かどうか
-            variable.dependentCountry = checkBox2.Checked;
+            variable.DependentCountry = checkBox2.Checked;
             // 宗主国の国家タグ（存在しない場合はnull）
-            variable.sovereignCountryTag = null;
+            variable.SovereignCountryTag = null;
 
             if (checkBox2.Checked == true)
             {
-                variable.sovereignCountryTag = textBox36.Text;
+                variable.SovereignCountryTag = textBox36.Text;
             }
 
             // 初期政党支持率
             // 中道主義
-            variable.n_Popularity = (int)numericUpDown12.Value;
+            variable.N_Popularity = (int)numericUpDown12.Value;
             // 民主主義
-            variable.d_Popularity = (int)numericUpDown11.Value;
+            variable.D_Popularity = (int)numericUpDown11.Value;
             // ファシズム
-            variable.f_Popularity = (int)numericUpDown10.Value;
+            variable.F_Popularity = (int)numericUpDown10.Value;
             // 共産主義
-            variable.c_Popularity = (int)numericUpDown9.Value;
+            variable.C_Popularity = (int)numericUpDown9.Value;
 
             // 初期与党
             // イデオロギー
             if (comboBox2.SelectedIndex == 0)
             {
                 // 中道主義
-                variable.startIdeology = "neutrality";
+                variable.StartIdeology = "neutrality";
 
             }
             else if (comboBox2.SelectedIndex == 1)
             {
                 // 民主主義
-                variable.startIdeology = "democratic";
+                variable.StartIdeology = "democratic";
 
             }
             else if (comboBox2.SelectedIndex == 2)
             {
                 // ファシズム
-                variable.startIdeology = "fascism";
+                variable.StartIdeology = "fascism";
 
             }
             else if (comboBox2.SelectedIndex == 3)
             {
                 // 共産主義
-                variable.startIdeology = "communism";
+                variable.StartIdeology = "communism";
 
             }
 
             // 前回の選挙
             // YYYY
-            variable.lastElectionYYYY = (int)numericUpDown16.Value;
+            variable.LastElectionYYYY = (int)numericUpDown16.Value;
             // MM
-            variable.lastElectionM = (int)numericUpDown15.Value;
+            variable.LastElectionM = (int)numericUpDown15.Value;
             // DD
-            variable.lastElectionD = (int)numericUpDown14.Value;
+            variable.LastElectionD = (int)numericUpDown14.Value;
             // YYYY.MM.DD
-            variable.lastElection = variable.lastElectionYYYY.ToString() + "." + variable.lastElectionM.ToString() + "." + variable.lastElectionD.ToString();
+            variable.LastElection = variable.LastElectionYYYY.ToString() + "." + variable.LastElectionM.ToString() + "." + variable.LastElectionD.ToString();
 
             // 選挙を行う間隔
-            variable.electionFrequency = (int)numericUpDown17.Value;
+            variable.ElectionFrequency = (int)numericUpDown17.Value;
 
             // 選挙がないかどうか（true -> なし）
-            variable.noElection = checkBox1.Checked;
+            variable.NoElection = checkBox1.Checked;
         }
 
         /// <summary>

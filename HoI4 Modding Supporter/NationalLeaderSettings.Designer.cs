@@ -308,6 +308,7 @@
             this.MinimizeBox = false;
             this.Name = "NationalLeaderSettings";
             this.Text = "国家指導者の設定 - HoI4 Modding Supporter";
+            this.Load += new System.EventHandler(this.NationalLeaderSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();

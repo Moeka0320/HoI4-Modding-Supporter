@@ -16,62 +16,66 @@ namespace HoI4_Modding_Supporter
         {
             Variable variable = new Variable();
 
-            // MODFOLDER/commonディレクトリパス
-            string commonDir = variable.moddir + @"\common";
-            // MODFOLDER/common/countriesディレクトリパス
+            // [MODFOLDER]/commonディレクトリパス
+            string commonDir = variable.Moddir + @"\common";
+            // [MODFOLDER]/common/countriesディレクトリパス
             string commonCountriesDir = commonDir + @"\countries";
-            // MODFOLDER/common/countries/COUNTRY.txtファイルパス
-            string commonCountryFilePath = commonCountriesDir + @"\" + variable.countryName + ".txt";
-            // MODFOLDER/common/countries/colors.txtファイルパス
+            // [MODFOLDER]/common/countries/[COUNTRY].txtファイルパス
+            string commonCountryFilePath = commonCountriesDir + @"\" + variable.CountryName + ".txt";
+            // [MODFOLDER]/common/countries/colors.txtファイルパス
             string commonColorsFilePath = commonCountriesDir + @"\colors.txt";
-            // HOI4FOLDER/common/countries/colors.txtファイルパス
-            string colorsHoi4FilePath = variable.hoi4dir + @"\common\countries\colors.txt";
-            // MODFOLDER/common/country_tagsディレクトリパス
+            // [HOI4FOLDER]/common/countries/colors.txtファイルパス
+            string colorsHoi4FilePath = variable.Hoi4dir + @"\common\countries\colors.txt";
+            // [MODFOLDER]/common/country_tagsディレクトリパス
             string commonCountry_tagsDir = commonDir + @"\country_tags";
-            // MODFOLDER/common/country_tags/01_countries.txtファイルパス
+            // [MODFOLDER]/common/country_tags/01_countries.txtファイルパス
             string commonCountriesFilePath = commonCountry_tagsDir + @"\01_countries.txt";
-            // MODFOLDER/historyディレクトリパス
-            string historyDir = variable.moddir + @"\history";
-            // MODFOLDER/history/countriesディレクトリパス
+            // [MODFOLDER]/historyディレクトリパス
+            string historyDir = variable.Moddir + @"\history";
+            // [MODFOLDER]/history/countriesディレクトリパス
             string historyCountriesDir = historyDir + @"\countries";
-            // MODFOLDER/history/countries/TAG - COUNTRY.txtファイルパス
-            string historyCountrisFilePath = historyCountriesDir + @"\" + variable.countryTag + " - " + variable.countryName + ".txt";
-            // MODFOLDER/localisationディレクトリパス
-            string localisationDir = variable.moddir + @"\localisation";
-            // MODFOLDER/localisation/replaceディレクトリパス
+            // [MODFOLDER]/history/countries/[TAG] - [COUNTRY].txtファイルパス
+            string historyCountrisFilePath = historyCountriesDir + @"\" + variable.CountryTag + " - " + variable.CountryName + ".txt";
+            // [MODFOLDER]/localisationディレクトリパス
+            string localisationDir = variable.Moddir + @"\localisation";
+            // [MODFOLDER]/localisation/replaceディレクトリパス
             string localisationReplaceDir = localisationDir + @"\replace";
-            // MODFOLDER/localisation/mod_countries_l_english.ymlファイルパス
-            string localisationCountriesFilePath = localisationDir + @"\" + variable.modName + "_countries_l_english.yml";
-            // MODFOLDER/localisation/mod_parties_l_english.ymlファイルパス
-            string localisationPartiesFilePath = localisationDir + @"\" + variable.modName + "_parties_l_english.yml";
-            // MODFOLDER/localisation/replace/MODNAME_countries_l_english.ymlファイルパス
-            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + variable.modName + "_countries_l_english.yml";
-            // MODFOLDER/localisation/replace/MODNAME_parties_l_english.ymlファイルパス
-            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + variable.modName + "_parties_l_english.yml";
-            // MODFOLDER/gfxディレクトリパス
-            string gfxDir = variable.moddir + @"\gfx";
-            // MODFOLDER/gfx/flagsディレクトリパス
+            // [MODFOLDER]/localisation/mod_countries_l_english.ymlファイルパス
+            string localisationCountriesFilePath = localisationDir + @"\" + variable.ModName + "_countries_l_english.yml";
+            // [MODFOLDER]/localisation/mod_parties_l_english.ymlファイルパス
+            string localisationPartiesFilePath = localisationDir + @"\" + variable.ModName + "_parties_l_english.yml";
+            // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
+            string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
+            // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
+            string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + variable.ModName + "_parties_l_english.yml";
+            // [MODFOLDER]/gfxディレクトリパス
+            string gfxDir = variable.Moddir + @"\gfx";
+            // [MODFOLDER]/gfx/flagsディレクトリパス
             string gfxFlagsDir = gfxDir + @"\flags";
-            // MODFOLDER/gfx/flags/mediumディレクトリパス
+            // [MODFOLDER]/gfx/flags/mediumディレクトリパス
             string gfxFlagsMediumDir = gfxFlagsDir + @"\medium";
-            // MODFOLDER/gfx/flags/smallディレクトリパス
+            // [MODFOLDER]/gfx/flags/smallディレクトリパス
             string gfxFlagsSmallDir = gfxFlagsDir + @"\small";
+            // [MODFOLDER]/gfx/leadersディレクトリパス
+            string gfxLeadersDir = gfxDir + @"\leaders";
+            // [MODFOLDER]/gfx/leaders/[TAG]ディレクトリパス
+            string gfxLeadersTagDir = gfxLeadersDir + @"\" + variable.CountryTag;
             // 中道主義国旗（大・中・小）
-            string n_Flags = gfxFlagsDir + @"\" + variable.countryTag + "_neutrality.tga";
-            string n_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.countryTag + "_neutrality.tga";
-            string n_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.countryTag + "_neutrality.tga";
+            string n_Flags = gfxFlagsDir + @"\" + variable.CountryTag + "_neutrality.tga";
+            string n_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_neutrality.tga";
+            string n_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_neutrality.tga";
             // 民主主義国旗（大・中・小）
-            string d_Flags = gfxFlagsDir + @"\" + variable.countryTag + "_democratic.tga";
-            string d_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.countryTag + "_democratic.tga";
-            string d_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.countryTag + "_democratic.tga";
+            string d_Flags = gfxFlagsDir + @"\" + variable.CountryTag + "_democratic.tga";
+            string d_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_democratic.tga";
+            string d_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_democratic.tga";
             // ファシズム国旗（大・中・小）
-            string f_Flags = gfxFlagsDir + @"\" + variable.countryTag + "_fascism.tga";
-            string f_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.countryTag + "_fascism.tga";
-            string f_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.countryTag + "_fascism.tga";
+            string f_Flags = gfxFlagsDir + @"\" + variable.CountryTag + "_fascism.tga";
+            string f_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_fascism.tga";
+            string f_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_fascism.tga";
             // 共産主義国旗（大・中・小）
-            string c_Flags = gfxFlagsDir + @"\" + variable.countryTag + "_communism.tga";
-            string c_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.countryTag + "_communism.tga";
-            string c_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.countryTag + "_communism.tga";
+            string c_Flags = gfxFlagsDir + @"\" + variable.CountryTag + "_communism.tga";
+            string c_FlagsMedium = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_communism.tga";
+            string c_FlagsSmall = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_communism.tga";
             // 書き込み用エンコード指定（UTF-8 BOM付き）
             Encoding enc = Encoding.UTF8;
 
@@ -81,10 +85,10 @@ namespace HoI4_Modding_Supporter
             // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
             try
             {
-                string[] hoi4Files = Directory.GetFileSystemEntries(variable.hoi4dir + @"\history\countries", variable.countryTag + " - *.txt");
+                string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.CountryTag + " - *.txt");
                 if (hoi4Files.Length != 0)
                 {
-                    errorMessage("国家タグ\"" + variable.countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    errorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
                 }
             }
@@ -107,10 +111,10 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.countryTag + "- *.txt");
+                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.CountryTag + "- *.txt");
                     if (modFiles.Length != 0)
                     {
-                        errorMessage("国家タグ\"" + variable.countryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        errorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                         return 1;
                     }
                 }
@@ -170,8 +174,8 @@ namespace HoI4_Modding_Supporter
             try
             {
                 StreamWriter sr = new StreamWriter(commonCountryFilePath, false);
-                sr.WriteLine("graphical_culture = " + variable.graphicalCulture);
-                sr.WriteLine("graphical_culture_2d = " + variable.graphicalCulture2d);
+                sr.WriteLine("graphical_culture = " + variable.GraphicalCulture);
+                sr.WriteLine("graphical_culture_2d = " + variable.GraphicalCulture2d);
                 sr.Close();
             }
             catch (Exception e)
@@ -201,8 +205,8 @@ namespace HoI4_Modding_Supporter
             // colors.txtに追記
             try
             {
-                string color = variable.colorR + " " + variable.colorG + " " + variable.colorB;
-                File.AppendAllText(commonColorsFilePath, "\n" + variable.countryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
+                string color = variable.ColorR + " " + variable.ColorG + " " + variable.ColorB;
+                File.AppendAllText(commonColorsFilePath, "\n" + variable.CountryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
             }
             catch (Exception e)
             {
@@ -246,7 +250,7 @@ namespace HoI4_Modding_Supporter
                 try
                 {
                     StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
-                    sw.WriteLine(variable.countryTag + " = \"countries/" + variable.countryName + ".txt\"");
+                    sw.WriteLine(variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
                     sw.Close();
                 }
                 catch (Exception e)
@@ -263,7 +267,7 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(commonCountriesFilePath, "\n" + variable.countryTag + " = \"countries/" + variable.countryName + ".txt\"");
+                    File.AppendAllText(commonCountriesFilePath, "\n" + variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
                 }
                 catch (Exception e)
                 {
@@ -317,25 +321,25 @@ namespace HoI4_Modding_Supporter
             {
                 StreamWriter sw = new StreamWriter(historyCountrisFilePath, false);
                 // 首都州ID
-                sw.WriteLine("capital = " + variable.stateIDWithCapital);
+                sw.WriteLine("capital = " + variable.StateIDWithCapital);
                 // ユニットファイル（コメントアウト）
                 sw.WriteLine("#obb = \"\"");
                 // 研究スロット数
-                sw.WriteLine("set_research_slots = " + variable.studySlot);
+                sw.WriteLine("set_research_slots = " + variable.StudySlot);
                 // 安定度
-                sw.WriteLine("set_stability = " + variable.stability);
+                sw.WriteLine("set_stability = " + variable.Stability);
                 // 戦争協力度
-                sw.WriteLine("set_war_support = " + variable.warCoop);
+                sw.WriteLine("set_war_support = " + variable.WarCoop);
                 // 輸送船
-                sw.WriteLine("set_convoys = " + variable.transportShip);
+                sw.WriteLine("set_convoys = " + variable.TransportShip);
                 // 研究完了済み技術（コメントアウト）
                 sw.WriteLine("#set_technology = {}");
                 // 政党関連
                 sw.WriteLine("set_politics = {");
-                sw.WriteLine("\truling_party = " + variable.startIdeology);
-                sw.WriteLine("\tlast_election = " + variable.lastElection);
-                sw.WriteLine("\telection_frequency = " + variable.electionFrequency);
-                if (variable.noElection == true)
+                sw.WriteLine("\truling_party = " + variable.StartIdeology);
+                sw.WriteLine("\tlast_election = " + variable.LastElection);
+                sw.WriteLine("\telection_frequency = " + variable.ElectionFrequency);
+                if (variable.NoElection == true)
                 {
                     sw.WriteLine("\telections_allowed = no");
                 }
@@ -346,10 +350,10 @@ namespace HoI4_Modding_Supporter
                 sw.WriteLine("}");
                 // 政党支持率
                 sw.WriteLine("set_popularities = {");
-                sw.WriteLine("\tdemocratic = " + variable.d_Popularity);
-                sw.WriteLine("\tfascism = " + variable.f_Popularity);
-                sw.WriteLine("\tcommunism = " + variable.c_Popularity);
-                sw.WriteLine("\tneutrality = " + variable.n_Popularity);
+                sw.WriteLine("\tdemocratic = " + variable.D_Popularity);
+                sw.WriteLine("\tfascism = " + variable.F_Popularity);
+                sw.WriteLine("\tcommunism = " + variable.C_Popularity);
+                sw.WriteLine("\tneutrality = " + variable.N_Popularity);
                 sw.WriteLine("}");
                 // 国家指導者の書き込みは現時点では未実装
                 sw.Close();
@@ -390,18 +394,18 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationCountriesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    sw.WriteLine(" " + variable.countryTag + "_neutrality:0 \"" + variable.n_ViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_neutrality_DEF:0 \"" + variable.n_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_neutrality_ADJ:0 \"" + variable.n_AliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_democratic:0 \"" + variable.d_ViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_democratic_DEF:0 \"" + variable.d_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_democratic_ADJ:0 \"" + variable.d_AliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_fascism:0 \"" + variable.f_ViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_fascism_DEF:0 \"" + variable.f_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_fascism_ADJ:0 \"" + variable.f_AliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_communism:0 \"" + variable.c_ViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_communism_DEF:0 \"" + variable.c_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_communism_ADJ:0 \"" + variable.c_AliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_democratic_DEF:0 \"" + variable.D_EventViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_fascism_DEF:0 \"" + variable.F_EventViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_communism_DEF:0 \"" + variable.C_EventViewName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"");
                     sw.Close();
                 }
                 catch (Exception e)
@@ -424,18 +428,18 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + variable.countryTag + "_neutrality:0 \"" + variable.n_ViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_neutrality_DEF:0 \"" + variable.n_EventViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_neutrality_ADJ:0 \"" + variable.n_AliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_democratic:0 \"" + variable.d_ViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_democratic_DEF:0 \"" + variable.d_EventViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_democratic_ADJ:0 \"" + variable.d_AliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_fascism:0 \"" + variable.f_ViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_fascism_DEF:0 \"" + variable.f_EventViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_fascism_ADJ:0 \"" + variable.f_AliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_communism:0 \"" + variable.c_ViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_communism_DEF:0 \"" + variable.c_EventViewName + "\"\n" +
-                                                                      " " + variable.countryTag + "_communism_ADJ:0 \"" + variable.c_AliasName + "\"");
+                    File.AppendAllText(localisationCountriesFilePath, "\n " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic_DEF:0 \"" + variable.D_EventViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism_DEF:0 \"" + variable.F_EventViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_communism_DEF:0 \"" + variable.C_EventViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"");
                 }
                 catch (Exception e)
                 {
@@ -468,14 +472,14 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationPartiesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    sw.WriteLine(" " + variable.countryTag + "_neutrality_party:0 \"" + variable.n_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_neutrality_party_long:0 \"" + variable.n_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_democratic_party:0 \"" + variable.d_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_democratic_party_long:0 \"" + variable.d_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_fascism_party:0 \"" + variable.f_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_fascism_party_long:0 \"" + variable.f_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_communism_party:0 \"" + variable.c_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.countryTag + "_communism_party_long:0 \"" + variable.c_PartyFullName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"");
+                    sw.WriteLine(" " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
                     sw.Close();
                 }
                 catch (Exception e)
@@ -498,14 +502,14 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationPartiesFilePath, "\n " + variable.countryTag + "_neutrality_party:0 \"" + variable.n_PartyAliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_neutrality_party_long:0 \"" + variable.n_PartyFullName + "\"\n" +
-                                                                      " " + variable.countryTag + "_democratic_party:0 \"" + variable.d_PartyAliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_democratic_party_long:0 \"" + variable.d_PartyFullName + "\"\n" +
-                                                                      " " + variable.countryTag + "_fascism_party:0 \"" + variable.f_PartyAliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_fascism_party_long:0 \"" + variable.f_PartyFullName + "\"\n" +
-                                                                      " " + variable.countryTag + "_communism_party:0 \"" + variable.c_PartyAliasName + "\"\n" +
-                                                                      " " + variable.countryTag + "_communism_party_long:0 \"" + variable.c_PartyFullName + "\"");
+                    File.AppendAllText(localisationPartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
                 }
                 catch (Exception e)
                 {
@@ -591,9 +595,9 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flagsディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_Flags) == false)
             {
-                if (variable.n_FlagBig != "")
+                if (variable.N_FlagBig != "")
                 {
-                    int fcResult = FileCopy(variable.n_FlagBig, n_Flags);
+                    int fcResult = FileCopy(variable.N_FlagBig, n_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -602,9 +606,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(d_Flags) == false)
             {
-                if (variable.d_FlagBig != "")
+                if (variable.D_FlagBig != "")
                 {
-                    int fcResult = FileCopy(variable.d_FlagBig, d_Flags);
+                    int fcResult = FileCopy(variable.D_FlagBig, d_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -613,9 +617,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(f_Flags) == false)
             {
-                if (variable.f_FlagBig != "")
+                if (variable.F_FlagBig != "")
                 {
-                    int fcResult = FileCopy(variable.f_FlagBig, f_Flags);
+                    int fcResult = FileCopy(variable.F_FlagBig, f_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -624,9 +628,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(c_Flags) == false)
             {
-                if (variable.c_FlagBig != "")
+                if (variable.C_FlagBig != "")
                 {
-                    int fcResult = FileCopy(variable.c_FlagBig, c_Flags);
+                    int fcResult = FileCopy(variable.C_FlagBig, c_Flags);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -637,9 +641,9 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/mediumディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_FlagsMedium) == false)
             {
-                if (variable.n_FlagMed != "")
+                if (variable.N_FlagMed != "")
                 {
-                    int fcResult = FileCopy(variable.n_FlagMed, n_FlagsMedium);
+                    int fcResult = FileCopy(variable.N_FlagMed, n_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -648,9 +652,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(d_FlagsMedium) == false)
             {
-                if (variable.d_FlagMed != "")
+                if (variable.D_FlagMed != "")
                 {
-                    int fcResult = FileCopy(variable.d_FlagMed, d_FlagsMedium);
+                    int fcResult = FileCopy(variable.D_FlagMed, d_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -659,9 +663,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(f_FlagsMedium) == false)
             {
-                if (variable.f_FlagMed != "")
+                if (variable.F_FlagMed != "")
                 {
-                    int fcResult = FileCopy(variable.f_FlagMed, f_FlagsMedium);
+                    int fcResult = FileCopy(variable.F_FlagMed, f_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -670,9 +674,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(c_FlagsMedium) == false)
             {
-                if (variable.c_FlagMed != "")
+                if (variable.C_FlagMed != "")
                 {
-                    int fcResult = FileCopy(variable.c_FlagMed, c_FlagsMedium);
+                    int fcResult = FileCopy(variable.C_FlagMed, c_FlagsMedium);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -683,9 +687,9 @@ namespace HoI4_Modding_Supporter
             // ../gfx/flags/smallディレクトリ内に国旗ファイルをコピー
             if (File.Exists(n_FlagsSmall) == false)
             {
-                if (variable.n_FlagSma != "")
+                if (variable.N_FlagSma != "")
                 {
-                    int fcResult = FileCopy(variable.n_FlagSma, n_FlagsSmall);
+                    int fcResult = FileCopy(variable.N_FlagSma, n_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -694,9 +698,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(d_FlagsSmall) == false)
             {
-                if (variable.d_FlagSma != "")
+                if (variable.D_FlagSma != "")
                 {
-                    int fcResult = FileCopy(variable.d_FlagSma, d_FlagsSmall);
+                    int fcResult = FileCopy(variable.D_FlagSma, d_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -705,9 +709,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(f_FlagsSmall) == false)
             {
-                if (variable.f_FlagSma != "")
+                if (variable.F_FlagSma != "")
                 {
-                    int fcResult = FileCopy(variable.f_FlagSma, f_FlagsSmall);
+                    int fcResult = FileCopy(variable.F_FlagSma, f_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -716,9 +720,9 @@ namespace HoI4_Modding_Supporter
             }
             if (File.Exists(c_FlagsSmall) == false)
             {
-                if (variable.c_FlagSma != "")
+                if (variable.C_FlagSma != "")
                 {
-                    int fcResult = FileCopy(variable.c_FlagSma, c_FlagsSmall);
+                    int fcResult = FileCopy(variable.C_FlagSma, c_FlagsSmall);
                     if (fcResult == 1)
                     {
                         return 1;
@@ -727,20 +731,20 @@ namespace HoI4_Modding_Supporter
             }
 
             // この国が従属国
-            if (variable.dependentCountry == true)
+            if (variable.DependentCountry == true)
             {
                 try
                 {
                     // modフォルダー内の宗主国にしたい国家ファイルを検索し、存在しなければHOI4ディレクトリからコピーする
-                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.sovereignCountryTag + " - *.txt");
+                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.SovereignCountryTag + " - *.txt");
                     if (modFiles.Length == 0)
                     {
                         try
                         {
-                            string[] rawCountryFile = Directory.GetFileSystemEntries(variable.hoi4dir + @"\history\countries", variable.sovereignCountryTag + " - *.txt");
+                            string[] rawCountryFile = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.SovereignCountryTag + " - *.txt");
                             if (rawCountryFile.Length != 0)
                             {
-                                string countryFileName = rawCountryFile[0].Replace(variable.hoi4dir + @"\history\countries", "");
+                                string countryFileName = rawCountryFile[0].Replace(variable.Hoi4dir + @"\history\countries", "");
                                 FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName);
                             }
                             else
@@ -765,10 +769,10 @@ namespace HoI4_Modding_Supporter
 
                         try
                         {
-                            string[] sovereignCountryFile = Directory.GetFileSystemEntries(historyCountriesDir, variable.sovereignCountryTag + " - *.txt");
+                            string[] sovereignCountryFile = Directory.GetFileSystemEntries(historyCountriesDir, variable.SovereignCountryTag + " - *.txt");
                             try
                             {
-                                File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + variable.countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                                File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + variable.CountryTag + "\n\tautonomous_state = autonomy_puppet\n}");
                             }
                             catch (Exception e)
                             {
@@ -804,7 +808,7 @@ namespace HoI4_Modding_Supporter
                     {
                         try
                         {
-                            File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + variable.countryTag + "\n\tautonomous_state = autonomy_puppet\n}");
+                            File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + variable.CountryTag + "\n\tautonomous_state = autonomy_puppet\n}");
                         }
                         catch (Exception e)
                         {
@@ -839,9 +843,9 @@ namespace HoI4_Modding_Supporter
             }
 
             // カスタム国家指導者が有効化されている場合
-            if (variable.customLeaderEnabled == true)
+            if (variable.CustomLeaderEnabled == true)
             {
-                int nlgResult = NationalLeaderGenerate(historyCountrisFilePath);
+                int nlgResult = NationalLeaderGenerate(historyCountrisFilePath, gfxLeadersDir, gfxLeadersTagDir);
                 if(nlgResult == 1)
                 {
                     return 1;
@@ -849,7 +853,7 @@ namespace HoI4_Modding_Supporter
             }
 
             MessageBox.Show("生成が完了しました。");
-            Process.Start(variable.moddir);
+            Process.Start(variable.Moddir);
             return 0;
         }
 
@@ -857,19 +861,21 @@ namespace HoI4_Modding_Supporter
         /// 国家指導者を生成
         /// </summary>
         /// <returns></returns>
-        public int NationalLeaderGenerate(string historyCountriesFilePath)
+        public int NationalLeaderGenerate(string HistoryCountriesFilePath, string GfxLeadersDir, string GfxLeadersTagDir)
         {
             Variable variable = new Variable();
+
+            int fcResult;
 
             // 国家ファイルに書き込み
             try
             {
-                File.AppendAllText(historyCountriesFilePath, "\ncreate_country_leader = {\n" +
-                                                             "\tname = \"" + variable.leaderName + "\"\n" +
-                                                             "\tdesc = \"" + variable.leaderDesc + "\"\n" +
-                                                             "\tpicture = \"" + variable.leaderPictureName + "\"\n" +
-                                                             "\texpire = \"" + variable.willNotAppear + "\"\n" +
-                                                             "\tideology = " + variable.leaderIdeology + "\n" +
+                File.AppendAllText(HistoryCountriesFilePath, "\ncreate_country_leader = {\n" +
+                                                             "\tname = \"" + variable.LeaderName + "\"\n" +
+                                                             "\tdesc = \"" + variable.LeaderDesc + "\"\n" +
+                                                             "\tpicture = \"" + variable.LeaderPictureName + "\"\n" +
+                                                             "\texpire = \"" + variable.WillNotAppear + "\"\n" +
+                                                             "\tideology = " + variable.LeaderIdeology + "\n" +
                                                              "\ttraits = {}\n" +
                                                              "}");
             }
@@ -891,8 +897,33 @@ namespace HoI4_Modding_Supporter
 
 
             // ../gfx/leadersディレクトリが存在しない場合にフォルダを作成
+            if (Directory.Exists(GfxLeadersDir) == false)
+            {
+                fcResult = FolderCreate(GfxLeadersDir);
+                if (fcResult == 1)
+                {
+                    return 1;
+                }
+            }
+
             // ../gfx/leaders/[国家タグ]ディレクトリが存在しない場合にファルダを作成
+            if (Directory.Exists(GfxLeadersTagDir) == false)
+            {
+                fcResult = FolderCreate(GfxLeadersTagDir);
+                if (fcResult == 1)
+                {
+                    return 1;
+                }
+            }
+
             // 画像ファイルを ../gfx/leaders/[国家タグ]/[国家指導者名].ddsにコピー
+            string leaderPicturePath = GfxLeadersTagDir + @"\" + variable.LeaderPictureName;
+
+            fcResult = FileCopy(variable.LeaderPicturePath, leaderPicturePath);
+            if (fcResult == 1)
+            {
+                return 1;
+            }
 
             return 0;
         }
