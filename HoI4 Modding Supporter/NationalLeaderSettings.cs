@@ -452,7 +452,7 @@ namespace HoI4_Modding_Supporter
             textBox17.Text = "";
             comboBox1.SelectedItem = null;
             comboBox2.SelectedItem = null;
-            numericUpDown16.Value = 1000;
+            numericUpDown16.Value = 1936;
             numericUpDown15.Value = 1;
             numericUpDown14.Value = 1;
         }

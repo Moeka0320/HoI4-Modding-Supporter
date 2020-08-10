@@ -85,7 +85,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown13.Value = 0;
             numericUpDown14.Value = 1;
             numericUpDown15.Value = 1;
-            numericUpDown16.Value = 1000;
+            numericUpDown16.Value = 1936;
             numericUpDown17.Value = 1;
             checkBox1.Checked = false;
             checkBox2.Checked = false;

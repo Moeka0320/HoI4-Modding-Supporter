@@ -584,7 +584,6 @@
             // 
             // button17
             // 
-            this.button17.Enabled = false;
             this.button17.Location = new System.Drawing.Point(240, 327);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
@@ -592,10 +591,10 @@
             this.button17.TabStop = false;
             this.button17.Text = "研究済技術の設定";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Visible = false;
             // 
             // button16
             // 
-            this.button16.Enabled = false;
             this.button16.Location = new System.Drawing.Point(8, 356);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(110, 23);
@@ -603,6 +602,7 @@
             this.button16.TabStop = false;
             this.button16.Text = "NFエディター";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Visible = false;
             // 
             // textBox36
             // 
@@ -617,7 +617,6 @@
             // 
             // button14
             // 
-            this.button14.Enabled = false;
             this.button14.Location = new System.Drawing.Point(124, 327);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(110, 23);
@@ -625,6 +624,7 @@
             this.button14.TabStop = false;
             this.button14.Text = "ユニットの設定";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
             // 
             // label64
             // 
@@ -739,7 +739,7 @@
             this.numericUpDown17.TabStop = false;
             this.numericUpDown17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown17.Value = new decimal(new int[] {
-            1,
+            36,
             0,
             0,
             0});
@@ -762,7 +762,7 @@
             0,
             0});
             this.numericUpDown16.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -772,7 +772,7 @@
             this.numericUpDown16.TabStop = false;
             this.numericUpDown16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown16.Value = new decimal(new int[] {
-            1000,
+            1936,
             0,
             0,
             0});

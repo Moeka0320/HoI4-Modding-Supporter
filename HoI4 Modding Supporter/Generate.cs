@@ -40,10 +40,6 @@ namespace HoI4_Modding_Supporter
             string localisationDir = variable.Moddir + @"\localisation";
             // [MODFOLDER]/localisation/replaceディレクトリパス
             string localisationReplaceDir = localisationDir + @"\replace";
-            // [MODFOLDER]/localisation/mod_countries_l_english.ymlファイルパス
-            string localisationCountriesFilePath = localisationDir + @"\" + variable.ModName + "_countries_l_english.yml";
-            // [MODFOLDER]/localisation/mod_parties_l_english.ymlファイルパス
-            string localisationPartiesFilePath = localisationDir + @"\" + variable.ModName + "_parties_l_english.yml";
             // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
             string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
             // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
@@ -380,10 +376,20 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
-            // ../localisation/mod_countries_l_english.yml
-            if (File.Exists(localisationCountriesFilePath) == false)
+            // ../localisation/replaceディレクトリが存在しない場合
+            if (Directory.Exists(localisationReplaceDir) == false)
             {
-                int fcResult = FileCreate(localisationCountriesFilePath);
+                int fcResult = FolderCreate(localisationReplaceDir);
+                if (fcResult == 1)
+                {
+                    return 1;
+                }
+            }
+
+            // ../localisation/replace/mod_countries_l_english.yml
+            if (File.Exists(localisationReplaceCountriesFilePath) == false)
+            {
+                int fcResult = FileCreate(localisationReplaceCountriesFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -391,7 +397,7 @@ namespace HoI4_Modding_Supporter
 
                 try
                 {
-                    StreamWriter sw = new StreamWriter(localisationCountriesFilePath, false, enc);
+                    StreamWriter sw = new StreamWriter(localisationReplaceCountriesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
                     sw.WriteLine(" " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"");
@@ -428,7 +434,7 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationCountriesFilePath, "\n " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"\n" +
+                    File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"\n" +
                                                                       " " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"\n" +
@@ -459,9 +465,9 @@ namespace HoI4_Modding_Supporter
             }
 
             // ../localisation/mod_parties_l_english.yml
-            if (File.Exists(localisationPartiesFilePath) == false)
+            if (File.Exists(localisationReplacePartiesFilePath) == false)
             {
-                int fcResult = FileCreate(localisationPartiesFilePath);
+                int fcResult = FileCreate(localisationReplacePartiesFilePath);
                 if (fcResult == 1)
                 {
                     return 1;
@@ -469,7 +475,7 @@ namespace HoI4_Modding_Supporter
 
                 try
                 {
-                    StreamWriter sw = new StreamWriter(localisationPartiesFilePath, false, enc);
+                    StreamWriter sw = new StreamWriter(localisationReplacePartiesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
                     sw.WriteLine(" " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"");
@@ -502,7 +508,7 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationPartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" +
+                    File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" +
                                                                       " " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"\n" +
                                                                       " " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"\n" +
                                                                       " " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"\n" +
@@ -526,28 +532,6 @@ namespace HoI4_Modding_Supporter
                         return 1;
                     }
                 }
-            }
-
-            // ../localisation/replaceディレクトリが存在しない場合
-            if (Directory.Exists(localisationReplaceDir) == false)
-            {
-                int fcResult = FolderCreate(localisationReplaceDir);
-                if (fcResult == 1)
-                {
-                    return 1;
-                }
-            }
-
-            // mod_countries_l_english.ymlとmod_parties_l_english.ymlをreplaceディレクトリ内にコピー
-            int fcOutResult3 = FileCopy(localisationCountriesFilePath, localisationReplaceCountriesFilePath);
-            if (fcOutResult3 == 1)
-            {
-                return 1;
-            }
-            int fcOutResult4 = FileCopy(localisationPartiesFilePath, localisationReplacePartiesFilePath);
-            if (fcOutResult4 == 1)
-            {
-                return 1;
             }
 
             // 6.国旗の生成

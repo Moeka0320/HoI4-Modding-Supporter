@@ -199,7 +199,7 @@
             0,
             0});
             this.numericUpDown16.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -209,7 +209,7 @@
             this.numericUpDown16.TabStop = false;
             this.numericUpDown16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown16.Value = new decimal(new int[] {
-            1000,
+            1936,
             0,
             0,
             0});
