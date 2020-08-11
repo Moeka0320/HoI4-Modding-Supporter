@@ -837,7 +837,11 @@ namespace HoI4_Modding_Supporter
             }
 
             MessageBox.Show("生成が完了しました。");
-            Process.Start(variable.Moddir);
+
+            if (Properties.Settings.Default.afterOpenFolder == true)
+            {
+                Process.Start(variable.Moddir);
+            }
             return 0;
         }
 

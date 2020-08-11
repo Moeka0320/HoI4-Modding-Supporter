@@ -11,6 +11,7 @@ namespace HoI4_Modding_Supporter
             InitializeComponent();
             textBox1.Text = Properties.Settings.Default.hoi4dir;
             textBox2.Text = Properties.Settings.Default.moddir;
+            checkBox1.Checked = Properties.Settings.Default.afterOpenFolder;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace HoI4_Modding_Supporter
                 // ここで設定を保存
                 Properties.Settings.Default.hoi4dir = textBox1.Text;
                 Properties.Settings.Default.moddir = textBox2.Text;
+                Properties.Settings.Default.afterOpenFolder = checkBox1.Checked;
 
                 Properties.Settings.Default.Save();
 

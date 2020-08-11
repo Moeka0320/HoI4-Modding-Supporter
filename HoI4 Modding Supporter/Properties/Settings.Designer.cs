@@ -46,5 +46,17 @@ namespace HoI4_Modding_Supporter.Properties {
                 this["moddir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool afterOpenFolder {
+            get {
+                return ((bool)(this["afterOpenFolder"]));
+            }
+            set {
+                this["afterOpenFolder"] = value;
+            }
+        }
     }
 }
