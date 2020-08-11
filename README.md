@@ -8,6 +8,13 @@ hoi4のmod製作を支援するソフトです。<br>
 ![test3](https://user-images.githubusercontent.com/49384910/87874475-23a6c280-ca05-11ea-863b-95ae3b0a5ea7.png)
 ## ダウンロード
 * .NET Framework 4.7.2以上が必要です
+### v1.2
+* 生成時の不要な処理を削除
+* 生成後のModディレクトリ表示の有無を選択可能に
+* HoI4本体ディレクトリ指定時の検査（common, gfx, hoi4.exe の存在確認）を実装
+
+[HoI4 Modding Supporter v1.2 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.2/HoI4-Modding-Supporter.zip)
+
 ### v1.1
 * 国家指導者の設定に対応
 
