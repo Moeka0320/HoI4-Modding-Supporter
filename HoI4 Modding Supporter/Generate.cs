@@ -319,7 +319,7 @@ namespace HoI4_Modding_Supporter
                 // 首都州ID
                 sw.WriteLine("capital = " + variable.StateIDWithCapital);
                 // ユニットファイル（コメントアウト）
-                sw.WriteLine("#obb = \"\"");
+                sw.WriteLine("#oob = \"\"");
                 // 研究スロット数
                 sw.WriteLine("set_research_slots = " + variable.StudySlot);
                 // 安定度
@@ -929,13 +929,13 @@ namespace HoI4_Modding_Supporter
             catch (Exception e)
             {
                 if (e is UnauthorizedAccessException ||
-                            e is ArgumentException ||
-                            e is ArgumentNullException ||
-                            e is PathTooLongException ||
-                            e is DirectoryNotFoundException ||
-                            e is FileNotFoundException ||
-                            e is IOException ||
-                            e is NotSupportedException)
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is FileNotFoundException ||
+                    e is IOException ||
+                    e is NotSupportedException)
                 {
                     errorMessage(e.Message);
                     return 1;

@@ -60,6 +60,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(166, 16);
             this.checkBox1.TabIndex = 0;
+            this.checkBox1.TabStop = false;
             this.checkBox1.Text = "カスタム国家指導者の有効化";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -70,6 +71,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -80,6 +82,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Text = "キャンセル";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -99,6 +102,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(146, 19);
             this.textBox1.TabIndex = 4;
+            this.textBox1.TabStop = false;
             // 
             // label2
             // 
@@ -115,6 +119,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(262, 78);
             this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
             // 
             // button3
@@ -286,6 +291,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 29;
+            this.button4.TabStop = false;
             this.button4.Text = "クリア";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);

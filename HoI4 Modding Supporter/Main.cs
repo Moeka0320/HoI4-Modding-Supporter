@@ -812,5 +812,11 @@ namespace HoI4_Modding_Supporter
             NationalLeaderSettings nls = new NationalLeaderSettings();
             nls.ShowDialog();
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            UnitSettings us = new UnitSettings();
+            us.ShowDialog();
+        }
     }
 }
