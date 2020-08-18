@@ -10,7 +10,7 @@ namespace HoI4_Modding_Supporter
             InitializeComponent();
 
             // 初期化
-            allClear();
+            AllClear();
 
             // 従属国オプション
             if (checkBox2.Checked == false)
@@ -23,15 +23,15 @@ namespace HoI4_Modding_Supporter
             }
 
             // 配色
-            colorChange();
+            ColorChange();
             // 初期政党支持率の合計
-            partiesSupportTotal();
+            PartiesSupportTotal();
         }
 
         /// <summary>
         /// テキストボックスをすべてリセット
         /// </summary>
-        public void allClear()
+        public void AllClear()
         {
             textBox1.Text = "";
             textBox2.Text = "";
@@ -95,7 +95,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 配色の出力
         /// </summary>
-        public void colorChange()
+        public void ColorChange()
         {
             int r = (int)numericUpDown1.Value;
             int g = (int)numericUpDown2.Value;
@@ -107,7 +107,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 政党支持率合計の出力
         /// </summary>
-        public void partiesSupportTotal()
+        public void PartiesSupportTotal()
         {
             int nSupport = (int)numericUpDown12.Value;
             int dSupport = (int)numericUpDown11.Value;
@@ -124,7 +124,7 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         /// <param name="ideology">イデオロギー（n, d, f, c）</param>
         /// <param name="size">サイズ（big, medium, small）</param>
-        public void openTGAFile(string ideology, string size)
+        public void OpenTGAFile(string ideology, string size)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { FileName = "Flag.tga", Filter = "TGAファイル|*.tga", RestoreDirectory = true, CheckFileExists = true, CheckPathExists = true })
             {
@@ -223,12 +223,12 @@ namespace HoI4_Modding_Supporter
         /// 生成直前に入るチェック
         /// 入力ミスなどを検知する
         /// </summary>
-        public int check()
+        public int Check()
         {
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
             {
-                errorMessage("HoI4本体のディレクトリ、またはmodディレクトリが設定されていません。\n[ツール] - [設定]からフォルダーパスを設定してください。");
+                ErrorMessage("HoI4本体のディレクトリ、またはmodディレクトリが設定されていません。\n[ツール] - [設定]からフォルダーパスを設定してください。");
                 return 1;
             }
 
@@ -236,7 +236,7 @@ namespace HoI4_Modding_Supporter
             // テキストボックスが空っぽまたはスペース、大文字ではない
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                errorMessage("国家タグが無効です。");
+                ErrorMessage("国家タグが無効です。");
                 return 1;
             }
 
@@ -244,7 +244,7 @@ namespace HoI4_Modding_Supporter
             // 内部処理用
             if (string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                errorMessage("[国名] - [内部処理用]が無効です。");
+                ErrorMessage("[国名] - [内部処理用]が無効です。");
                 return 1;
             }
 
@@ -252,19 +252,19 @@ namespace HoI4_Modding_Supporter
             // 表示名
             if (string.IsNullOrWhiteSpace(textBox3.Text))
             {
-                errorMessage("[国名] - [中道主義] - [表示名]が無効です。");
+                ErrorMessage("[国名] - [中道主義] - [表示名]が無効です。");
                 return 1;
             }
             // イベント表示名
             if (string.IsNullOrWhiteSpace(textBox4.Text))
             {
-                errorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
+                ErrorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
                 return 1;
             }
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox5.Text))
             {
-                errorMessage("[国名] - [中道主義] - [通称名]が無効です。");
+                ErrorMessage("[国名] - [中道主義] - [通称名]が無効です。");
                 return 1;
             }
 
@@ -272,19 +272,19 @@ namespace HoI4_Modding_Supporter
             // 表示名
             if (string.IsNullOrWhiteSpace(textBox8.Text))
             {
-                errorMessage("[国名] - [民主主義] - [表示名]が無効です。");
+                ErrorMessage("[国名] - [民主主義] - [表示名]が無効です。");
                 return 1;
             }
             // イベント表示名
             if (string.IsNullOrWhiteSpace(textBox7.Text))
             {
-                errorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
+                ErrorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
                 return 1;
             }
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox6.Text))
             {
-                errorMessage("[国名] - [民主主義] - [通称名]が無効です。");
+                ErrorMessage("[国名] - [民主主義] - [通称名]が無効です。");
                 return 1;
             }
 
@@ -292,19 +292,19 @@ namespace HoI4_Modding_Supporter
             // 表示名
             if (string.IsNullOrWhiteSpace(textBox11.Text))
             {
-                errorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
+                ErrorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
                 return 1;
             }
             // イベント表示名
             if (string.IsNullOrWhiteSpace(textBox10.Text))
             {
-                errorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
+                ErrorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
                 return 1;
             }
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox9.Text))
             {
-                errorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
+                ErrorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
                 return 1;
             }
 
@@ -312,19 +312,19 @@ namespace HoI4_Modding_Supporter
             // 表示名
             if (string.IsNullOrWhiteSpace(textBox14.Text))
             {
-                errorMessage("[国名] - [共産主義] - [表示名]が無効です。");
+                ErrorMessage("[国名] - [共産主義] - [表示名]が無効です。");
                 return 1;
             }
             // イベント表示名
             if (string.IsNullOrWhiteSpace(textBox13.Text))
             {
-                errorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
+                ErrorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
                 return 1;
             }
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox12.Text))
             {
-                errorMessage("[国名] - [共産主義] - [通称名]が無効です。");
+                ErrorMessage("[国名] - [共産主義] - [通称名]が無効です。");
                 return 1;
             }
 
@@ -335,52 +335,52 @@ namespace HoI4_Modding_Supporter
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox30.Text))
             {
-                errorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
+                ErrorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
                 return 1;
             }
             // 正式名
             if (string.IsNullOrWhiteSpace(textBox29.Text))
             {
-                errorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
+                ErrorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
                 return 1;
             }
             // 民主主義政党
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox35.Text))
             {
-                errorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
+                ErrorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
                 return 1;
             }
             // 正式名
             if (string.IsNullOrWhiteSpace(textBox34.Text))
             {
-                errorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
+                ErrorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
                 return 1;
             }
             // ファシズム政党
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox31.Text))
             {
-                errorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
+                ErrorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
                 return 1;
             }
             // 正式名
             if (string.IsNullOrWhiteSpace(textBox28.Text))
             {
-                errorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
+                ErrorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
                 return 1;
             }
             // 共産主義政党
             // 通称名
             if (string.IsNullOrWhiteSpace(textBox33.Text))
             {
-                errorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
+                ErrorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
                 return 1;
             }
             // 正式名
             if (string.IsNullOrWhiteSpace(textBox32.Text))
             {
-                errorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
+                ErrorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
                 return 1;
             }
 
@@ -388,21 +388,21 @@ namespace HoI4_Modding_Supporter
             // 汎用顔グラフィックの地域設定
             if (comboBox1.SelectedItem == null)
             {
-                errorMessage("[各種設定] - [汎用顔グラフィックの地域設定]が設定されていません。");
+                ErrorMessage("[各種設定] - [汎用顔グラフィックの地域設定]が設定されていません。");
                 return 1;
             }
             // 初期政党支持率（の合計が100%ではない場合）
-            partiesSupportTotal();
+            PartiesSupportTotal();
             int total = int.Parse(textBox27.Text);
             if (total != 100)
             {
-                errorMessage("[各種設定] - [初期政党支持率]の合計が100%ではありません。\n[合計]の値を確認してください。");
+                ErrorMessage("[各種設定] - [初期政党支持率]の合計が100%ではありません。\n[合計]の値を確認してください。");
                 return 1;
             }
             // 初期与党
             if (comboBox2.SelectedItem == null)
             {
-                errorMessage("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
+                ErrorMessage("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
                 return 1;
             }
             // 従属国である場合
@@ -410,13 +410,13 @@ namespace HoI4_Modding_Supporter
             {
                 if (string.IsNullOrWhiteSpace(textBox36.Text))
                 {
-                    errorMessage("[各種設定] - [宗主国の国家タグ]が無効です。");
+                    ErrorMessage("[各種設定] - [宗主国の国家タグ]が無効です。");
                 }
             }
             // mod名
             if (string.IsNullOrWhiteSpace(textBox39.Text))
             {
-                errorMessage("[Mod名]が無効です。");
+                ErrorMessage("[Mod名]が無効です。");
                 return 1;
             }
 
@@ -427,7 +427,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void dataAssignment()
+        public void DataAssignment()
         {
             Variable variable = new Variable();
 
@@ -647,7 +647,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// エラーメッセージボックスを表示
         /// </summary>
-        public void errorMessage(string message)
+        public void ErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -665,17 +665,17 @@ namespace HoI4_Modding_Supporter
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            colorChange();
+            ColorChange();
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            colorChange();
+            ColorChange();
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            colorChange();
+            ColorChange();
         }
 
         private void label58_Click(object sender, EventArgs e)
@@ -701,100 +701,100 @@ namespace HoI4_Modding_Supporter
 
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
-            partiesSupportTotal();
+            PartiesSupportTotal();
         }
 
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
-            partiesSupportTotal();
+            PartiesSupportTotal();
         }
 
         private void numericUpDown10_ValueChanged(object sender, EventArgs e)
         {
-            partiesSupportTotal();
+            PartiesSupportTotal();
         }
 
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
-            partiesSupportTotal();
+            PartiesSupportTotal();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openTGAFile("n", "big");
+            OpenTGAFile("n", "big");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            openTGAFile("n", "medium");
+            OpenTGAFile("n", "medium");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            openTGAFile("n", "small");
+            OpenTGAFile("n", "small");
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            openTGAFile("d", "big");
+            OpenTGAFile("d", "big");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            openTGAFile("d", "medium");
+            OpenTGAFile("d", "medium");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            openTGAFile("d", "small");
+            OpenTGAFile("d", "small");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            openTGAFile("f", "big");
+            OpenTGAFile("f", "big");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            openTGAFile("f", "medium");
+            OpenTGAFile("f", "medium");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            openTGAFile("f", "small");
+            OpenTGAFile("f", "small");
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            openTGAFile("c", "big");
+            OpenTGAFile("c", "big");
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            openTGAFile("c", "medium");
+            OpenTGAFile("c", "medium");
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            openTGAFile("c", "small");
+            OpenTGAFile("c", "small");
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-            allClear();
+            AllClear();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             Generate generate = new Generate();
 
-            int cResult = check();
+            int cResult = Check();
             if (cResult == 1)
             {
                 return;
             }
-            dataAssignment();
-            int gcResult = generate.generateCountry();
+            DataAssignment();
+            int gcResult = generate.GenerateCountry();
             if (gcResult == 1)
             {
                 return;

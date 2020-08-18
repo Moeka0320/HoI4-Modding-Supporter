@@ -141,18 +141,18 @@ namespace HoI4_Modding_Supporter
 
             if (checkBox1.Checked == true)
             {
-                changeCheckBox(true);
+                ChangeCheckBox(true);
             }
             else
             {
-                changeCheckBox(false);
+                ChangeCheckBox(false);
             }
         }
 
         /// <summary>
         /// エラーメッセージボックスを表示
         /// </summary>
-        public void errorMessage(string message)
+        public void ErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -161,30 +161,30 @@ namespace HoI4_Modding_Supporter
         /// 入力ミスなどを検知する
         /// </summary>
         /// <returns></returns>
-        public int check()
+        public int Check()
         {
             // 名前
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                errorMessage("[名前]が無効です。");
+                ErrorMessage("[名前]が無効です。");
                 return 1;
             }
             // 説明
             else if (string.IsNullOrWhiteSpace(richTextBox1.Text))
             {
-                errorMessage("[説明]が無効です。");
+                ErrorMessage("[説明]が無効です。");
                 return 1;
             }
             // 画像
             else if (string.IsNullOrWhiteSpace(textBox17.Text))
             {
-                errorMessage("[画像]のファイルパスが無効です。");
+                ErrorMessage("[画像]のファイルパスが無効です。");
                 return 1;
             }
             // イデオロギー
             else if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
             {
-                errorMessage("[イデオロギー]が設定されていません。");
+                ErrorMessage("[イデオロギー]が設定されていません。");
                 return 1;
             }
 
@@ -195,7 +195,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void dataAssignment()
+        public void DataAssignment()
         {
             Variable variable = new Variable();
 
@@ -317,7 +317,7 @@ namespace HoI4_Modding_Supporter
         /// チェックボックス変更時の処理
         /// </summary>
         /// <param name="check">チェックボックスの状態</param>
-        private void changeCheckBox(bool check)
+        private void ChangeCheckBox(bool check)
         {
             textBox1.Enabled = check;
             richTextBox1.Enabled = check;
@@ -337,7 +337,7 @@ namespace HoI4_Modding_Supporter
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            changeCheckBox(checkBox1.Checked);
+            ChangeCheckBox(checkBox1.Checked);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -351,14 +351,14 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                int cResult = check();
+                int cResult = Check();
                 if (cResult == 1)
                 {
                     return;
                 }
                 else
                 {
-                    dataAssignment();
+                    DataAssignment();
                     this.Close();
                 }
             }

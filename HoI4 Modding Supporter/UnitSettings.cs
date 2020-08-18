@@ -18,29 +18,29 @@ namespace HoI4_Modding_Supporter
 
             if (checkBox1.Checked == true)
             {
-                changeCheckBox(true, 0);
+                ChangeCheckBox(true, 0);
             }
             else
             {
-                changeCheckBox(false, 0);
+                ChangeCheckBox(false, 0);
             }
 
             if (checkBox2.Checked == true)
             {
-                changeCheckBox(true, 1);
+                ChangeCheckBox(true, 1);
             }
             else
             {
-                changeCheckBox(false, 1);
+                ChangeCheckBox(false, 1);
             }
 
             if (checkBox3.Checked == true)
             {
-                changeCheckBox(true, 2);
+                ChangeCheckBox(true, 2);
             }
             else
             {
-                changeCheckBox(false, 2);
+                ChangeCheckBox(false, 2);
             }
         }
 
@@ -49,7 +49,7 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         /// <param name="check">チェックボックスの状態</param>
         /// <param name="tab">タブインデックス</param>
-        public void changeCheckBox(bool check, int tab)
+        public void ChangeCheckBox(bool check, int tab)
         {
             // 陸軍ユニットの設定
             if (tab == 0)
@@ -104,7 +104,7 @@ namespace HoI4_Modding_Supporter
         /// 支援中隊リストの自動変更（実装未定）
         /// </summary>
         /// <param name="column">列の指定（1-5）</param>
-        //public void supportChange(int column)
+        //public void SupportChange(int column)
         //{
         //    int selectedItemIndex;
 
@@ -123,7 +123,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// エラーメッセージボックスを表示
         /// </summary>
-        public void errorMessage(string message)
+        public void ErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -132,14 +132,14 @@ namespace HoI4_Modding_Supporter
         /// 入力ミスなどを検知
         /// </summary>
         /// <returns></returns>
-        public int check()
+        public int Check()
         {
             // 陸軍タブ
             if (checkBox1.Checked == true)
             {
                 if (string.IsNullOrWhiteSpace(textBox1.Text))
                 {
-                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [ユニット名]が無効です。");
+                    ErrorMessage("[陸軍] - [師団テンプレートの新規作成] - [ユニット名]が無効です。");
                     return 1;
                 }
 
@@ -149,7 +149,7 @@ namespace HoI4_Modding_Supporter
                     comboBox4.SelectedItem == null ||
                     comboBox5.SelectedItem == null)
                 {
-                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [支援中隊]の設定が無効です。支援中隊を設定しない場合、\"None\"を指定してください。");
+                    ErrorMessage("[陸軍] - [師団テンプレートの新規作成] - [支援中隊]の設定が無効です。支援中隊を設定しない場合、\"None\"を指定してください。");
                     return 1;
                 }
 
@@ -179,7 +179,7 @@ namespace HoI4_Modding_Supporter
                     comboBox29.SelectedItem == null ||
                     comboBox30.SelectedItem == null)
                 {
-                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [戦闘大隊]の設定が無効です。戦闘大隊を設定しない場合、\"None\"を指定してください。");
+                    ErrorMessage("[陸軍] - [師団テンプレートの新規作成] - [戦闘大隊]の設定が無効です。戦闘大隊を設定しない場合、\"None\"を指定してください。");
                     return 1;
                 }
             }
@@ -195,7 +195,7 @@ namespace HoI4_Modding_Supporter
             {
                 if (comboBox31.SelectedItem == null)
                 {
-                    errorMessage("[空軍] - [配置するユニット]が指定されていません。");
+                    ErrorMessage("[空軍] - [配置するユニット]が指定されていません。");
                     return 1;
                 }
             }
@@ -211,22 +211,22 @@ namespace HoI4_Modding_Supporter
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            changeCheckBox(checkBox1.Checked, 0);
+            ChangeCheckBox(checkBox1.Checked, 0);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            changeCheckBox(checkBox2.Checked, 1);
+            ChangeCheckBox(checkBox2.Checked, 1);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            changeCheckBox(checkBox3.Checked, 2);
+            ChangeCheckBox(checkBox3.Checked, 2);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int cResult = check();
+            int cResult = Check();
             if (cResult == 1)
             {
                 return;

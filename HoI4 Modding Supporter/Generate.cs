@@ -12,7 +12,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 国家の生成（ファイル書き込み処理）
         /// </summary>
-        public int generateCountry()
+        public int GenerateCountry()
         {
             Variable variable = new Variable();
 
@@ -84,7 +84,7 @@ namespace HoI4_Modding_Supporter
                 string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.CountryTag + " - *.txt");
                 if (hoi4Files.Length != 0)
                 {
-                    errorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
                 }
             }
@@ -97,7 +97,7 @@ namespace HoI4_Modding_Supporter
                     e is IOException ||
                     e is DirectoryNotFoundException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -110,7 +110,7 @@ namespace HoI4_Modding_Supporter
                     string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.CountryTag + "- *.txt");
                     if (modFiles.Length != 0)
                     {
-                        errorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                         return 1;
                     }
                 }
@@ -123,7 +123,7 @@ namespace HoI4_Modding_Supporter
                         e is IOException ||
                         e is DirectoryNotFoundException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -154,7 +154,7 @@ namespace HoI4_Modding_Supporter
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
-                errorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
                 return 1;
             }
             else
@@ -179,7 +179,7 @@ namespace HoI4_Modding_Supporter
                 if (e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -215,7 +215,7 @@ namespace HoI4_Modding_Supporter
                     e is NotSupportedException ||
                     e is SecurityException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -254,7 +254,7 @@ namespace HoI4_Modding_Supporter
                     if (e is ObjectDisposedException ||
                         e is IOException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -276,7 +276,7 @@ namespace HoI4_Modding_Supporter
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -359,7 +359,7 @@ namespace HoI4_Modding_Supporter
                 if (e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -425,7 +425,7 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException ||
                         e is ObjectDisposedException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -458,7 +458,7 @@ namespace HoI4_Modding_Supporter
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -499,7 +499,7 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException ||
                         e is ObjectDisposedException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -528,7 +528,7 @@ namespace HoI4_Modding_Supporter
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -733,7 +733,7 @@ namespace HoI4_Modding_Supporter
                             }
                             else
                             {
-                                errorMessage("宗主国の国家ファイルが見つかりませんでした。");
+                                ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
                                 return 1;
                             }
                         }
@@ -746,7 +746,7 @@ namespace HoI4_Modding_Supporter
                                 e is IOException ||
                                 e is DirectoryNotFoundException)
                             {
-                                errorMessage(e.Message);
+                                ErrorMessage(e.Message);
                                 return 1;
                             }
                         }
@@ -769,7 +769,7 @@ namespace HoI4_Modding_Supporter
                                     e is NotSupportedException ||
                                     e is SecurityException)
                                 {
-                                    errorMessage(e.Message);
+                                    ErrorMessage(e.Message);
                                     return 1;
                                 }
                             }
@@ -783,7 +783,7 @@ namespace HoI4_Modding_Supporter
                                 e is IOException ||
                                 e is DirectoryNotFoundException)
                             {
-                                errorMessage(e.Message);
+                                ErrorMessage(e.Message);
                                 return 1;
                             }
                         }
@@ -805,7 +805,7 @@ namespace HoI4_Modding_Supporter
                                 e is NotSupportedException ||
                                 e is SecurityException)
                             {
-                                errorMessage(e.Message);
+                                ErrorMessage(e.Message);
                                 return 1;
                             }
                         }
@@ -820,7 +820,7 @@ namespace HoI4_Modding_Supporter
                         e is IOException ||
                         e is DirectoryNotFoundException)
                     {
-                        errorMessage(e.Message);
+                        ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -878,7 +878,7 @@ namespace HoI4_Modding_Supporter
                     e is NotSupportedException ||
                     e is SecurityException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -937,7 +937,7 @@ namespace HoI4_Modding_Supporter
                     e is IOException ||
                     e is NotSupportedException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -961,7 +961,7 @@ namespace HoI4_Modding_Supporter
                     e is DirectoryNotFoundException ||
                     e is NotSupportedException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -991,7 +991,7 @@ namespace HoI4_Modding_Supporter
                     e is IOException ||
                     e is NotSupportedException)
                 {
-                    errorMessage(e.Message);
+                    ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -1002,7 +1002,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// エラーメッセージボックスを表示
         /// </summary>
-        public void errorMessage(string message)
+        public void ErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
