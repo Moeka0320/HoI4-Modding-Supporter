@@ -100,6 +100,110 @@ namespace HoI4_Modding_Supporter
             }
         }
 
+        /// <summary>
+        /// 支援中隊リストの自動変更（実装未定）
+        /// </summary>
+        /// <param name="column">列の指定（1-5）</param>
+        //public void supportChange(int column)
+        //{
+        //    int selectedItemIndex;
+
+        //    if (column == 1)
+        //    {
+        //        // 設定中のアイテムインデックスを取得
+        //        selectedItemIndex = comboBox1.SelectedIndex;
+        //        // 設定されたアイテムが被らないようにボックスから削除
+        //        if (selectedItemIndex != 0)
+        //        {
+        //            comboBox2.Items.RemoveAt(selectedItemIndex);
+        //        }
+        //    }
+        //}
+
+        /// <summary>
+        /// エラーメッセージボックスを表示
+        /// </summary>
+        public void errorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// 入力ミスなどを検知
+        /// </summary>
+        /// <returns></returns>
+        public int check()
+        {
+            // 陸軍タブ
+            if (checkBox1.Checked == true)
+            {
+                if (string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [ユニット名]が無効です。");
+                    return 1;
+                }
+
+                if (comboBox1.SelectedItem == null ||
+                    comboBox2.SelectedItem == null ||
+                    comboBox3.SelectedItem == null ||
+                    comboBox4.SelectedItem == null ||
+                    comboBox5.SelectedItem == null)
+                {
+                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [支援中隊]の設定が無効です。支援中隊を設定しない場合、\"None\"を指定してください。");
+                    return 1;
+                }
+
+                if (comboBox6.SelectedItem == null ||
+                    comboBox7.SelectedItem == null ||
+                    comboBox8.SelectedItem == null ||
+                    comboBox9.SelectedItem == null ||
+                    comboBox10.SelectedItem == null ||
+                    comboBox11.SelectedItem == null ||
+                    comboBox12.SelectedItem == null ||
+                    comboBox13.SelectedItem == null ||
+                    comboBox14.SelectedItem == null ||
+                    comboBox15.SelectedItem == null ||
+                    comboBox16.SelectedItem == null ||
+                    comboBox17.SelectedItem == null ||
+                    comboBox18.SelectedItem == null ||
+                    comboBox19.SelectedItem == null ||
+                    comboBox20.SelectedItem == null ||
+                    comboBox21.SelectedItem == null ||
+                    comboBox22.SelectedItem == null ||
+                    comboBox23.SelectedItem == null ||
+                    comboBox24.SelectedItem == null ||
+                    comboBox25.SelectedItem == null ||
+                    comboBox26.SelectedItem == null ||
+                    comboBox27.SelectedItem == null ||
+                    comboBox28.SelectedItem == null ||
+                    comboBox29.SelectedItem == null ||
+                    comboBox30.SelectedItem == null)
+                {
+                    errorMessage("[陸軍] - [師団テンプレートの新規作成] - [戦闘大隊]の設定が無効です。戦闘大隊を設定しない場合、\"None\"を指定してください。");
+                    return 1;
+                }
+            }
+
+            // 海軍タブ
+            if (checkBox2.Checked == true)
+            {
+
+            }
+
+            // 空軍タブ
+            if (checkBox3.Checked == true)
+            {
+                if (comboBox31.SelectedItem == null)
+                {
+                    errorMessage("[空軍] - [配置するユニット]が指定されていません。");
+                    return 1;
+                }
+            }
+
+            MessageBox.Show("入力ミスのチェックが完了しました。");
+            return 0;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -118,6 +222,19 @@ namespace HoI4_Modding_Supporter
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             changeCheckBox(checkBox3.Checked, 2);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int cResult = check();
+            if (cResult == 1)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }
