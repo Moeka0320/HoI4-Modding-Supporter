@@ -624,6 +624,7 @@
             this.button14.TabStop = false;
             this.button14.Text = "ユニットの設定";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label64
