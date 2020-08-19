@@ -204,6 +204,14 @@ namespace HoI4_Modding_Supporter
             return 0;
         }
 
+        /// <summary>
+        /// データの変数化処理
+        /// </summary>
+        public void DataAssignment()
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
