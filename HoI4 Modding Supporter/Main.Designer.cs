@@ -203,6 +203,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -253,12 +254,13 @@
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2,
             this.menuItem6});
             this.menuItem1.Text = "ファイル(&F)";
             // 
             // menuItem6
             // 
-            this.menuItem6.Index = 0;
+            this.menuItem6.Index = 1;
             this.menuItem6.Text = "終了(&E)";
             this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
             // 
@@ -2105,6 +2107,12 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            this.menuItem2.Text = "再起動(&R)";
+            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2354,6 +2362,7 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.TextBox textBox39;
         private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.MenuItem menuItem2;
     }
 }
 
