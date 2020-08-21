@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
@@ -204,6 +203,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -257,12 +257,6 @@
             this.menuItem2,
             this.menuItem6});
             this.menuItem1.Text = "ファイル(&F)";
-            // 
-            // menuItem2
-            // 
-            this.menuItem2.Index = 0;
-            this.menuItem2.Text = "再起動(&R)";
-            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
             // 
             // menuItem6
             // 
@@ -2112,6 +2106,12 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            this.menuItem2.Text = "再起動(&R)";
+            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
             // 
             // Main
             // 
