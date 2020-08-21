@@ -923,7 +923,17 @@ namespace HoI4_Modding_Supporter
             if (variable.CustomLeaderEnabled == true)
             {
                 int nlgResult = NationalLeaderGenerate(historyCountrisFilePath, gfxLeadersDir, gfxLeadersTagDir);
-                if(nlgResult == 1)
+                if (nlgResult == 1)
+                {
+                    return 1;
+                }
+            }
+
+            // 陣営の作成が有効化されている場合
+            if (variable.FactionCreateEnabled == true)
+            {
+                int fsResult = FactionSetting(historyCountrisFilePath, localisationReplaceDir);
+                if (fsResult == 1)
                 {
                     return 1;
                 }
@@ -1005,6 +1015,106 @@ namespace HoI4_Modding_Supporter
             {
                 return 1;
             }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 陣営作成の設定
+        /// </summary>
+        /// <returns></returns>
+        public int FactionSetting(string HistoryCountriesFilePath, string LocalisationReplaceDir)
+        {
+            Variable variable = new Variable();
+
+            // 国家ファイル
+            try
+            {
+                File.AppendAllText(HistoryCountriesFilePath, "\ncreate_faction = " + variable.FactionInternalName + "\nadd_to_faction = " + variable.CountryTag);
+
+                if (variable.FactionParticipatingCountries != null)
+                {
+                    for ( int cnt = 0; cnt <= variable.FactionParticipatingCountries.Length; cnt++ )
+                    {
+                        File.AppendAllText(HistoryCountriesFilePath, "\nadd_to_faction = " + variable.FactionParticipatingCountries[cnt]);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                if (e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is NotSupportedException ||
+                    e is SecurityException)
+                {
+                    ErrorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            // localisationファイル
+            string localisationReplaceFactionsFilePath = LocalisationReplaceDir + @"\"+ variable.ModName +"_factions_l_english.yml";
+
+            if (File.Exists(localisationReplaceFactionsFilePath) == false)
+            {
+                int fcResult = FileCreate(localisationReplaceFactionsFilePath);
+                if (fcResult == 1)
+                {
+                    return 1;
+                }
+
+                try
+                {
+                    StreamWriter sw = new StreamWriter(localisationReplaceFactionsFilePath, false, Encoding.UTF8);
+                    sw.WriteLine("l_english:");
+                    sw.WriteLine("");
+
+                    sw.WriteLine(" " + variable.FactionInternalName + ":0 \"" + variable.FactionName + "\"");
+                    sw.Close();
+                }
+                catch (Exception e)
+                {
+                    if (e is UnauthorizedAccessException ||
+                        e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is PathTooLongException ||
+                        e is SecurityException ||
+                        e is ObjectDisposedException)
+                    {
+                        ErrorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    File.AppendAllText(localisationReplaceFactionsFilePath, "\n " + variable.FactionInternalName + ":0 \"" + variable.FactionName + "\"");
+                }
+                catch (Exception e)
+                {
+                    if (e is ArgumentException ||
+                        e is ArgumentNullException ||
+                        e is PathTooLongException ||
+                        e is DirectoryNotFoundException ||
+                        e is IOException ||
+                        e is UnauthorizedAccessException ||
+                        e is NotSupportedException ||
+                        e is SecurityException)
+                    {
+                        ErrorMessage(e.Message);
+                        return 1;
+                    }
+                }
+            }
+
 
             return 0;
         }

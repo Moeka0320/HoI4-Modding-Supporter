@@ -12,16 +12,6 @@ namespace HoI4_Modding_Supporter
             // 初期化
             AllClear();
 
-            // 従属国オプション
-            if (checkBox2.Checked == false)
-            {
-                textBox36.Enabled = false;
-            }
-            else if (checkBox2.Checked == true)
-            {
-                textBox36.Enabled = true;
-            }
-
             // 配色
             ColorChange();
             // 初期政党支持率の合計
@@ -34,6 +24,9 @@ namespace HoI4_Modding_Supporter
 
             // 無効設定の反映
             DisabledReflect();
+
+            Variable variable = new Variable();
+            variable.FactionParticipatingCountries = null;
         }
 
         /// <summary>
@@ -96,6 +89,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown17.Value = 1;
             checkBox1.Checked = false;
             checkBox2.Checked = false;
+            checkBox3.Checked = false;
             comboBox1.SelectedItem = null;
             comboBox2.SelectedItem = null;
         }
@@ -677,6 +671,9 @@ namespace HoI4_Modding_Supporter
 
             // 選挙がないかどうか（true -> なし）
             variable.NoElection = checkBox1.Checked;
+
+            // 陣営作成の有効化
+            variable.FactionCreateEnabled = checkBox3.Checked;
         }
 
         /// <summary>
@@ -814,10 +811,6 @@ namespace HoI4_Modding_Supporter
             }
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
             PartiesSupportTotal();
@@ -941,6 +934,24 @@ namespace HoI4_Modding_Supporter
         private void menuItem2_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == false)
+            {
+                button19.Enabled = false;
+            }
+            else
+            {
+                button19.Enabled = true;
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            FactionSettings fs = new FactionSettings();
+            fs.ShowDialog();
         }
     }
 }
