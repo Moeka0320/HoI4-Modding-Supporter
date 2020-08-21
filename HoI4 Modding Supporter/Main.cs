@@ -26,6 +26,14 @@ namespace HoI4_Modding_Supporter
             ColorChange();
             // 初期政党支持率の合計
             PartiesSupportTotal();
+
+            // イデオロギー
+            string[] items = { "中道主義", "民主主義", "ファシズム", "共産主義" };
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(items);
+
+            // 無効設定の反映
+            DisabledReflect();
         }
 
         /// <summary>
@@ -249,139 +257,166 @@ namespace HoI4_Modding_Supporter
             }
 
             // 中道主義
-            // 表示名
-            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            if (Properties.Settings.Default.neutralityDisabled == false)
             {
-                ErrorMessage("[国名] - [中道主義] - [表示名]が無効です。");
-                return 1;
-            }
-            // イベント表示名
-            if (string.IsNullOrWhiteSpace(textBox4.Text))
-            {
-                ErrorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
-                return 1;
-            }
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox5.Text))
-            {
-                ErrorMessage("[国名] - [中道主義] - [通称名]が無効です。");
-                return 1;
+                // 表示名
+                if (string.IsNullOrWhiteSpace(textBox3.Text))
+                {
+                    ErrorMessage("[国名] - [中道主義] - [表示名]が無効です。");
+                    return 1;
+                }
+                // イベント表示名
+                if (string.IsNullOrWhiteSpace(textBox4.Text))
+                {
+                    ErrorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
+                    return 1;
+                }
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox5.Text))
+                {
+                    ErrorMessage("[国名] - [中道主義] - [通称名]が無効です。");
+                    return 1;
+                }
             }
 
             // 民主主義
-            // 表示名
-            if (string.IsNullOrWhiteSpace(textBox8.Text))
+            if (Properties.Settings.Default.democraticDisabled == false)
             {
-                ErrorMessage("[国名] - [民主主義] - [表示名]が無効です。");
-                return 1;
+                // 表示名
+                if (string.IsNullOrWhiteSpace(textBox8.Text))
+                {
+                    ErrorMessage("[国名] - [民主主義] - [表示名]が無効です。");
+                    return 1;
+                }
+                // イベント表示名
+                if (string.IsNullOrWhiteSpace(textBox7.Text))
+                {
+                    ErrorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
+                    return 1;
+                }
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox6.Text))
+                {
+                    ErrorMessage("[国名] - [民主主義] - [通称名]が無効です。");
+                    return 1;
+                }
             }
-            // イベント表示名
-            if (string.IsNullOrWhiteSpace(textBox7.Text))
+            
+            if (Properties.Settings.Default.fascismDisabled == false)
             {
-                ErrorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
-                return 1;
-            }
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox6.Text))
-            {
-                ErrorMessage("[国名] - [民主主義] - [通称名]が無効です。");
-                return 1;
+                // ファシズム
+                // 表示名
+                if (string.IsNullOrWhiteSpace(textBox11.Text))
+                {
+                    ErrorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
+                    return 1;
+                }
+                // イベント表示名
+                if (string.IsNullOrWhiteSpace(textBox10.Text))
+                {
+                    ErrorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
+                    return 1;
+                }
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox9.Text))
+                {
+                    ErrorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
+                    return 1;
+                }
             }
 
-            // ファシズム
-            // 表示名
-            if (string.IsNullOrWhiteSpace(textBox11.Text))
+            if (Properties.Settings.Default.communismDisabled == false)
             {
-                ErrorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
-                return 1;
-            }
-            // イベント表示名
-            if (string.IsNullOrWhiteSpace(textBox10.Text))
-            {
-                ErrorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
-                return 1;
-            }
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox9.Text))
-            {
-                ErrorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
-                return 1;
-            }
-
-            // 共産主義
-            // 表示名
-            if (string.IsNullOrWhiteSpace(textBox14.Text))
-            {
-                ErrorMessage("[国名] - [共産主義] - [表示名]が無効です。");
-                return 1;
-            }
-            // イベント表示名
-            if (string.IsNullOrWhiteSpace(textBox13.Text))
-            {
-                ErrorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
-                return 1;
-            }
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox12.Text))
-            {
-                ErrorMessage("[国名] - [共産主義] - [通称名]が無効です。");
-                return 1;
+                // 共産主義
+                // 表示名
+                if (string.IsNullOrWhiteSpace(textBox14.Text))
+                {
+                    ErrorMessage("[国名] - [共産主義] - [表示名]が無効です。");
+                    return 1;
+                }
+                // イベント表示名
+                if (string.IsNullOrWhiteSpace(textBox13.Text))
+                {
+                    ErrorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
+                    return 1;
+                }
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox12.Text))
+                {
+                    ErrorMessage("[国名] - [共産主義] - [通称名]が無効です。");
+                    return 1;
+                }
             }
 
             // 国旗はファイルパスが指定されてなくてもOK
 
             // 政党名
             // 中道主義政党
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox30.Text))
+            if (Properties.Settings.Default.neutralityDisabled == false)
             {
-                ErrorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
-                return 1;
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox30.Text))
+                {
+                    ErrorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
+                    return 1;
+                }
+                // 正式名
+                if (string.IsNullOrWhiteSpace(textBox29.Text))
+                {
+                    ErrorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
+                    return 1;
+                }
             }
-            // 正式名
-            if (string.IsNullOrWhiteSpace(textBox29.Text))
+
+            if (Properties.Settings.Default.democraticDisabled == false)
             {
-                ErrorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
-                return 1;
+                // 民主主義政党
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox35.Text))
+                {
+                    ErrorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
+                    return 1;
+                }
+                // 正式名
+                if (string.IsNullOrWhiteSpace(textBox34.Text))
+                {
+                    ErrorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
+                    return 1;
+                }
             }
-            // 民主主義政党
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox35.Text))
+
+            if (Properties.Settings.Default.fascismDisabled == false)
             {
-                ErrorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
-                return 1;
+                // ファシズム政党
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox31.Text))
+                {
+                    ErrorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
+                    return 1;
+                }
+                // 正式名
+                if (string.IsNullOrWhiteSpace(textBox28.Text))
+                {
+                    ErrorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
+                    return 1;
+                }
             }
-            // 正式名
-            if (string.IsNullOrWhiteSpace(textBox34.Text))
+
+            if (Properties.Settings.Default.communismDisabled == false)
             {
-                ErrorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
-                return 1;
-            }
-            // ファシズム政党
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox31.Text))
-            {
-                ErrorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
-                return 1;
-            }
-            // 正式名
-            if (string.IsNullOrWhiteSpace(textBox28.Text))
-            {
-                ErrorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
-                return 1;
-            }
-            // 共産主義政党
-            // 通称名
-            if (string.IsNullOrWhiteSpace(textBox33.Text))
-            {
-                ErrorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
-                return 1;
-            }
-            // 正式名
-            if (string.IsNullOrWhiteSpace(textBox32.Text))
-            {
-                ErrorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
-                return 1;
+                // 共産主義政党
+                // 通称名
+                if (string.IsNullOrWhiteSpace(textBox33.Text))
+                {
+                    ErrorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
+                    return 1;
+                }
+                // 正式名
+                if (string.IsNullOrWhiteSpace(textBox32.Text))
+                {
+                    ErrorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
+                    return 1;
+                }
             }
 
             // 各種設定
@@ -602,25 +637,25 @@ namespace HoI4_Modding_Supporter
 
             // 初期与党
             // イデオロギー
-            if (comboBox2.SelectedIndex == 0)
+            if (comboBox2.SelectedItem.ToString() == "中道主義")
             {
                 // 中道主義
                 variable.StartIdeology = "neutrality";
 
             }
-            else if (comboBox2.SelectedIndex == 1)
+            else if (comboBox2.SelectedItem.ToString() == "民主主義")
             {
                 // 民主主義
                 variable.StartIdeology = "democratic";
 
             }
-            else if (comboBox2.SelectedIndex == 2)
+            else if (comboBox2.SelectedItem.ToString() == "ファシズム")
             {
                 // ファシズム
                 variable.StartIdeology = "fascism";
 
             }
-            else if (comboBox2.SelectedIndex == 3)
+            else if (comboBox2.SelectedItem.ToString() == "共産主義")
             {
                 // 共産主義
                 variable.StartIdeology = "communism";
@@ -642,6 +677,90 @@ namespace HoI4_Modding_Supporter
 
             // 選挙がないかどうか（true -> なし）
             variable.NoElection = checkBox1.Checked;
+        }
+
+        /// <summary>
+        /// 無効設定の反映
+        /// </summary>
+        public void DisabledReflect()
+        {
+            bool neutralityEnabled = !Properties.Settings.Default.neutralityDisabled;
+            bool democraticEnabled = !Properties.Settings.Default.democraticDisabled;
+            bool fascismEnabled = !Properties.Settings.Default.fascismDisabled;
+            bool communismEnabled = !Properties.Settings.Default.communismDisabled;
+
+            textBox3.Enabled = neutralityEnabled;
+            textBox4.Enabled = neutralityEnabled;
+            textBox5.Enabled = neutralityEnabled;
+            textBox17.Enabled = neutralityEnabled;
+            textBox16.Enabled = neutralityEnabled;
+            textBox15.Enabled = neutralityEnabled;
+            button1.Enabled = neutralityEnabled;
+            button2.Enabled = neutralityEnabled;
+            button3.Enabled = neutralityEnabled;
+            textBox30.Enabled = neutralityEnabled;
+            textBox29.Enabled = neutralityEnabled;
+            numericUpDown12.Enabled = neutralityEnabled;
+
+            if (neutralityEnabled == false)
+            {
+                comboBox2.Items.Remove("中道主義");
+            }
+
+            textBox8.Enabled = democraticEnabled;
+            textBox7.Enabled = democraticEnabled;
+            textBox6.Enabled = democraticEnabled;
+            textBox23.Enabled = democraticEnabled;
+            textBox22.Enabled = democraticEnabled;
+            textBox21.Enabled = democraticEnabled;
+            button9.Enabled = democraticEnabled;
+            button8.Enabled = democraticEnabled;
+            button7.Enabled = democraticEnabled;
+            textBox35.Enabled = democraticEnabled;
+            textBox34.Enabled = democraticEnabled;
+            numericUpDown11.Enabled = democraticEnabled;
+
+            if (democraticEnabled == false)
+            {
+                comboBox2.Items.Remove("民主主義");
+            }
+
+            textBox11.Enabled = fascismEnabled;
+            textBox10.Enabled = fascismEnabled;
+            textBox9.Enabled = fascismEnabled;
+            textBox20.Enabled = fascismEnabled;
+            textBox19.Enabled = fascismEnabled;
+            textBox18.Enabled = fascismEnabled;
+            button6.Enabled = fascismEnabled;
+            button5.Enabled = fascismEnabled;
+            button4.Enabled = fascismEnabled;
+            textBox31.Enabled = fascismEnabled;
+            textBox28.Enabled = fascismEnabled;
+            numericUpDown10.Enabled = fascismEnabled;
+
+            if (fascismEnabled == false)
+            {
+                comboBox2.Items.Remove("ファシズム");
+            }
+
+            textBox14.Enabled = communismEnabled;
+            textBox13.Enabled = communismEnabled;
+            textBox12.Enabled = communismEnabled;
+            textBox26.Enabled = communismEnabled;
+            textBox25.Enabled = communismEnabled;
+            textBox24.Enabled = communismEnabled;
+            button12.Enabled = communismEnabled;
+            button11.Enabled = communismEnabled;
+            button10.Enabled = communismEnabled;
+            textBox33.Enabled = communismEnabled;
+            textBox32.Enabled = communismEnabled;
+            numericUpDown9.Enabled = communismEnabled;
+
+            if (communismEnabled == false)
+            {
+                comboBox2.Items.Remove("共産主義");
+            }
+
         }
 
         /// <summary>

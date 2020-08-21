@@ -174,11 +174,6 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "中道主義",
-            "民主主義",
-            "ファシズム",
-            "共産主義"});
             this.comboBox1.Location = new System.Drawing.Point(84, 181);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(128, 20);

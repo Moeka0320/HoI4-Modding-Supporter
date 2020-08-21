@@ -335,6 +335,7 @@ namespace HoI4_Modding_Supporter
                 sw.WriteLine("\truling_party = " + variable.StartIdeology);
                 sw.WriteLine("\tlast_election = " + variable.LastElection);
                 sw.WriteLine("\telection_frequency = " + variable.ElectionFrequency);
+
                 if (variable.NoElection == true)
                 {
                     sw.WriteLine("\telections_allowed = no");
@@ -343,15 +344,31 @@ namespace HoI4_Modding_Supporter
                 {
                     sw.WriteLine("\telections_allowed = yes");
                 }
+
                 sw.WriteLine("}");
                 // 政党支持率
                 sw.WriteLine("set_popularities = {");
-                sw.WriteLine("\tdemocratic = " + variable.D_Popularity);
-                sw.WriteLine("\tfascism = " + variable.F_Popularity);
-                sw.WriteLine("\tcommunism = " + variable.C_Popularity);
-                sw.WriteLine("\tneutrality = " + variable.N_Popularity);
+
+                if (Properties.Settings.Default.democraticDisabled == false)
+                {
+                    sw.WriteLine("\tdemocratic = " + variable.D_Popularity);
+                }
+
+                if (Properties.Settings.Default.fascismDisabled == false)
+                {
+                    sw.WriteLine("\tfascism = " + variable.F_Popularity);
+                }
+
+                if (Properties.Settings.Default.communismDisabled == false)
+                {
+                    sw.WriteLine("\tcommunism = " + variable.C_Popularity);
+                }
+                
+                if (Properties.Settings.Default.neutralityDisabled == false)
+                {
+                    sw.WriteLine("\tneutrality = " + variable.N_Popularity);
+                }
                 sw.WriteLine("}");
-                // 国家指導者の書き込みは現時点では未実装
                 sw.Close();
             }
             catch (Exception e)
@@ -400,18 +417,34 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationReplaceCountriesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    sw.WriteLine(" " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_democratic_DEF:0 \"" + variable.D_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_fascism_DEF:0 \"" + variable.F_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_communism_DEF:0 \"" + variable.C_EventViewName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"");
+
+                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.democraticDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_democratic_DEF:0 \"" + variable.D_EventViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.fascismDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_fascism_DEF:0 \"" + variable.F_EventViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"");
+                    }
+                    
+                    if (Properties.Settings.Default.communismDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_communism_DEF:0 \"" + variable.C_EventViewName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"");
+                    }
                     sw.Close();
                 }
                 catch (Exception e)
@@ -434,18 +467,33 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"\n" +
+                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_neutrality:0 \"" + variable.N_ViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_neutrality_DEF:0 \"" + variable.N_EventViewName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_neutrality_ADJ:0 \"" + variable.N_AliasName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.democraticDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_democratic:0 \"" + variable.D_ViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_democratic_DEF:0 \"" + variable.D_EventViewName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_democratic_ADJ:0 \"" + variable.D_AliasName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.fascismDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_fascism:0 \"" + variable.F_ViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_fascism_DEF:0 \"" + variable.F_EventViewName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"\n" +
+                                                                      " " + variable.CountryTag + "_fascism_ADJ:0 \"" + variable.F_AliasName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.communismDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplaceCountriesFilePath, "\n " + variable.CountryTag + "_communism:0 \"" + variable.C_ViewName + "\"\n" +
                                                                       " " + variable.CountryTag + "_communism_DEF:0 \"" + variable.C_EventViewName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"");
+                                                                      " " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"\n");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -478,14 +526,29 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationReplacePartiesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"");
-                    sw.WriteLine(" " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
+                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.democraticDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.fascismDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.communismDisabled == false)
+                    {
+                        sw.WriteLine(" " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"");
+                        sw.WriteLine(" " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
+                    }
                     sw.Close();
                 }
                 catch (Exception e)
@@ -508,14 +571,25 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"\n" +
-                                                                      " " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
+                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.democraticDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.fascismDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
+                    }
+
+                    if (Properties.Settings.Default.communismDisabled == false)
+                    {
+                        File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"\n");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -576,140 +650,159 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
-            // ../gfx/flagsディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_Flags) == false)
+            // 国旗ファイルをコピー
+            if (Properties.Settings.Default.neutralityDisabled == false)
             {
-                if (variable.N_FlagBig != "")
+                if (File.Exists(n_Flags) == false)
                 {
-                    int fcResult = FileCopy(variable.N_FlagBig, n_Flags);
-                    if (fcResult == 1)
+                    if (variable.N_FlagBig != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.N_FlagBig, n_Flags);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(d_Flags) == false)
-            {
-                if (variable.D_FlagBig != "")
+
+                if (File.Exists(n_FlagsMedium) == false)
                 {
-                    int fcResult = FileCopy(variable.D_FlagBig, d_Flags);
-                    if (fcResult == 1)
+                    if (variable.N_FlagMed != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.N_FlagMed, n_FlagsMedium);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(f_Flags) == false)
-            {
-                if (variable.F_FlagBig != "")
+
+                if (File.Exists(n_FlagsSmall) == false)
                 {
-                    int fcResult = FileCopy(variable.F_FlagBig, f_Flags);
-                    if (fcResult == 1)
+                    if (variable.N_FlagSma != "")
                     {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(c_Flags) == false)
-            {
-                if (variable.C_FlagBig != "")
-                {
-                    int fcResult = FileCopy(variable.C_FlagBig, c_Flags);
-                    if (fcResult == 1)
-                    {
-                        return 1;
+                        int fcResult = FileCopy(variable.N_FlagSma, n_FlagsSmall);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
 
-            // ../gfx/flags/mediumディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_FlagsMedium) == false)
+            if (Properties.Settings.Default.democraticDisabled == false)
             {
-                if (variable.N_FlagMed != "")
+                if (File.Exists(d_Flags) == false)
                 {
-                    int fcResult = FileCopy(variable.N_FlagMed, n_FlagsMedium);
-                    if (fcResult == 1)
+                    if (variable.D_FlagBig != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.D_FlagBig, d_Flags);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(d_FlagsMedium) == false)
-            {
-                if (variable.D_FlagMed != "")
+
+                if (File.Exists(d_FlagsMedium) == false)
                 {
-                    int fcResult = FileCopy(variable.D_FlagMed, d_FlagsMedium);
-                    if (fcResult == 1)
+                    if (variable.D_FlagMed != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.D_FlagMed, d_FlagsMedium);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(f_FlagsMedium) == false)
-            {
-                if (variable.F_FlagMed != "")
+
+                if (File.Exists(d_FlagsSmall) == false)
                 {
-                    int fcResult = FileCopy(variable.F_FlagMed, f_FlagsMedium);
-                    if (fcResult == 1)
+                    if (variable.D_FlagSma != "")
                     {
-                        return 1;
-                    }
-                }
-            }
-            if (File.Exists(c_FlagsMedium) == false)
-            {
-                if (variable.C_FlagMed != "")
-                {
-                    int fcResult = FileCopy(variable.C_FlagMed, c_FlagsMedium);
-                    if (fcResult == 1)
-                    {
-                        return 1;
+                        int fcResult = FileCopy(variable.D_FlagSma, d_FlagsSmall);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
 
-            // ../gfx/flags/smallディレクトリ内に国旗ファイルをコピー
-            if (File.Exists(n_FlagsSmall) == false)
+            if (Properties.Settings.Default.fascismDisabled == false)
             {
-                if (variable.N_FlagSma != "")
+                if (File.Exists(f_Flags) == false)
                 {
-                    int fcResult = FileCopy(variable.N_FlagSma, n_FlagsSmall);
-                    if (fcResult == 1)
+                    if (variable.F_FlagBig != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.F_FlagBig, f_Flags);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
+                    }
+                }
+
+                if (File.Exists(f_FlagsMedium) == false)
+                {
+                    if (variable.F_FlagMed != "")
+                    {
+                        int fcResult = FileCopy(variable.F_FlagMed, f_FlagsMedium);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
+                    }
+                }
+
+                if (File.Exists(f_FlagsSmall) == false)
+                {
+                    if (variable.F_FlagSma != "")
+                    {
+                        int fcResult = FileCopy(variable.F_FlagSma, f_FlagsSmall);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            if (File.Exists(d_FlagsSmall) == false)
+
+            if (Properties.Settings.Default.communismDisabled == false)
             {
-                if (variable.D_FlagSma != "")
+                if (File.Exists(c_Flags) == false)
                 {
-                    int fcResult = FileCopy(variable.D_FlagSma, d_FlagsSmall);
-                    if (fcResult == 1)
+                    if (variable.C_FlagBig != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.C_FlagBig, c_Flags);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(f_FlagsSmall) == false)
-            {
-                if (variable.F_FlagSma != "")
+
+                if (File.Exists(c_FlagsMedium) == false)
                 {
-                    int fcResult = FileCopy(variable.F_FlagSma, f_FlagsSmall);
-                    if (fcResult == 1)
+                    if (variable.C_FlagMed != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.C_FlagMed, c_FlagsMedium);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
-            }
-            if (File.Exists(c_FlagsSmall) == false)
-            {
-                if (variable.C_FlagSma != "")
+
+                if (File.Exists(c_FlagsSmall) == false)
                 {
-                    int fcResult = FileCopy(variable.C_FlagSma, c_FlagsSmall);
-                    if (fcResult == 1)
+                    if (variable.C_FlagSma != "")
                     {
-                        return 1;
+                        int fcResult = FileCopy(variable.C_FlagSma, c_FlagsSmall);
+                        if (fcResult == 1)
+                        {
+                            return 1;
+                        }
                     }
                 }
             }

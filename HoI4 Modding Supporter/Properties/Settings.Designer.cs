@@ -58,5 +58,53 @@ namespace HoI4_Modding_Supporter.Properties {
                 this["afterOpenFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool neutralityDisabled {
+            get {
+                return ((bool)(this["neutralityDisabled"]));
+            }
+            set {
+                this["neutralityDisabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool democraticDisabled {
+            get {
+                return ((bool)(this["democraticDisabled"]));
+            }
+            set {
+                this["democraticDisabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool fascismDisabled {
+            get {
+                return ((bool)(this["fascismDisabled"]));
+            }
+            set {
+                this["fascismDisabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool communismDisabled {
+            get {
+                return ((bool)(this["communismDisabled"]));
+            }
+            set {
+                this["communismDisabled"] = value;
+            }
+        }
     }
 }
