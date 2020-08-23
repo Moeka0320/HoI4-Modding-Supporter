@@ -59,6 +59,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(302, 19);
             this.textBox2.TabIndex = 5;
+            this.textBox2.TabStop = false;
             // 
             // button4
             // 
@@ -66,6 +67,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 4;
+            this.button4.TabStop = false;
             this.button4.Text = "参照";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -85,6 +87,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
+            this.button3.TabStop = false;
             this.button3.Text = "参照";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -105,6 +108,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(302, 19);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
             // 
             // button1
             // 
@@ -112,6 +116,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.Text = "キャンセル";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -122,6 +127,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -133,6 +139,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(157, 16);
             this.checkBox1.TabIndex = 6;
+            this.checkBox1.TabStop = false;
             this.checkBox1.Text = "生成後Modディレクトリを開く";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -205,6 +212,7 @@
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(133, 16);
             this.checkBox2.TabIndex = 0;
+            this.checkBox2.TabStop = false;
             this.checkBox2.Text = "中道主義を無効にする";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
@@ -215,6 +223,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(133, 16);
             this.checkBox3.TabIndex = 1;
+            this.checkBox3.TabStop = false;
             this.checkBox3.Text = "民主主義を無効にする";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
@@ -225,6 +234,7 @@
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(133, 16);
             this.checkBox5.TabIndex = 3;
+            this.checkBox5.TabStop = false;
             this.checkBox5.Text = "共産主義を無効にする";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
@@ -235,6 +245,7 @@
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(130, 16);
             this.checkBox4.TabIndex = 2;
+            this.checkBox4.TabStop = false;
             this.checkBox4.Text = "ファシズムを無効にする";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
