@@ -15,6 +15,19 @@ namespace HoI4_Modding_Supporter
         public FactionSettings()
         {
             InitializeComponent();
+
+            Variable variable = new Variable();
+
+            textBox1.Text = variable.FactionInternalName;
+            textBox2.Text = variable.FactionName;
+
+            if (variable.FactionParticipatingCountries != null)
+            {
+                for (int cnt = 0; cnt < variable.FactionParticipatingCountries.Length; cnt++)
+                {
+                    listBox1.Items.Add(variable.FactionParticipatingCountries[cnt]);
+                }
+            }
         }
 
         /// <summary>
