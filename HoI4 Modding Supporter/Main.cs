@@ -24,9 +24,6 @@ namespace HoI4_Modding_Supporter
 
             // 無効設定の反映
             DisabledReflect();
-
-            Variable variable = new Variable();
-            variable.FactionParticipatingCountries = null;
         }
 
         /// <summary>

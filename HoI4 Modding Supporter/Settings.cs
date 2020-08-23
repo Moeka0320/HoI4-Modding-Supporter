@@ -45,7 +45,8 @@ namespace HoI4_Modding_Supporter
 
             if (checkBox2.Checked == true && checkBox3.Checked == true && checkBox4.Checked == true && checkBox5.Checked == true)
             {
-                ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
+                //ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
+                ErrorMessage("デフォルトイデオロギーをすべて無効化することはできません。");
                 return;
             }
             else

@@ -1115,6 +1115,9 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
+            // 配列の初期化
+            variable.FactionParticipatingCountries = null;
+
 
             return 0;
         }

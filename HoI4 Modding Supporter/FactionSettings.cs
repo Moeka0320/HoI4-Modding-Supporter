@@ -45,7 +45,7 @@ namespace HoI4_Modding_Supporter
         {
             Variable variable = new Variable();
 
-            variable.FactionInternalName = textBox1.Text;
+            variable.FactionInternalName = textBox1.Text.Replace(" ", "_");
             variable.FactionName = textBox2.Text;
 
             if (listBox1.Items.Count != 0)
