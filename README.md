@@ -2,12 +2,21 @@
 hoi4のmod製作を支援するソフトです。<br>
 現在、新規国家の生成のみに対応しています。
 
-## スクリーンショット（開発中）
+## スクリーンショット（v1.0以前のものです）
 ![test1](https://user-images.githubusercontent.com/49384910/87874462-fb1ec880-ca04-11ea-85fa-f50571e9a8ef.png)
 ![test2](https://user-images.githubusercontent.com/49384910/87874467-0ffb5c00-ca05-11ea-81f6-ff364d0445b0.png)
 ![test3](https://user-images.githubusercontent.com/49384910/87874475-23a6c280-ca05-11ea-863b-95ae3b0a5ea7.png)
 ## ダウンロード
 * .NET Framework 4.7.2以上が必要です
+
+### v1.3
+* 特定のイデオロギー設定を無効化する機能を実装
+* 陣営作成設定を実装
+* 再起動メニューを追加
+* その他バグ修正など
+
+[HoI4 Modding Supporter v1.3 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.3/HoI4-Modding-Supporter.zip)
+
 ### v1.2
 * 生成時の不要な処理を削除
 * 生成後のModディレクトリ表示の有無を選択可能に
@@ -19,9 +28,11 @@ hoi4のmod製作を支援するソフトです。<br>
 * 国家指導者の設定に対応
 
 [HoI4 Modding Supporter v1.1 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.1/HoI4-Modding-Supporter.zip)
+
 ### v1.0
 [HoI4 Modding Supporter v1.0 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.0/HoI4_Modding_Supporter.zip)
+
 ## 注意
-* 生成時にエラーが発生したとき、modフォルダー内を全部削除してから再生成を行う必要がある場合があります<br>
+* 生成時にエラーが発生したとき、modフォルダー内を全部削除してから再生成を行う必要がある場合があります
 * modフォルダーのバックアップをしっかり取った上で生成を行ってください
 * stateファイルへの記述は手動で行う必要があります

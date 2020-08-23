@@ -481,5 +481,33 @@
             set { willNotAppear = value; }
             get { return willNotAppear; }
         }
+
+        private static bool factionCreateEnabled;
+        public bool FactionCreateEnabled
+        { 
+            set { factionCreateEnabled = value; }
+            get { return factionCreateEnabled; }
+        }
+
+        private static string factionInternalName;
+        public string FactionInternalName
+        {
+            set { factionInternalName = value; }
+            get { return factionInternalName; }
+        }
+
+        private static string factionName;
+        public string FactionName
+        {
+            set { factionName = value; }
+            get { return factionName; }
+        }
+
+        private static string[] factionParticipatingCountries;
+        public string[] FactionParticipatingCountries
+        {
+            set { factionParticipatingCountries = value; }
+            get { return factionParticipatingCountries; }
+        }
     }
 }

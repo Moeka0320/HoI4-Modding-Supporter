@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
@@ -62,6 +63,8 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -253,12 +256,19 @@
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2,
             this.menuItem6});
             this.menuItem1.Text = "ファイル(&F)";
             // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            this.menuItem2.Text = "再起動(&R)";
+            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
+            // 
             // menuItem6
             // 
-            this.menuItem6.Index = 0;
+            this.menuItem6.Index = 1;
             this.menuItem6.Text = "終了(&E)";
             this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
             // 
@@ -539,6 +549,8 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.button19);
+            this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.button18);
             this.groupBox12.Controls.Add(this.button17);
             this.groupBox12.Controls.Add(this.button16);
@@ -570,6 +582,28 @@
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
+            // 
+            // button19
+            // 
+            this.button19.Enabled = false;
+            this.button19.Location = new System.Drawing.Point(99, 247);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(59, 23);
+            this.button19.TabIndex = 22;
+            this.button19.Text = "設定";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(8, 251);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(81, 16);
+            this.checkBox3.TabIndex = 21;
+            this.checkBox3.Text = "陣営を作成";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // button18
             // 
@@ -607,6 +641,7 @@
             // textBox36
             // 
             this.textBox36.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox36.Enabled = false;
             this.textBox36.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox36.Location = new System.Drawing.Point(118, 222);
             this.textBox36.MaxLength = 3;
@@ -624,6 +659,7 @@
             this.button14.TabStop = false;
             this.button14.Text = "ユニットの設定";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label64
@@ -856,11 +892,6 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "中道主義",
-            "民主主義",
-            "ファシズム",
-            "共産主義"});
             this.comboBox2.Location = new System.Drawing.Point(80, 18);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
@@ -2358,6 +2389,9 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.TextBox textBox39;
         private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.MenuItem menuItem2;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
 
