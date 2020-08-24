@@ -482,6 +482,8 @@
             get { return willNotAppear; }
         }
 
+        // FactionSettings
+
         private static bool factionCreateEnabled;
         public bool FactionCreateEnabled
         { 

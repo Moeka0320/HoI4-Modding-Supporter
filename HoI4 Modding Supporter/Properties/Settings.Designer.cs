@@ -106,5 +106,39 @@ namespace HoI4_Modding_Supporter.Properties {
                 this["communismDisabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool customIdeologiesEnabled {
+            get {
+                return ((bool)(this["customIdeologiesEnabled"]));
+            }
+            set {
+                this["customIdeologiesEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection customIdeologiesInternalName {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["customIdeologiesInternalName"]));
+            }
+            set {
+                this["customIdeologiesInternalName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection customIdeologiesName {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["customIdeologiesName"]));
+            }
+            set {
+                this["customIdeologiesName"] = value;
+            }
+        }
     }
 }
