@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 namespace HoI4_Modding_Supporter
 {
@@ -652,6 +653,25 @@ namespace HoI4_Modding_Supporter
                 variable.StartIdeology = "communism";
 
             }
+            else
+            {
+                string[] list = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
+
+                foreach (string ideology in list)
+                {
+                    if (ideology == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (comboBox2.SelectedItem.ToString() == ideology)
+                        {
+                            variable.StartIdeology = ideology;
+                        }
+                    }
+                }
+            }
 
             // 前回の選挙
             // YYYY
@@ -753,6 +773,33 @@ namespace HoI4_Modding_Supporter
             if (communismEnabled == false)
             {
                 comboBox2.Items.Remove("共産主義");
+            }
+
+            // カスタムイデオロギー
+            if (Properties.Settings.Default.customIdeologiesEnabled == true)
+            {
+                button20.Enabled = true;
+                
+                if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
+                {
+                    string[] list = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
+
+                    for (int cnt = 0; cnt <= list.Length; cnt++)
+                    {
+                        if (list[cnt] == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            comboBox2.Items.Add(list[cnt]);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                button20.Enabled = false;
             }
 
         }

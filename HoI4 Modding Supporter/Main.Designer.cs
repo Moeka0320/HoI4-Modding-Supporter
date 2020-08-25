@@ -206,6 +206,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.button20 = new System.Windows.Forms.Button();
+            this.label65 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -549,6 +551,8 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.label65);
+            this.groupBox12.Controls.Add(this.button20);
             this.groupBox12.Controls.Add(this.button19);
             this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.button18);
@@ -607,7 +611,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(8, 327);
+            this.button18.Location = new System.Drawing.Point(124, 327);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(110, 23);
             this.button18.TabIndex = 18;
@@ -618,7 +622,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(240, 327);
+            this.button17.Location = new System.Drawing.Point(122, 403);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
             this.button17.TabIndex = 17;
@@ -629,7 +633,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(8, 356);
+            this.button16.Location = new System.Drawing.Point(238, 403);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(110, 23);
             this.button16.TabIndex = 16;
@@ -652,7 +656,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(124, 327);
+            this.button14.Location = new System.Drawing.Point(6, 403);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(110, 23);
             this.button14.TabIndex = 15;
@@ -2140,6 +2144,25 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(8, 327);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(110, 23);
+            this.button20.TabIndex = 23;
+            this.button20.TabStop = false;
+            this.button20.Text = "カスタムイデオロギー";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(6, 435);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(351, 24);
+            this.label65.TabIndex = 24;
+            this.label65.Text = "※カスタムイデオロギーが有効化されている場合、追加されたユーザー定義\r\nイデオロギーそれぞれについて設定を行う必要があります。";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2392,6 +2415,8 @@
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Label label65;
     }
 }
 
