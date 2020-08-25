@@ -41,19 +41,19 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -209,6 +209,87 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "カスタムイデオロギーの追加（再起動後に有効）";
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(8, 21);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(60, 16);
+            this.checkBox6.TabIndex = 21;
+            this.checkBox6.Text = "有効化";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(78, 139);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 12);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "イデオロギー名：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 12);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "イデオロギー名（内部処理用）：";
+            // 
+            // textBox4
+            // 
+            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox4.Location = new System.Drawing.Point(164, 136);
+            this.textBox4.MaxLength = 2147483647;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(269, 19);
+            this.textBox4.TabIndex = 18;
+            this.textBox4.TabStop = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.textBox3.Location = new System.Drawing.Point(164, 107);
+            this.textBox3.MaxLength = 2147483647;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(269, 19);
+            this.textBox3.TabIndex = 17;
+            this.textBox3.TabStop = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(164, 21);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(350, 76);
+            this.listBox1.TabIndex = 16;
+            this.listBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(439, 134);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 15;
+            this.button5.TabStop = false;
+            this.button5.Text = "削除";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(439, 105);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 14;
+            this.button6.TabStop = false;
+            this.button6.Text = "追加";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkBox2);
@@ -265,87 +346,6 @@
             this.checkBox4.TabStop = false;
             this.checkBox4.Text = "ファシズムを無効にする";
             this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBox3.Location = new System.Drawing.Point(164, 107);
-            this.textBox3.MaxLength = 2147483647;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(269, 19);
-            this.textBox3.TabIndex = 17;
-            this.textBox3.TabStop = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(164, 21);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(350, 76);
-            this.listBox1.TabIndex = 16;
-            this.listBox1.TabStop = false;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(439, 134);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 15;
-            this.button5.TabStop = false;
-            this.button5.Text = "削除";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(439, 105);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 14;
-            this.button6.TabStop = false;
-            this.button6.Text = "追加";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox4.Location = new System.Drawing.Point(164, 136);
-            this.textBox4.MaxLength = 2147483647;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(269, 19);
-            this.textBox4.TabIndex = 18;
-            this.textBox4.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 12);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "イデオロギー名（内部処理用）：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 139);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 12);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "イデオロギー名：";
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(8, 21);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(60, 16);
-            this.checkBox6.TabIndex = 21;
-            this.checkBox6.Text = "有効化";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // Settings
             // 

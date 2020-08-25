@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HoI4_Modding_Supporter
@@ -18,6 +20,29 @@ namespace HoI4_Modding_Supporter
             checkBox4.Checked = Properties.Settings.Default.fascismDisabled;
             checkBox5.Checked = Properties.Settings.Default.communismDisabled;
             checkBox6.Checked = Properties.Settings.Default.customIdeologiesEnabled;
+
+            if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
+            {
+                string[] internalNames = Properties.Settings.Default.customIdeologiesInternalName.Cast<string>().ToArray();
+                string[] names = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
+
+                // 再度確認
+                if (internalNames.Length == names.Length)
+                {
+                    listBox1.Items.Clear();
+
+                    // lengthはどちらでもOK
+                    for (int cnt = 0; cnt <= internalNames.Length; cnt++)
+                    {
+                        if (internalNames[cnt] == null || names[cnt] == null)
+                        {
+                            break;
+                        }
+
+                        listBox1.Items.Add(names[cnt] + " (" + internalNames[cnt] + ")");
+                    }
+                }
+            }
 
             CheckboxChanged();
         }
@@ -48,10 +73,20 @@ namespace HoI4_Modding_Supporter
             }
 
             if (checkBox2.Checked == true && checkBox3.Checked == true && checkBox4.Checked == true && checkBox5.Checked == true)
-            {
-                //ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
-                ErrorMessage("デフォルトイデオロギーをすべて無効化することはできません。");
-                return;
+            {  
+                if (checkBox6.Checked == false)
+                {
+                    ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
+                    return;
+                }
+                else
+                {
+                    Properties.Settings.Default.neutralityDisabled = checkBox2.Checked;
+                    Properties.Settings.Default.democraticDisabled = checkBox3.Checked;
+                    Properties.Settings.Default.fascismDisabled = checkBox4.Checked;
+                    Properties.Settings.Default.communismDisabled = checkBox5.Checked;
+                    Properties.Settings.Default.Save();
+                }
             }
             else
             {
@@ -66,6 +101,10 @@ namespace HoI4_Modding_Supporter
             if (checkBox6.Checked == false)
             {
                 Properties.Settings.Default.customIdeologiesEnabled = false;
+                Properties.Settings.Default.customIdeologiesInternalName.Clear();
+                Properties.Settings.Default.customIdeologiesInternalName.Add("temp");
+                Properties.Settings.Default.customIdeologiesName.Clear();
+                Properties.Settings.Default.customIdeologiesName.Add("temp");
                 Properties.Settings.Default.Save();
             }
             else
@@ -74,7 +113,28 @@ namespace HoI4_Modding_Supporter
 
                 if (listBox1.Items.Count != 0)
                 {
-                    // TODO: 文字列の切り出しをどう行うか
+                    // 一度設定を初期化する
+                    Properties.Settings.Default.customIdeologiesInternalName.Clear();
+                    Properties.Settings.Default.customIdeologiesName.Clear();
+
+                    string[] list = listBox1.Items.Cast<string>().ToArray();
+                    string[] names = new string[listBox1.Items.Count + 1];
+                    string[] internalNames = new string[listBox1.Items.Count + 1];
+
+                    for (int cnt = 0; cnt < listBox1.Items.Count; cnt++)
+                    {
+                        names[cnt] = list[cnt].Substring(0, list[cnt].IndexOf(" ("));
+                        internalNames[cnt] = list[cnt].Substring(list[cnt].IndexOf(" (") + 2).TrimEnd(')');
+                    }
+
+                    Properties.Settings.Default.customIdeologiesInternalName.AddRange(internalNames);
+                    Properties.Settings.Default.customIdeologiesName.AddRange(names);
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    ErrorMessage("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
+                    return;
                 }
             }
 
@@ -153,7 +213,9 @@ namespace HoI4_Modding_Supporter
                 textBox3.Text != "neutrality" &&
                 textBox3.Text != "democratic" &&
                 textBox3.Text != "fascism" &&
-                textBox3.Text != "communism")
+                textBox3.Text != "communism" &&
+                textBox3.Text.IndexOf(" ") == -1 && textBox3.Text.IndexOf("(") == -1 && textBox3.Text.IndexOf(")") == -1 &&
+                textBox4.Text.IndexOf(" ") == -1 && textBox4.Text.IndexOf("(") == -1 && textBox4.Text.IndexOf(")") == -1)
             {
                 listBox1.Items.Add(textBox4.Text + " (" + textBox3.Text + ")");
             }
