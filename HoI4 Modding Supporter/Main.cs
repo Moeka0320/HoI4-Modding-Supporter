@@ -1001,6 +1001,29 @@ namespace HoI4_Modding_Supporter
 
         private void button20_Click(object sender, EventArgs e)
         {
+            Variable variable = new Variable();
+
+            // 政党支持率の値を変数に代入
+            if (Properties.Settings.Default.neutralityDisabled == false)
+            {
+                variable.N_Popularity = (int)numericUpDown12.Value;
+            }
+
+            if (Properties.Settings.Default.democraticDisabled == false)
+            {
+                variable.D_Popularity = (int)numericUpDown11.Value;
+            }
+
+            if (Properties.Settings.Default.fascismDisabled == false)
+            {
+                variable.F_Popularity = (int)numericUpDown10.Value;
+            }
+
+            if (Properties.Settings.Default.communismDisabled == false)
+            {
+                variable.C_Popularity = (int)numericUpDown9.Value;
+            }
+
             CustomIdeologiesSettings cis = new CustomIdeologiesSettings();
             cis.ShowDialog();
         }

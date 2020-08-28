@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace HoI4_Modding_Supporter
 {
     public partial class CustomIdeologiesSettings : Form
     {
+        List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
+        List<NumericUpDown> popularityNumericList = new List<NumericUpDown>();
+
         public CustomIdeologiesSettings()
         {
             InitializeComponent();
             CreateNewTab();
+            PartyPopularityView();
         }
 
         /// <summary>
@@ -238,8 +243,68 @@ namespace HoI4_Modding_Supporter
                     {
                         Text = "初期政党支持率",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularitiesGroup",
-                        Size = new Size(163, 101),
+                        Size = new Size(244, 67),
                         Location = new Point(3, 267)
+                    };
+
+                    // ラベル「○○主義：」
+                    Label popularityLabel = new Label()
+                    {
+                        Text = Properties.Settings.Default.customIdeologiesName[cnt] + "：",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularityLabel",
+                        Location = new Point(6, 15)
+
+                    };
+
+                    // ラベル「合計：」
+                    Label totalPopularityLabel = new Label()
+                    {
+                        Text = "合計：",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - TotalPopularityLabel",
+                        Size = new Size(35, 12),
+                        Location = new Point(6, 41),
+                        TextAlign = ContentAlignment.TopRight
+                    };
+
+                    // NumericUpDown「政党支持率」
+                    NumericUpDown popularityNumeric = new NumericUpDown()
+                    {
+                        Value = 0,
+                        Maximum = 100,
+                        Minimum = 0,
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularityNumeric",
+                        Size = new Size(39, 19),
+                        Location = new Point(180, 13),
+                        TextAlign = HorizontalAlignment.Right
+                    };
+
+                    
+
+                    // テキストボックス「政党支持率の合計」
+                    TextBox totalPopularityTextBox = new TextBox()
+                    {
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - TotalPopularityTextBox",
+                        Size = new Size(39, 19),
+                        Location = new Point(180, 38),
+                        Enabled = false,
+                        TextAlign = HorizontalAlignment.Right
+                    };
+
+                    // ラベル「%」
+                    Label percentLabel1 = new Label()
+                    {
+                        Text = "%",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PercentLabel1",
+                        Size = new Size(11, 12),
+                        Location = new Point(225, 15)
+                    };
+
+                    Label percentLabel2 = new Label()
+                    {
+                        Text = "%",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PercentLabel2",
+                        Size = new Size(11, 12),
+                        Location = new Point(225, 41)
                     };
 
                     nationNameGroup.Controls.Add(viewNameLabel);
@@ -264,12 +329,68 @@ namespace HoI4_Modding_Supporter
                     partyNameGroup.Controls.Add(partyAliasNameTextBox);
                     partyNameGroup.Controls.Add(partyFullNameTextBox);
 
+                    popularitiesGroup.Controls.Add(popularityLabel);
+                    popularitiesGroup.Controls.Add(totalPopularityLabel);
+                    popularitiesGroup.Controls.Add(popularityNumeric);
+                    popularitiesGroup.Controls.Add(totalPopularityTextBox);
+                    popularitiesGroup.Controls.Add(percentLabel1);
+                    popularitiesGroup.Controls.Add(percentLabel2);
+
                     tabPage.Controls.Add(nationNameGroup);
                     tabPage.Controls.Add(nationFlagGroup);
                     tabPage.Controls.Add(partyNameGroup);
                     tabPage.Controls.Add(popularitiesGroup);
                     tabControl1.TabPages.Add(tabPage);
+
+                    totalPopularityTextBoxList.Add(totalPopularityTextBox);
+                    popularityNumericList.Add(popularityNumeric);
+
+                    popularityNumeric.ValueChanged += PopularityNumeric_ValueChanged;
                 }
+            }
+        }
+
+        private void PopularityNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            PartyPopularityView();
+        }
+
+        /// <summary>
+        /// 政党支持率の合計を出力
+        /// </summary>
+        public void PartyPopularityView()
+        {
+            Variable variable = new Variable();
+            int totalPopularityValue = 0;
+
+            if (Properties.Settings.Default.neutralityDisabled == false)
+            {
+                totalPopularityValue += variable.N_Popularity;
+            }
+
+            if (Properties.Settings.Default.democraticDisabled == false)
+            {
+                totalPopularityValue += variable.D_Popularity;
+            }
+
+            if (Properties.Settings.Default.fascismDisabled == false)
+            {
+                totalPopularityValue += variable.F_Popularity;
+            }
+
+            if (Properties.Settings.Default.communismDisabled == false)
+            {
+                totalPopularityValue += variable.C_Popularity;
+            }
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                totalPopularityValue += (int)popularityNumericList[cnt].Value;
+            }
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                totalPopularityTextBoxList[cnt].Text = totalPopularityValue.ToString();
             }
         }
     }

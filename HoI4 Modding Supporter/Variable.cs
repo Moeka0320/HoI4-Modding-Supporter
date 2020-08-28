@@ -348,29 +348,29 @@
             get { return sovereignCountryTag; }
         }
 
-        private static double n_Popularity;
-        public double N_Popularity
+        private static int n_Popularity;
+        public int N_Popularity
         {
             set { n_Popularity = value; }
             get { return n_Popularity; }
         }
 
-        private static double d_Popularity;
-        public double D_Popularity
+        private static int d_Popularity;
+        public int D_Popularity
         {
             set { d_Popularity = value; }
             get { return d_Popularity; }
         }
 
-        private static double f_Popularity;
-        public double F_Popularity
+        private static int f_Popularity;
+        public int F_Popularity
         {
             set { f_Popularity = value; }
             get { return f_Popularity; }
         }
 
-        private static double c_Popularity;
-        public double C_Popularity
+        private static int c_Popularity;
+        public int C_Popularity
         {
             set { c_Popularity = value; }
             get { return c_Popularity; }
