@@ -780,6 +780,7 @@ namespace HoI4_Modding_Supporter
             {
                 button20.Enabled = true;
                 
+                // [初期与党][イデオロギー]の追加
                 if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
                 {
                     string[] list = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
@@ -996,6 +997,12 @@ namespace HoI4_Modding_Supporter
         {
             FactionSettings fs = new FactionSettings();
             fs.ShowDialog();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            CustomIdeologiesSettings cis = new CustomIdeologiesSettings();
+            cis.ShowDialog();
         }
     }
 }

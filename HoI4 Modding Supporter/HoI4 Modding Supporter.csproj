@@ -67,6 +67,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomIdeologiesSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomIdeologiesSettings.Designer.cs">
+      <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generate.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -103,6 +109,9 @@
     <Compile Include="Variable.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomIdeologiesSettings.resx">
+      <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

@@ -63,6 +63,8 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
@@ -206,8 +208,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.button20 = new System.Windows.Forms.Button();
-            this.label65 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -586,6 +586,26 @@
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(6, 435);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(351, 24);
+            this.label65.TabIndex = 24;
+            this.label65.Text = "※カスタムイデオロギーが有効化されている場合、追加されたユーザー定義\r\nイデオロギーそれぞれについて設定を行う必要があります。";
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(8, 327);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(110, 23);
+            this.button20.TabIndex = 23;
+            this.button20.TabStop = false;
+            this.button20.Text = "カスタムイデオロギー";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button19
             // 
@@ -2143,25 +2163,6 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(8, 327);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(110, 23);
-            this.button20.TabIndex = 23;
-            this.button20.TabStop = false;
-            this.button20.Text = "カスタムイデオロギー";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(6, 435);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(351, 24);
-            this.label65.TabIndex = 24;
-            this.label65.Text = "※カスタムイデオロギーが有効化されている場合、追加されたユーザー定義\r\nイデオロギーそれぞれについて設定を行う必要があります。";
             // 
             // Main
             // 
