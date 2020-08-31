@@ -45,6 +45,7 @@ namespace HoI4_Modding_Supporter
             }
 
             CheckboxChanged();
+            ControlInvalidation();
         }
 
         /// <summary>
@@ -162,6 +163,27 @@ namespace HoI4_Modding_Supporter
                 textBox4.Enabled = false;
                 button5.Enabled = false;
                 button6.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// カスタムイデオロギーの固定化（カスタムイデオロギーウィンドウでの変更時）
+        /// </summary>
+        public void ControlInvalidation()
+        {
+            Variable variable = new Variable();
+
+            if (variable.CustomIdeologiesPopularity != null)
+            {
+                checkBox6.Enabled = false;
+                button5.Enabled = false;
+                button6.Enabled = false;
+            }
+            else
+            {
+                checkBox6.Enabled = true;
+                button5.Enabled = true;
+                button6.Enabled = true;
             }
         }
 

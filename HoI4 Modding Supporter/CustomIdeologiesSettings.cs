@@ -21,6 +21,7 @@ namespace HoI4_Modding_Supporter
             InitializeComponent();
             CreateNewTab();
             PartyPopularityView();
+            ValueRecovery();
         }
 
         /// <summary>
@@ -392,6 +393,44 @@ namespace HoI4_Modding_Supporter
             {
                 totalPopularityTextBoxList[cnt].Text = totalPopularityValue.ToString();
             }
+        }
+
+        /// <summary>
+        /// ウィンドウ起動時の値の復元
+        /// </summary>
+        public void ValueRecovery()
+        {
+            Variable variable = new Variable();
+
+            // 政党支持率
+            if (variable.CustomIdeologiesPopularity != null)
+            {
+                for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+                {
+                    popularityNumericList[cnt].Value = variable.CustomIdeologiesPopularity[cnt];
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Variable variable = new Variable();
+
+            List<int> popularities = new List<int>();
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                popularities.Add((int)popularityNumericList[cnt].Value);
+            }
+
+            variable.CustomIdeologiesPopularity = popularities.Cast<int>().ToArray();
+
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

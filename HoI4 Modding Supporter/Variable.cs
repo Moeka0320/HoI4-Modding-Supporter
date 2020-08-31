@@ -513,7 +513,7 @@
         }
 
         // CustomIdeology (配列の順序は customIdeologiesInternalName / customIdeologiesName に準拠)
-        // 二次元配列[イデオロギー][項目]
+        // 三次元配列[イデオロギー][項目][値]
 
         private static string[] customIdeologiesSettings;
 
