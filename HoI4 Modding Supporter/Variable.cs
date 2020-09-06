@@ -513,11 +513,20 @@
         }
 
         // CustomIdeology (配列の順序は customIdeologiesInternalName / customIdeologiesName に準拠)
-        // 三次元配列[イデオロギー][項目][値]
+        /*
+            [TABCOUNT - 1, 0] = viewNameTextBox.Text
+            [TABCOUNT - 1, 1] = eventViewNameTextBox.Text
+            [TABCOUNT - 1, 2] = aliasViewNameTextBox.Text
+            [TABCOUNT - 1, 3] = bigFlagPathTextBox.Text
+            [TABCOUNT - 1, 4] = middleFlagPathTextBox.Text
+            [TABCOUNT - 1, 5] = smallFlagPathTextBox.Text
+            [TABCOUNT - 1, 6] = partyAliasNameTextBox.Text
+            [TABCOUNT - 1, 7] = partyFullNameTextBox.Text 
+        */
 
-        private static string[] customIdeologiesSettings;
+        private static string[,] customIdeologiesSettings;
 
-        public string[] CustomIdeologiesSettings
+        public string[,] CustomIdeologiesSettings
         {
             set { customIdeologiesSettings = value; }
             get { return customIdeologiesSettings; }

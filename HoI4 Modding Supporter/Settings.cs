@@ -21,6 +21,16 @@ namespace HoI4_Modding_Supporter
             checkBox5.Checked = Properties.Settings.Default.communismDisabled;
             checkBox6.Checked = Properties.Settings.Default.customIdeologiesEnabled;
 
+            CustomIdeologyListAdd();
+            CheckboxChanged();
+            ControlInvalidation();
+        }
+
+        /// <summary>
+        /// カスタムイデオロギーリストの追加
+        /// </summary>
+        public void CustomIdeologyListAdd()
+        {
             if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
             {
                 string[] internalNames = Properties.Settings.Default.customIdeologiesInternalName.Cast<string>().ToArray();
@@ -43,9 +53,6 @@ namespace HoI4_Modding_Supporter
                     }
                 }
             }
-
-            CheckboxChanged();
-            ControlInvalidation();
         }
 
         /// <summary>

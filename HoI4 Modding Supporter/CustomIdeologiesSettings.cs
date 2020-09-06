@@ -15,6 +15,14 @@ namespace HoI4_Modding_Supporter
     {
         List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
         List<NumericUpDown> popularityNumericList = new List<NumericUpDown>();
+        List<TextBox> viewNameTextBoxList = new List<TextBox>();
+        List<TextBox> eventViewNameTextBoxList = new List<TextBox>();
+        List<TextBox> aliasNameTextBoxList = new List<TextBox>();
+        List<TextBox> bigFlagPathTextBoxList = new List<TextBox>();
+        List<TextBox> middleFlagPathTextBoxList = new List<TextBox>();
+        List<TextBox> smallFlagPathTextBoxList = new List<TextBox>();
+        List<TextBox> partyAliasNameTextBoxList = new List<TextBox>();
+        List<TextBox> partyFullNameTextBoxList = new List<TextBox>();
 
         public CustomIdeologiesSettings()
         {
@@ -345,6 +353,14 @@ namespace HoI4_Modding_Supporter
 
                     totalPopularityTextBoxList.Add(totalPopularityTextBox);
                     popularityNumericList.Add(popularityNumeric);
+                    viewNameTextBoxList.Add(viewNameTextBox);
+                    eventViewNameTextBoxList.Add(eventViewNameTextBox);
+                    aliasNameTextBoxList.Add(aliasNameTextBox);
+                    bigFlagPathTextBoxList.Add(bigFlagPathTextBox);
+                    middleFlagPathTextBoxList.Add(middleFlagPathTextBox);
+                    smallFlagPathTextBoxList.Add(smallFlagPathTextBox);
+                    partyAliasNameTextBoxList.Add(partyAliasNameTextBox);
+                    partyFullNameTextBoxList.Add(partyFullNameTextBox);
 
                     popularityNumeric.ValueChanged += PopularityNumeric_ValueChanged;
                 }
@@ -410,21 +426,73 @@ namespace HoI4_Modding_Supporter
                     popularityNumericList[cnt].Value = variable.CustomIdeologiesPopularity[cnt];
                 }
             }
+
+            if (variable.CustomIdeologiesSettings != null)
+            {
+                for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+                {
+                    // 国名
+                    // 表示名
+                    viewNameTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 0];
+
+                    // イベント表示名
+                    eventViewNameTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 1];
+
+                    // 通称名
+                    aliasNameTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 2];
+
+                    // 国旗
+                    // 大
+                    bigFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 3];
+
+                    // 中
+                    middleFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 4];
+
+                    // 小
+                    smallFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 5];
+
+                    // 政党名
+                    // 通称名
+                    partyAliasNameTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 6];
+
+                    // 正式名
+                    partyFullNameTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 7];
+
+                }
+            }
+        }
+
+        /// <summary>
+        /// 値の保存
+        /// </summary>
+        public void ValueSave()
+        {
+            Variable variable = new Variable();
+
+            int[] popularities = new int[Properties.Settings.Default.customIdeologiesName.Count];
+            string[,] textBoxValues = new string[Properties.Settings.Default.customIdeologiesName.Count, 8];
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                popularities[cnt] = (int)popularityNumericList[cnt].Value;
+
+                textBoxValues[cnt, 0] = viewNameTextBoxList[cnt].Text;
+                textBoxValues[cnt, 1] = eventViewNameTextBoxList[cnt].Text;
+                textBoxValues[cnt, 2] = aliasNameTextBoxList[cnt].Text;
+                textBoxValues[cnt, 3] = bigFlagPathTextBoxList[cnt].Text;
+                textBoxValues[cnt, 4] = middleFlagPathTextBoxList[cnt].Text;
+                textBoxValues[cnt, 5] = smallFlagPathTextBoxList[cnt].Text;
+                textBoxValues[cnt, 6] = partyAliasNameTextBoxList[cnt].Text;
+                textBoxValues[cnt, 7] = partyFullNameTextBoxList[cnt].Text;
+            }
+
+            variable.CustomIdeologiesPopularity = popularities;
+            variable.CustomIdeologiesSettings = textBoxValues;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Variable variable = new Variable();
-
-            List<int> popularities = new List<int>();
-
-            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-            {
-                popularities.Add((int)popularityNumericList[cnt].Value);
-            }
-
-            variable.CustomIdeologiesPopularity = popularities.Cast<int>().ToArray();
-
+            ValueSave();
             this.Close();
         }
 
