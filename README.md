@@ -1,7 +1,6 @@
 # HoI4 Modding Supporter
 ![lisence](https://img.shields.io/github/license/Zakki0925224/HoI4-Modding-Supporter.svg)
 ![latest-version](https://img.shields.io/github/v/release/Zakki0925224/HoI4-Modding-Supporter.svg)
-![latest-commit](https://img.shields.io/github/last-commit/Zakki0925224/HoI4-Modding-Supporter.svg)
 
 hoi4のmod製作を支援するソフトです。<br>
 現在、新規国家の生成のみに対応しています。
