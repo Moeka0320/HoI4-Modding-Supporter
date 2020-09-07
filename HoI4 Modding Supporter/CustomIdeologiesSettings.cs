@@ -252,7 +252,7 @@ namespace HoI4_Modding_Supporter
                     {
                         Text = "初期政党支持率",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularitiesGroup",
-                        Size = new Size(244, 67),
+                        Size = new Size(252, 67),
                         Location = new Point(3, 267)
                     };
 
@@ -363,8 +363,26 @@ namespace HoI4_Modding_Supporter
                     partyFullNameTextBoxList.Add(partyFullNameTextBox);
 
                     popularityNumeric.ValueChanged += PopularityNumeric_ValueChanged;
+                    bigFlagPathButton.Click += BigFlagPathButton_Click;
+                    middleFlagPathButton.Click += MiddleFlagPathButton_Click;
+                    smallFlagPathButton.Click += SmallFlagPathButton_Click;
                 }
             }
+        }
+
+        private void SmallFlagPathButton_Click(object sender, EventArgs e)
+        {
+            OpenTGAFile(2);
+        }
+
+        private void MiddleFlagPathButton_Click(object sender, EventArgs e)
+        {
+            OpenTGAFile(1);
+        }
+
+        private void BigFlagPathButton_Click(object sender, EventArgs e)
+        {
+            OpenTGAFile(0);
         }
 
         private void PopularityNumeric_ValueChanged(object sender, EventArgs e)
@@ -490,8 +508,104 @@ namespace HoI4_Modding_Supporter
             variable.CustomIdeologiesSettings = textBoxValues;
         }
 
+        /// <summary>
+        /// tgaファイルの参照
+        /// </summary>
+        /// <param name="size">サイズ（大：0, 中：1, 小：2）</param>
+        public void OpenTGAFile(int size)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { FileName = "Flag.tga", Filter = "TGAファイル|*.tga", RestoreDirectory = true, CheckFileExists = true, CheckPathExists = true })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    switch (size)
+                    {
+                        case 0:
+                            bigFlagPathTextBoxList[tabControl1.SelectedIndex].Text = ofd.FileName;
+                            break;
+
+                        case 1:
+                            middleFlagPathTextBoxList[tabControl1.SelectedIndex].Text = ofd.FileName;
+                            break;
+
+                        case 2:
+                            smallFlagPathTextBoxList[tabControl1.SelectedIndex].Text = ofd.FileName;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 入力ミスなどを検知
+        /// </summary>
+        /// <returns></returns>
+        public int Check()
+        {
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                // 国名
+                // 表示名
+                if (string.IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text))
+                {
+                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] +"] - [国名] - [表示名]が無効です。");
+                    return 1;
+                }
+
+                // イベント表示名
+                if (string.IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text))
+                {
+                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [イベント表示名]が無効です。");
+                    return 1;
+                }
+
+                // 通称名
+                if (string.IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text))
+                {
+                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]が無効です。");
+                    return 1;
+                }
+
+                // 国旗はファイルパスが指定されてなくてもOK
+
+                // 政党名
+                // 通称名
+                if (string.IsNullOrWhiteSpace(partyAliasNameTextBoxList[cnt].Text))
+                {
+                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [通称名]が無効です。");
+                    return 1;
+                }
+
+                // 正式名
+                if (string.IsNullOrWhiteSpace(partyFullNameTextBoxList[cnt].Text))
+                {
+                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [正式名]が無効です。");
+                    return 1;
+                }
+            }
+
+            MessageBox.Show("入力ミスのチェックが完了しました。");
+            return 0;
+        }
+
+        /// <summary>
+        /// エラーメッセージボックスを表示
+        /// </summary>
+        public void ErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            int cResult = Check();
+            if (cResult == 1)
+            {
+                return;
+            }
             ValueSave();
             this.Close();
         }
