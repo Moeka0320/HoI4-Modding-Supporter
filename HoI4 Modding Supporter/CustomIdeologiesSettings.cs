@@ -399,34 +399,22 @@ namespace HoI4_Modding_Supporter
             int totalPopularityValue = 0;
 
             if (Properties.Settings.Default.neutralityDisabled == false)
-            {
                 totalPopularityValue += variable.N_Popularity;
-            }
 
             if (Properties.Settings.Default.democraticDisabled == false)
-            {
                 totalPopularityValue += variable.D_Popularity;
-            }
 
             if (Properties.Settings.Default.fascismDisabled == false)
-            {
                 totalPopularityValue += variable.F_Popularity;
-            }
 
             if (Properties.Settings.Default.communismDisabled == false)
-            {
                 totalPopularityValue += variable.C_Popularity;
-            }
 
             for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-            {
                 totalPopularityValue += (int)popularityNumericList[cnt].Value;
-            }
 
             for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-            {
                 totalPopularityTextBoxList[cnt].Text = totalPopularityValue.ToString();
-            }
         }
 
         /// <summary>
@@ -440,9 +428,7 @@ namespace HoI4_Modding_Supporter
             if (variable.CustomIdeologiesPopularity != null)
             {
                 for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-                {
                     popularityNumericList[cnt].Value = variable.CustomIdeologiesPopularity[cnt];
-                }
             }
 
             if (variable.CustomIdeologiesSettings != null)
@@ -603,9 +589,8 @@ namespace HoI4_Modding_Supporter
         {
             int cResult = Check();
             if (cResult == 1)
-            {
                 return;
-            }
+
             ValueSave();
             this.Close();
         }

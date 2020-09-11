@@ -45,9 +45,7 @@ namespace HoI4_Modding_Supporter
                     for (int cnt = 0; cnt <= internalNames.Length; cnt++)
                     {
                         if (internalNames[cnt] == null || names[cnt] == null)
-                        {
                             break;
-                        }
 
                         listBox1.Items.Add(names[cnt] + " (" + internalNames[cnt] + ")");
                     }
@@ -212,9 +210,7 @@ namespace HoI4_Modding_Supporter
             using (var ofd = new OpenFileDialog() { FileName = "Folder", Filter = "フォルダー|.", CheckFileExists = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
                     textBox1.Text = Path.GetDirectoryName(ofd.FileName);
-                }
             }
         }
 
@@ -223,9 +219,7 @@ namespace HoI4_Modding_Supporter
             using (var ofd = new OpenFileDialog() { FileName = "Folder", Filter = "フォルダー|.", CheckFileExists = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
                     textBox2.Text = Path.GetDirectoryName(ofd.FileName);
-                }
             }
         }
 
@@ -245,9 +239,7 @@ namespace HoI4_Modding_Supporter
                 textBox3.Text != "communism" &&
                 textBox3.Text.IndexOf(" ") == -1 && textBox3.Text.IndexOf("(") == -1 && textBox3.Text.IndexOf(")") == -1 &&
                 textBox4.Text.IndexOf(" ") == -1 && textBox4.Text.IndexOf("(") == -1 && textBox4.Text.IndexOf(")") == -1)
-            {
                 listBox1.Items.Add(textBox4.Text + " (" + textBox3.Text + ")");
-            }
         }
 
         private void button5_Click(object sender, EventArgs e)
