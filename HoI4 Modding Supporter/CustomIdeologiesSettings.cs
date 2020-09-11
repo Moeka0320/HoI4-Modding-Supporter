@@ -19,7 +19,7 @@ namespace HoI4_Modding_Supporter
         List<TextBox> eventViewNameTextBoxList = new List<TextBox>();
         List<TextBox> aliasNameTextBoxList = new List<TextBox>();
         List<TextBox> bigFlagPathTextBoxList = new List<TextBox>();
-        List<TextBox> middleFlagPathTextBoxList = new List<TextBox>();
+        List<TextBox> mediumFlagPathTextBoxList = new List<TextBox>();
         List<TextBox> smallFlagPathTextBoxList = new List<TextBox>();
         List<TextBox> partyAliasNameTextBoxList = new List<TextBox>();
         List<TextBox> partyFullNameTextBoxList = new List<TextBox>();
@@ -130,10 +130,10 @@ namespace HoI4_Modding_Supporter
                     };
 
                     // ラベル「中：」
-                    Label middleLabel = new Label()
+                    Label mediumLabel = new Label()
                     {
                         Text = "中：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MiddleLabel",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumLabel",
                         Size = new Size(23, 12),
                         Location = new Point(6, 40)
                     };
@@ -157,9 +157,9 @@ namespace HoI4_Modding_Supporter
                     };
 
                     // テキストボックス（国旗中パス）
-                    TextBox middleFlagPathTextBox = new TextBox()
+                    TextBox mediumFlagPathTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MiddleFlagPathTextBox",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 37),
                         ReadOnly = true
@@ -185,9 +185,9 @@ namespace HoI4_Modding_Supporter
                     };
 
                     // 参照ボタン（国旗中）
-                    Button middleFlagPathButton = new Button()
+                    Button mediumFlagPathButton = new Button()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MiddleFlagPathButton",
+                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumFlagPathButton",
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 35),
@@ -324,13 +324,13 @@ namespace HoI4_Modding_Supporter
                     nationNameGroup.Controls.Add(aliasNameTextBox);
 
                     nationFlagGroup.Controls.Add(bigLabel);
-                    nationFlagGroup.Controls.Add(middleLabel);
+                    nationFlagGroup.Controls.Add(mediumLabel);
                     nationFlagGroup.Controls.Add(smallLabel);
                     nationFlagGroup.Controls.Add(bigFlagPathTextBox);
-                    nationFlagGroup.Controls.Add(middleFlagPathTextBox);
+                    nationFlagGroup.Controls.Add(mediumFlagPathTextBox);
                     nationFlagGroup.Controls.Add(smallFlagPathTextBox);
                     nationFlagGroup.Controls.Add(bigFlagPathButton);
-                    nationFlagGroup.Controls.Add(middleFlagPathButton);
+                    nationFlagGroup.Controls.Add(mediumFlagPathButton);
                     nationFlagGroup.Controls.Add(smallFlagPathButton);
 
                     partyNameGroup.Controls.Add(partyAliasNameLabel);
@@ -357,14 +357,14 @@ namespace HoI4_Modding_Supporter
                     eventViewNameTextBoxList.Add(eventViewNameTextBox);
                     aliasNameTextBoxList.Add(aliasNameTextBox);
                     bigFlagPathTextBoxList.Add(bigFlagPathTextBox);
-                    middleFlagPathTextBoxList.Add(middleFlagPathTextBox);
+                    mediumFlagPathTextBoxList.Add(mediumFlagPathTextBox);
                     smallFlagPathTextBoxList.Add(smallFlagPathTextBox);
                     partyAliasNameTextBoxList.Add(partyAliasNameTextBox);
                     partyFullNameTextBoxList.Add(partyFullNameTextBox);
 
                     popularityNumeric.ValueChanged += PopularityNumeric_ValueChanged;
                     bigFlagPathButton.Click += BigFlagPathButton_Click;
-                    middleFlagPathButton.Click += MiddleFlagPathButton_Click;
+                    mediumFlagPathButton.Click += MediumFlagPathButton_Click;
                     smallFlagPathButton.Click += SmallFlagPathButton_Click;
                 }
             }
@@ -375,7 +375,7 @@ namespace HoI4_Modding_Supporter
             OpenTGAFile(2);
         }
 
-        private void MiddleFlagPathButton_Click(object sender, EventArgs e)
+        private void MediumFlagPathButton_Click(object sender, EventArgs e)
         {
             OpenTGAFile(1);
         }
@@ -464,7 +464,7 @@ namespace HoI4_Modding_Supporter
                     bigFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 3];
 
                     // 中
-                    middleFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 4];
+                    mediumFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 4];
 
                     // 小
                     smallFlagPathTextBoxList[cnt].Text = variable.CustomIdeologiesSettings[cnt, 5];
@@ -498,7 +498,7 @@ namespace HoI4_Modding_Supporter
                 textBoxValues[cnt, 1] = eventViewNameTextBoxList[cnt].Text;
                 textBoxValues[cnt, 2] = aliasNameTextBoxList[cnt].Text;
                 textBoxValues[cnt, 3] = bigFlagPathTextBoxList[cnt].Text;
-                textBoxValues[cnt, 4] = middleFlagPathTextBoxList[cnt].Text;
+                textBoxValues[cnt, 4] = mediumFlagPathTextBoxList[cnt].Text;
                 textBoxValues[cnt, 5] = smallFlagPathTextBoxList[cnt].Text;
                 textBoxValues[cnt, 6] = partyAliasNameTextBoxList[cnt].Text;
                 textBoxValues[cnt, 7] = partyFullNameTextBoxList[cnt].Text;
@@ -525,7 +525,7 @@ namespace HoI4_Modding_Supporter
                             break;
 
                         case 1:
-                            middleFlagPathTextBoxList[tabControl1.SelectedIndex].Text = ofd.FileName;
+                            mediumFlagPathTextBoxList[tabControl1.SelectedIndex].Text = ofd.FileName;
                             break;
 
                         case 2:

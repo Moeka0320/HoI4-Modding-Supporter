@@ -258,6 +258,8 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public int Check()
         {
+            Variable variable = new Variable();
+
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
             {
@@ -477,6 +479,14 @@ namespace HoI4_Modding_Supporter
             if (string.IsNullOrWhiteSpace(textBox39.Text))
             {
                 ErrorMessage("[Mod名]が無効です。");
+                return 1;
+            }
+
+            // カスタムイデオロギー
+            if (Properties.Settings.Default.customIdeologiesEnabled == true &&
+                variable.CustomIdeologiesSettings == null)
+            {
+                ErrorMessage("カスタムイデオロギーが設定されていません。");
                 return 1;
             }
 
@@ -700,7 +710,7 @@ namespace HoI4_Modding_Supporter
                     {
                         if (comboBox2.SelectedItem.ToString() == ideology)
                         {
-                            variable.StartIdeology = ideology;
+                            variable.StartIdeology = Properties.Settings.Default.customIdeologiesInternalName[Properties.Settings.Default.customIdeologiesName.IndexOf(ideology)];
                         }
                     }
                 }

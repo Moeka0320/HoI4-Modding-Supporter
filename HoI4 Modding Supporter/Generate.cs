@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security;
@@ -955,6 +956,16 @@ namespace HoI4_Modding_Supporter
                 }
             }
 
+            // カスタムイデオロギーが有効化されている場合
+            if (Properties.Settings.Default.customIdeologiesEnabled == true)
+            {
+                int cisResult = CustomIdeologiesSetting(historyCountrisFilePath, localisationReplaceDir, gfxFlagsDir);
+                if (cisResult == 1)
+                {
+                    return 1;
+                }
+            }
+
             MessageBox.Show("生成が完了しました。");
 
             if (Properties.Settings.Default.afterOpenFolder == true)
@@ -1139,6 +1150,94 @@ namespace HoI4_Modding_Supporter
         }
 
         /// <summary>
+        /// カスタムイデオロギーの設定
+        /// </summary>
+        public int CustomIdeologiesSetting(string HistoryCountriesFilePath, string LocalisationReplaceDir, string GfxFlagsDir)
+        {
+            Variable variable = new Variable();
+
+            // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
+            string localisationReplaceCountriesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
+            // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
+            string localisationReplacePartiesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_parties_l_english.yml";
+            // [MODFOLDER]/gfx/flags/mediumディレクトリパス
+            string gfxFlagsMediumDir = GfxFlagsDir + @"\menium";
+            // [MODFOLDER]/gfx/flags/smallディレクトリパス
+            string gfxFlagsSmallDir = GfxFlagsDir + @"\small";
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                List<string> historyCountryFile = new List<string>();
+
+                // 国家ファイルの読み込み
+                using (StreamReader sr = new StreamReader(HistoryCountriesFilePath))
+                {
+                    string textLine = "";
+
+                    // 一行ずつListに代入
+                    while ((textLine = sr.ReadLine()) != null)
+                        historyCountryFile.Add(textLine);
+
+                    string searchString = "set_popularities = {";
+                    string insertString = "\t" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + " = " + variable.CustomIdeologiesPopularity[cnt];
+
+                    historyCountryFile.Insert(historyCountryFile.IndexOf(searchString) + 1, insertString); 
+                }
+
+                // 国家ファイルの初期化
+                using (FileStream fs = new FileStream(HistoryCountriesFilePath, FileMode.Open))
+                    fs.SetLength(0);
+
+                // 国家ファイルの書き込み
+                using (StreamWriter sw = new StreamWriter(HistoryCountriesFilePath, false))
+                {
+                    for (int lineNum = 0; lineNum < historyCountryFile.Count; lineNum++)
+                        sw.WriteLine(historyCountryFile[lineNum]);
+                }
+
+                // ローカリゼーション書き込み
+                File.AppendAllText(localisationReplaceCountriesFilePath,
+                    "\n " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ":0 \"" + variable.CustomIdeologiesSettings[cnt, 0] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_DEF:0 \"" + variable.CustomIdeologiesSettings[cnt, 1] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_ADJ:0 \"" + variable.CustomIdeologiesSettings[cnt, 2] + "\"");
+
+                File.AppendAllText(localisationReplacePartiesFilePath,
+                    "\n " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_party:0 \"" + variable.CustomIdeologiesSettings[cnt, 6] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_party_long:0 \"" + variable.CustomIdeologiesSettings[cnt, 7] + "\"");
+
+                // 国旗ファイルをコピー
+                string bigFlagPath = GfxFlagsDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+                string mediumFlagPath = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+                string smallFlagPath = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+
+                int fcResult;
+
+                if (File.Exists(bigFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 3] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 3], bigFlagPath);
+                    if (fcResult == 1)
+                        return 1;   // 強制終了
+                }
+
+                if (File.Exists(mediumFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 4] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 4], mediumFlagPath);
+                    if (fcResult == 1)
+                        return 1;
+                }
+
+                if (File.Exists(smallFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 5] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 5], smallFlagPath);
+                    if (fcResult == 1)
+                        return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
         /// ファイルをコピー
         /// </summary>
         /// <returns></returns>
@@ -1168,6 +1267,11 @@ namespace HoI4_Modding_Supporter
             return 0;
         }
 
+        /// <summary>
+        /// 新しいフォルダーを作成
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
         public int FolderCreate(string folderPath)
         {
             try

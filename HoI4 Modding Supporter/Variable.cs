@@ -518,7 +518,7 @@
             [TABCOUNT - 1, 1] = eventViewNameTextBox.Text
             [TABCOUNT - 1, 2] = aliasViewNameTextBox.Text
             [TABCOUNT - 1, 3] = bigFlagPathTextBox.Text
-            [TABCOUNT - 1, 4] = middleFlagPathTextBox.Text
+            [TABCOUNT - 1, 4] = mediumFlagPathTextBox.Text
             [TABCOUNT - 1, 5] = smallFlagPathTextBox.Text
             [TABCOUNT - 1, 6] = partyAliasNameTextBox.Text
             [TABCOUNT - 1, 7] = partyFullNameTextBox.Text 

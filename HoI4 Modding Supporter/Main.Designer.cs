@@ -63,7 +63,6 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label65 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -551,7 +550,6 @@
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.label65);
             this.groupBox12.Controls.Add(this.button20);
             this.groupBox12.Controls.Add(this.button19);
             this.groupBox12.Controls.Add(this.checkBox3);
@@ -586,15 +584,6 @@
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(6, 435);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(351, 24);
-            this.label65.TabIndex = 24;
-            this.label65.Text = "※カスタムイデオロギーが有効化されている場合、追加されたユーザー定義\r\nイデオロギーそれぞれについて設定を行う必要があります。";
             // 
             // button20
             // 
@@ -642,7 +631,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(122, 403);
+            this.button17.Location = new System.Drawing.Point(116, 438);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
             this.button17.TabIndex = 17;
@@ -653,7 +642,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(238, 403);
+            this.button16.Location = new System.Drawing.Point(232, 438);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(110, 23);
             this.button16.TabIndex = 16;
@@ -676,7 +665,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(6, 403);
+            this.button14.Location = new System.Drawing.Point(0, 438);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(110, 23);
             this.button14.TabIndex = 15;
@@ -2417,7 +2406,6 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Label label65;
     }
 }
 
