@@ -89,10 +89,11 @@ namespace HoI4_Modding_Supporter
 
                     // テキストボックス（表示名）
                     TextBox viewNameTextBox = new TextBox()
-                    { 
+                    {
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - ViewNameTextBox",
                         Size = new Size(151, 19),
-                        Location = new Point(93, 12)
+                        Location = new Point(93, 12),
+                        TabStop = false
                     };
 
                     // テキストボックス（イベント表示名）
@@ -100,7 +101,8 @@ namespace HoI4_Modding_Supporter
                     {
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - EventViewNameTextBox",
                         Size = new Size(151, 19),
-                        Location = new Point(93, 37)
+                        Location = new Point(93, 37),
+                        TabStop = false
                     };
 
                     // テキストボックス（通称名）
@@ -108,7 +110,8 @@ namespace HoI4_Modding_Supporter
                     {
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - AliasNameTextBox",
                         Size = new Size(151, 19),
-                        Location = new Point(93, 62)
+                        Location = new Point(93, 62),
+                        TabStop = false
                     };
 
                     // グループボックス「国旗」
@@ -153,7 +156,8 @@ namespace HoI4_Modding_Supporter
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - BigFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 12),
-                        ReadOnly = true
+                        ReadOnly = true,
+                        TabStop = false
                     };
 
                     // テキストボックス（国旗中パス）
@@ -162,7 +166,8 @@ namespace HoI4_Modding_Supporter
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 37),
-                        ReadOnly = true
+                        ReadOnly = true,
+                        TabStop = false
                     };
 
                     // テキストボックス（国旗小パス）
@@ -171,7 +176,8 @@ namespace HoI4_Modding_Supporter
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - SmallFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 62),
-                        ReadOnly = true
+                        ReadOnly = true,
+                        TabStop = false
                     };
 
                     // 参照ボタン（国旗大）
@@ -181,7 +187,8 @@ namespace HoI4_Modding_Supporter
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 10),
-                        UseVisualStyleBackColor = true
+                        UseVisualStyleBackColor = true,
+                        TabStop = false
                     };
 
                     // 参照ボタン（国旗中）
@@ -191,7 +198,8 @@ namespace HoI4_Modding_Supporter
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 35),
-                        UseVisualStyleBackColor = true
+                        UseVisualStyleBackColor = true,
+                        TabStop = false
                     };
 
                     // 参照ボタン（国旗小）
@@ -201,7 +209,8 @@ namespace HoI4_Modding_Supporter
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 60),
-                        UseVisualStyleBackColor = true
+                        UseVisualStyleBackColor = true,
+                        TabStop = false
                     };
 
                     // グループボックス「○○政党名」
@@ -236,7 +245,8 @@ namespace HoI4_Modding_Supporter
                     {
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyAliasNameTextBox",
                         Size = new Size(185, 19),
-                        Location = new Point(59, 12)
+                        Location = new Point(59, 12),
+                        TabStop = false
                     };
 
                     // テキストボックス（正式名）
@@ -244,7 +254,8 @@ namespace HoI4_Modding_Supporter
                     {
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyFullNameTextBox",
                         Size = new Size(185, 19),
-                        Location = new Point(59, 37)
+                        Location = new Point(59, 37),
+                        TabStop = false
                     };
 
                     // グループボックス「初期政党支持率」
@@ -284,7 +295,8 @@ namespace HoI4_Modding_Supporter
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularityNumeric",
                         Size = new Size(39, 19),
                         Location = new Point(180, 13),
-                        TextAlign = HorizontalAlignment.Right
+                        TextAlign = HorizontalAlignment.Right,
+                        TabStop = false
                     };
 
                     
@@ -296,7 +308,8 @@ namespace HoI4_Modding_Supporter
                         Size = new Size(39, 19),
                         Location = new Point(180, 38),
                         Enabled = false,
-                        TextAlign = HorizontalAlignment.Right
+                        TextAlign = HorizontalAlignment.Right,
+                        TabStop = false
                     };
 
                     // ラベル「%」

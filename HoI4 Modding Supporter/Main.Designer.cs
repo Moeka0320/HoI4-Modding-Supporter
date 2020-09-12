@@ -324,9 +324,9 @@
             this.label71.AutoSize = true;
             this.label71.Location = new System.Drawing.Point(255, 15);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(154, 12);
+            this.label71.Size = new System.Drawing.Size(180, 12);
             this.label71.TabIndex = 17;
-            this.label71.Text = "※ファイル名などで使用されます";
+            this.label71.Text = "※ファイル名の接頭語に使用されます";
             // 
             // textBox39
             // 
@@ -1386,7 +1386,7 @@
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(258, 24);
             this.label69.TabIndex = 10;
-            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nファイルパスは指定しないでください";
+            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nこの設定は反映されません";
             // 
             // label68
             // 
@@ -1838,9 +1838,9 @@
             this.label67.AutoSize = true;
             this.label67.Location = new System.Drawing.Point(262, 15);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(154, 12);
+            this.label67.Size = new System.Drawing.Size(135, 12);
             this.label67.TabIndex = 7;
-            this.label67.Text = "※ファイル名などで使用されます";
+            this.label67.Text = "※ファイル名で使用されます";
             // 
             // groupBox5
             // 

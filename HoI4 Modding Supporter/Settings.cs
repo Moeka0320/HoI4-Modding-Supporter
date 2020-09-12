@@ -58,6 +58,9 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public void SaveSettings()
         {
+            // 再起動メッセージフラグ
+            bool rebootMessage = false;
+
             if (textBox1.Text == "" || textBox2.Text == "")
             {
                 ErrorMessage("ディレクトリが選択されていません。");
@@ -92,6 +95,8 @@ namespace HoI4_Modding_Supporter
                     Properties.Settings.Default.fascismDisabled = checkBox4.Checked;
                     Properties.Settings.Default.communismDisabled = checkBox5.Checked;
                     Properties.Settings.Default.Save();
+
+                    rebootMessage = true;
                 }
             }
             else
@@ -102,6 +107,7 @@ namespace HoI4_Modding_Supporter
                 Properties.Settings.Default.fascismDisabled = checkBox4.Checked;
                 Properties.Settings.Default.communismDisabled = checkBox5.Checked;
                 Properties.Settings.Default.Save();
+                rebootMessage = true;
             }
 
             if (checkBox6.Checked == false)
@@ -112,6 +118,8 @@ namespace HoI4_Modding_Supporter
                 Properties.Settings.Default.customIdeologiesName.Clear();
                 Properties.Settings.Default.customIdeologiesName.Add("temp");
                 Properties.Settings.Default.Save();
+
+                rebootMessage = true;
             }
             else
             {
@@ -136,12 +144,20 @@ namespace HoI4_Modding_Supporter
                     Properties.Settings.Default.customIdeologiesInternalName.AddRange(internalNames);
                     Properties.Settings.Default.customIdeologiesName.AddRange(names);
                     Properties.Settings.Default.Save();
+
+                    rebootMessage = true;
                 }
                 else
                 {
                     ErrorMessage("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
                     return;
                 }
+            }
+
+            // 再起動メッセージ
+            if (rebootMessage == true)
+            {
+                MessageBox.Show("反映に再起動が必要な設定が変更されました。\n再起動は[ファイル] - [再起動]で行えます。");
             }
 
 
