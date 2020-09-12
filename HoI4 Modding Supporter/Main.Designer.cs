@@ -63,6 +63,7 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
@@ -323,9 +324,9 @@
             this.label71.AutoSize = true;
             this.label71.Location = new System.Drawing.Point(255, 15);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(154, 12);
+            this.label71.Size = new System.Drawing.Size(180, 12);
             this.label71.TabIndex = 17;
-            this.label71.Text = "※ファイル名などで使用されます";
+            this.label71.Text = "※ファイル名の接頭語に使用されます";
             // 
             // textBox39
             // 
@@ -549,6 +550,7 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.button20);
             this.groupBox12.Controls.Add(this.button19);
             this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.button18);
@@ -583,6 +585,17 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "各種設定";
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(8, 327);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(110, 23);
+            this.button20.TabIndex = 23;
+            this.button20.TabStop = false;
+            this.button20.Text = "カスタムイデオロギー";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // button19
             // 
             this.button19.Enabled = false;
@@ -607,7 +620,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(8, 327);
+            this.button18.Location = new System.Drawing.Point(124, 327);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(110, 23);
             this.button18.TabIndex = 18;
@@ -618,7 +631,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(240, 327);
+            this.button17.Location = new System.Drawing.Point(116, 438);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
             this.button17.TabIndex = 17;
@@ -629,7 +642,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(8, 356);
+            this.button16.Location = new System.Drawing.Point(232, 438);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(110, 23);
             this.button16.TabIndex = 16;
@@ -652,7 +665,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(124, 327);
+            this.button14.Location = new System.Drawing.Point(0, 438);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(110, 23);
             this.button14.TabIndex = 15;
@@ -1373,7 +1386,7 @@
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(258, 24);
             this.label69.TabIndex = 10;
-            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nファイルパスは指定しないでください";
+            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nこの設定は反映されません";
             // 
             // label68
             // 
@@ -1825,9 +1838,9 @@
             this.label67.AutoSize = true;
             this.label67.Location = new System.Drawing.Point(262, 15);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(154, 12);
+            this.label67.Size = new System.Drawing.Size(135, 12);
             this.label67.TabIndex = 7;
-            this.label67.Text = "※ファイル名などで使用されます";
+            this.label67.Text = "※ファイル名で使用されます";
             // 
             // groupBox5
             // 
@@ -2392,6 +2405,7 @@
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button20;
     }
 }
 

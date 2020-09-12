@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security;
@@ -136,9 +137,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(commonDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // MODFOLDER/common/countries ディレクトリが存在しない場合
@@ -146,24 +145,21 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(commonCountriesDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
                 ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                GenerateStoppedMessage();
                 return 1;
             }
             else
             {
                 int fcResult = FileCreate(commonCountryFilePath);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // COUNTRY.txtに書き込む
@@ -180,6 +176,7 @@ namespace HoI4_Modding_Supporter
                     e is IOException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -192,9 +189,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcOutResult = FileCopy(colorsHoi4FilePath, commonColorsFilePath);
                 if (fcOutResult == 1)
-                {
                     return 1;
-                }
             }
 
 
@@ -216,6 +211,7 @@ namespace HoI4_Modding_Supporter
                     e is SecurityException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -227,9 +223,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(commonCountry_tagsDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // 存在しない場合、../country_tags/01_countries.txtを作成
@@ -237,9 +231,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FileCreate(commonCountriesFilePath);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
 
 
                 // 01_countries.txtを編集
@@ -255,6 +247,7 @@ namespace HoI4_Modding_Supporter
                         e is IOException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -277,6 +270,7 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -289,9 +283,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(historyDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // MODDIR/hitsory/countriesディレクトリが存在しない場合
@@ -299,17 +291,13 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(historyCountriesDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // 国家ファイルを作成
             int fcOutResult2 = FileCreate(historyCountrisFilePath);
             if (fcOutResult2 == 1)
-            {
                 return 1;
-            }
 
 
             // 作成された国家ファイルを編集
@@ -337,37 +325,26 @@ namespace HoI4_Modding_Supporter
                 sw.WriteLine("\telection_frequency = " + variable.ElectionFrequency);
 
                 if (variable.NoElection == true)
-                {
                     sw.WriteLine("\telections_allowed = no");
-                }
                 else
-                {
                     sw.WriteLine("\telections_allowed = yes");
-                }
 
                 sw.WriteLine("}");
                 // 政党支持率
                 sw.WriteLine("set_popularities = {");
 
                 if (Properties.Settings.Default.democraticDisabled == false)
-                {
                     sw.WriteLine("\tdemocratic = " + variable.D_Popularity);
-                }
 
                 if (Properties.Settings.Default.fascismDisabled == false)
-                {
                     sw.WriteLine("\tfascism = " + variable.F_Popularity);
-                }
 
                 if (Properties.Settings.Default.communismDisabled == false)
-                {
                     sw.WriteLine("\tcommunism = " + variable.C_Popularity);
-                }
                 
                 if (Properties.Settings.Default.neutralityDisabled == false)
-                {
                     sw.WriteLine("\tneutrality = " + variable.N_Popularity);
-                }
+
                 sw.WriteLine("}");
                 sw.Close();
             }
@@ -377,6 +354,7 @@ namespace HoI4_Modding_Supporter
                     e is IOException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -388,9 +366,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(localisationDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../localisation/replaceディレクトリが存在しない場合
@@ -398,9 +374,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(localisationReplaceDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../localisation/replace/mod_countries_l_english.yml
@@ -408,9 +382,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FileCreate(localisationReplaceCountriesFilePath);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
 
                 try
                 {
@@ -459,6 +431,7 @@ namespace HoI4_Modding_Supporter
                         e is ObjectDisposedException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -507,6 +480,7 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -517,9 +491,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FileCreate(localisationReplacePartiesFilePath);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
 
                 try
                 {
@@ -563,6 +535,7 @@ namespace HoI4_Modding_Supporter
                         e is ObjectDisposedException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -603,6 +576,7 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -615,9 +589,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(gfxDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../gfx/flagsディレクトリが存在しない場合
@@ -625,9 +597,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(gfxFlagsDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../gfx/flags/mediumディレクトリが存在しない場合
@@ -635,9 +605,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(gfxFlagsMediumDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../gfx/flags/smallディレクトリが存在しない場合
@@ -645,9 +613,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FolderCreate(gfxFlagsSmallDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // 国旗ファイルをコピー
@@ -659,9 +625,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.N_FlagBig, n_Flags);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -671,9 +635,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.N_FlagMed, n_FlagsMedium);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -683,9 +645,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.N_FlagSma, n_FlagsSmall);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
             }
@@ -698,9 +658,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.D_FlagBig, d_Flags);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -710,9 +668,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.D_FlagMed, d_FlagsMedium);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -722,9 +678,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.D_FlagSma, d_FlagsSmall);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
             }
@@ -737,9 +691,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.F_FlagBig, f_Flags);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -749,9 +701,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.F_FlagMed, f_FlagsMedium);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -761,9 +711,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.F_FlagSma, f_FlagsSmall);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
             }
@@ -776,9 +724,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.C_FlagBig, c_Flags);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -788,9 +734,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.C_FlagMed, c_FlagsMedium);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
 
@@ -800,9 +744,7 @@ namespace HoI4_Modding_Supporter
                     {
                         int fcResult = FileCopy(variable.C_FlagSma, c_FlagsSmall);
                         if (fcResult == 1)
-                        {
                             return 1;
-                        }
                     }
                 }
             }
@@ -827,6 +769,7 @@ namespace HoI4_Modding_Supporter
                             else
                             {
                                 ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
+                                GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -840,6 +783,7 @@ namespace HoI4_Modding_Supporter
                                 e is DirectoryNotFoundException)
                             {
                                 ErrorMessage(e.Message);
+                                GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -863,6 +807,7 @@ namespace HoI4_Modding_Supporter
                                     e is SecurityException)
                                 {
                                     ErrorMessage(e.Message);
+                                    GenerateStoppedMessage();
                                     return 1;
                                 }
                             }
@@ -877,6 +822,7 @@ namespace HoI4_Modding_Supporter
                                 e is DirectoryNotFoundException)
                             {
                                 ErrorMessage(e.Message);
+                                GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -899,6 +845,7 @@ namespace HoI4_Modding_Supporter
                                 e is SecurityException)
                             {
                                 ErrorMessage(e.Message);
+                                GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -914,6 +861,7 @@ namespace HoI4_Modding_Supporter
                         e is DirectoryNotFoundException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -924,9 +872,7 @@ namespace HoI4_Modding_Supporter
             {
                 int nlgResult = NationalLeaderGenerate(historyCountrisFilePath, gfxLeadersDir, gfxLeadersTagDir);
                 if (nlgResult == 1)
-                {
                     return 1;
-                }
             }
 
             // 陣営の作成が有効化されている場合
@@ -934,17 +880,22 @@ namespace HoI4_Modding_Supporter
             {
                 int fsResult = FactionSetting(historyCountrisFilePath, localisationReplaceDir);
                 if (fsResult == 1)
-                {
                     return 1;
-                }
+            }
+
+            // カスタムイデオロギーが有効化されている場合
+            if (Properties.Settings.Default.customIdeologiesEnabled == true)
+            {
+                int cisResult = CustomIdeologiesSetting(historyCountrisFilePath, localisationReplaceDir, gfxFlagsDir);
+                if (cisResult == 1)
+                    return 1;
             }
 
             MessageBox.Show("生成が完了しました。");
 
             if (Properties.Settings.Default.afterOpenFolder == true)
-            {
                 Process.Start(variable.Moddir);
-            }
+
             return 0;
         }
 
@@ -982,6 +933,7 @@ namespace HoI4_Modding_Supporter
                     e is SecurityException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -992,9 +944,7 @@ namespace HoI4_Modding_Supporter
             {
                 fcResult = FolderCreate(GfxLeadersDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // ../gfx/leaders/[国家タグ]ディレクトリが存在しない場合にファルダを作成
@@ -1002,9 +952,7 @@ namespace HoI4_Modding_Supporter
             {
                 fcResult = FolderCreate(GfxLeadersTagDir);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
             }
 
             // 画像ファイルを ../gfx/leaders/[国家タグ]/[国家指導者名].ddsにコピー
@@ -1012,9 +960,7 @@ namespace HoI4_Modding_Supporter
 
             fcResult = FileCopy(variable.LeaderPicturePath, leaderPicturePath);
             if (fcResult == 1)
-            {
                 return 1;
-            }
 
             return 0;
         }
@@ -1035,9 +981,7 @@ namespace HoI4_Modding_Supporter
                 if (variable.FactionParticipatingCountries != null)
                 {
                     for ( int cnt = 0; cnt <= variable.FactionParticipatingCountries.Length; cnt++ )
-                    {
                         File.AppendAllText(HistoryCountriesFilePath, "\nadd_to_faction = " + variable.FactionParticipatingCountries[cnt]);
-                    }
                 }
             }
             catch (Exception e)
@@ -1052,6 +996,7 @@ namespace HoI4_Modding_Supporter
                     e is SecurityException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1063,9 +1008,7 @@ namespace HoI4_Modding_Supporter
             {
                 int fcResult = FileCreate(localisationReplaceFactionsFilePath);
                 if (fcResult == 1)
-                {
                     return 1;
-                }
 
                 try
                 {
@@ -1088,6 +1031,7 @@ namespace HoI4_Modding_Supporter
                         e is ObjectDisposedException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -1110,8 +1054,97 @@ namespace HoI4_Modding_Supporter
                         e is SecurityException)
                     {
                         ErrorMessage(e.Message);
+                        GenerateStoppedMessage();
                         return 1;
                     }
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// カスタムイデオロギーの設定
+        /// </summary>
+        public int CustomIdeologiesSetting(string HistoryCountriesFilePath, string LocalisationReplaceDir, string GfxFlagsDir)
+        {
+            Variable variable = new Variable();
+
+            // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
+            string localisationReplaceCountriesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
+            // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
+            string localisationReplacePartiesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_parties_l_english.yml";
+            // [MODFOLDER]/gfx/flags/mediumディレクトリパス
+            string gfxFlagsMediumDir = GfxFlagsDir + @"\menium";
+            // [MODFOLDER]/gfx/flags/smallディレクトリパス
+            string gfxFlagsSmallDir = GfxFlagsDir + @"\small";
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                List<string> historyCountryFile = new List<string>();
+
+                // 国家ファイルの読み込み
+                using (StreamReader sr = new StreamReader(HistoryCountriesFilePath))
+                {
+                    string textLine = "";
+
+                    // 一行ずつListに代入
+                    while ((textLine = sr.ReadLine()) != null)
+                        historyCountryFile.Add(textLine);
+
+                    string searchString = "set_popularities = {";
+                    string insertString = "\t" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + " = " + variable.CustomIdeologiesPopularity[cnt];
+
+                    historyCountryFile.Insert(historyCountryFile.IndexOf(searchString) + 1, insertString); 
+                }
+
+                // 国家ファイルの初期化
+                using (FileStream fs = new FileStream(HistoryCountriesFilePath, FileMode.Open))
+                    fs.SetLength(0);
+
+                // 国家ファイルの書き込み
+                using (StreamWriter sw = new StreamWriter(HistoryCountriesFilePath, false))
+                {
+                    for (int lineNum = 0; lineNum < historyCountryFile.Count; lineNum++)
+                        sw.WriteLine(historyCountryFile[lineNum]);
+                }
+
+                // ローカリゼーション書き込み
+                File.AppendAllText(localisationReplaceCountriesFilePath,
+                    "\n " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ":0 \"" + variable.CustomIdeologiesSettings[cnt, 0] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_DEF:0 \"" + variable.CustomIdeologiesSettings[cnt, 1] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_ADJ:0 \"" + variable.CustomIdeologiesSettings[cnt, 2] + "\"");
+
+                File.AppendAllText(localisationReplacePartiesFilePath,
+                    "\n " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_party:0 \"" + variable.CustomIdeologiesSettings[cnt, 6] + "\"\n" +
+                    " " + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + "_party_long:0 \"" + variable.CustomIdeologiesSettings[cnt, 7] + "\"");
+
+                // 国旗ファイルをコピー
+                string bigFlagPath = GfxFlagsDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+                string mediumFlagPath = gfxFlagsMediumDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+                string smallFlagPath = gfxFlagsSmallDir + @"\" + variable.CountryTag + "_" + Properties.Settings.Default.customIdeologiesInternalName[cnt] + ".tga";
+
+                int fcResult;
+
+                if (File.Exists(bigFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 3] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 3], bigFlagPath);
+                    if (fcResult == 1)
+                        return 1;   // 強制終了
+                }
+
+                if (File.Exists(mediumFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 4] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 4], mediumFlagPath);
+                    if (fcResult == 1)
+                        return 1;
+                }
+
+                if (File.Exists(smallFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 5] != "")
+                {
+                    fcResult = FileCopy(variable.CustomIdeologiesSettings[cnt, 5], smallFlagPath);
+                    if (fcResult == 1)
+                        return 1;
                 }
             }
 
@@ -1140,6 +1173,7 @@ namespace HoI4_Modding_Supporter
                     e is NotSupportedException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1147,6 +1181,11 @@ namespace HoI4_Modding_Supporter
             return 0;
         }
 
+        /// <summary>
+        /// 新しいフォルダーを作成
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
         public int FolderCreate(string folderPath)
         {
             try
@@ -1164,6 +1203,7 @@ namespace HoI4_Modding_Supporter
                     e is NotSupportedException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1194,6 +1234,7 @@ namespace HoI4_Modding_Supporter
                     e is NotSupportedException)
                 {
                     ErrorMessage(e.Message);
+                    GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1207,6 +1248,11 @@ namespace HoI4_Modding_Supporter
         public void ErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void GenerateStoppedMessage()
+        {
+            MessageBox.Show("生成処理が強制終了されました。");
         }
     }
 }

@@ -348,29 +348,29 @@
             get { return sovereignCountryTag; }
         }
 
-        private static double n_Popularity;
-        public double N_Popularity
+        private static int n_Popularity;
+        public int N_Popularity
         {
             set { n_Popularity = value; }
             get { return n_Popularity; }
         }
 
-        private static double d_Popularity;
-        public double D_Popularity
+        private static int d_Popularity;
+        public int D_Popularity
         {
             set { d_Popularity = value; }
             get { return d_Popularity; }
         }
 
-        private static double f_Popularity;
-        public double F_Popularity
+        private static int f_Popularity;
+        public int F_Popularity
         {
             set { f_Popularity = value; }
             get { return f_Popularity; }
         }
 
-        private static double c_Popularity;
-        public double C_Popularity
+        private static int c_Popularity;
+        public int C_Popularity
         {
             set { c_Popularity = value; }
             get { return c_Popularity; }
@@ -482,6 +482,8 @@
             get { return willNotAppear; }
         }
 
+        // FactionSettings
+
         private static bool factionCreateEnabled;
         public bool FactionCreateEnabled
         { 
@@ -508,6 +510,34 @@
         {
             set { factionParticipatingCountries = value; }
             get { return factionParticipatingCountries; }
+        }
+
+        // CustomIdeology (配列の順序は customIdeologiesInternalName / customIdeologiesName に準拠)
+        /*
+            [TABCOUNT - 1, 0] = viewNameTextBox.Text
+            [TABCOUNT - 1, 1] = eventViewNameTextBox.Text
+            [TABCOUNT - 1, 2] = aliasViewNameTextBox.Text
+            [TABCOUNT - 1, 3] = bigFlagPathTextBox.Text
+            [TABCOUNT - 1, 4] = mediumFlagPathTextBox.Text
+            [TABCOUNT - 1, 5] = smallFlagPathTextBox.Text
+            [TABCOUNT - 1, 6] = partyAliasNameTextBox.Text
+            [TABCOUNT - 1, 7] = partyFullNameTextBox.Text 
+        */
+
+        private static string[,] customIdeologiesSettings;
+
+        public string[,] CustomIdeologiesSettings
+        {
+            set { customIdeologiesSettings = value; }
+            get { return customIdeologiesSettings; }
+        }
+
+        private static int[] customIdeologiesPopularity;
+
+        public int[] CustomIdeologiesPopularity
+        {
+            set { customIdeologiesPopularity = value; }
+            get { return customIdeologiesPopularity; }
         }
     }
 }

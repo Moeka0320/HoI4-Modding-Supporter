@@ -17,31 +17,19 @@ namespace HoI4_Modding_Supporter
             InitializeComponent();
 
             if (checkBox1.Checked == true)
-            {
                 ChangeCheckBox(true, 0);
-            }
             else
-            {
                 ChangeCheckBox(false, 0);
-            }
 
             if (checkBox2.Checked == true)
-            {
                 ChangeCheckBox(true, 1);
-            }
             else
-            {
                 ChangeCheckBox(false, 1);
-            }
 
             if (checkBox3.Checked == true)
-            {
                 ChangeCheckBox(true, 2);
-            }
             else
-            {
                 ChangeCheckBox(false, 2);
-            }
         }
 
         /// <summary>
@@ -236,13 +224,10 @@ namespace HoI4_Modding_Supporter
         {
             int cResult = Check();
             if (cResult == 1)
-            {
                 return;
-            }
+
             else
-            {
                 this.Close();
-            }
         }
     }
 }

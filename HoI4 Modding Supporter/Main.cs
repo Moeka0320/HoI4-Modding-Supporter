@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 namespace HoI4_Modding_Supporter
 {
@@ -28,9 +30,12 @@ namespace HoI4_Modding_Supporter
 
         /// <summary>
         /// テキストボックスをすべてリセット
+        /// + カスタムイデオロギー変数のリセット
         /// </summary>
         public void AllClear()
         {
+            Variable variable = new Variable();
+
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
@@ -89,6 +94,8 @@ namespace HoI4_Modding_Supporter
             checkBox3.Checked = false;
             comboBox1.SelectedItem = null;
             comboBox2.SelectedItem = null;
+
+            variable.CustomIdeologiesPopularity = null;
         }
 
         /// <summary>
@@ -108,12 +115,29 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public void PartiesSupportTotal()
         {
-            int nSupport = (int)numericUpDown12.Value;
-            int dSupport = (int)numericUpDown11.Value;
-            int fSupport = (int)numericUpDown10.Value;
-            int cSupport = (int)numericUpDown9.Value;
+            Variable variable = new Variable();
 
-            int total = nSupport + dSupport + fSupport + cSupport;
+            int nSupport = 0, dSupport = 0, fSupport = 0, cSupport = 0, customSupport = 0;
+
+            if (Properties.Settings.Default.neutralityDisabled == false)
+                nSupport = (int)numericUpDown12.Value;
+
+            if (Properties.Settings.Default.democraticDisabled == false)
+                dSupport = (int)numericUpDown11.Value;
+
+            if (Properties.Settings.Default.fascismDisabled == false)
+                fSupport = (int)numericUpDown10.Value;
+
+            if (Properties.Settings.Default.communismDisabled == false)
+                cSupport = (int)numericUpDown9.Value;
+
+            if (variable.CustomIdeologiesPopularity != null)
+            {
+                for (int cnt = 0; cnt < variable.CustomIdeologiesPopularity.Length; cnt++)
+                    customSupport += variable.CustomIdeologiesPopularity[cnt];
+            }
+
+            int total = nSupport + dSupport + fSupport + cSupport + customSupport;
 
             textBox27.Text = total.ToString();
         }
@@ -224,6 +248,8 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public int Check()
         {
+            Variable variable = new Variable();
+
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
             {
@@ -446,6 +472,14 @@ namespace HoI4_Modding_Supporter
                 return 1;
             }
 
+            // カスタムイデオロギー
+            if (Properties.Settings.Default.customIdeologiesEnabled == true &&
+                variable.CustomIdeologiesSettings == null)
+            {
+                ErrorMessage("カスタムイデオロギーが設定されていません。");
+                return 1;
+            }
+
             MessageBox.Show("入力ミスのチェックが完了しました。");
             return 0;
         }
@@ -612,9 +646,7 @@ namespace HoI4_Modding_Supporter
             variable.SovereignCountryTag = null;
 
             if (checkBox2.Checked == true)
-            {
                 variable.SovereignCountryTag = textBox36.Text;
-            }
 
             // 初期政党支持率
             // 中道主義
@@ -651,6 +683,21 @@ namespace HoI4_Modding_Supporter
                 // 共産主義
                 variable.StartIdeology = "communism";
 
+            }
+            else
+            {
+                string[] list = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
+
+                foreach (string ideology in list)
+                {
+                    if (ideology == null)
+                        break;
+                    else
+                    {
+                        if (comboBox2.SelectedItem.ToString() == ideology)
+                            variable.StartIdeology = Properties.Settings.Default.customIdeologiesInternalName[Properties.Settings.Default.customIdeologiesName.IndexOf(ideology)];
+                    }
+                }
             }
 
             // 前回の選挙
@@ -697,9 +744,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown12.Enabled = neutralityEnabled;
 
             if (neutralityEnabled == false)
-            {
                 comboBox2.Items.Remove("中道主義");
-            }
 
             textBox8.Enabled = democraticEnabled;
             textBox7.Enabled = democraticEnabled;
@@ -715,9 +760,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown11.Enabled = democraticEnabled;
 
             if (democraticEnabled == false)
-            {
                 comboBox2.Items.Remove("民主主義");
-            }
 
             textBox11.Enabled = fascismEnabled;
             textBox10.Enabled = fascismEnabled;
@@ -733,9 +776,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown10.Enabled = fascismEnabled;
 
             if (fascismEnabled == false)
-            {
                 comboBox2.Items.Remove("ファシズム");
-            }
 
             textBox14.Enabled = communismEnabled;
             textBox13.Enabled = communismEnabled;
@@ -751,9 +792,29 @@ namespace HoI4_Modding_Supporter
             numericUpDown9.Enabled = communismEnabled;
 
             if (communismEnabled == false)
-            {
                 comboBox2.Items.Remove("共産主義");
+
+            // カスタムイデオロギー
+            if (Properties.Settings.Default.customIdeologiesEnabled == true)
+            {
+                button20.Enabled = true;
+                
+                // [初期与党][イデオロギー]の追加
+                if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
+                {
+                    string[] list = Properties.Settings.Default.customIdeologiesName.Cast<string>().ToArray();
+
+                    for (int cnt = 0; cnt <= list.Length; cnt++)
+                    {
+                        if (list[cnt] == null)
+                            break;
+                        else
+                            comboBox2.Items.Add(list[cnt]);
+                    }
+                }
             }
+            else
+                button20.Enabled = false;
 
         }
 
@@ -799,13 +860,10 @@ namespace HoI4_Modding_Supporter
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked == false)
-            {
                 textBox36.Enabled = false;
-            }
+
             else if (checkBox2.Checked == true)
-            {
                 textBox36.Enabled = true;
-            }
         }
 
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
@@ -899,15 +957,13 @@ namespace HoI4_Modding_Supporter
 
             int cResult = Check();
             if (cResult == 1)
-            {
                 return;
-            }
+
             DataAssignment();
+
             int gcResult = generate.GenerateCountry();
             if (gcResult == 1)
-            {
                 return;
-            }
         }
 
         private void menuItem7_Click(object sender, EventArgs e)
@@ -936,19 +992,39 @@ namespace HoI4_Modding_Supporter
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox3.Checked == false)
-            {
                 button19.Enabled = false;
-            }
             else
-            {
                 button19.Enabled = true;
-            }
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
             FactionSettings fs = new FactionSettings();
             fs.ShowDialog();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            Variable variable = new Variable();
+
+            // 政党支持率の値を変数に代入
+            if (Properties.Settings.Default.neutralityDisabled == false)
+                variable.N_Popularity = (int)numericUpDown12.Value;
+
+            if (Properties.Settings.Default.democraticDisabled == false)
+                variable.D_Popularity = (int)numericUpDown11.Value;
+
+            if (Properties.Settings.Default.fascismDisabled == false)
+                variable.F_Popularity = (int)numericUpDown10.Value;
+
+            if (Properties.Settings.Default.communismDisabled == false)
+                variable.C_Popularity = (int)numericUpDown9.Value;
+
+            CustomIdeologiesSettings cis = new CustomIdeologiesSettings();
+            cis.ShowDialog();
+
+            // カスタムイデオロギー政党支持率の反映
+            PartiesSupportTotal();
         }
     }
 }
