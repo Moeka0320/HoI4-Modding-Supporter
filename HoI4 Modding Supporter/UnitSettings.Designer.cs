@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnitSettings));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -40,25 +41,25 @@
             this.comboBox28 = new System.Windows.Forms.ComboBox();
             this.comboBox29 = new System.Windows.Forms.ComboBox();
             this.comboBox30 = new System.Windows.Forms.ComboBox();
+            this.comboBox24 = new System.Windows.Forms.ComboBox();
+            this.comboBox25 = new System.Windows.Forms.ComboBox();
+            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox21 = new System.Windows.Forms.ComboBox();
             this.comboBox22 = new System.Windows.Forms.ComboBox();
             this.comboBox23 = new System.Windows.Forms.ComboBox();
-            this.comboBox24 = new System.Windows.Forms.ComboBox();
-            this.comboBox25 = new System.Windows.Forms.ComboBox();
             this.comboBox16 = new System.Windows.Forms.ComboBox();
             this.comboBox17 = new System.Windows.Forms.ComboBox();
             this.comboBox18 = new System.Windows.Forms.ComboBox();
-            this.comboBox19 = new System.Windows.Forms.ComboBox();
-            this.comboBox20 = new System.Windows.Forms.ComboBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
             this.comboBox15 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -316,6 +317,190 @@
             this.comboBox30.Size = new System.Drawing.Size(81, 20);
             this.comboBox30.TabIndex = 27;
             // 
+            // comboBox24
+            // 
+            this.comboBox24.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox24.FormattingEnabled = true;
+            this.comboBox24.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox24.Location = new System.Drawing.Point(353, 102);
+            this.comboBox24.Name = "comboBox24";
+            this.comboBox24.Size = new System.Drawing.Size(81, 20);
+            this.comboBox24.TabIndex = 23;
+            // 
+            // comboBox25
+            // 
+            this.comboBox25.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox25.FormattingEnabled = true;
+            this.comboBox25.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox25.Location = new System.Drawing.Point(353, 128);
+            this.comboBox25.Name = "comboBox25";
+            this.comboBox25.Size = new System.Drawing.Size(81, 20);
+            this.comboBox25.TabIndex = 22;
+            // 
+            // comboBox19
+            // 
+            this.comboBox19.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox19.FormattingEnabled = true;
+            this.comboBox19.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox19.Location = new System.Drawing.Point(266, 102);
+            this.comboBox19.Name = "comboBox19";
+            this.comboBox19.Size = new System.Drawing.Size(81, 20);
+            this.comboBox19.TabIndex = 18;
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox20.FormattingEnabled = true;
+            this.comboBox20.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox20.Location = new System.Drawing.Point(266, 128);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(81, 20);
+            this.comboBox20.TabIndex = 17;
+            // 
+            // comboBox14
+            // 
+            this.comboBox14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox14.Location = new System.Drawing.Point(179, 102);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(81, 20);
+            this.comboBox14.TabIndex = 13;
+            // 
+            // comboBox11
+            // 
+            this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox11.FormattingEnabled = true;
+            this.comboBox11.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox11.Location = new System.Drawing.Point(179, 24);
+            this.comboBox11.Name = "comboBox11";
+            this.comboBox11.Size = new System.Drawing.Size(81, 20);
+            this.comboBox11.TabIndex = 16;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox9.Location = new System.Drawing.Point(92, 102);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(81, 20);
+            this.comboBox9.TabIndex = 8;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "None",
+            "歩兵",
+            "騎兵",
+            "砲兵",
+            "自動車化砲兵",
+            "機械化砲兵",
+            "軽戦車",
+            "中戦車",
+            "重戦車",
+            "現代戦車",
+            "山岳兵",
+            "海兵隊",
+            "空挺兵"});
+            this.comboBox6.Location = new System.Drawing.Point(92, 24);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(81, 20);
+            this.comboBox6.TabIndex = 11;
+            // 
             // comboBox21
             // 
             this.comboBox21.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -384,52 +569,6 @@
             this.comboBox23.Name = "comboBox23";
             this.comboBox23.Size = new System.Drawing.Size(81, 20);
             this.comboBox23.TabIndex = 24;
-            // 
-            // comboBox24
-            // 
-            this.comboBox24.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox24.FormattingEnabled = true;
-            this.comboBox24.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox24.Location = new System.Drawing.Point(353, 102);
-            this.comboBox24.Name = "comboBox24";
-            this.comboBox24.Size = new System.Drawing.Size(81, 20);
-            this.comboBox24.TabIndex = 23;
-            // 
-            // comboBox25
-            // 
-            this.comboBox25.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox25.FormattingEnabled = true;
-            this.comboBox25.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox25.Location = new System.Drawing.Point(353, 128);
-            this.comboBox25.Name = "comboBox25";
-            this.comboBox25.Size = new System.Drawing.Size(81, 20);
-            this.comboBox25.TabIndex = 22;
             // 
             // comboBox16
             // 
@@ -500,75 +639,6 @@
             this.comboBox18.Size = new System.Drawing.Size(81, 20);
             this.comboBox18.TabIndex = 19;
             // 
-            // comboBox19
-            // 
-            this.comboBox19.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox19.FormattingEnabled = true;
-            this.comboBox19.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox19.Location = new System.Drawing.Point(266, 102);
-            this.comboBox19.Name = "comboBox19";
-            this.comboBox19.Size = new System.Drawing.Size(81, 20);
-            this.comboBox19.TabIndex = 18;
-            // 
-            // comboBox20
-            // 
-            this.comboBox20.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox20.FormattingEnabled = true;
-            this.comboBox20.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox20.Location = new System.Drawing.Point(266, 128);
-            this.comboBox20.Name = "comboBox20";
-            this.comboBox20.Size = new System.Drawing.Size(81, 20);
-            this.comboBox20.TabIndex = 17;
-            // 
-            // comboBox11
-            // 
-            this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox11.Location = new System.Drawing.Point(179, 24);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(81, 20);
-            this.comboBox11.TabIndex = 16;
-            // 
             // comboBox12
             // 
             this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -615,29 +685,6 @@
             this.comboBox13.Size = new System.Drawing.Size(81, 20);
             this.comboBox13.TabIndex = 14;
             // 
-            // comboBox14
-            // 
-            this.comboBox14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox14.Location = new System.Drawing.Point(179, 102);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(81, 20);
-            this.comboBox14.TabIndex = 13;
-            // 
             // comboBox15
             // 
             this.comboBox15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -660,29 +707,6 @@
             this.comboBox15.Name = "comboBox15";
             this.comboBox15.Size = new System.Drawing.Size(81, 20);
             this.comboBox15.TabIndex = 12;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox6.Location = new System.Drawing.Point(92, 24);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(81, 20);
-            this.comboBox6.TabIndex = 11;
             // 
             // comboBox7
             // 
@@ -729,29 +753,6 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(81, 20);
             this.comboBox8.TabIndex = 9;
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "None",
-            "歩兵",
-            "騎兵",
-            "砲兵",
-            "自動車化砲兵",
-            "機械化砲兵",
-            "軽戦車",
-            "中戦車",
-            "重戦車",
-            "現代戦車",
-            "山岳兵",
-            "海兵隊",
-            "空挺兵"});
-            this.comboBox9.Location = new System.Drawing.Point(92, 102);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(81, 20);
-            this.comboBox9.TabIndex = 8;
             // 
             // comboBox10
             // 
@@ -1096,6 +1097,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UnitSettings";
