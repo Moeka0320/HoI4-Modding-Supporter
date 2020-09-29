@@ -764,7 +764,9 @@ namespace HoI4_Modding_Supporter
                             if (rawCountryFile.Length != 0)
                             {
                                 string countryFileName = rawCountryFile[0].Replace(variable.Hoi4dir + @"\history\countries", "");
-                                FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName);
+                                int fcResult = FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName);
+                                if (fcResult == 1)
+                                    return 1;
                             }
                             else
                             {
