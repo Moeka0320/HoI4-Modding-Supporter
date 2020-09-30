@@ -570,19 +570,15 @@ namespace HoI4_Modding_Supporter
 
                 // 国旗はファイルパスが指定されてなくてもOK
 
-                // 政党名
-                // 通称名
-                if (string.IsNullOrWhiteSpace(partyAliasNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [通称名]が無効です。");
-                    return 1;
-                }
+                // 政党名は指定されてなくてもOK
 
-                // 正式名
-                if (string.IsNullOrWhiteSpace(partyFullNameTextBoxList[cnt].Text))
+                if (partyFullNameTextBoxList[cnt].Text == "" || partyAliasNameTextBoxList[cnt].Text == "")
                 {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [正式名]が無効です。");
-                    return 1;
+                    if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
+                    {
+                        ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                        return 1;
+                    }
                 }
             }
 

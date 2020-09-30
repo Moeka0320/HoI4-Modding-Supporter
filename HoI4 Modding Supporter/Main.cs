@@ -367,71 +367,40 @@ namespace HoI4_Modding_Supporter
 
             // 国旗はファイルパスが指定されてなくてもOK
 
-            // 政党名
-            // 中道主義政党
-            if (Properties.Settings.Default.neutralityDisabled == false)
+            // 政党名は指定がない場合、イデオロギー名になる
+            // 政党名を指定しない場合は通称名・正式名の両方を空欄にする必要がある
+            if (textBox30.Text == "" || textBox29.Text == "")
             {
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox30.Text))
+                if ((textBox30.Text == "" && textBox29.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [中道主義政党] - [通称名]が無効です。");
-                    return 1;
-                }
-                // 正式名
-                if (string.IsNullOrWhiteSpace(textBox29.Text))
-                {
-                    ErrorMessage("[政党名] - [中道主義政党] - [正式名]が無効です。");
+                    ErrorMessage("[政党名] - [中道主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
 
-            if (Properties.Settings.Default.democraticDisabled == false)
+            if (textBox35.Text == "" || textBox34.Text == "")
             {
-                // 民主主義政党
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox35.Text))
+                if ((textBox35.Text == "" && textBox34.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [民主主義政党] - [通称名]が無効です。");
-                    return 1;
-                }
-                // 正式名
-                if (string.IsNullOrWhiteSpace(textBox34.Text))
-                {
-                    ErrorMessage("[政党名] - [民主主義政党] - [正式名]が無効です。");
+                    ErrorMessage("[政党名] - [民主主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
 
-            if (Properties.Settings.Default.fascismDisabled == false)
+            if (textBox31.Text == "" || textBox28.Text == "")
             {
-                // ファシズム政党
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox31.Text))
+                if ((textBox31.Text == "" && textBox28.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [ファシズム政党] - [通称名]が無効です。");
-                    return 1;
-                }
-                // 正式名
-                if (string.IsNullOrWhiteSpace(textBox28.Text))
-                {
-                    ErrorMessage("[政党名] - [ファシズム政党] - [正式名]が無効です。");
+                    ErrorMessage("[政党名] - [ファシズム政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
 
-            if (Properties.Settings.Default.communismDisabled == false)
+            if (textBox33.Text == "" || textBox32.Text == "")
             {
-                // 共産主義政党
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox33.Text))
+                if ((textBox33.Text == "" && textBox32.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [共産主義政党] - [通称名]が無効です。");
-                    return 1;
-                }
-                // 正式名
-                if (string.IsNullOrWhiteSpace(textBox32.Text))
-                {
-                    ErrorMessage("[政党名] - [共産主義政党] - [正式名]が無効です。");
+                    ErrorMessage("[政党名] - [共産主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                     return 1;
                 }
             }

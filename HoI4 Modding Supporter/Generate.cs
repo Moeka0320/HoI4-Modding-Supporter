@@ -498,25 +498,33 @@ namespace HoI4_Modding_Supporter
                     StreamWriter sw = new StreamWriter(localisationReplacePartiesFilePath, false, enc);
                     sw.WriteLine("l_english:");
                     sw.WriteLine("");
-                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    if (Properties.Settings.Default.neutralityDisabled == false &&
+                        variable.N_PartyFullName != "" &&
+                        variable.N_PartyAliasName != "")
                     {
                         sw.WriteLine(" " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"");
                         sw.WriteLine(" " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.democraticDisabled == false)
+                    if (Properties.Settings.Default.democraticDisabled == false &&
+                        variable.D_PartyFullName != "" &&
+                        variable.D_PartyAliasName != "")
                     {
                         sw.WriteLine(" " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"");
                         sw.WriteLine(" " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.fascismDisabled == false)
+                    if (Properties.Settings.Default.fascismDisabled == false &&
+                        variable.F_PartyFullName != "" &&
+                        variable.F_PartyAliasName != "")
                     {
                         sw.WriteLine(" " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"");
                         sw.WriteLine(" " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.communismDisabled == false)
+                    if (Properties.Settings.Default.communismDisabled == false &&
+                        variable.C_PartyFullName != "" &&
+                        variable.C_PartyAliasName != "")
                     {
                         sw.WriteLine(" " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"");
                         sw.WriteLine(" " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"");
@@ -544,22 +552,30 @@ namespace HoI4_Modding_Supporter
             {
                 try
                 {
-                    if (Properties.Settings.Default.neutralityDisabled == false)
+                    if (Properties.Settings.Default.neutralityDisabled == false &&
+                        variable.N_PartyFullName != "" &&
+                        variable.N_PartyAliasName != "")
                     {
                         File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_neutrality_party:0 \"" + variable.N_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_neutrality_party_long:0 \"" + variable.N_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.democraticDisabled == false)
+                    if (Properties.Settings.Default.democraticDisabled == false &&
+                        variable.D_PartyFullName != "" &&
+                        variable.D_PartyAliasName != "")
                     {
                         File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_democratic_party:0 \"" + variable.D_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_democratic_party_long:0 \"" + variable.D_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.fascismDisabled == false)
+                    if (Properties.Settings.Default.fascismDisabled == false &&
+                        variable.F_PartyFullName != "" &&
+                        variable.F_PartyAliasName != "")
                     {
                         File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_fascism_party:0 \"" + variable.F_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_fascism_party_long:0 \"" + variable.F_PartyFullName + "\"");
                     }
 
-                    if (Properties.Settings.Default.communismDisabled == false)
+                    if (Properties.Settings.Default.communismDisabled == false &&
+                        variable.C_PartyFullName != "" &&
+                        variable.C_PartyAliasName != "")
                     {
                         File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"\n");
                     }
