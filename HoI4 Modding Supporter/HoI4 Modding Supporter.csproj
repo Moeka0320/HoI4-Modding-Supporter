@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>52c3bf54912b70fa9cc65ef529b79389_xp.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\52c3bf54912b70fa9cc65ef529b79389_xp.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -77,6 +77,12 @@
       <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Generate.cs" />
+    <Compile Include="Independent\IdeologyManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independent\IdeologyManager.Designer.cs">
+      <DependentUpon>IdeologyManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomIdeologiesSettings.resx">
       <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independent\IdeologyManager.resx">
+      <DependentUpon>IdeologyManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -167,8 +176,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="52c3bf54912b70fa9cc65ef529b79389_xo.ico" />
-    <Content Include="52c3bf54912b70fa9cc65ef529b79389_xp.ico" />
+    <Content Include="Resources\52c3bf54912b70fa9cc65ef529b79389_xo.ico" />
+    <Content Include="Resources\52c3bf54912b70fa9cc65ef529b79389_xp.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -55,6 +55,8 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -195,6 +197,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.checkBox6);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
@@ -293,11 +296,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.checkBox5);
             this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(7, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(520, 108);
             this.groupBox1.TabIndex = 5;
@@ -347,6 +351,25 @@
             this.checkBox4.TabStop = false;
             this.checkBox4.Text = "ファシズムを無効にする";
             this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(152, 48);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "※Mod内にカスタムイデオロギー\r\nを反映させる場合、[ツール] - \r\n[イデオロギーの管理]\r\nを利用してください\r\n";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(239, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(275, 48);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "※イデオロギーの無効化は、無効にしたイデオロギー設定\r\nがMod内に反映されなくなる設定です\r\nこれらのイデオロギーを削除したい場合、[ツール] - [イデオ\r\n" +
+    "ロギーの管理]を利用してください";
             // 
             // Settings
             // 
@@ -401,5 +424,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -69,7 +69,6 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
@@ -208,6 +207,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -278,12 +279,14 @@
             // 
             this.menuItem3.Index = 1;
             this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem9,
+            this.menuItem8,
             this.menuItem5});
             this.menuItem3.Text = "ツール(&T)";
             // 
             // menuItem5
             // 
-            this.menuItem5.Index = 0;
+            this.menuItem5.Index = 2;
             this.menuItem5.Text = "設定(&S)";
             this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
@@ -556,7 +559,6 @@
             this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.button18);
             this.groupBox12.Controls.Add(this.button17);
-            this.groupBox12.Controls.Add(this.button16);
             this.groupBox12.Controls.Add(this.textBox36);
             this.groupBox12.Controls.Add(this.button14);
             this.groupBox12.Controls.Add(this.label64);
@@ -640,17 +642,6 @@
             this.button17.Text = "研究済技術の設定";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Visible = false;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(232, 438);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(110, 23);
-            this.button16.TabIndex = 16;
-            this.button16.TabStop = false;
-            this.button16.Text = "NFエディター";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Visible = false;
             // 
             // textBox36
             // 
@@ -2154,6 +2145,17 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 1;
+            this.menuItem8.Text = "-";
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 0;
+            this.menuItem9.Text = "イデオロギーの管理(&I)";
+            this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2397,7 +2399,6 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
@@ -2408,6 +2409,8 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem menuItem8;
     }
 }
 

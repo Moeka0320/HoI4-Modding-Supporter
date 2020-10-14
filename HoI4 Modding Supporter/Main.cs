@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Independent;
+
 namespace HoI4_Modding_Supporter
 {
     public partial class Main : Form
@@ -994,6 +996,12 @@ namespace HoI4_Modding_Supporter
 
             // カスタムイデオロギー政党支持率の反映
             PartiesSupportTotal();
+        }
+
+        private void menuItem9_Click(object sender, EventArgs e)
+        {
+            IdeologyManager im = new IdeologyManager();
+            im.ShowDialog();
         }
     }
 }
