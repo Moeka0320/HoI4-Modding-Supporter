@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace HoI4_Modding_Supporter.Independent
         {
             InitializeComponent();
             IdeologyStatusReflect();
+            IdeologyCheck();
         }
 
         /// <summary>
@@ -73,6 +75,120 @@ namespace HoI4_Modding_Supporter.Independent
                 label10.Text = falseLabel;
                 label10.ForeColor = falseColor;
             }
+        }
+
+        /// <summary>
+        /// イデオロギーの適用状況を調査して出力
+        /// </summary>
+        public void IdeologyCheck()
+        {
+            Resource resource = new Resource();
+
+            string ideologyFilePath = Properties.Settings.Default.moddir + @"\common\ideologies\00_ideologies.txt";
+
+            if (File.Exists(ideologyFilePath) == false)
+            {
+                listBox1.Items.Add(resource.properNoun["neutrality"]);
+                listBox1.Items.Add(resource.properNoun["democratic"]);
+                listBox1.Items.Add(resource.properNoun["fascism"]);
+                listBox1.Items.Add(resource.properNoun["communism"]);
+            }
+        }
+
+        /// <summary>
+        /// エラーメッセージボックスを表示
+        /// </summary>
+        public void ErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// ファイルをコピー
+        /// </summary>
+        /// <returns></returns>
+        public int FileCopy(string source, string dest)
+        {
+            try
+            {
+                File.Copy(source, dest, true);
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is FileNotFoundException ||
+                    e is IOException ||
+                    e is NotSupportedException)
+                {
+                    ErrorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 新しいフォルダーを作成
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
+        public int FolderCreate(string folderPath)
+        {
+            try
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            catch (Exception e)
+            {
+                if (e is IOException ||
+                    e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is NotSupportedException)
+                {
+                    ErrorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 新しいファイルを作成
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public int FileCreate(string filePath)
+        {
+            try
+            {
+                FileStream fs = File.Create(filePath);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                if (e is UnauthorizedAccessException ||
+                    e is ArgumentException ||
+                    e is ArgumentNullException ||
+                    e is PathTooLongException ||
+                    e is DirectoryNotFoundException ||
+                    e is IOException ||
+                    e is NotSupportedException)
+                {
+                    ErrorMessage(e.Message);
+                    return 1;
+                }
+            }
+
+            return 0;
         }
     }
 }
