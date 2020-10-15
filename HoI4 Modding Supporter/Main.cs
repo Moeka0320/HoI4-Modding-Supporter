@@ -12,6 +12,7 @@ namespace HoI4_Modding_Supporter
         public Main()
         {
             InitializeComponent();
+            ControlView();
 
             // 初期化
             AllClear();
@@ -28,6 +29,29 @@ namespace HoI4_Modding_Supporter
 
             // 無効設定の反映
             DisabledReflect();
+        }
+
+        /// <summary>
+        /// フォーム上のコントロールを一元管理
+        /// </summary>
+        public void ControlView()
+        {
+            Resource rs = new Resource();
+
+            groupBox2.Text = rs.properNoun["neutrality"];
+            groupBox3.Text = rs.properNoun["democratic"];
+            groupBox4.Text = rs.properNoun["fascism"];
+            groupBox5.Text = rs.properNoun["communism"];
+            groupBox7.Text = rs.properNoun["neutrality"];
+            groupBox9.Text = rs.properNoun["democratic"];
+            groupBox8.Text = rs.properNoun["fascism"];
+            groupBox10.Text = rs.properNoun["communism"];
+            groupBox16.Text = rs.properNoun["neutrality"] + rs.properNoun["party"];
+            groupBox19.Text = rs.properNoun["democratic"] + rs.properNoun["party"];
+            groupBox17.Text = rs.properNoun["fascism"] + rs.properNoun["party"];
+            groupBox18.Text = rs.properNoun["communism"] + rs.properNoun["party"];
+
+
         }
 
         /// <summary>

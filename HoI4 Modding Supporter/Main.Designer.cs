@@ -35,6 +35,8 @@
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
@@ -207,8 +209,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -283,6 +283,17 @@
             this.menuItem8,
             this.menuItem5});
             this.menuItem3.Text = "ツール(&T)";
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 0;
+            this.menuItem9.Text = "イデオロギーの管理(&I)";
+            this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 1;
+            this.menuItem8.Text = "-";
             // 
             // menuItem5
             // 
@@ -2144,17 +2155,6 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // menuItem8
-            // 
-            this.menuItem8.Index = 1;
-            this.menuItem8.Text = "-";
-            // 
-            // menuItem9
-            // 
-            this.menuItem9.Index = 0;
-            this.menuItem9.Text = "イデオロギーの管理(&I)";
-            this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
             // 
             // Main
             // 

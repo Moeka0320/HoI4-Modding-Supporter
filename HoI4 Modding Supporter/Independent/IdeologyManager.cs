@@ -16,8 +16,22 @@ namespace HoI4_Modding_Supporter.Independent
         public IdeologyManager()
         {
             InitializeComponent();
+            ControlView();
             IdeologyStatusReflect();
             IdeologyCheck();
+        }
+
+        /// <summary>
+        /// フォーム上のコントロールを一元管理
+        /// </summary>
+        public void ControlView()
+        {
+            Resource rs = new Resource();
+
+            label3.Text = rs.properNoun["neutrality"] + "：";
+            label3.Text = rs.properNoun["democratic"] + "：";
+            label3.Text = rs.properNoun["fascism"] + "：";
+            label3.Text = rs.properNoun["communism"] + "：";
         }
 
         /// <summary>
@@ -82,16 +96,16 @@ namespace HoI4_Modding_Supporter.Independent
         /// </summary>
         public void IdeologyCheck()
         {
-            Resource resource = new Resource();
+            Resource rs = new Resource();
 
             string ideologyFilePath = Properties.Settings.Default.moddir + @"\common\ideologies\00_ideologies.txt";
 
             if (File.Exists(ideologyFilePath) == false)
             {
-                listBox1.Items.Add(resource.properNoun["neutrality"]);
-                listBox1.Items.Add(resource.properNoun["democratic"]);
-                listBox1.Items.Add(resource.properNoun["fascism"]);
-                listBox1.Items.Add(resource.properNoun["communism"]);
+                listBox1.Items.Add(rs.properNoun["neutrality"]);
+                listBox1.Items.Add(rs.properNoun["democratic"]);
+                listBox1.Items.Add(rs.properNoun["fascism"]);
+                listBox1.Items.Add(rs.properNoun["communism"]);
             }
         }
 

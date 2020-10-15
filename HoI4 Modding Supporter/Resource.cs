@@ -34,7 +34,21 @@ namespace HoI4_Modding_Supporter
             {"stalinism", "スターリン主義者" },
             {"anti_revisionism", "反修正主義者" },
             {"anarchist_communism", "無政府共産主義者" },
-            {"popularities", "政党支持率" }
+            {"popularities", "政党支持率" },
+            {"party", "政党" },
+            {"vew", "表示名" },
+            {"def", "通称名" },
+            {"adj", "正式名" },
+            {"election", "選挙" },
+            {"political_power", "政治力" },
+            {"convoy", "輸送船" },
+            {"stability", "安定度" },
+            {"war_support", "戦争協力度" },
+            {"teach_slot", "研究スロット" },
+            {"state", "ステート" },
+            {"province", "プロヴィンス" },
+            {"faction", "陣営" },
+
 
         };
     }
