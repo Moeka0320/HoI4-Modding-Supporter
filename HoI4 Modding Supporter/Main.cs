@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Independent;
 
@@ -11,6 +10,8 @@ namespace HoI4_Modding_Supporter
     {
         public Main()
         {
+            Resource rs = new Resource();
+
             InitializeComponent();
             ControlView();
 
@@ -23,7 +24,7 @@ namespace HoI4_Modding_Supporter
             PartiesSupportTotal();
 
             // イデオロギー
-            string[] items = { "中道主義", "民主主義", "ファシズム", "共産主義" };
+            string[] items = { rs.properNoun["neutrality"], rs.properNoun["democratic"], rs.properNoun["fascism"], rs.properNoun["communism"] };
             comboBox2.Items.Clear();
             comboBox2.Items.AddRange(items);
 
@@ -38,20 +39,36 @@ namespace HoI4_Modding_Supporter
         {
             Resource rs = new Resource();
 
-            groupBox2.Text = rs.properNoun["neutrality"];
-            groupBox3.Text = rs.properNoun["democratic"];
-            groupBox4.Text = rs.properNoun["fascism"];
-            groupBox5.Text = rs.properNoun["communism"];
-            groupBox7.Text = rs.properNoun["neutrality"];
-            groupBox9.Text = rs.properNoun["democratic"];
-            groupBox8.Text = rs.properNoun["fascism"];
-            groupBox10.Text = rs.properNoun["communism"];
+            this.Text = rs.properNoun["hms"];
+            groupBox2.Text = groupBox7.Text = rs.properNoun["neutrality"];
+            groupBox3.Text = groupBox9.Text = rs.properNoun["democratic"];
+            groupBox4.Text = groupBox8.Text = rs.properNoun["fascism"];
+            groupBox5.Text = groupBox10.Text = rs.properNoun["communism"];
             groupBox16.Text = rs.properNoun["neutrality"] + rs.properNoun["party"];
             groupBox19.Text = rs.properNoun["democratic"] + rs.properNoun["party"];
             groupBox17.Text = rs.properNoun["fascism"] + rs.properNoun["party"];
             groupBox18.Text = rs.properNoun["communism"] + rs.properNoun["party"];
-
-
+            label3.Text = label8.Text = label11.Text = label14.Text = label58.Text = label63.Text = label59.Text = label61.Text = rs.properNoun["vew"] + "：";
+            label4.Text = label7.Text = label10.Text = label13.Text = label57.Text = label62.Text = label56.Text = label60.Text = rs.properNoun["def"] + "：";
+            label5.Text = label6.Text = label9.Text = label12.Text = rs.properNoun["adj"] + "：";
+            label32.Text = rs.properNoun["default"] + rs.properNoun["teach_slot"] + "：";
+            label33.Text = rs.properNoun["default"] + rs.properNoun["stability"] + "：";
+            label36.Text = rs.properNoun["default"] + rs.properNoun["war_support"] + "：";
+            label37.Text = rs.properNoun["default"] + rs.properNoun["political_power"] + "：";
+            label50.Text = rs.properNoun["default"] + rs.properNoun["convoy"] + "数：";
+            groupBox13.Text = rs.properNoun["default"] + rs.properNoun["popularities"];
+            label38.Text = rs.properNoun["neutrality"] + "：";
+            label39.Text = rs.properNoun["democratic"] + "：";
+            label40.Text = rs.properNoun["fascism"] + "：";
+            label41.Text = rs.properNoun["communism"] + "：";
+            label1.Text = rs.properNoun["ctag"] + "：";
+            label70.Text = rs.properNoun["mod"] + "の接頭語：";
+            button18.Text = rs.properNoun["national_leader"] + "の設定";
+            label51.Text = "前回の" + rs.properNoun["election"] + " (YYYY/M/D)：";
+            label54.Text = rs.properNoun["election"] + "を行う間隔：";
+            checkBox1.Text = rs.properNoun["election"] + "なし";
+            button20.Text = rs.properNoun["custom_ideology"];
+            groupBox14.Text = rs.properNoun["default"] + rs.properNoun["ruling_party"];
         }
 
         /// <summary>
@@ -274,12 +291,13 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public int Check()
         {
+            Resource rs = new Resource();
             Variable variable = new Variable();
 
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
             {
-                ErrorMessage("HoI4本体のディレクトリ、またはmodディレクトリが設定されていません。\n[ツール] - [設定]からフォルダーパスを設定してください。");
+                ErrorMessage(rs.properNoun["hoi4"] + "本体の" + rs.properNoun["dir"] + "、または" + rs.properNoun["mod"] + rs.properNoun["dir"] + "が設定されていません。\n[ツール] - [設定]から" + rs.properNoun["dir"] + "パスを設定してください。");
                 return 1;
             }
 
@@ -287,7 +305,7 @@ namespace HoI4_Modding_Supporter
             // テキストボックスが空っぽまたはスペース、大文字ではない
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                ErrorMessage("国家タグが無効です。");
+                ErrorMessage(rs.properNoun["ctag"] + "が無効です。");
                 return 1;
             }
 
@@ -305,19 +323,19 @@ namespace HoI4_Modding_Supporter
                 // 表示名
                 if (string.IsNullOrWhiteSpace(textBox3.Text))
                 {
-                    ErrorMessage("[国名] - [中道主義] - [表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["neutrality"] + "] - [" + rs.properNoun["vew"] + "]が無効です。");
                     return 1;
                 }
                 // イベント表示名
                 if (string.IsNullOrWhiteSpace(textBox4.Text))
                 {
-                    ErrorMessage("[国名] - [中道主義] - [イベント表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["neutrality"] + "] - [" + rs.properNoun["def"] + "]が無効です。");
                     return 1;
                 }
                 // 通称名
                 if (string.IsNullOrWhiteSpace(textBox5.Text))
                 {
-                    ErrorMessage("[国名] - [中道主義] - [通称名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["neutrality"] + "] - [" + rs.properNoun["adj"] + "]が無効です。");
                     return 1;
                 }
             }
@@ -328,19 +346,19 @@ namespace HoI4_Modding_Supporter
                 // 表示名
                 if (string.IsNullOrWhiteSpace(textBox8.Text))
                 {
-                    ErrorMessage("[国名] - [民主主義] - [表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["democratic"] + "] - [" + rs.properNoun["vew"] + "]が無効です。");
                     return 1;
                 }
                 // イベント表示名
                 if (string.IsNullOrWhiteSpace(textBox7.Text))
                 {
-                    ErrorMessage("[国名] - [民主主義] - [イベント表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["democratic"] + "] - [" + rs.properNoun["def"] + "]が無効です。");
                     return 1;
                 }
                 // 通称名
                 if (string.IsNullOrWhiteSpace(textBox6.Text))
                 {
-                    ErrorMessage("[国名] - [民主主義] - [通称名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["democratic"] + "] - [" + rs.properNoun["adj"] + "]が無効です。");
                     return 1;
                 }
             }
@@ -351,19 +369,19 @@ namespace HoI4_Modding_Supporter
                 // 表示名
                 if (string.IsNullOrWhiteSpace(textBox11.Text))
                 {
-                    ErrorMessage("[国名] - [ファシズム] - [表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["fascism"] + "] - [" + rs.properNoun["vew"] + "]が無効です。");
                     return 1;
                 }
                 // イベント表示名
                 if (string.IsNullOrWhiteSpace(textBox10.Text))
                 {
-                    ErrorMessage("[国名] - [ファシズム] - [イベント表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["fascism"] + "] - [" + rs.properNoun["def"] + "]が無効です。");
                     return 1;
                 }
                 // 通称名
                 if (string.IsNullOrWhiteSpace(textBox9.Text))
                 {
-                    ErrorMessage("[国名] - [ファシズム] - [通称名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["fascism"] + "] - [" + rs.properNoun["adj"] + "]が無効です。");
                     return 1;
                 }
             }
@@ -374,19 +392,19 @@ namespace HoI4_Modding_Supporter
                 // 表示名
                 if (string.IsNullOrWhiteSpace(textBox14.Text))
                 {
-                    ErrorMessage("[国名] - [共産主義] - [表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["communism"] + "] - [" + rs.properNoun["vew"] + "]が無効です。");
                     return 1;
                 }
                 // イベント表示名
                 if (string.IsNullOrWhiteSpace(textBox13.Text))
                 {
-                    ErrorMessage("[国名] - [共産主義] - [イベント表示名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["communism"] + "] - [" + rs.properNoun["def"] + "]が無効です。");
                     return 1;
                 }
                 // 通称名
                 if (string.IsNullOrWhiteSpace(textBox12.Text))
                 {
-                    ErrorMessage("[国名] - [共産主義] - [通称名]が無効です。");
+                    ErrorMessage("[国名] - [" + rs.properNoun["communism"] + "] - [" + rs.properNoun["adj"] + "]が無効です。");
                     return 1;
                 }
             }
@@ -399,7 +417,7 @@ namespace HoI4_Modding_Supporter
             {
                 if ((textBox30.Text == "" && textBox29.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [中道主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                    ErrorMessage("[政党名] - [" + rs.properNoun["neutrality"] + rs.properNoun["party"] + "]を設定しない場合、" + rs.properNoun["vew"] + "と" + rs.properNoun["def"] + "の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
@@ -408,7 +426,7 @@ namespace HoI4_Modding_Supporter
             {
                 if ((textBox35.Text == "" && textBox34.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [民主主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                    ErrorMessage("[政党名] - [" + rs.properNoun["democratic"] + rs.properNoun["party"] + "]を設定しない場合、" + rs.properNoun["vew"] + "と" + rs.properNoun["def"] + "の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
@@ -417,7 +435,7 @@ namespace HoI4_Modding_Supporter
             {
                 if ((textBox31.Text == "" && textBox28.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [ファシズム政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                    ErrorMessage("[政党名] - [" + rs.properNoun["fascism"] + rs.properNoun["party"] + "]を設定しない場合、" + rs.properNoun["vew"] + "と" + rs.properNoun["def"] + "の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
@@ -426,7 +444,7 @@ namespace HoI4_Modding_Supporter
             {
                 if ((textBox33.Text == "" && textBox32.Text == "") == false)
                 {
-                    ErrorMessage("[政党名] - [共産主義政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                    ErrorMessage("[政党名] - [" + rs.properNoun["communism"] + rs.properNoun["party"] + "]を設定しない場合、" + rs.properNoun["vew"] + "と" + rs.properNoun["def"] + "の両方を空欄にする必要があります。");
                     return 1;
                 }
             }
@@ -443,13 +461,13 @@ namespace HoI4_Modding_Supporter
             int total = int.Parse(textBox27.Text);
             if (total != 100)
             {
-                ErrorMessage("[各種設定] - [初期政党支持率]の合計が100%ではありません。\n[合計]の値を確認してください。");
+                ErrorMessage("[各種設定] - [" + rs.properNoun["default"] + rs.properNoun["popularities"] + "]の合計が100%ではありません。\n[合計]の値を確認してください。");
                 return 1;
             }
             // 初期与党
             if (comboBox2.SelectedItem == null)
             {
-                ErrorMessage("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
+                ErrorMessage("[各種設定] - [" + rs.properNoun["default"] + rs.properNoun["ruling_party"] + "] - [イデオロギー]が設定されていません。");
                 return 1;
             }
             // 従属国である場合
@@ -463,7 +481,7 @@ namespace HoI4_Modding_Supporter
             // mod名
             if (string.IsNullOrWhiteSpace(textBox39.Text))
             {
-                ErrorMessage("[Mod名]が無効です。");
+                ErrorMessage("[" + rs.properNoun["mod"] +"名]が無効です。");
                 return 1;
             }
 
@@ -471,7 +489,7 @@ namespace HoI4_Modding_Supporter
             if (Properties.Settings.Default.customIdeologiesEnabled == true &&
                 variable.CustomIdeologiesSettings == null)
             {
-                ErrorMessage("カスタムイデオロギーが設定されていません。");
+                ErrorMessage(rs.properNoun["custom_ideology"] + "が設定されていません。");
                 return 1;
             }
 
@@ -485,6 +503,7 @@ namespace HoI4_Modding_Supporter
         public void DataAssignment()
         {
             Variable variable = new Variable();
+            Resource rs = new Resource();
 
             // フォルダパス
             variable.Hoi4dir = Properties.Settings.Default.hoi4dir;
@@ -655,25 +674,25 @@ namespace HoI4_Modding_Supporter
 
             // 初期与党
             // イデオロギー
-            if (comboBox2.SelectedItem.ToString() == "中道主義")
+            if (comboBox2.SelectedItem.ToString() == rs.properNoun["neutrality"])
             {
                 // 中道主義
                 variable.StartIdeology = "neutrality";
 
             }
-            else if (comboBox2.SelectedItem.ToString() == "民主主義")
+            else if (comboBox2.SelectedItem.ToString() == rs.properNoun["democratic"])
             {
                 // 民主主義
                 variable.StartIdeology = "democratic";
 
             }
-            else if (comboBox2.SelectedItem.ToString() == "ファシズム")
+            else if (comboBox2.SelectedItem.ToString() == rs.properNoun["fascism"])
             {
                 // ファシズム
                 variable.StartIdeology = "fascism";
 
             }
-            else if (comboBox2.SelectedItem.ToString() == "共産主義")
+            else if (comboBox2.SelectedItem.ToString() == rs.properNoun["communism"])
             {
                 // 共産主義
                 variable.StartIdeology = "communism";
@@ -720,6 +739,8 @@ namespace HoI4_Modding_Supporter
         /// </summary>
         public void DisabledReflect()
         {
+            Resource rs = new Resource();
+
             bool neutralityEnabled = !Properties.Settings.Default.neutralityDisabled;
             bool democraticEnabled = !Properties.Settings.Default.democraticDisabled;
             bool fascismEnabled = !Properties.Settings.Default.fascismDisabled;
@@ -739,7 +760,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown12.Enabled = neutralityEnabled;
 
             if (neutralityEnabled == false)
-                comboBox2.Items.Remove("中道主義");
+                comboBox2.Items.Remove(rs.properNoun["neutrality"]);
 
             textBox8.Enabled = democraticEnabled;
             textBox7.Enabled = democraticEnabled;
@@ -755,7 +776,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown11.Enabled = democraticEnabled;
 
             if (democraticEnabled == false)
-                comboBox2.Items.Remove("民主主義");
+                comboBox2.Items.Remove(rs.properNoun["democratic"]);
 
             textBox11.Enabled = fascismEnabled;
             textBox10.Enabled = fascismEnabled;
@@ -771,7 +792,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown10.Enabled = fascismEnabled;
 
             if (fascismEnabled == false)
-                comboBox2.Items.Remove("ファシズム");
+                comboBox2.Items.Remove(rs.properNoun["fascism"]);
 
             textBox14.Enabled = communismEnabled;
             textBox13.Enabled = communismEnabled;
@@ -787,7 +808,7 @@ namespace HoI4_Modding_Supporter
             numericUpDown9.Enabled = communismEnabled;
 
             if (communismEnabled == false)
-                comboBox2.Items.Remove("共産主義");
+                comboBox2.Items.Remove(rs.properNoun["communism"]);
 
             // カスタムイデオロギー
             if (Properties.Settings.Default.customIdeologiesEnabled == true)
@@ -845,11 +866,6 @@ namespace HoI4_Modding_Supporter
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             ColorChange();
-        }
-
-        private void label58_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)

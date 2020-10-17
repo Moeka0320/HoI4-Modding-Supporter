@@ -37,8 +37,8 @@ namespace HoI4_Modding_Supporter
             {"popularities", "政党支持率" },
             {"party", "政党" },
             {"vew", "表示名" },
-            {"def", "通称名" },
-            {"adj", "正式名" },
+            {"adj", "通称名" },
+            {"def", "正式名" },
             {"election", "選挙" },
             {"political_power", "政治力" },
             {"convoy", "輸送船" },
@@ -48,8 +48,15 @@ namespace HoI4_Modding_Supporter
             {"state", "ステート" },
             {"province", "プロヴィンス" },
             {"faction", "陣営" },
-
-
+            {"default", "初期" },
+            {"custom_ideology", "カスタムイデオロギー" },
+            {"hoi4", "HoI4" },
+            {"mod", "Mod" },
+            {"dir", "ディレクトリ" },
+            {"ctag", "国家タグ" },
+            {"national_leader", "国家指導者" },
+            {"hms", "HoI4 Modding Supporter" },
+            {"ruling_party", "与党" }
         };
     }
 }
