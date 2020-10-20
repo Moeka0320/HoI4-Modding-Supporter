@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Parsers;
 
 namespace HoI4_Modding_Supporter.Independent
 {
@@ -17,7 +18,6 @@ namespace HoI4_Modding_Supporter.Independent
         {
             InitializeComponent();
             ControlView();
-            IdeologyStatusReflect();
             IdeologyCheck();
         }
 
@@ -28,67 +28,6 @@ namespace HoI4_Modding_Supporter.Independent
         {
             Resource rs = new Resource();
 
-            label3.Text = rs.properNoun["neutrality"] + "：";
-            label3.Text = rs.properNoun["democratic"] + "：";
-            label3.Text = rs.properNoun["fascism"] + "：";
-            label3.Text = rs.properNoun["communism"] + "：";
-        }
-
-        /// <summary>
-        /// イデオロギーが無効化されているかどうかを出力
-        /// </summary>
-        public void IdeologyStatusReflect()
-        {
-            string trueLabel = "TRUE";
-            string falseLabel = "FALSE";
-            string nullLabel = "NULL";
-            Color trueColor = Color.Green;
-            Color falseColor = Color.Red;
-            Color nullColor = Color.Black;
-
-            if (Properties.Settings.Default.neutralityDisabled == true)
-            {
-                label7.Text = trueLabel;
-                label7.ForeColor = trueColor;
-            }
-            else
-            {
-                label7.Text = falseLabel;
-                label7.ForeColor = falseColor;
-            }
-
-            if (Properties.Settings.Default.democraticDisabled == true)
-            {
-                label8.Text = trueLabel;
-                label8.ForeColor = trueColor;
-            }
-            else
-            {
-                label8.Text = falseLabel;
-                label8.ForeColor = falseColor;
-            }
-
-            if (Properties.Settings.Default.fascismDisabled == true)
-            {
-                label9.Text = trueLabel;
-                label9.ForeColor = trueColor;
-            }
-            else
-            {
-                label9.Text = falseLabel;
-                label9.ForeColor = falseColor;
-            }
-
-            if (Properties.Settings.Default.communismDisabled == true)
-            {
-                label10.Text = trueLabel;
-                label10.ForeColor = trueColor;
-            }
-            else
-            {
-                label10.Text = falseLabel;
-                label10.ForeColor = falseColor;
-            }
         }
 
         /// <summary>
@@ -97,6 +36,7 @@ namespace HoI4_Modding_Supporter.Independent
         public void IdeologyCheck()
         {
             Resource rs = new Resource();
+            IdeologyFileParser ifp = new IdeologyFileParser();
 
             string ideologyFilePath = Properties.Settings.Default.moddir + @"\common\ideologies\00_ideologies.txt";
 
@@ -106,6 +46,11 @@ namespace HoI4_Modding_Supporter.Independent
                 listBox1.Items.Add(rs.properNoun["democratic"]);
                 listBox1.Items.Add(rs.properNoun["fascism"]);
                 listBox1.Items.Add(rs.properNoun["communism"]);
+            }
+            else
+            {
+                // テキストファイルを精査
+                ifp.Parse(ideologyFilePath);
             }
         }
 

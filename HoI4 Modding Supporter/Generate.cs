@@ -17,45 +17,45 @@ namespace HoI4_Modding_Supporter
         {
             Variable variable = new Variable();
 
-            // [MODFOLDER]/commonディレクトリパス
+            // [MODDIR]/commonディレクトリパス
             string commonDir = variable.Moddir + @"\common";
-            // [MODFOLDER]/common/countriesディレクトリパス
+            // [MODDIR]/common/countriesディレクトリパス
             string commonCountriesDir = commonDir + @"\countries";
-            // [MODFOLDER]/common/countries/[COUNTRY].txtファイルパス
+            // [MODDIR]/common/countries/[COUNTRY].txtファイルパス
             string commonCountryFilePath = commonCountriesDir + @"\" + variable.CountryName + ".txt";
-            // [MODFOLDER]/common/countries/colors.txtファイルパス
+            // [MODDIR]/common/countries/colors.txtファイルパス
             string commonColorsFilePath = commonCountriesDir + @"\colors.txt";
-            // [HOI4FOLDER]/common/countries/colors.txtファイルパス
+            // [HOI4DIR]/common/countries/colors.txtファイルパス
             string colorsHoi4FilePath = variable.Hoi4dir + @"\common\countries\colors.txt";
-            // [MODFOLDER]/common/country_tagsディレクトリパス
+            // [MODDIR]/common/country_tagsディレクトリパス
             string commonCountry_tagsDir = commonDir + @"\country_tags";
-            // [MODFOLDER]/common/country_tags/01_countries.txtファイルパス
+            // [MODDIR]/common/country_tags/01_countries.txtファイルパス
             string commonCountriesFilePath = commonCountry_tagsDir + @"\01_countries.txt";
-            // [MODFOLDER]/historyディレクトリパス
+            // [MODDIR]/historyディレクトリパス
             string historyDir = variable.Moddir + @"\history";
-            // [MODFOLDER]/history/countriesディレクトリパス
+            // [MODDIR]/history/countriesディレクトリパス
             string historyCountriesDir = historyDir + @"\countries";
-            // [MODFOLDER]/history/countries/[TAG] - [COUNTRY].txtファイルパス
+            // [MODDIR]/history/countries/[TAG] - [COUNTRY].txtファイルパス
             string historyCountrisFilePath = historyCountriesDir + @"\" + variable.CountryTag + " - " + variable.CountryName + ".txt";
-            // [MODFOLDER]/localisationディレクトリパス
+            // [MODDIR]/localisationディレクトリパス
             string localisationDir = variable.Moddir + @"\localisation";
-            // [MODFOLDER]/localisation/replaceディレクトリパス
+            // [MODDIR]/localisation/replaceディレクトリパス
             string localisationReplaceDir = localisationDir + @"\replace";
-            // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
+            // [MODDIR]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
             string localisationReplaceCountriesFilePath = localisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
-            // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
+            // [MODDIR]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
             string localisationReplacePartiesFilePath = localisationReplaceDir + @"\" + variable.ModName + "_parties_l_english.yml";
-            // [MODFOLDER]/gfxディレクトリパス
+            // [MODDIR]/gfxディレクトリパス
             string gfxDir = variable.Moddir + @"\gfx";
-            // [MODFOLDER]/gfx/flagsディレクトリパス
+            // [MODDIR]/gfx/flagsディレクトリパス
             string gfxFlagsDir = gfxDir + @"\flags";
-            // [MODFOLDER]/gfx/flags/mediumディレクトリパス
+            // [MODDIR]/gfx/flags/mediumディレクトリパス
             string gfxFlagsMediumDir = gfxFlagsDir + @"\medium";
-            // [MODFOLDER]/gfx/flags/smallディレクトリパス
+            // [MODDIR]/gfx/flags/smallディレクトリパス
             string gfxFlagsSmallDir = gfxFlagsDir + @"\small";
-            // [MODFOLDER]/gfx/leadersディレクトリパス
+            // [MODDIR]/gfx/leadersディレクトリパス
             string gfxLeadersDir = gfxDir + @"\leaders";
-            // [MODFOLDER]/gfx/leaders/[TAG]ディレクトリパス
+            // [MODDIR]/gfx/leaders/[TAG]ディレクトリパス
             string gfxLeadersTagDir = gfxLeadersDir + @"\" + variable.CountryTag;
             // 中道主義国旗（大・中・小）
             string n_Flags = gfxFlagsDir + @"\" + variable.CountryTag + "_neutrality.tga";
@@ -132,7 +132,7 @@ namespace HoI4_Modding_Supporter
 
             // 1.国別ファイルの作成
 
-            // MODFOLDER/common ディレクトリが存在しない場合
+            // MODDIR/common ディレクトリが存在しない場合
             if (Directory.Exists(commonDir) == false)
             {
                 int fcResult = FolderCreate(commonDir);
@@ -140,7 +140,7 @@ namespace HoI4_Modding_Supporter
                     return 1;
             }
 
-            // MODFOLDER/common/countries ディレクトリが存在しない場合
+            // MODDIR/common/countries ディレクトリが存在しない場合
             if (Directory.Exists(commonCountriesDir) == false)
             {
                 int fcResult = FolderCreate(commonCountriesDir);
@@ -1088,13 +1088,13 @@ namespace HoI4_Modding_Supporter
         {
             Variable variable = new Variable();
 
-            // [MODFOLDER]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
+            // [MODDIR]/localisation/replace/[MODNAME]_countries_l_english.ymlファイルパス
             string localisationReplaceCountriesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_countries_l_english.yml";
-            // [MODFOLDER]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
+            // [MODDIR]/localisation/replace/[MODNAME]_parties_l_english.ymlファイルパス
             string localisationReplacePartiesFilePath = LocalisationReplaceDir + @"\" + variable.ModName + "_parties_l_english.yml";
-            // [MODFOLDER]/gfx/flags/mediumディレクトリパス
+            // [MODDIR]/gfx/flags/mediumディレクトリパス
             string gfxFlagsMediumDir = GfxFlagsDir + @"\menium";
-            // [MODFOLDER]/gfx/flags/smallディレクトリパス
+            // [MODDIR]/gfx/flags/smallディレクトリパス
             string gfxFlagsSmallDir = GfxFlagsDir + @"\small";
 
             for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)

@@ -45,25 +45,25 @@
             this.label70 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
             this.textBox32 = new System.Windows.Forms.TextBox();
             this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox31 = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
@@ -74,11 +74,9 @@
             this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label50 = new System.Windows.Forms.Label();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.label51 = new System.Windows.Forms.Label();
@@ -89,6 +87,7 @@
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
             this.label49 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label54 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -106,7 +105,6 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
@@ -115,11 +113,13 @@
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.label33 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label32 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label31 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
@@ -376,24 +376,6 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "[COMMUNISM-PARTY]";
             // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(6, 46);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(73, 12);
-            this.label60.TabIndex = 6;
-            this.label60.Text = "[DEF-NAME]";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(6, 21);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(78, 12);
-            this.label61.TabIndex = 5;
-            this.label61.Text = "[VIEW-NAME]";
-            // 
             // textBox32
             // 
             this.textBox32.Location = new System.Drawing.Point(59, 43);
@@ -410,6 +392,24 @@
             this.textBox33.TabIndex = 2;
             this.textBox33.TabStop = false;
             // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(6, 21);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(78, 12);
+            this.label61.TabIndex = 5;
+            this.label61.Text = "[VIEW-NAME]";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(6, 46);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(73, 12);
+            this.label60.TabIndex = 6;
+            this.label60.Text = "[DEF-NAME]";
+            // 
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.textBox34);
@@ -422,24 +422,6 @@
             this.groupBox19.TabIndex = 16;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "[DEMOCRATIC-PARTY]";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(6, 46);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(73, 12);
-            this.label62.TabIndex = 6;
-            this.label62.Text = "[DEF-NAME]";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 21);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(78, 12);
-            this.label63.TabIndex = 5;
-            this.label63.Text = "[VIEW-NAME]";
             // 
             // textBox34
             // 
@@ -457,6 +439,24 @@
             this.textBox35.TabIndex = 2;
             this.textBox35.TabStop = false;
             // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 21);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(78, 12);
+            this.label63.TabIndex = 5;
+            this.label63.Text = "[VIEW-NAME]";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 46);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(73, 12);
+            this.label62.TabIndex = 6;
+            this.label62.Text = "[DEF-NAME]";
+            // 
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.textBox28);
@@ -469,24 +469,6 @@
             this.groupBox17.TabIndex = 16;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "[FASCISM-PARTY]";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(6, 46);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(73, 12);
-            this.label56.TabIndex = 6;
-            this.label56.Text = "[DEF-NAME]";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(6, 21);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(78, 12);
-            this.label59.TabIndex = 5;
-            this.label59.Text = "[VIEW-NAME]";
             // 
             // textBox28
             // 
@@ -504,6 +486,24 @@
             this.textBox31.TabIndex = 2;
             this.textBox31.TabStop = false;
             // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(6, 21);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(78, 12);
+            this.label59.TabIndex = 5;
+            this.label59.Text = "[VIEW-NAME]";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(6, 46);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(73, 12);
+            this.label56.TabIndex = 6;
+            this.label56.Text = "[DEF-NAME]";
+            // 
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.textBox29);
@@ -516,24 +516,6 @@
             this.groupBox16.TabIndex = 15;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "[NEUTRALITY-PARTY]";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(6, 46);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(73, 12);
-            this.label57.TabIndex = 6;
-            this.label57.Text = "[DEF-NAME]";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 21);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(78, 12);
-            this.label58.TabIndex = 5;
-            this.label58.Text = "[VIEW-NAME]";
             // 
             // textBox29
             // 
@@ -550,6 +532,24 @@
             this.textBox30.Size = new System.Drawing.Size(145, 19);
             this.textBox30.TabIndex = 2;
             this.textBox30.TabStop = false;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 21);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(78, 12);
+            this.label58.TabIndex = 5;
+            this.label58.Text = "[VIEW-NAME]";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(6, 46);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(73, 12);
+            this.label57.TabIndex = 6;
+            this.label57.Text = "[DEF-NAME]";
             // 
             // groupBox12
             // 
@@ -687,15 +687,6 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(6, 174);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(117, 12);
-            this.label50.TabIndex = 17;
-            this.label50.Text = "[DEFAULT-CONVOY]";
-            // 
             // numericUpDown13
             // 
             this.numericUpDown13.Location = new System.Drawing.Point(102, 172);
@@ -741,15 +732,6 @@
             this.checkBox1.TabStop = false;
             this.checkBox1.Text = "[NO-ELECTION]";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(6, 86);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(141, 12);
-            this.label54.TabIndex = 18;
-            this.label54.Text = "[ELECTION-FREQUENCY]";
             // 
             // label55
             // 
@@ -901,6 +883,15 @@
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
             this.comboBox2.TabIndex = 17;
             this.comboBox2.TabStop = false;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(6, 86);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(141, 12);
+            this.label54.TabIndex = 18;
+            this.label54.Text = "[ELECTION-FREQUENCY]";
             // 
             // groupBox13
             // 
@@ -1077,15 +1068,6 @@
             this.label39.TabIndex = 16;
             this.label39.Text = "[DEMOCRATIC]";
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(6, 149);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(169, 12);
-            this.label37.TabIndex = 13;
-            this.label37.Text = "[DEFAULT-POLITICAL_POWER]";
-            // 
             // numericUpDown8
             // 
             this.numericUpDown8.Location = new System.Drawing.Point(102, 147);
@@ -1168,15 +1150,6 @@
             this.numericUpDown4.TabStop = false;
             this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 75);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(142, 12);
-            this.label32.TabIndex = 5;
-            this.label32.Text = "[DEFAULT-TEACH-SLOT]";
-            // 
             // numericUpDown5
             // 
             this.numericUpDown5.Location = new System.Drawing.Point(102, 73);
@@ -1236,6 +1209,33 @@
             this.label30.Size = new System.Drawing.Size(152, 12);
             this.label30.TabIndex = 0;
             this.label30.Text = "汎用顔グラフィックの地域設定：";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(6, 149);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(169, 12);
+            this.label37.TabIndex = 13;
+            this.label37.Text = "[DEFAULT-POLITICAL_POWER]";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(6, 174);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(117, 12);
+            this.label50.TabIndex = 17;
+            this.label50.Text = "[DEFAULT-CONVOY]";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(6, 75);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(142, 12);
+            this.label32.TabIndex = 5;
+            this.label32.Text = "[DEFAULT-TEACH-SLOT]";
             // 
             // groupBox11
             // 
