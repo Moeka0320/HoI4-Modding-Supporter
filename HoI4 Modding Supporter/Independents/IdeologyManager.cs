@@ -18,7 +18,7 @@ namespace HoI4_Modding_Supporter.Independent
         {
             InitializeComponent();
             ControlView();
-            IdeologyCheck();
+            //IdeologyCheck();
         }
 
         /// <summary>
@@ -33,26 +33,26 @@ namespace HoI4_Modding_Supporter.Independent
         /// <summary>
         /// イデオロギーの適用状況を調査して出力
         /// </summary>
-        public void IdeologyCheck()
-        {
-            Resource rs = new Resource();
-            IdeologyFileParser ifp = new IdeologyFileParser();
+        //public void IdeologyCheck()
+        //{
+        //    Resource rs = new Resource();
+        //    IdeologyFileParser ifp = new IdeologyFileParser();
 
-            string ideologyFilePath = Properties.Settings.Default.moddir + @"\common\ideologies\00_ideologies.txt";
+        //    string ideologyFilePath = Properties.Settings.Default.moddir + @"\common\ideologies\00_ideologies.txt";
 
-            if (File.Exists(ideologyFilePath) == false)
-            {
-                listBox1.Items.Add(rs.properNoun["neutrality"]);
-                listBox1.Items.Add(rs.properNoun["democratic"]);
-                listBox1.Items.Add(rs.properNoun["fascism"]);
-                listBox1.Items.Add(rs.properNoun["communism"]);
-            }
-            else
-            {
-                // テキストファイルを精査
-                ifp.Parse(ideologyFilePath);
-            }
-        }
+        //    if (File.Exists(ideologyFilePath) == false)
+        //    {
+        //        listBox1.Items.Add(rs.properNoun["neutrality"]);
+        //        listBox1.Items.Add(rs.properNoun["democratic"]);
+        //        listBox1.Items.Add(rs.properNoun["fascism"]);
+        //        listBox1.Items.Add(rs.properNoun["communism"]);
+        //    }
+        //    else
+        //    {
+        //        // テキストファイルを精査
+        //        ifp.Parse(ideologyFilePath);
+        //    }
+        //}
 
         /// <summary>
         /// エラーメッセージボックスを表示
