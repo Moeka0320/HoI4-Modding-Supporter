@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Forms;
 
 namespace HoI4_Modding_Supporter
 {

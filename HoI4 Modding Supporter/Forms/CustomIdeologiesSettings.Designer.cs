@@ -1,4 +1,4 @@
-﻿namespace HoI4_Modding_Supporter
+﻿namespace HoI4_Modding_Supporter.Forms
 {
     partial class CustomIdeologiesSettings
     {

@@ -5,8 +5,9 @@ using System.IO;
 using System.Security;
 using System.Text;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Database;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Workers
 {
     class Generate
     {

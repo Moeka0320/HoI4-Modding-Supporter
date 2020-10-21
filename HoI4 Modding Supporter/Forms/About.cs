@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class About : Form
     {

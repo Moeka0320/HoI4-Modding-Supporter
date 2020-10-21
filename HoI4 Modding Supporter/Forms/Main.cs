@@ -2,9 +2,10 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using HoI4_Modding_Supporter.Independent;
+using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Workers;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Main : Form
     {

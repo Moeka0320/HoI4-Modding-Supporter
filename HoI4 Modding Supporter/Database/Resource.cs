@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Database
 {
     /// <summary>
     /// ゲーム内固有名詞などを格納

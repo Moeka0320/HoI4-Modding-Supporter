@@ -64,76 +64,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.cs">
+    <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="About.Designer.cs">
+    <Compile Include="Forms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomIdeologiesSettings.cs">
+    <Compile Include="Forms\CustomIdeologiesSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomIdeologiesSettings.Designer.cs">
+    <Compile Include="Forms\CustomIdeologiesSettings.Designer.cs">
       <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generate.cs" />
-    <Compile Include="Independents\IdeologyManager.cs">
+    <Compile Include="Forms\IdeologyManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Independents\IdeologyManager.Designer.cs">
+    <Compile Include="Forms\IdeologyManager.Designer.cs">
       <DependentUpon>IdeologyManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Workers\Generate.cs" />
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="NationalLeaderSettings.cs">
+    <Compile Include="Mediators\InternalController.cs" />
+    <Compile Include="Mediators\UserController.cs" />
+    <Compile Include="Forms\NationalLeaderSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NationalLeaderSettings.Designer.cs">
+    <Compile Include="Forms\NationalLeaderSettings.Designer.cs">
       <DependentUpon>NationalLeaderSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FactionSettings.cs">
+    <Compile Include="Forms\FactionSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FactionSettings.Designer.cs">
+    <Compile Include="Forms\FactionSettings.Designer.cs">
       <DependentUpon>FactionSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parsers\IdeologyFileParser.cs" />
+    <Compile Include="Workers\IdeologyFileParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.cs" />
-    <Compile Include="Settings.cs">
+    <Compile Include="Database\Resource.cs" />
+    <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UnitSettings.cs">
+    <Compile Include="Forms\UnitSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UnitSettings.Designer.cs">
+    <Compile Include="Forms\UnitSettings.Designer.cs">
       <DependentUpon>UnitSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Variable.cs" />
-    <EmbeddedResource Include="About.resx">
+    <Compile Include="Database\Variable.cs" />
+    <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomIdeologiesSettings.resx">
+    <EmbeddedResource Include="Forms\CustomIdeologiesSettings.resx">
       <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Independents\IdeologyManager.resx">
-      <DependentUpon>IdeologyManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NationalLeaderSettings.resx">
+    <EmbeddedResource Include="Forms\NationalLeaderSettings.resx">
       <DependentUpon>NationalLeaderSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FactionSettings.resx">
+    <EmbeddedResource Include="Forms\FactionSettings.resx">
       <DependentUpon>FactionSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -145,10 +144,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UnitSettings.resx">
+    <EmbeddedResource Include="Forms\UnitSettings.resx">
       <DependentUpon>UnitSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

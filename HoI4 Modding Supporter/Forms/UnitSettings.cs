@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class UnitSettings : Form
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoI4_Modding_Supporter.Parsers
+namespace HoI4_Modding_Supporter.Workers
 {
     /// <summary>
     /// [MODFOLDER]/common/ideologies_00.txtの構文解析

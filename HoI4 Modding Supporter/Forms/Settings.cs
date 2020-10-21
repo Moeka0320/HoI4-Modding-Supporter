@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Database;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Settings : Form
     {
