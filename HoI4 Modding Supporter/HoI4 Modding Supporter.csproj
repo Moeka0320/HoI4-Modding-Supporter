@@ -82,6 +82,7 @@
     <Compile Include="Forms\IdeologyManager.Designer.cs">
       <DependentUpon>IdeologyManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Workers\FileSystemInterface.cs" />
     <Compile Include="Workers\Generate.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
@@ -120,6 +121,7 @@
       <DependentUpon>UnitSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\Variable.cs" />
+    <Compile Include="Workers\MessageBoxShower.cs" />
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>

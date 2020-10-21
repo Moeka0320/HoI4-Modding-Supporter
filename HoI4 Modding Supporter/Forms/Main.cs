@@ -18,7 +18,6 @@ namespace HoI4_Modding_Supporter.Forms
 
             // 初期化
             AllClear();
-
             // 配色
             ColorChange();
             // 初期政党支持率の合計

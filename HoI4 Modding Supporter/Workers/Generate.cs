@@ -11,6 +11,8 @@ namespace HoI4_Modding_Supporter.Workers
 {
     class Generate
     {
+        MessageBoxShower mbs = new MessageBoxShower();
+
         /// <summary>
         /// 国家の生成（ファイル書き込み処理）
         /// </summary>
@@ -86,7 +88,7 @@ namespace HoI4_Modding_Supporter.Workers
                 string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.CountryTag + " - *.txt");
                 if (hoi4Files.Length != 0)
                 {
-                    ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    mbs.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
                 }
             }
@@ -99,7 +101,7 @@ namespace HoI4_Modding_Supporter.Workers
                     e is IOException ||
                     e is DirectoryNotFoundException)
                 {
-                    ErrorMessage(e.Message);
+                    mbs.ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -112,7 +114,7 @@ namespace HoI4_Modding_Supporter.Workers
                     string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.CountryTag + "- *.txt");
                     if (modFiles.Length != 0)
                     {
-                        ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        mbs.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                         return 1;
                     }
                 }
@@ -125,7 +127,7 @@ namespace HoI4_Modding_Supporter.Workers
                         e is IOException ||
                         e is DirectoryNotFoundException)
                     {
-                        ErrorMessage(e.Message);
+                        mbs.ErrorMessage(e.Message);
                         return 1;
                     }
                 }
@@ -152,8 +154,8 @@ namespace HoI4_Modding_Supporter.Workers
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
-                ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
-                GenerateStoppedMessage();
+                mbs.ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                mbs.GenerateStoppedMessage();
                 return 1;
             }
             else
@@ -176,8 +178,8 @@ namespace HoI4_Modding_Supporter.Workers
                 if (e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -211,8 +213,8 @@ namespace HoI4_Modding_Supporter.Workers
                     e is NotSupportedException ||
                     e is SecurityException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -247,8 +249,8 @@ namespace HoI4_Modding_Supporter.Workers
                     if (e is ObjectDisposedException ||
                         e is IOException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -270,8 +272,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -354,8 +356,8 @@ namespace HoI4_Modding_Supporter.Workers
                 if (e is ObjectDisposedException ||
                     e is IOException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -431,8 +433,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is SecurityException ||
                         e is ObjectDisposedException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -480,8 +482,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -543,8 +545,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is SecurityException ||
                         e is ObjectDisposedException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -592,8 +594,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -787,8 +789,8 @@ namespace HoI4_Modding_Supporter.Workers
                             }
                             else
                             {
-                                ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
-                                GenerateStoppedMessage();
+                                mbs.ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
+                                mbs.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -801,8 +803,8 @@ namespace HoI4_Modding_Supporter.Workers
                                 e is IOException ||
                                 e is DirectoryNotFoundException)
                             {
-                                ErrorMessage(e.Message);
-                                GenerateStoppedMessage();
+                                mbs.ErrorMessage(e.Message);
+                                mbs.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -825,8 +827,8 @@ namespace HoI4_Modding_Supporter.Workers
                                     e is NotSupportedException ||
                                     e is SecurityException)
                                 {
-                                    ErrorMessage(e.Message);
-                                    GenerateStoppedMessage();
+                                    mbs.ErrorMessage(e.Message);
+                                    mbs.GenerateStoppedMessage();
                                     return 1;
                                 }
                             }
@@ -840,8 +842,8 @@ namespace HoI4_Modding_Supporter.Workers
                                 e is IOException ||
                                 e is DirectoryNotFoundException)
                             {
-                                ErrorMessage(e.Message);
-                                GenerateStoppedMessage();
+                                mbs.ErrorMessage(e.Message);
+                                mbs.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -863,8 +865,8 @@ namespace HoI4_Modding_Supporter.Workers
                                 e is NotSupportedException ||
                                 e is SecurityException)
                             {
-                                ErrorMessage(e.Message);
-                                GenerateStoppedMessage();
+                                mbs.ErrorMessage(e.Message);
+                                mbs.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -879,8 +881,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is IOException ||
                         e is DirectoryNotFoundException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -910,7 +912,7 @@ namespace HoI4_Modding_Supporter.Workers
                     return 1;
             }
 
-            MessageBox.Show("生成が完了しました。");
+            mbs.InfoMessage("生成が完了しました。");
 
             if (Properties.Settings.Default.afterOpenFolder == true)
                 Process.Start(variable.Moddir);
@@ -951,8 +953,8 @@ namespace HoI4_Modding_Supporter.Workers
                     e is NotSupportedException ||
                     e is SecurityException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1014,8 +1016,8 @@ namespace HoI4_Modding_Supporter.Workers
                     e is NotSupportedException ||
                     e is SecurityException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1049,8 +1051,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is SecurityException ||
                         e is ObjectDisposedException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -1072,8 +1074,8 @@ namespace HoI4_Modding_Supporter.Workers
                         e is NotSupportedException ||
                         e is SecurityException)
                     {
-                        ErrorMessage(e.Message);
-                        GenerateStoppedMessage();
+                        mbs.ErrorMessage(e.Message);
+                        mbs.GenerateStoppedMessage();
                         return 1;
                     }
                 }
@@ -1191,8 +1193,8 @@ namespace HoI4_Modding_Supporter.Workers
                     e is IOException ||
                     e is NotSupportedException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1221,8 +1223,8 @@ namespace HoI4_Modding_Supporter.Workers
                     e is DirectoryNotFoundException ||
                     e is NotSupportedException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1252,26 +1254,13 @@ namespace HoI4_Modding_Supporter.Workers
                     e is IOException ||
                     e is NotSupportedException)
                 {
-                    ErrorMessage(e.Message);
-                    GenerateStoppedMessage();
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
                     return 1;
                 }
             }
 
             return 0;
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        public void GenerateStoppedMessage()
-        {
-            MessageBox.Show("生成処理が強制終了されました。");
         }
     }
 }
