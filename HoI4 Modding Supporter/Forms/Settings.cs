@@ -3,11 +3,14 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Settings : Form
     {
+        InternalController ic = new InternalController();
+
         public Settings()
         {
             InitializeComponent();
@@ -62,7 +65,7 @@ namespace HoI4_Modding_Supporter.Forms
 
             if (textBox1.Text == "" || textBox2.Text == "")
             {
-                ErrorMessage("ディレクトリが選択されていません。");
+                ic.ErrorMessageShow("ディレクトリが選択されていません。");
                 return;
             }
 
@@ -76,7 +79,7 @@ namespace HoI4_Modding_Supporter.Forms
             }
             else
             {
-                ErrorMessage("HoI4本体のディレクトリが間違っています。正しいディレクトリを選択してください。");
+                ic.ErrorMessageShow("HoI4本体のディレクトリが間違っています。正しいディレクトリを選択してください。");
                 return;
             }
 
@@ -84,7 +87,7 @@ namespace HoI4_Modding_Supporter.Forms
             {  
                 if (checkBox6.Checked == false)
                 {
-                    ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
+                    ic.ErrorMessageShow("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
                     return;
                 }
                 else
@@ -148,7 +151,7 @@ namespace HoI4_Modding_Supporter.Forms
                 }
                 else
                 {
-                    ErrorMessage("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
+                    ic.ErrorMessageShow("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
                     return;
                 }
             }
@@ -205,14 +208,6 @@ namespace HoI4_Modding_Supporter.Forms
                 button5.Enabled = true;
                 button6.Enabled = true;
             }
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button1_Click(object sender, EventArgs e)

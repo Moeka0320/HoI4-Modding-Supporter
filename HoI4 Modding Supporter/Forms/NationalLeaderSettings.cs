@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class NationalLeaderSettings : Form
     {
+        InternalController ic = new InternalController();
+
         public NationalLeaderSettings()
         {
             InitializeComponent();
@@ -167,14 +170,6 @@ namespace HoI4_Modding_Supporter.Forms
         }
 
         /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
         /// 入力ミスなどを検知する
         /// </summary>
         /// <returns></returns>
@@ -183,25 +178,25 @@ namespace HoI4_Modding_Supporter.Forms
             // 名前
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                ErrorMessage("[名前]が無効です。");
+                ic.ErrorMessageShow("[名前]が無効です。");
                 return 1;
             }
             // 説明
             else if (string.IsNullOrWhiteSpace(richTextBox1.Text))
             {
-                ErrorMessage("[説明]が無効です。");
+                ic.ErrorMessageShow("[説明]が無効です。");
                 return 1;
             }
             // 画像
             else if (string.IsNullOrWhiteSpace(textBox17.Text))
             {
-                ErrorMessage("[画像]のファイルパスが無効です。");
+                ic.ErrorMessageShow("[画像]のファイルパスが無効です。");
                 return 1;
             }
             // イデオロギー
             else if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
             {
-                ErrorMessage("[イデオロギー]が設定されていません。");
+                ic.ErrorMessageShow("[イデオロギー]が設定されていません。");
                 return 1;
             }
 

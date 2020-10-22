@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class CustomIdeologiesSettings : Form
     {
+        InternalController ic = new InternalController();
+
         List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
         List<NumericUpDown> popularityNumericList = new List<NumericUpDown>();
         List<TextBox> viewNameTextBoxList = new List<TextBox>();
@@ -545,21 +548,21 @@ namespace HoI4_Modding_Supporter.Forms
                 // 表示名
                 if (string.IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text))
                 {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] +"] - [国名] - [表示名]が無効です。");
+                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [表示名]が無効です。");
                     return 1;
                 }
 
                 // イベント表示名
                 if (string.IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text))
                 {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [イベント表示名]が無効です。");
+                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [イベント表示名]が無効です。");
                     return 1;
                 }
 
                 // 通称名
                 if (string.IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text))
                 {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]が無効です。");
+                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]が無効です。");
                     return 1;
                 }
 
@@ -571,7 +574,7 @@ namespace HoI4_Modding_Supporter.Forms
                 {
                     if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
                     {
-                        ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                        ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                         return 1;
                     }
                 }
@@ -579,14 +582,6 @@ namespace HoI4_Modding_Supporter.Forms
 
             MessageBox.Show("入力ミスのチェックが完了しました。");
             return 0;
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button1_Click(object sender, EventArgs e)

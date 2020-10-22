@@ -3,11 +3,14 @@ using System.Linq;
 using System.Data;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class FactionSettings : Form
     {
+        InternalController ic = new InternalController();
+
         public FactionSettings()
         {
             InitializeComponent();
@@ -33,13 +36,13 @@ namespace HoI4_Modding_Supporter.Forms
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                ErrorMessage("[陣営名（内部処理用）]が無効です。");
+                ic.ErrorMessageShow("[陣営名（内部処理用）]が無効です。");
                 return 1;
             }
 
             if (string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                ErrorMessage("[陣営名]が無効です。");
+                ic.ErrorMessageShow("[陣営名]が無効です。");
                 return 1;
             }
 
@@ -65,14 +68,6 @@ namespace HoI4_Modding_Supporter.Forms
             {
                 variable.FactionParticipatingCountries = null;
             }
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button2_Click(object sender, EventArgs e)
