@@ -114,12 +114,6 @@
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UnitSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UnitSettings.Designer.cs">
-      <DependentUpon>UnitSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Database\Variable.cs" />
     <Compile Include="Workers\MessageBoxShower.cs" />
     <EmbeddedResource Include="Forms\About.resx">
@@ -148,9 +142,6 @@
     </Compile>
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UnitSettings.resx">
-      <DependentUpon>UnitSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -984,12 +984,6 @@ namespace HoI4_Modding_Supporter.Forms
             nls.ShowDialog();
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            UnitSettings us = new UnitSettings();
-            us.ShowDialog();
-        }
-
         private void menuItem2_Click(object sender, EventArgs e)
         {
             Application.Restart();

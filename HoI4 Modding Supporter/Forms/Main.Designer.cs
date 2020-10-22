@@ -71,7 +71,6 @@
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.textBox36 = new System.Windows.Forms.TextBox();
-            this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
@@ -559,7 +558,6 @@
             this.groupBox12.Controls.Add(this.button18);
             this.groupBox12.Controls.Add(this.button17);
             this.groupBox12.Controls.Add(this.textBox36);
-            this.groupBox12.Controls.Add(this.button14);
             this.groupBox12.Controls.Add(this.label64);
             this.groupBox12.Controls.Add(this.checkBox2);
             this.groupBox12.Controls.Add(this.numericUpDown13);
@@ -633,7 +631,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(116, 438);
+            this.button17.Location = new System.Drawing.Point(8, 435);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
             this.button17.TabIndex = 17;
@@ -653,18 +651,6 @@
             this.textBox36.Size = new System.Drawing.Size(40, 19);
             this.textBox36.TabIndex = 20;
             this.textBox36.TabStop = false;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(0, 438);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(110, 23);
-            this.button14.TabIndex = 15;
-            this.button14.TabStop = false;
-            this.button14.Text = "ユニットの設定";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Visible = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label64
             // 
@@ -2387,7 +2373,6 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.TextBox textBox39;
