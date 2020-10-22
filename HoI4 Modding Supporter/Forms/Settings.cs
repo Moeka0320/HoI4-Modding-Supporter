@@ -159,7 +159,7 @@ namespace HoI4_Modding_Supporter.Forms
             // 再起動メッセージ
             if (rebootMessage == true)
             {
-                MessageBox.Show("反映に再起動が必要な設定が変更されました。\n再起動は[ファイル] - [再起動]で行えます。");
+                ic.InfoMessageShow("反映に再起動が必要な設定が変更されました。\n再起動は[ファイル] - [再起動]で行えます。");
             }
 
 

@@ -580,7 +580,7 @@ namespace HoI4_Modding_Supporter.Forms
                 }
             }
 
-            MessageBox.Show("入力ミスのチェックが完了しました。");
+            ic.InfoMessageShow("入力ミスのチェックが完了しました。");
             return 0;
         }
 
