@@ -24,20 +24,17 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 File.Copy(source, dest, true);
             }
-            catch (Exception e)
+            catch (Exception e) when (e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is FileNotFoundException ||
+                                      e is IOException ||
+                                      e is NotSupportedException)
             {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is FileNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                return 1;
             }
 
             return 0;
@@ -54,19 +51,16 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 Directory.CreateDirectory(folderPath);
             }
-            catch (Exception e)
+            catch (Exception e) when (e is IOException ||
+                                      e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is NotSupportedException)
             {
-                if (e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                return 1;
             }
 
             return 0;
@@ -84,19 +78,16 @@ namespace HoI4_Modding_Supporter.Workers
                 FileStream fs = File.Create(filePath);
                 fs.Close();
             }
-            catch (Exception e)
+            catch (Exception e) when (e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is IOException ||
+                                      e is NotSupportedException)
             {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                return 1;
             }
 
             return 0;

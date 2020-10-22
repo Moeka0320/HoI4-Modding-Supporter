@@ -92,18 +92,15 @@ namespace HoI4_Modding_Supporter.Workers
                     return 1;
                 }
             }
-            catch (Exception e)
+            catch (Exception e) when (e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is IOException ||
+                                      e is DirectoryNotFoundException)
             {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is IOException ||
-                    e is DirectoryNotFoundException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                return 1;
             }
 
             // MODDIR/history/countries内で国家タグが一致するファイルがあるかを検索
@@ -118,18 +115,15 @@ namespace HoI4_Modding_Supporter.Workers
                         return 1;
                     }
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is UnauthorizedAccessException ||
+                                          e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is IOException ||
+                                          e is DirectoryNotFoundException)
                 {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is IOException ||
-                        e is DirectoryNotFoundException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    return 1;
                 }
             }
 
@@ -173,15 +167,12 @@ namespace HoI4_Modding_Supporter.Workers
                 sr.WriteLine("graphical_culture_2d = " + variable.GraphicalCulture2d);
                 sr.Close();
             }
-            catch (Exception e)
+            catch (Exception e) when (e is ObjectDisposedException ||
+                                      e is IOException)
             {
-                if (e is ObjectDisposedException ||
-                    e is IOException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             // 2.色定義ファイルの作成
@@ -202,21 +193,18 @@ namespace HoI4_Modding_Supporter.Workers
                 string color = variable.ColorR + " " + variable.ColorG + " " + variable.ColorB;
                 File.AppendAllText(commonColorsFilePath, "\n" + variable.CountryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
             }
-            catch (Exception e)
+            catch (Exception e) when (e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is IOException ||
+                                      e is UnauthorizedAccessException ||
+                                      e is NotSupportedException ||
+                                      e is SecurityException)
             {
-                if (e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is NotSupportedException ||
-                    e is SecurityException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             // 3.国家タグ定義ファイルの作成
@@ -244,15 +232,12 @@ namespace HoI4_Modding_Supporter.Workers
                     sw.WriteLine(variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
                     sw.Close();
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is ObjectDisposedException ||
+                                          e is IOException)
                 {
-                    if (e is ObjectDisposedException ||
-                        e is IOException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
             else
@@ -261,21 +246,18 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     File.AppendAllText(commonCountriesFilePath, "\n" + variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is UnauthorizedAccessException ||
+                                          e is NotSupportedException ||
+                                          e is SecurityException)
                 {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
 
@@ -351,15 +333,12 @@ namespace HoI4_Modding_Supporter.Workers
                 sw.WriteLine("}");
                 sw.Close();
             }
-            catch (Exception e)
+            catch (Exception e) when (e is ObjectDisposedException ||
+                                      e is IOException)
             {
-                if (e is ObjectDisposedException ||
-                    e is IOException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             // 5.国名・政党名の設定
@@ -422,21 +401,18 @@ namespace HoI4_Modding_Supporter.Workers
                     }
                     sw.Close();
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is UnauthorizedAccessException ||
+                                          e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is PathTooLongException ||
+                                          e is SecurityException ||
+                                          e is ObjectDisposedException)
                 {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is PathTooLongException ||
-                        e is SecurityException ||
-                        e is ObjectDisposedException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
             else
@@ -471,21 +447,18 @@ namespace HoI4_Modding_Supporter.Workers
                                                                       " " + variable.CountryTag + "_communism_ADJ:0 \"" + variable.C_AliasName + "\"\n");
                     }
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is UnauthorizedAccessException ||
+                                          e is NotSupportedException ||
+                                          e is SecurityException)
                 {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
 
@@ -534,21 +507,18 @@ namespace HoI4_Modding_Supporter.Workers
                     }
                     sw.Close();
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is UnauthorizedAccessException ||
+                                          e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is PathTooLongException ||
+                                          e is SecurityException ||
+                                          e is ObjectDisposedException)
                 {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is PathTooLongException ||
-                        e is SecurityException ||
-                        e is ObjectDisposedException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
             else
@@ -583,21 +553,18 @@ namespace HoI4_Modding_Supporter.Workers
                         File.AppendAllText(localisationReplacePartiesFilePath, "\n " + variable.CountryTag + "_communism_party:0 \"" + variable.C_PartyAliasName + "\"\n" + " " + variable.CountryTag + "_communism_party_long:0 \"" + variable.C_PartyFullName + "\"\n");
                     }
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is UnauthorizedAccessException ||
+                                          e is NotSupportedException ||
+                                          e is SecurityException)
                 {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
 
@@ -794,19 +761,16 @@ namespace HoI4_Modding_Supporter.Workers
                                 return 1;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception e) when (e is UnauthorizedAccessException ||
+                                                  e is ArgumentException ||
+                                                  e is ArgumentNullException ||
+                                                  e is PathTooLongException ||
+                                                  e is IOException ||
+                                                  e is DirectoryNotFoundException)
                         {
-                            if (e is UnauthorizedAccessException ||
-                                e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is IOException ||
-                                e is DirectoryNotFoundException)
-                            {
-                                mbs.ErrorMessage(e.Message);
-                                mbs.GenerateStoppedMessage();
-                                return 1;
-                            }
+                            mbs.ErrorMessage(e.Message);
+                            mbs.GenerateStoppedMessage();
+                            return 1;
                         }
 
                         try
@@ -816,36 +780,30 @@ namespace HoI4_Modding_Supporter.Workers
                             {
                                 File.AppendAllText(sovereignCountryFile[0], "\nset_autonomy = {\n\ttarget = " + variable.CountryTag + "\n\tautonomous_state = autonomy_puppet\n}");
                             }
-                            catch (Exception e)
-                            {
-                                if (e is ArgumentException ||
-                                    e is ArgumentNullException ||
-                                    e is PathTooLongException ||
-                                    e is DirectoryNotFoundException ||
-                                    e is IOException ||
-                                    e is UnauthorizedAccessException ||
-                                    e is NotSupportedException ||
-                                    e is SecurityException)
-                                {
-                                    mbs.ErrorMessage(e.Message);
-                                    mbs.GenerateStoppedMessage();
-                                    return 1;
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is UnauthorizedAccessException ||
-                                e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is IOException ||
-                                e is DirectoryNotFoundException)
+                            catch (Exception e) when (e is ArgumentException ||
+                                                      e is ArgumentNullException ||
+                                                      e is PathTooLongException ||
+                                                      e is DirectoryNotFoundException ||
+                                                      e is IOException ||
+                                                      e is UnauthorizedAccessException ||
+                                                      e is NotSupportedException ||
+                                                      e is SecurityException)
                             {
                                 mbs.ErrorMessage(e.Message);
                                 mbs.GenerateStoppedMessage();
                                 return 1;
                             }
+                        }
+                        catch (Exception e) when (e is UnauthorizedAccessException ||
+                                                  e is ArgumentException ||
+                                                  e is ArgumentNullException ||
+                                                  e is PathTooLongException ||
+                                                  e is IOException ||
+                                                  e is DirectoryNotFoundException)
+                        {
+                            mbs.ErrorMessage(e.Message);
+                            mbs.GenerateStoppedMessage();
+                            return 1;
                         }
                     }
                     else
@@ -854,37 +812,31 @@ namespace HoI4_Modding_Supporter.Workers
                         {
                             File.AppendAllText(modFiles[0], "\nset_autonomy = {\n\ttarget = " + variable.CountryTag + "\n\tautonomous_state = autonomy_puppet\n}");
                         }
-                        catch (Exception e)
+                        catch (Exception e) when (e is ArgumentException ||
+                                                  e is ArgumentNullException ||
+                                                  e is PathTooLongException ||
+                                                  e is DirectoryNotFoundException ||
+                                                  e is IOException ||
+                                                  e is UnauthorizedAccessException ||
+                                                  e is NotSupportedException ||
+                                                  e is SecurityException)
                         {
-                            if (e is ArgumentException ||
-                                e is ArgumentNullException ||
-                                e is PathTooLongException ||
-                                e is DirectoryNotFoundException ||
-                                e is IOException ||
-                                e is UnauthorizedAccessException ||
-                                e is NotSupportedException ||
-                                e is SecurityException)
-                            {
-                                mbs.ErrorMessage(e.Message);
-                                mbs.GenerateStoppedMessage();
-                                return 1;
-                            }
+                            mbs.ErrorMessage(e.Message);
+                            mbs.GenerateStoppedMessage();
+                            return 1;
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is UnauthorizedAccessException ||
+                                          e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is IOException ||
+                                          e is DirectoryNotFoundException)
                 {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is IOException ||
-                        e is DirectoryNotFoundException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
 
@@ -942,21 +894,18 @@ namespace HoI4_Modding_Supporter.Workers
                                                              "\ttraits = {}\n" +
                                                              "}");
             }
-            catch (Exception e)
+            catch (Exception e) when (e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is IOException ||
+                                      e is UnauthorizedAccessException ||
+                                      e is NotSupportedException ||
+                                      e is SecurityException)
             {
-                if (e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is NotSupportedException ||
-                    e is SecurityException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
 
@@ -1005,21 +954,18 @@ namespace HoI4_Modding_Supporter.Workers
                         File.AppendAllText(HistoryCountriesFilePath, "\nadd_to_faction = " + variable.FactionParticipatingCountries[cnt]);
                 }
             }
-            catch (Exception e)
+            catch (Exception e) when (e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is IOException ||
+                                      e is UnauthorizedAccessException ||
+                                      e is NotSupportedException ||
+                                      e is SecurityException)
             {
-                if (e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is NotSupportedException ||
-                    e is SecurityException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             // localisationファイル
@@ -1040,21 +986,18 @@ namespace HoI4_Modding_Supporter.Workers
                     sw.WriteLine(" " + variable.FactionInternalName + ":0 \"" + variable.FactionName + "\"");
                     sw.Close();
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is UnauthorizedAccessException ||
+                                          e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is PathTooLongException ||
+                                          e is SecurityException ||
+                                          e is ObjectDisposedException)
                 {
-                    if (e is UnauthorizedAccessException ||
-                        e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is PathTooLongException ||
-                        e is SecurityException ||
-                        e is ObjectDisposedException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
             else
@@ -1063,21 +1006,18 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     File.AppendAllText(localisationReplaceFactionsFilePath, "\n " + variable.FactionInternalName + ":0 \"" + variable.FactionName + "\"");
                 }
-                catch (Exception e)
+                catch (Exception e) when (e is ArgumentException ||
+                                          e is ArgumentNullException ||
+                                          e is PathTooLongException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is IOException ||
+                                          e is UnauthorizedAccessException ||
+                                          e is NotSupportedException ||
+                                          e is SecurityException)
                 {
-                    if (e is ArgumentException ||
-                        e is ArgumentNullException ||
-                        e is PathTooLongException ||
-                        e is DirectoryNotFoundException ||
-                        e is IOException ||
-                        e is UnauthorizedAccessException ||
-                        e is NotSupportedException ||
-                        e is SecurityException)
-                    {
-                        mbs.ErrorMessage(e.Message);
-                        mbs.GenerateStoppedMessage();
-                        return 1;
-                    }
+                    mbs.ErrorMessage(e.Message);
+                    mbs.GenerateStoppedMessage();
+                    return 1;
                 }
             }
 
@@ -1182,21 +1122,18 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 File.Copy(source, dest, true);
             }
-            catch (Exception e)
+            catch (Exception e) when (e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is FileNotFoundException ||
+                                      e is IOException ||
+                                      e is NotSupportedException)
             {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is FileNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             return 0;
@@ -1213,20 +1150,17 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 Directory.CreateDirectory(folderPath);
             }
-            catch (Exception e)
+            catch (Exception e) when (e is IOException ||
+                                      e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is NotSupportedException)
             {
-                if (e is IOException ||
-                    e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             return 0;
@@ -1244,20 +1178,17 @@ namespace HoI4_Modding_Supporter.Workers
                 FileStream fs = File.Create(filePath);
                 fs.Close();
             }
-            catch (Exception e)
+            catch (Exception e) when (e is UnauthorizedAccessException ||
+                                      e is ArgumentException ||
+                                      e is ArgumentNullException ||
+                                      e is PathTooLongException ||
+                                      e is DirectoryNotFoundException ||
+                                      e is IOException ||
+                                      e is NotSupportedException)
             {
-                if (e is UnauthorizedAccessException ||
-                    e is ArgumentException ||
-                    e is ArgumentNullException ||
-                    e is PathTooLongException ||
-                    e is DirectoryNotFoundException ||
-                    e is IOException ||
-                    e is NotSupportedException)
-                {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
-                    return 1;
-                }
+                mbs.ErrorMessage(e.Message);
+                mbs.GenerateStoppedMessage();
+                return 1;
             }
 
             return 0;
