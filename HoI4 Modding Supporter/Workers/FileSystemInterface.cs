@@ -18,8 +18,8 @@ namespace HoI4_Modding_Supporter.Workers
         /// <summary>
         /// ファイルをコピー
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="dest"></param>
+        /// <param name="source">コピー元ファイルパス</param>
+        /// <param name="dest">コピー先ファイルパス</param>
         public int FileCopy(string source, string dest)
         {
             try
@@ -45,7 +45,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <summary>
         /// 新しいフォルダーを作成
         /// </summary>
-        /// <param name="folderPath"></param>
+        /// <param name="folderPath">フォルダーパス</param>
         /// <returns></returns>
         public int FolderCreate(string folderPath)
         {
@@ -71,7 +71,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <summary>
         /// 新しいファイルを作成
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="filePath">ファイルパス</param>
         /// <returns></returns>
         public int FileCreate(string filePath)
         {
@@ -164,7 +164,8 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is IOException ||
                                       e is PathTooLongException ||
                                       e is SecurityException ||
-                                      e is ObjectDisposedException)
+                                      e is ObjectDisposedException ||
+                                      e is NotSupportedException)
             {
                 mbs.ErrorMessage(e.Message);
                 return 1;
