@@ -11,11 +11,11 @@ namespace HoI4_Modding_Supporter.Forms
     public partial class Main : Form
     {
         InternalController ic = new InternalController();
+        Resource rs = new Resource();
+        Variable variable = new Variable();
 
         public Main()
         {
-            Resource rs = new Resource();
-
             InitializeComponent();
             ControlView();
 
@@ -25,12 +25,6 @@ namespace HoI4_Modding_Supporter.Forms
             ColorChange();
             // 初期政党支持率の合計
             PartiesSupportTotal();
-
-            // イデオロギー
-            string[] items = { rs.properNoun["neutrality"], rs.properNoun["democratic"], rs.properNoun["fascism"], rs.properNoun["communism"] };
-            comboBox2.Items.Clear();
-            comboBox2.Items.AddRange(items);
-
             // 無効設定の反映
             DisabledReflect();
         }
@@ -40,6 +34,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void ControlView()
         {
+            // ラベル
             string[] controlText = ic.ControlView("Main_Label");
 
             this.Text = controlText[0];
@@ -72,6 +67,11 @@ namespace HoI4_Modding_Supporter.Forms
             checkBox1.Text = controlText[27];
             button20.Text = controlText[28];
             groupBox14.Text = controlText[29];
+
+            // イデオロギー
+            string[] items = { rs.properNoun["neutrality"], rs.properNoun["democratic"], rs.properNoun["fascism"], rs.properNoun["communism"] };
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(items);
         }
 
         /// <summary>
@@ -80,8 +80,6 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void AllClear()
         {
-            Variable variable = new Variable();
-
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
@@ -161,8 +159,6 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void PartiesSupportTotal()
         {
-            Variable variable = new Variable();
-
             int nSupport = 0, dSupport = 0, fSupport = 0, cSupport = 0, customSupport = 0;
 
             if (Properties.Settings.Default.neutralityDisabled == false)
@@ -294,9 +290,6 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public int Check()
         {
-            Resource rs = new Resource();
-            Variable variable = new Variable();
-
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
             {
@@ -505,9 +498,6 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void DataAssignment()
         {
-            Variable variable = new Variable();
-            Resource rs = new Resource();
-
             // フォルダパス
             variable.Hoi4dir = Properties.Settings.Default.hoi4dir;
             variable.Moddir = Properties.Settings.Default.moddir;
@@ -742,8 +732,6 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void DisabledReflect()
         {
-            Resource rs = new Resource();
-
             bool neutralityEnabled = !Properties.Settings.Default.neutralityDisabled;
             bool democraticEnabled = !Properties.Settings.Default.democraticDisabled;
             bool fascismEnabled = !Properties.Settings.Default.fascismDisabled;
@@ -1005,8 +993,6 @@ namespace HoI4_Modding_Supporter.Forms
 
         private void button20_Click(object sender, EventArgs e)
         {
-            Variable variable = new Variable();
-
             // 政党支持率の値を変数に代入
             if (Properties.Settings.Default.neutralityDisabled == false)
                 variable.N_Popularity = (int)numericUpDown12.Value;
