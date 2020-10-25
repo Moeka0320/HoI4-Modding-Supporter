@@ -345,9 +345,9 @@
             this.label70.AutoSize = true;
             this.label70.Location = new System.Drawing.Point(131, 15);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(83, 12);
+            this.label70.Size = new System.Drawing.Size(78, 12);
             this.label70.TabIndex = 15;
-            this.label70.Text = "[MOD-PREFIX]";
+            this.label70.Text = "Modの接頭語：";
             // 
             // groupBox15
             // 
@@ -373,7 +373,7 @@
             this.groupBox18.Size = new System.Drawing.Size(210, 71);
             this.groupBox18.TabIndex = 16;
             this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "[COMMUNISM-PARTY]";
+            this.groupBox18.Text = "共産主義政党";
             // 
             // textBox32
             // 
@@ -396,18 +396,18 @@
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(6, 21);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(78, 12);
+            this.label61.Size = new System.Drawing.Size(47, 12);
             this.label61.TabIndex = 5;
-            this.label61.Text = "[VIEW-NAME]";
+            this.label61.Text = "表示名：";
             // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.Location = new System.Drawing.Point(6, 46);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(73, 12);
+            this.label60.Size = new System.Drawing.Size(47, 12);
             this.label60.TabIndex = 6;
-            this.label60.Text = "[DEF-NAME]";
+            this.label60.Text = "正式名：";
             // 
             // groupBox19
             // 
@@ -420,7 +420,7 @@
             this.groupBox19.Size = new System.Drawing.Size(210, 71);
             this.groupBox19.TabIndex = 16;
             this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "[DEMOCRATIC-PARTY]";
+            this.groupBox19.Text = "民主主義政党";
             // 
             // textBox34
             // 
@@ -443,18 +443,18 @@
             this.label63.AutoSize = true;
             this.label63.Location = new System.Drawing.Point(6, 21);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(78, 12);
+            this.label63.Size = new System.Drawing.Size(47, 12);
             this.label63.TabIndex = 5;
-            this.label63.Text = "[VIEW-NAME]";
+            this.label63.Text = "表示名：";
             // 
             // label62
             // 
             this.label62.AutoSize = true;
             this.label62.Location = new System.Drawing.Point(6, 46);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(73, 12);
+            this.label62.Size = new System.Drawing.Size(47, 12);
             this.label62.TabIndex = 6;
-            this.label62.Text = "[DEF-NAME]";
+            this.label62.Text = "正式名：";
             // 
             // groupBox17
             // 
@@ -467,7 +467,7 @@
             this.groupBox17.Size = new System.Drawing.Size(210, 71);
             this.groupBox17.TabIndex = 16;
             this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "[FASCISM-PARTY]";
+            this.groupBox17.Text = "ファシズム政党";
             // 
             // textBox28
             // 
@@ -490,18 +490,18 @@
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(6, 21);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(78, 12);
+            this.label59.Size = new System.Drawing.Size(47, 12);
             this.label59.TabIndex = 5;
-            this.label59.Text = "[VIEW-NAME]";
+            this.label59.Text = "表示名：";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
             this.label56.Location = new System.Drawing.Point(6, 46);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(73, 12);
+            this.label56.Size = new System.Drawing.Size(47, 12);
             this.label56.TabIndex = 6;
-            this.label56.Text = "[DEF-NAME]";
+            this.label56.Text = "正式名：";
             // 
             // groupBox16
             // 
@@ -514,7 +514,7 @@
             this.groupBox16.Size = new System.Drawing.Size(210, 71);
             this.groupBox16.TabIndex = 15;
             this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "[NEUTRALITY-PARTY]";
+            this.groupBox16.Text = "中道主義政党";
             // 
             // textBox29
             // 
@@ -537,18 +537,18 @@
             this.label58.AutoSize = true;
             this.label58.Location = new System.Drawing.Point(6, 21);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(78, 12);
+            this.label58.Size = new System.Drawing.Size(47, 12);
             this.label58.TabIndex = 5;
-            this.label58.Text = "[VIEW-NAME]";
+            this.label58.Text = "表示名：";
             // 
             // label57
             // 
             this.label57.AutoSize = true;
             this.label57.Location = new System.Drawing.Point(6, 46);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(73, 12);
+            this.label57.Size = new System.Drawing.Size(47, 12);
             this.label57.TabIndex = 6;
-            this.label57.Text = "[DEF-NAME]";
+            this.label57.Text = "正式名：";
             // 
             // groupBox12
             // 
@@ -592,7 +592,7 @@
             this.button20.Size = new System.Drawing.Size(110, 23);
             this.button20.TabIndex = 23;
             this.button20.TabStop = false;
-            this.button20.Text = "[CUSTOM-IDEOLOGY]";
+            this.button20.Text = "カスタムイデオロギー";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
@@ -625,7 +625,7 @@
             this.button18.Size = new System.Drawing.Size(110, 23);
             this.button18.TabIndex = 18;
             this.button18.TabStop = false;
-            this.button18.Text = "[NATIONAL-LEADER-SETTINGS]";
+            this.button18.Text = "国家指導者の設定";
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
@@ -706,17 +706,17 @@
             this.groupBox14.Size = new System.Drawing.Size(211, 142);
             this.groupBox14.TabIndex = 15;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "[DEFAULT-RULING-PARTY]";
+            this.groupBox14.Text = "初期与党";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(139, 120);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 16);
+            this.checkBox1.Size = new System.Drawing.Size(67, 16);
             this.checkBox1.TabIndex = 18;
             this.checkBox1.TabStop = false;
-            this.checkBox1.Text = "[NO-ELECTION]";
+            this.checkBox1.Text = "選挙なし";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label55
@@ -757,9 +757,9 @@
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(6, 44);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(101, 12);
+            this.label51.Size = new System.Drawing.Size(138, 12);
             this.label51.TabIndex = 18;
-            this.label51.Text = "[LAST-ELECTION]";
+            this.label51.Text = "前回の選挙 (YYYY/M/D)：";
             // 
             // numericUpDown16
             // 
@@ -875,9 +875,9 @@
             this.label54.AutoSize = true;
             this.label54.Location = new System.Drawing.Point(6, 86);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(141, 12);
+            this.label54.Size = new System.Drawing.Size(87, 12);
             this.label54.TabIndex = 18;
-            this.label54.Text = "[ELECTION-FREQUENCY]";
+            this.label54.Text = "選挙を行う間隔：";
             // 
             // groupBox13
             // 
@@ -902,7 +902,7 @@
             this.groupBox13.Size = new System.Drawing.Size(211, 122);
             this.groupBox13.TabIndex = 14;
             this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "[DEFAULT-POPULARITIES]";
+            this.groupBox13.Text = "初期政党支持率";
             // 
             // label48
             // 
@@ -1023,36 +1023,36 @@
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(3, 97);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(82, 12);
+            this.label41.Size = new System.Drawing.Size(59, 12);
             this.label41.TabIndex = 18;
-            this.label41.Text = "[COMMUNISM]";
+            this.label41.Text = "共産主義：";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(3, 22);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(82, 12);
+            this.label38.Size = new System.Drawing.Size(59, 12);
             this.label38.TabIndex = 15;
-            this.label38.Text = "[NEUTRALITY]";
+            this.label38.Text = "中道主義：";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(3, 72);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(62, 12);
+            this.label40.Size = new System.Drawing.Size(56, 12);
             this.label40.TabIndex = 17;
-            this.label40.Text = "[FASCISM]";
+            this.label40.Text = "ファシズム：";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(3, 47);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(87, 12);
+            this.label39.Size = new System.Drawing.Size(59, 12);
             this.label39.TabIndex = 16;
-            this.label39.Text = "[DEMOCRATIC]";
+            this.label39.Text = "民主主義：";
             // 
             // numericUpDown8
             // 
@@ -1091,9 +1091,9 @@
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(6, 125);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(153, 12);
+            this.label36.Size = new System.Drawing.Size(95, 12);
             this.label36.TabIndex = 9;
-            this.label36.Text = "[DEFAULT-WAR-SUPPORT]";
+            this.label36.Text = "初期戦争協力度：";
             // 
             // label34
             // 
@@ -1118,9 +1118,9 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(6, 100);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(126, 12);
+            this.label33.Size = new System.Drawing.Size(71, 12);
             this.label33.TabIndex = 6;
-            this.label33.Text = "[DEFAULT-STABILITY]";
+            this.label33.Text = "初期安定度：";
             // 
             // numericUpDown4
             // 
@@ -1201,27 +1201,27 @@
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(6, 149);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(169, 12);
+            this.label37.Size = new System.Drawing.Size(71, 12);
             this.label37.TabIndex = 13;
-            this.label37.Text = "[DEFAULT-POLITICAL_POWER]";
+            this.label37.Text = "初期政治力：";
             // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.Location = new System.Drawing.Point(6, 174);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(117, 12);
+            this.label50.Size = new System.Drawing.Size(83, 12);
             this.label50.TabIndex = 17;
-            this.label50.Text = "[DEFAULT-CONVOY]";
+            this.label50.Text = "初期輸送船数：";
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(6, 75);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(142, 12);
+            this.label32.Size = new System.Drawing.Size(92, 12);
             this.label32.TabIndex = 5;
-            this.label32.Text = "[DEFAULT-TEACH-SLOT]";
+            this.label32.Text = "初期研究スロット：";
             // 
             // groupBox11
             // 
@@ -1390,7 +1390,7 @@
             this.groupBox10.Size = new System.Drawing.Size(250, 96);
             this.groupBox10.TabIndex = 8;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "[COMMUNISM]";
+            this.groupBox10.Text = "共産主義";
             // 
             // button10
             // 
@@ -1495,7 +1495,7 @@
             this.groupBox9.Size = new System.Drawing.Size(250, 96);
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "[DEMOCRATIC]";
+            this.groupBox9.Text = "民主主義";
             // 
             // button7
             // 
@@ -1600,7 +1600,7 @@
             this.groupBox8.Size = new System.Drawing.Size(250, 96);
             this.groupBox8.TabIndex = 6;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "[FASCISM]";
+            this.groupBox8.Text = "ファシズム";
             // 
             // button4
             // 
@@ -1705,7 +1705,7 @@
             this.groupBox7.Size = new System.Drawing.Size(250, 96);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "[NEUTRALITY]";
+            this.groupBox7.Text = "中道主義";
             // 
             // button3
             // 
@@ -1832,34 +1832,34 @@
             this.groupBox5.Size = new System.Drawing.Size(250, 96);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "[COMMUNISM]";
+            this.groupBox5.Text = "共産主義";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(6, 71);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 12);
+            this.label12.Size = new System.Drawing.Size(47, 12);
             this.label12.TabIndex = 4;
-            this.label12.Text = "[ADJ-NAME]";
+            this.label12.Text = "通称名：";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(6, 46);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 12);
+            this.label13.Size = new System.Drawing.Size(47, 12);
             this.label13.TabIndex = 6;
-            this.label13.Text = "[DEF-NAME]";
+            this.label13.Text = "正式名：";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 21);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 12);
+            this.label14.Size = new System.Drawing.Size(47, 12);
             this.label14.TabIndex = 5;
-            this.label14.Text = "[VIEW-NAME]";
+            this.label14.Text = "表示名：";
             // 
             // textBox12
             // 
@@ -1898,34 +1898,34 @@
             this.groupBox4.Size = new System.Drawing.Size(250, 96);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "[FASCISM]";
+            this.groupBox4.Text = "ファシズム";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 71);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 12);
+            this.label9.Size = new System.Drawing.Size(47, 12);
             this.label9.TabIndex = 4;
-            this.label9.Text = "[ADJ-NAME]";
+            this.label9.Text = "通称名：";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 46);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 12);
+            this.label10.Size = new System.Drawing.Size(47, 12);
             this.label10.TabIndex = 6;
-            this.label10.Text = "[DEF-NAME]";
+            this.label10.Text = "正式名：";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 21);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 12);
+            this.label11.Size = new System.Drawing.Size(47, 12);
             this.label11.TabIndex = 5;
-            this.label11.Text = "[VIEW-NAME]";
+            this.label11.Text = "表示名：";
             // 
             // textBox9
             // 
@@ -1964,34 +1964,34 @@
             this.groupBox3.Size = new System.Drawing.Size(250, 96);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "[DEMOCRATIC]";
+            this.groupBox3.Text = "民主主義";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 71);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 12);
+            this.label6.Size = new System.Drawing.Size(47, 12);
             this.label6.TabIndex = 4;
-            this.label6.Text = "[ADJ-NAME]";
+            this.label6.Text = "通称名：";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 46);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 12);
+            this.label7.Size = new System.Drawing.Size(47, 12);
             this.label7.TabIndex = 6;
-            this.label7.Text = "[DEF-NAME]";
+            this.label7.Text = "正式名：";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 21);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 12);
+            this.label8.Size = new System.Drawing.Size(47, 12);
             this.label8.TabIndex = 5;
-            this.label8.Text = "[VIEW-NAME]";
+            this.label8.Text = "表示名：";
             // 
             // textBox6
             // 
@@ -2030,7 +2030,7 @@
             this.groupBox2.Size = new System.Drawing.Size(250, 96);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "[NEUTRALITY]";
+            this.groupBox2.Text = "中道主義";
             // 
             // textBox4
             // 
@@ -2045,27 +2045,27 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 71);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 12);
+            this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 4;
-            this.label5.Text = "[ADJ-NAME]";
+            this.label5.Text = "通称名：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 12);
+            this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 6;
-            this.label4.Text = "[DEF-NAME]";
+            this.label4.Text = "正式名：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 12);
+            this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 5;
-            this.label3.Text = "[VIEW-NAME]";
+            this.label3.Text = "表示名：";
             // 
             // textBox5
             // 
@@ -2117,9 +2117,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 12);
+            this.label1.Size = new System.Drawing.Size(52, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "[COUNTRY-TAG]";
+            this.label1.Text = "国家タグ：";
             // 
             // statusStrip1
             // 
@@ -2142,7 +2142,7 @@
             this.MaximizeBox = false;
             this.Menu = this.mainMenu1;
             this.Name = "Main";
-            this.Text = "[HMS]";
+            this.Text = "HoI4 Modding Supporter";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox15.ResumeLayout(false);

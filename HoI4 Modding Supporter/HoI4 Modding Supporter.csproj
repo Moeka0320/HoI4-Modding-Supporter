@@ -82,7 +82,6 @@
     <Compile Include="Forms\IdeologyManager.Designer.cs">
       <DependentUpon>IdeologyManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Workers\ControlPropertiesResponder.cs" />
     <Compile Include="Workers\FileSystemInterface.cs" />
     <Compile Include="Workers\Generate.cs" />
     <Compile Include="Forms\Main.cs">

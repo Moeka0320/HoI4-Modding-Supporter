@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace HoI4_Modding_Supporter.Database
 {
     /// <summary>
-    /// ゲーム内固有名詞などを格納
+    /// ゲーム内固有名詞などを格納（一時使用禁止）
     /// </summary>
     class Resource
     {
-        public Dictionary<string, string> properNoun = new Dictionary<string, string>()
+        private Dictionary<string, string> properNoun = new Dictionary<string, string>()
         {
             {"neutrality", "中道主義"},
             {"democratic", "民主主義"},

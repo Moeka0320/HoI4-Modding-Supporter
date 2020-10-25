@@ -70,7 +70,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // ラベル「イベント表示名：」
                     Label eventViewNameLabel = new Label()
                     { 
-                        Text = "イベント表示名：",
+                        Text = "正式名：",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - EventViewNameLabel",
                         Location = new Point(6, 40),
                         Size = new Size(83, 12)
@@ -223,7 +223,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // ラベル「通称名：」
                     Label partyAliasNameLabel = new Label()
                     {
-                        Text = "通称名：",
+                        Text = "表示名：",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyAliasNameLabel",
                         Size = new Size(47, 12),
                         Location = new Point(6, 15)
