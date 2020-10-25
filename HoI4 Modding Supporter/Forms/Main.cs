@@ -40,38 +40,38 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         public void ControlView()
         {
-            Resource rs = new Resource();
+            string[] controlText = ic.ControlView("Main_Label");
 
-            this.Text = rs.properNoun["hms"];
-            groupBox2.Text = groupBox7.Text = rs.properNoun["neutrality"];
-            groupBox3.Text = groupBox9.Text = rs.properNoun["democratic"];
-            groupBox4.Text = groupBox8.Text = rs.properNoun["fascism"];
-            groupBox5.Text = groupBox10.Text = rs.properNoun["communism"];
-            groupBox16.Text = rs.properNoun["neutrality"] + rs.properNoun["party"];
-            groupBox19.Text = rs.properNoun["democratic"] + rs.properNoun["party"];
-            groupBox17.Text = rs.properNoun["fascism"] + rs.properNoun["party"];
-            groupBox18.Text = rs.properNoun["communism"] + rs.properNoun["party"];
-            label3.Text = label8.Text = label11.Text = label14.Text = label58.Text = label63.Text = label59.Text = label61.Text = rs.properNoun["vew"] + "：";
-            label4.Text = label7.Text = label10.Text = label13.Text = label57.Text = label62.Text = label56.Text = label60.Text = rs.properNoun["def"] + "：";
-            label5.Text = label6.Text = label9.Text = label12.Text = rs.properNoun["adj"] + "：";
-            label32.Text = rs.properNoun["default"] + rs.properNoun["teach_slot"] + "：";
-            label33.Text = rs.properNoun["default"] + rs.properNoun["stability"] + "：";
-            label36.Text = rs.properNoun["default"] + rs.properNoun["war_support"] + "：";
-            label37.Text = rs.properNoun["default"] + rs.properNoun["political_power"] + "：";
-            label50.Text = rs.properNoun["default"] + rs.properNoun["convoy"] + "数：";
-            groupBox13.Text = rs.properNoun["default"] + rs.properNoun["popularities"];
-            label38.Text = rs.properNoun["neutrality"] + "：";
-            label39.Text = rs.properNoun["democratic"] + "：";
-            label40.Text = rs.properNoun["fascism"] + "：";
-            label41.Text = rs.properNoun["communism"] + "：";
-            label1.Text = rs.properNoun["ctag"] + "：";
-            label70.Text = rs.properNoun["mod"] + "の接頭語：";
-            button18.Text = rs.properNoun["national_leader"] + "の設定";
-            label51.Text = "前回の" + rs.properNoun["election"] + " (YYYY/M/D)：";
-            label54.Text = rs.properNoun["election"] + "を行う間隔：";
-            checkBox1.Text = rs.properNoun["election"] + "なし";
-            button20.Text = rs.properNoun["custom_ideology"];
-            groupBox14.Text = rs.properNoun["default"] + rs.properNoun["ruling_party"];
+            this.Text = controlText[0];
+            groupBox2.Text = groupBox7.Text = controlText[1];
+            groupBox3.Text = groupBox9.Text = controlText[2];
+            groupBox4.Text = groupBox8.Text = controlText[3];
+            groupBox5.Text = groupBox10.Text = controlText[4];
+            groupBox16.Text = controlText[5];
+            groupBox19.Text = controlText[6];
+            groupBox17.Text = controlText[7];
+            groupBox18.Text = controlText[8];
+            label3.Text = label8.Text = label11.Text = label14.Text = label58.Text = label63.Text = label59.Text = label61.Text = controlText[9];
+            label4.Text = label7.Text = label10.Text = label13.Text = label57.Text = label62.Text = label56.Text = label60.Text = controlText[10];
+            label5.Text = label6.Text = label9.Text = label12.Text = controlText[11];
+            label32.Text = controlText[12];
+            label33.Text = controlText[13];
+            label36.Text = controlText[14];
+            label37.Text = controlText[15];
+            label50.Text = controlText[16];
+            groupBox13.Text = controlText[17];
+            label38.Text = controlText[18];
+            label39.Text = controlText[19];
+            label40.Text = controlText[20];
+            label41.Text = controlText[21];
+            label1.Text = controlText[22];
+            label70.Text = controlText[23];
+            button18.Text = controlText[24];
+            label51.Text = controlText[25];
+            label54.Text = controlText[26];
+            checkBox1.Text = controlText[27];
+            button20.Text = controlText[28];
+            groupBox14.Text = controlText[29];
         }
 
         /// <summary>

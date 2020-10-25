@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using HoI4_Modding_Supporter.Workers;
 
 namespace HoI4_Modding_Supporter.Mediators
@@ -15,6 +16,7 @@ namespace HoI4_Modding_Supporter.Mediators
     {
         MessageBoxShower msb = new MessageBoxShower();
         FileSystemInterface fsi = new FileSystemInterface();
+        ControlPropertiesResponder cpr = new ControlPropertiesResponder();
 
         // MessageBoxShower.cs
 
@@ -121,6 +123,21 @@ namespace HoI4_Modding_Supporter.Mediators
                 return 0;
             else
                 return 1;
+        }
+
+        // ControlPropertiesResponder.cs
+
+        /// <summary>
+        /// コントロールプロパティの管理
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public string[] ControlView(string form)
+        {
+            if (form == "Main_Label")
+                return cpr.MainFormLabelsResponder();
+            else
+                return null;
         }
     }
 }
