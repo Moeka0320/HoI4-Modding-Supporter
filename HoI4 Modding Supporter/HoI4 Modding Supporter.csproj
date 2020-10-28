@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Database\Variable.cs" />
     <Compile Include="Workers\InputChecker.cs" />
+    <Compile Include="Workers\InputPlaceResponder.cs" />
     <Compile Include="Workers\MessageBoxShower.cs" />
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>

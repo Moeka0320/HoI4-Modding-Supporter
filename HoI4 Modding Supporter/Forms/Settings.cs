@@ -31,7 +31,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// カスタムイデオロギーリストの追加
         /// </summary>
-        public void CustomIdeologyListAdd()
+        private void CustomIdeologyListAdd()
         {
             if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
             {
@@ -58,7 +58,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 設定を保存
         /// </summary>
-        public void SaveSettings()
+        private void SaveSettings()
         {
             // 再起動メッセージフラグ
             bool rebootMessage = false;
@@ -169,7 +169,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// チェックボックス変更時の処理
         /// </summary>
-        public void CheckboxChanged()
+        private void CheckboxChanged()
         {
             if (checkBox6.Checked == true)
             {
@@ -192,7 +192,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// カスタムイデオロギーの固定化（カスタムイデオロギーウィンドウでの変更時）
         /// </summary>
-        public void ControlInvalidation()
+        private void ControlInvalidation()
         {
             Variable variable = new Variable();
 

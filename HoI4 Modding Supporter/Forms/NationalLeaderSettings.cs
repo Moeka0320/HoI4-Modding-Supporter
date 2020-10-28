@@ -173,7 +173,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// 入力ミスなどを検知する
         /// </summary>
         /// <returns></returns>
-        public int Check()
+        private int Check()
         {
             // 名前
             if (string.IsNullOrWhiteSpace(textBox1.Text))
@@ -207,7 +207,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void DataAssignment()
+        private void DataAssignment()
         {
             Variable variable = new Variable();
 
@@ -345,7 +345,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 無効設定の反映
         /// </summary>
-        public void DisabledReflect()
+        private void DisabledReflect()
         {
             if (Properties.Settings.Default.neutralityDisabled == true)
             {

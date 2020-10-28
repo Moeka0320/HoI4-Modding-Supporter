@@ -38,7 +38,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// テキストボックスをすべてリセット
         /// + カスタムイデオロギー変数のリセット
         /// </summary>
-        public void AllClear()
+        private void AllClear()
         {
             textBox1.Text = "";
             textBox2.Text = "";
@@ -105,7 +105,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 配色の出力
         /// </summary>
-        public void ColorChange()
+        private void ColorChange()
         {
             int r = (int)numericUpDown1.Value;
             int g = (int)numericUpDown2.Value;
@@ -117,7 +117,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 政党支持率合計の出力
         /// </summary>
-        public void PartiesSupportTotal()
+        private void PartiesSupportTotal()
         {
             int nSupport = 0, dSupport = 0, fSupport = 0, cSupport = 0, customSupport = 0;
 
@@ -149,7 +149,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         /// <param name="ideology">イデオロギー（n, d, f, c）</param>
         /// <param name="size">サイズ（big, medium, small）</param>
-        public void OpenTGAFile(string ideology, string size)
+        private void OpenTGAFile(string ideology, string size)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { FileName = "Flag.tga", Filter = "TGAファイル|*.tga", RestoreDirectory = true, CheckFileExists = true, CheckPathExists = true })
             {
@@ -248,7 +248,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// 生成直前に入るチェック
         /// 入力ミスなどを検知する
         /// </summary>
-        public int Check()
+        private int Check()
         {
             // hoi4ディレクトリ・modディレクトリ
             if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
@@ -456,7 +456,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void DataAssignment()
+        private void DataAssignment()
         {
             // フォルダパス
             variable.Hoi4dir = Properties.Settings.Default.hoi4dir;
@@ -690,7 +690,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 無効設定の反映
         /// </summary>
-        public void DisabledReflect()
+        private void DisabledReflect()
         {
             bool neutralityEnabled = !Properties.Settings.Default.neutralityDisabled;
             bool democraticEnabled = !Properties.Settings.Default.democraticDisabled;

@@ -33,7 +33,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 作成したイデオロギーの数だけタブページを作成
         /// </summary>
-        public void CreateNewTab()
+        private void CreateNewTab()
         {
             if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
             {
@@ -404,7 +404,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 政党支持率の合計を出力
         /// </summary>
-        public void PartyPopularityView()
+        private void PartyPopularityView()
         {
             Variable variable = new Variable();
             int totalPopularityValue = 0;
@@ -431,7 +431,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// ウィンドウ起動時の値の復元
         /// </summary>
-        public void ValueRecovery()
+        private void ValueRecovery()
         {
             Variable variable = new Variable();
 
@@ -480,7 +480,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 値の保存
         /// </summary>
-        public void ValueSave()
+        private void ValueSave()
         {
             Variable variable = new Variable();
 
@@ -509,7 +509,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// tgaファイルの参照
         /// </summary>
         /// <param name="size">サイズ（大：0, 中：1, 小：2）</param>
-        public void OpenTGAFile(int size)
+        private void OpenTGAFile(int size)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { FileName = "Flag.tga", Filter = "TGAファイル|*.tga", RestoreDirectory = true, CheckFileExists = true, CheckPathExists = true })
             {
@@ -540,7 +540,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// 入力ミスなどを検知
         /// </summary>
         /// <returns></returns>
-        public int Check()
+        private int Check()
         {
             for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
             {

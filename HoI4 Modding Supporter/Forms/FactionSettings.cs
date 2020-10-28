@@ -32,7 +32,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// 入力ミスなどをチェック
         /// </summary>
-        public int Check()
+        private int Check()
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
@@ -53,7 +53,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void DataAssignment()
+        private void DataAssignment()
         {
             Variable variable = new Variable();
 

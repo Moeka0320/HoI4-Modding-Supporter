@@ -339,6 +339,7 @@
             this.textBox39.Size = new System.Drawing.Size(40, 19);
             this.textBox39.TabIndex = 16;
             this.textBox39.TabStop = false;
+            this.textBox39.Tag = "ModPrefix";
             // 
             // label70
             // 
@@ -382,6 +383,7 @@
             this.textBox32.Size = new System.Drawing.Size(145, 19);
             this.textBox32.TabIndex = 3;
             this.textBox32.TabStop = false;
+            this.textBox32.Tag = "PartyName_CommunismAdjectiveName";
             // 
             // textBox33
             // 
@@ -390,6 +392,7 @@
             this.textBox33.Size = new System.Drawing.Size(145, 19);
             this.textBox33.TabIndex = 2;
             this.textBox33.TabStop = false;
+            this.textBox33.Tag = "PartyName_CommunismViewName";
             // 
             // label61
             // 
@@ -429,6 +432,7 @@
             this.textBox34.Size = new System.Drawing.Size(145, 19);
             this.textBox34.TabIndex = 3;
             this.textBox34.TabStop = false;
+            this.textBox34.Tag = "PartyName_DemocraticAdjectiveName";
             // 
             // textBox35
             // 
@@ -437,6 +441,7 @@
             this.textBox35.Size = new System.Drawing.Size(145, 19);
             this.textBox35.TabIndex = 2;
             this.textBox35.TabStop = false;
+            this.textBox35.Tag = "PartyName_DemocraticViewName";
             // 
             // label63
             // 
@@ -476,6 +481,7 @@
             this.textBox28.Size = new System.Drawing.Size(145, 19);
             this.textBox28.TabIndex = 3;
             this.textBox28.TabStop = false;
+            this.textBox28.Tag = "PartyName_FascismAdjectiveName";
             // 
             // textBox31
             // 
@@ -484,6 +490,7 @@
             this.textBox31.Size = new System.Drawing.Size(145, 19);
             this.textBox31.TabIndex = 2;
             this.textBox31.TabStop = false;
+            this.textBox31.Tag = "PartyName_FascismViewName";
             // 
             // label59
             // 
@@ -523,6 +530,7 @@
             this.textBox29.Size = new System.Drawing.Size(145, 19);
             this.textBox29.TabIndex = 3;
             this.textBox29.TabStop = false;
+            this.textBox29.Tag = "PartyName_NeutralityAdjectiveName";
             // 
             // textBox30
             // 
@@ -531,6 +539,7 @@
             this.textBox30.Size = new System.Drawing.Size(145, 19);
             this.textBox30.TabIndex = 2;
             this.textBox30.TabStop = false;
+            this.textBox30.Tag = "PartyName_NeutralityViewName";
             // 
             // label58
             // 
@@ -651,6 +660,7 @@
             this.textBox36.Size = new System.Drawing.Size(40, 19);
             this.textBox36.TabIndex = 20;
             this.textBox36.TabStop = false;
+            this.textBox36.Tag = "SuzeraintyCountryTag";
             // 
             // label64
             // 
@@ -869,6 +879,7 @@
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
             this.comboBox2.TabIndex = 17;
             this.comboBox2.TabStop = false;
+            this.comboBox2.Tag = "DefaultIdeology";
             // 
             // label54
             // 
@@ -931,6 +942,7 @@
             this.textBox27.Size = new System.Drawing.Size(39, 19);
             this.textBox27.TabIndex = 16;
             this.textBox27.TabStop = false;
+            this.textBox27.Tag = "TotalPopularity";
             this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label47
@@ -1186,6 +1198,7 @@
             this.comboBox1.Size = new System.Drawing.Size(171, 20);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.TabStop = false;
+            this.comboBox1.Tag = "RegionalSetting";
             // 
             // label30
             // 
@@ -1460,6 +1473,7 @@
             this.textBox24.Size = new System.Drawing.Size(128, 19);
             this.textBox24.TabIndex = 4;
             this.textBox24.TabStop = false;
+            this.textBox24.Tag = "CountryFlag_CommunismSmallFlagPath";
             // 
             // textBox25
             // 
@@ -1469,6 +1483,7 @@
             this.textBox25.Size = new System.Drawing.Size(128, 19);
             this.textBox25.TabIndex = 3;
             this.textBox25.TabStop = false;
+            this.textBox25.Tag = "CountryFlag_CommunismMediumFlagPath";
             // 
             // textBox26
             // 
@@ -1478,6 +1493,7 @@
             this.textBox26.Size = new System.Drawing.Size(128, 19);
             this.textBox26.TabIndex = 2;
             this.textBox26.TabStop = false;
+            this.textBox26.Tag = "CountryFlag_CommunismBigFlagPath";
             // 
             // groupBox9
             // 
@@ -1565,6 +1581,7 @@
             this.textBox21.Size = new System.Drawing.Size(128, 19);
             this.textBox21.TabIndex = 4;
             this.textBox21.TabStop = false;
+            this.textBox21.Tag = "CountryFlag_DemocraticSmallFlagPath";
             // 
             // textBox22
             // 
@@ -1574,6 +1591,7 @@
             this.textBox22.Size = new System.Drawing.Size(128, 19);
             this.textBox22.TabIndex = 3;
             this.textBox22.TabStop = false;
+            this.textBox22.Tag = "CountryFlag_DemocraticMediumFlagPath";
             // 
             // textBox23
             // 
@@ -1583,6 +1601,7 @@
             this.textBox23.Size = new System.Drawing.Size(128, 19);
             this.textBox23.TabIndex = 2;
             this.textBox23.TabStop = false;
+            this.textBox23.Tag = "CountryFlag_DemocraticBigFlagPath";
             // 
             // groupBox8
             // 
@@ -1670,6 +1689,7 @@
             this.textBox18.Size = new System.Drawing.Size(128, 19);
             this.textBox18.TabIndex = 4;
             this.textBox18.TabStop = false;
+            this.textBox18.Tag = "CountryFlag_FascismSmallFlagPath";
             // 
             // textBox19
             // 
@@ -1679,6 +1699,7 @@
             this.textBox19.Size = new System.Drawing.Size(128, 19);
             this.textBox19.TabIndex = 3;
             this.textBox19.TabStop = false;
+            this.textBox19.Tag = "CountryFlag_FascismMediumFlagPath";
             // 
             // textBox20
             // 
@@ -1688,6 +1709,7 @@
             this.textBox20.Size = new System.Drawing.Size(128, 19);
             this.textBox20.TabIndex = 2;
             this.textBox20.TabStop = false;
+            this.textBox20.Tag = "CountryFlag_FascismBigFlagPath";
             // 
             // groupBox7
             // 
@@ -1775,6 +1797,7 @@
             this.textBox15.Size = new System.Drawing.Size(128, 19);
             this.textBox15.TabIndex = 4;
             this.textBox15.TabStop = false;
+            this.textBox15.Tag = "CountryFlag_NeutralitySmallFlagPath";
             // 
             // textBox16
             // 
@@ -1784,6 +1807,7 @@
             this.textBox16.Size = new System.Drawing.Size(128, 19);
             this.textBox16.TabIndex = 3;
             this.textBox16.TabStop = false;
+            this.textBox16.Tag = "CountryFlag_NeutralityMediumFlagPath";
             // 
             // textBox17
             // 
@@ -1793,6 +1817,7 @@
             this.textBox17.Size = new System.Drawing.Size(128, 19);
             this.textBox17.TabIndex = 2;
             this.textBox17.TabStop = false;
+            this.textBox17.Tag = "CountryFlag_NeutralityBigFlagPath";
             // 
             // groupBox1
             // 
@@ -1868,6 +1893,7 @@
             this.textBox12.Size = new System.Drawing.Size(151, 19);
             this.textBox12.TabIndex = 4;
             this.textBox12.TabStop = false;
+            this.textBox12.Tag = "CountryName_CommunismAdjectiveName";
             // 
             // textBox13
             // 
@@ -1876,6 +1902,7 @@
             this.textBox13.Size = new System.Drawing.Size(151, 19);
             this.textBox13.TabIndex = 3;
             this.textBox13.TabStop = false;
+            this.textBox13.Tag = "CountryName_CommunismDefineName";
             // 
             // textBox14
             // 
@@ -1884,6 +1911,7 @@
             this.textBox14.Size = new System.Drawing.Size(151, 19);
             this.textBox14.TabIndex = 2;
             this.textBox14.TabStop = false;
+            this.textBox14.Tag = "CountryName_CommunismViewName";
             // 
             // groupBox4
             // 
@@ -1934,6 +1962,7 @@
             this.textBox9.Size = new System.Drawing.Size(151, 19);
             this.textBox9.TabIndex = 4;
             this.textBox9.TabStop = false;
+            this.textBox9.Tag = "CountryName_FascismAdjectiveName";
             // 
             // textBox10
             // 
@@ -1942,6 +1971,7 @@
             this.textBox10.Size = new System.Drawing.Size(151, 19);
             this.textBox10.TabIndex = 3;
             this.textBox10.TabStop = false;
+            this.textBox10.Tag = "CountryName_FascismDefineName";
             // 
             // textBox11
             // 
@@ -1950,6 +1980,7 @@
             this.textBox11.Size = new System.Drawing.Size(151, 19);
             this.textBox11.TabIndex = 2;
             this.textBox11.TabStop = false;
+            this.textBox11.Tag = "CountryName_FascismViewName";
             // 
             // groupBox3
             // 
@@ -2000,6 +2031,7 @@
             this.textBox6.Size = new System.Drawing.Size(151, 19);
             this.textBox6.TabIndex = 4;
             this.textBox6.TabStop = false;
+            this.textBox6.Tag = "CountryName_DemocraticAdjectiveName";
             // 
             // textBox7
             // 
@@ -2008,6 +2040,7 @@
             this.textBox7.Size = new System.Drawing.Size(151, 19);
             this.textBox7.TabIndex = 3;
             this.textBox7.TabStop = false;
+            this.textBox7.Tag = "CountryName_DemocraticDefineName";
             // 
             // textBox8
             // 
@@ -2016,6 +2049,7 @@
             this.textBox8.Size = new System.Drawing.Size(151, 19);
             this.textBox8.TabIndex = 2;
             this.textBox8.TabStop = false;
+            this.textBox8.Tag = "CountryName_DemocraticViewName";
             // 
             // groupBox2
             // 
@@ -2039,6 +2073,7 @@
             this.textBox4.Size = new System.Drawing.Size(151, 19);
             this.textBox4.TabIndex = 3;
             this.textBox4.TabStop = false;
+            this.textBox4.Tag = "CountryName_NeutralityDefineName";
             // 
             // label5
             // 
@@ -2074,6 +2109,7 @@
             this.textBox5.Size = new System.Drawing.Size(151, 19);
             this.textBox5.TabIndex = 4;
             this.textBox5.TabStop = false;
+            this.textBox5.Tag = "CountryName_NeutralityAdjectiveName";
             // 
             // textBox3
             // 
@@ -2082,6 +2118,7 @@
             this.textBox3.Size = new System.Drawing.Size(151, 19);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
+            this.textBox3.Tag = "CountryName_NeutralityViewName";
             // 
             // textBox2
             // 
@@ -2091,6 +2128,7 @@
             this.textBox2.Size = new System.Drawing.Size(151, 19);
             this.textBox2.TabIndex = 1;
             this.textBox2.TabStop = false;
+            this.textBox2.Tag = "CountryName_Internal";
             // 
             // label2
             // 
@@ -2111,6 +2149,7 @@
             this.textBox1.Size = new System.Drawing.Size(40, 19);
             this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
+            this.textBox1.Tag = "CountryTag";
             // 
             // label1
             // 
