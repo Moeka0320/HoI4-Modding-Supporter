@@ -60,10 +60,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <param name="dest">コピー先ファイルパス</param>
         public int FileCopy(string source, string dest)
         {
-            if (fsi.FileCopy(source, dest) == 0)
-                return 0;
-            else
-                return 1;
+            return fsi.FileCopy(source, dest);
         }
 
         /// <summary>
@@ -73,10 +70,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int FolderCreate(string folderPath)
         {
-            if (fsi.FolderCreate(folderPath) == 0)
-                return 0;
-            else
-                return 1;
+            return fsi.FolderCreate(folderPath);
         }
 
         /// <summary>
@@ -86,10 +80,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int FileCreate(string filePath)
         {
-            if (fsi.FileCreate(filePath) == 0)
-                return 0;
-            else
-                return 1;
+            return fsi.FileCreate(filePath);
         }
 
         /// <summary>
@@ -102,10 +93,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int FileWriteLine(string path, string text, bool parm, Encoding enc = null)
         {
-            if (fsi.FileWriteLine(path, text, parm, enc) == 0)
-                return 0;
-            else
-                return 1;
+            return fsi.FileWriteLine(path, text, parm, enc);
         }
 
         /// <summary>
@@ -118,10 +106,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int FileWrite(string path, string text, bool parm, Encoding enc = null)
         {
-            if (fsi.FileWrite(path, text, parm, enc) == 0)
-                return 0;
-            else
-                return 1;
+            return fsi.FileWrite(path, text, parm, enc);
         }
     }
 }

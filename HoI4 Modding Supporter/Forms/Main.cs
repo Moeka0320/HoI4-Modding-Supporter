@@ -5,13 +5,14 @@ using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
 using HoI4_Modding_Supporter.Workers;
 using HoI4_Modding_Supporter.Mediators;
+using System.Collections.Generic;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Main : Form
     {
         InternalController ic = new InternalController();
-        Resource rs = new Resource();
+        UserController uc = new UserController();
         Variable variable = new Variable();
 
         public Main()
@@ -250,207 +251,55 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         private int Check()
         {
-            // hoi4ディレクトリ・modディレクトリ
-            if (Properties.Settings.Default.hoi4dir == "" || Properties.Settings.Default.moddir == "")
-            {
-                ic.ErrorMessageShow("HoI4本体のディレクトリ、またはModディレクトリが設定されていません。\n[ツール] - [設定]からディレクトリパスを設定してください。");
-                return 1;
-            }
-
-            // 国家タグ
-            // テキストボックスが空っぽまたはスペース、大文字ではない
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                ic.ErrorMessageShow("国家タグが無効です。");
-                return 1;
-            }
-
-            // 国名
-            // 内部処理用
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                ic.ErrorMessageShow("[国名] - [内部処理用]が無効です。");
-                return 1;
-            }
-
-            // 中道主義
-            if (Properties.Settings.Default.neutralityDisabled == false)
-            {
-                // 表示名
-                if (string.IsNullOrWhiteSpace(textBox3.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [中道主義] - [表示名]が無効です。");
-                    return 1;
-                }
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(textBox4.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [中道主義] - [正式名]が無効です。");
-                    return 1;
-                }
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox5.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [中道主義] - [通称名]が無効です。");
-                    return 1;
-                }
-            }
-
-            // 民主主義
-            if (Properties.Settings.Default.democraticDisabled == false)
-            {
-                // 表示名
-                if (string.IsNullOrWhiteSpace(textBox8.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [民主主義] - [表示名]が無効です。");
-                    return 1;
-                }
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(textBox7.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [民主主義] - [正式名]が無効です。");
-                    return 1;
-                }
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox6.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [民主主義] - [通称名]が無効です。");
-                    return 1;
-                }
-            }
-            
-            if (Properties.Settings.Default.fascismDisabled == false)
-            {
-                // ファシズム
-                // 表示名
-                if (string.IsNullOrWhiteSpace(textBox11.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [ファシズム] - [表示名]が無効です。");
-                    return 1;
-                }
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(textBox10.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [ファシズム] - [正式名]が無効です。");
-                    return 1;
-                }
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox9.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [ファシズム] - [通称名]が無効です。");
-                    return 1;
-                }
-            }
-
-            if (Properties.Settings.Default.communismDisabled == false)
-            {
-                // 共産主義
-                // 表示名
-                if (string.IsNullOrWhiteSpace(textBox14.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [共産主義] - [表示名]が無効です。");
-                    return 1;
-                }
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(textBox13.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [共産主義] - [正式名]が無効です。");
-                    return 1;
-                }
-                // 通称名
-                if (string.IsNullOrWhiteSpace(textBox12.Text))
-                {
-                    ic.ErrorMessageShow("[国名] - [共産主義] - [通称名]が無効です。");
-                    return 1;
-                }
-            }
-
-            // 国旗はファイルパスが指定されてなくてもOK
-
-            // 政党名は指定がない場合、イデオロギー名になる
-            // 政党名を指定しない場合は通称名・正式名の両方を空欄にする必要がある
-            if (textBox30.Text == "" || textBox29.Text == "")
-            {
-                if ((textBox30.Text == "" && textBox29.Text == "") == false)
-                {
-                    ic.ErrorMessageShow("[政党名] - [中道主義政党]を設定しない場合、表示名と正式名の両方を空欄にする必要があります。");
-                    return 1;
-                }
-            }
-
-            if (textBox35.Text == "" || textBox34.Text == "")
-            {
-                if ((textBox35.Text == "" && textBox34.Text == "") == false)
-                {
-                    ic.ErrorMessageShow("[政党名] - [民主主義政党]を設定しない場合、表示名と正式名の両方を空欄にする必要があります。");
-                    return 1;
-                }
-            }
-
-            if (textBox31.Text == "" || textBox28.Text == "")
-            {
-                if ((textBox31.Text == "" && textBox28.Text == "") == false)
-                {
-                    ic.ErrorMessageShow("[政党名] - [ファシズム政党]を設定しない場合、表示名と正式名の両方を空欄にする必要があります。");
-                    return 1;
-                }
-            }
-
-            if (textBox33.Text == "" || textBox32.Text == "")
-            {
-                if ((textBox33.Text == "" && textBox32.Text == "") == false)
-                {
-                    ic.ErrorMessageShow("[政党名] - [共産主義政党]を設定しない場合、表示名と正式名の両方を空欄にする必要があります。");
-                    return 1;
-                }
-            }
-
-            // 各種設定
-            // 汎用顔グラフィックの地域設定
-            if (comboBox1.SelectedItem == null)
-            {
-                ic.ErrorMessageShow("[各種設定] - [汎用顔グラフィックの地域設定]が設定されていません。");
-                return 1;
-            }
-            // 初期政党支持率（の合計が100%ではない場合）
             PartiesSupportTotal();
-            int total = int.Parse(textBox27.Text);
-            if (total != 100)
-            {
-                ic.ErrorMessageShow("[各種設定] - [初期政党支持率]の合計が100%ではありません。\n[合計]の値を確認してください。");
-                return 1;
-            }
-            // 初期与党
-            if (comboBox2.SelectedItem == null)
-            {
-                ic.ErrorMessageShow("[各種設定] - [初期与党] - [イデオロギー]が設定されていません。");
-                return 1;
-            }
-            // 従属国である場合
-            if (checkBox2.Checked == true)
-            {
-                if (string.IsNullOrWhiteSpace(textBox36.Text))
-                {
-                    ic.ErrorMessageShow("[各種設定] - [宗主国の国家タグ]が無効です。");
-                }
-            }
-            // mod名
-            if (string.IsNullOrWhiteSpace(textBox39.Text))
-            {
-                ic.ErrorMessageShow("[Mod名]が無効です。");
-                return 1;
-            }
 
-            // カスタムイデオロギー
-            if (Properties.Settings.Default.customIdeologiesEnabled == true &&
-                variable.CustomIdeologiesSettings == null)
-            {
-                ic.ErrorMessageShow("カスタムイデオロギーが設定されていません。");
-                return 1;
-            }
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(textBox1);
+            textBoxes.Add(textBox39);
+            textBoxes.Add(textBox2);
+            textBoxes.Add(textBox3);
+            textBoxes.Add(textBox4);
+            textBoxes.Add(textBox5);
+            textBoxes.Add(textBox8);
+            textBoxes.Add(textBox7);
+            textBoxes.Add(textBox6);
+            textBoxes.Add(textBox11);
+            textBoxes.Add(textBox10);
+            textBoxes.Add(textBox9);
+            textBoxes.Add(textBox14);
+            textBoxes.Add(textBox13);
+            textBoxes.Add(textBox12);
+            textBoxes.Add(textBox17);
+            textBoxes.Add(textBox16);
+            textBoxes.Add(textBox15);
+            textBoxes.Add(textBox23);
+            textBoxes.Add(textBox22);
+            textBoxes.Add(textBox21);
+            textBoxes.Add(textBox20);
+            textBoxes.Add(textBox19);
+            textBoxes.Add(textBox18);
+            textBoxes.Add(textBox26);
+            textBoxes.Add(textBox25);
+            textBoxes.Add(textBox24);
+            textBoxes.Add(textBox30);
+            textBoxes.Add(textBox29);
+            textBoxes.Add(textBox35);
+            textBoxes.Add(textBox34);
+            textBoxes.Add(textBox31);
+            textBoxes.Add(textBox28);
+            textBoxes.Add(textBox33);
+            textBoxes.Add(textBox32);
+            textBoxes.Add(textBox36);
+            textBoxes.Add(textBox27);
 
-            ic.InfoMessageShow("入力ミスのチェックが完了しました。");
-            return 0;
+            List<ComboBox> comboBoxes = new List<ComboBox>();
+            comboBoxes.Add(comboBox1);
+            comboBoxes.Add(comboBox2);
+
+            List<CheckBox> checkBoxes = new List<CheckBox>();
+            checkBoxes.Add(checkBox2);
+
+            return uc.MainGenerateChecker(textBoxes, comboBoxes, checkBoxes);
         }
 
         /// <summary>
@@ -909,8 +758,7 @@ namespace HoI4_Modding_Supporter.Forms
         {
             Generate generate = new Generate();
 
-            int cResult = Check();
-            if (cResult == 1)
+            if (Check() == 1)
                 return;
 
             DataAssignment();
