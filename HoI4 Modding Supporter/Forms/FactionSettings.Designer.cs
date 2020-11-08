@@ -60,6 +60,7 @@
             this.textBox1.Size = new System.Drawing.Size(173, 19);
             this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
+            this.textBox1.Tag = "FacionName_Internal";
             // 
             // label2
             // 
@@ -77,6 +78,7 @@
             this.textBox2.Size = new System.Drawing.Size(172, 19);
             this.textBox2.TabIndex = 4;
             this.textBox2.TabStop = false;
+            this.textBox2.Tag = "FactionName";
             // 
             // button1
             // 

@@ -4,12 +4,14 @@ using System.Data;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
 using HoI4_Modding_Supporter.Mediators;
+using System.Collections.Generic;
 
 namespace HoI4_Modding_Supporter.Forms
 {
     public partial class FactionSettings : Form
     {
         InternalController ic = new InternalController();
+        UserController uc = new UserController();
 
         public FactionSettings()
         {
@@ -34,20 +36,11 @@ namespace HoI4_Modding_Supporter.Forms
         /// </summary>
         private int Check()
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                ic.ErrorMessageShow("[陣営名（内部処理用）]が無効です。");
-                return 1;
-            }
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(textBox1);
+            textBoxes.Add(textBox2);
 
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                ic.ErrorMessageShow("[陣営名]が無効です。");
-                return 1;
-            }
-
-            ic.InfoMessageShow("入力ミスのチェックが完了しました。");
-            return 0;
+            return uc.FactionSettingsChecker(textBoxes);
         }
 
         /// <summary>

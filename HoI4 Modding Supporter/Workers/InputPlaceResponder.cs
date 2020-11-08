@@ -13,7 +13,7 @@ namespace HoI4_Modding_Supporter.Workers
 	class InputPlaceResponder
 	{
 		/// <summary>
-		/// 
+		/// Main.cs
 		/// </summary>
 		/// <param name="tag">コントロールのTag</param>
 		/// <returns></returns>
@@ -138,6 +138,26 @@ namespace HoI4_Modding_Supporter.Workers
 
 				case "TotalPopularity":
 					return "[各種設定] - [初期政党支持率] - [合計]";
+
+				default:
+					return null;
+			}
+		}
+
+		/// <summary>
+		/// FactionSettings.cs
+		/// </summary>
+		/// <param name="tag">コントロールのTag</param>
+		/// <returns></returns>
+		public string ReturnFactionSettingsInputPlace(string tag)
+		{
+			switch (tag)
+			{
+				case "FactionName_Internal":
+					return "[陣営名（内部処理用）]";
+
+				case "FactionName":
+					return "[陣営名]";
 
 				default:
 					return null;

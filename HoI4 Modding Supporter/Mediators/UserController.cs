@@ -19,5 +19,15 @@ namespace HoI4_Modding_Supporter.Mediators
         {
             return ic.MainGenrateChecker(textBoxes, comboBoxes, checkBoxes);
         }
+
+        /// <summary>
+        /// FactionSettings.csの入力チェック
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <returns></returns>
+        public int FactionSettingsChecker(List<TextBox> textBoxes)
+        {
+            return ic.FactionSettingsChecker(textBoxes);
+        }
     }
 }

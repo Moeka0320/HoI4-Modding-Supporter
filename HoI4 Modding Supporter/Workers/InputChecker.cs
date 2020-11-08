@@ -249,6 +249,32 @@ namespace HoI4_Modding_Supporter.Workers
         }
 
         /// <summary>
+        /// FactionSettings.csの入力チェック処理
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <returns></returns>
+        public int FactionSettingsChecker(List<TextBox> textBoxes)
+        {
+            string inputPlace;
+
+            if (DirChecker() == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnFactionSettingsInputPlace(textBoxes[0].Tag.ToString());
+
+            if (IsNullOrWhiteSpace(textBoxes[0].Text, inputPlace) == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnFactionSettingsInputPlace(textBoxes[1].Tag.ToString());
+
+            if (IsNullOrWhiteSpace(textBoxes[1].Text, inputPlace) == 1)
+                return 1;
+
+            mbs.InfoMessage("入力チェックが完了しました。");
+            return 0;
+        }
+
+        /// <summary>
         /// ファイル名に使用できない文字が存在するかどうかを判定
         /// </summary>
         /// <returns>使用できない文字が存在しない：false<br/>存在する：true</returns>
