@@ -543,7 +543,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <returns></returns>
         private int Check()
         {
-            return uc.CustomIdeologiesSettingsChecker(viewNameTextBoxList, eventViewNameTextBoxList, aliasNameTextBoxList, partyFullNameTextBoxList, partyAliasNameTextBoxList);
+            return uc.CustomIdeologiesSettingsChecker(viewNameTextBoxList, eventViewNameTextBoxList, aliasNameTextBoxList, partyFullNameTextBoxList, partyAliasNameTextBoxList, bigFlagPathTextBoxList, mediumFlagPathTextBoxList, smallFlagPathTextBoxList);
         }
 
         private void button1_Click(object sender, EventArgs e)

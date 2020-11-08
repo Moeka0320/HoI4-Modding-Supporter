@@ -109,9 +109,6 @@ namespace HoI4_Modding_Supporter.Workers
                 return 1;
             }
 
-            // 停止フラグ
-            int result = 0;
-
             // 国名
             for (int cnt = 3; cnt <= 14; cnt++)
             {
@@ -119,40 +116,32 @@ namespace HoI4_Modding_Supporter.Workers
 
                 if (textBoxes[cnt].Enabled == true && IsNullOrWhiteSpace(textBoxes[cnt].Text, inputPlace) == 1)
                 {
-                    result = 1;
-                    break;
+                    return 1;
                 }
             }
-
-            if (result == 1)
-                return 1;
 
             // 国旗
             for (int cnt = 15; cnt <= 26; cnt++)
             {
                 inputPlace = ipr.ReturnMainInputPlace(textBoxes[cnt].Tag.ToString());
 
-                // ファイルチェック
                 if (textBoxes[cnt].Enabled == true && textBoxes[cnt].Text != "")
+                {
+                    // ファイルチェック
                     if (File.Exists(textBoxes[cnt].Text) == false)
                     {
                         mbs.ErrorMessage(inputPlace + "で指定されたファイルが存在しません。");
-                        result = 1;
-                        break;
+                        return 1;
                     }
 
-                // 拡張子チェック
-                if (Path.GetExtension(textBoxes[cnt].Text) != ".tga")
-                {
-                    mbs.ErrorMessage(inputPlace + "で指定されたファイルの種類には対応していません。");
-                    result = 1;
-                    break;
+                    // 拡張子チェック
+                    if (Path.GetExtension(textBoxes[cnt].Text) != ".tga")
+                    {
+                        mbs.ErrorMessage(inputPlace + "で指定されたファイルの種類には対応していません。");
+                        return 1;
+                    }
                 }
             }
-
-            if (result == 1)
-                return 1;
-
 
             // 政党名
             for (int cnt = 27; cnt <= 34; cnt++)
@@ -169,22 +158,16 @@ namespace HoI4_Modding_Supporter.Workers
                         if ((textBoxes[cnt].Text == "" && textBoxes[cnt].Text == "") == false)
                         {
                             mbs.ErrorMessage(ipr.ReturnMainInputPlace(textBoxes[cnt].Tag.ToString()) + "または" + ipr.ReturnMainInputPlace(textBoxes[cnt + 1].Tag.ToString()) + "の片方のみを空欄にすることはできません。\n" + inputPlace + "を設定しない場合、[表示名]と[正式名]の両方を空欄にする必要があります。");
-                            result = 1;
-                            break;
+                            return 1;
                         }
                     }
                 }
 
                 if (textBoxes[cnt].Enabled == true && IsNullOrWhiteSpace(textBoxes[cnt].Text, inputPlace) == 1)
                 {
-                    result = 1;
-                    break;
+                    return 1;
                 }
             }
-
-            if (result == 1)
-                return 1;
-
 
             // 各種設定
             // 宗主国の国家タグ
@@ -305,6 +288,23 @@ namespace HoI4_Modding_Supporter.Workers
             if (IsNullOrWhiteSpace(textBoxes[1].Text, inputPlace) == 1)
                 return 1;
 
+            if (textBoxes[1].Text != "")
+            {
+                // ファイルチェック
+                if (!File.Exists(textBoxes[1].Text))
+                {
+                    mbs.ErrorMessage(inputPlace + "で指定されたファイルが存在しません。");
+                    return 1;
+                }
+
+                // 拡張子チェック
+                if (Path.GetExtension(textBoxes[1].Text) != ".dds")
+                {
+                    mbs.ErrorMessage(inputPlace + "で指定されたファイルの種類には対応していません。");
+                    return 1;
+                }
+            }
+
             inputPlace = ipr.ReturnNationalLeaderSettingsInputPlace(comboBoxes[0].Tag.ToString());
 
             if (comboBoxes[0].SelectedItem == null || comboBoxes[1].SelectedItem == null)
@@ -326,7 +326,10 @@ namespace HoI4_Modding_Supporter.Workers
                                                    List<TextBox> eventViewNameTextBoxList, 
                                                    List<TextBox> aliasNameTextBoxList, 
                                                    List<TextBox> partyFullNameTextBoxList, 
-                                                   List<TextBox> partyAliasNameTextBoxList)
+                                                   List<TextBox> partyAliasNameTextBoxList,
+                                                   List<TextBox> bigFlagPathTextBoxList,
+                                                   List<TextBox> mediumFlagPathTextBoxList,
+                                                   List<TextBox> smallFlagPathTextBoxList)
         {
             // TODO: 国旗ファイルパスの入力チェック
 
@@ -348,6 +351,58 @@ namespace HoI4_Modding_Supporter.Workers
                     if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
                     {
                         mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党名]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                        return 1;
+                    }
+                }
+
+                // 国旗
+                if (bigFlagPathTextBoxList[cnt].Text != "")
+                {
+                    // ファイルチェック
+                    if (!File.Exists(bigFlagPathTextBoxList[cnt].Text))
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [大]で指定されたファイルが存在しません。");
+                        return 1;
+                    }
+
+                    // 拡張子チェック
+                    if (Path.GetExtension(bigFlagPathTextBoxList[cnt].Text) != ".dds")
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [大]で指定されたファイルの種類には対応していません。");
+                        return 1;
+                    }
+                }
+
+                if (mediumFlagPathTextBoxList[cnt].Text != "")
+                {
+                    // ファイルチェック
+                    if (!File.Exists(mediumFlagPathTextBoxList[cnt].Text))
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [中]で指定されたファイルが存在しません。");
+                        return 1;
+                    }
+
+                    // 拡張子チェック
+                    if (Path.GetExtension(mediumFlagPathTextBoxList[cnt].Text) != ".dds")
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [中]で指定されたファイルの種類には対応していません。");
+                        return 1;
+                    }
+                }
+
+                if (smallFlagPathTextBoxList[cnt].Text != "")
+                {
+                    // ファイルチェック
+                    if (!File.Exists(smallFlagPathTextBoxList[cnt].Text))
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [小]で指定されたファイルが存在しません。");
+                        return 1;
+                    }
+
+                    // 拡張子チェック
+                    if (Path.GetExtension(smallFlagPathTextBoxList[cnt].Text) != ".dds")
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [小]で指定されたファイルの種類には対応していません。");
                         return 1;
                     }
                 }

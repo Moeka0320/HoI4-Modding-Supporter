@@ -51,13 +51,19 @@ namespace HoI4_Modding_Supporter.Mediators
                                                    List<TextBox> eventViewNameTextBoxList,
                                                    List<TextBox> aliasNameTextBoxList,
                                                    List<TextBox> partyFullNameTextBoxList,
-                                                   List<TextBox> partyAliasNameTextBoxList)
+                                                   List<TextBox> partyAliasNameTextBoxList,
+                                                   List<TextBox> bigFlagPathTextBoxList,
+                                                   List<TextBox> mediumFlagPathTextBoxList,
+                                                   List<TextBox> smallFlagPathTextBoxList)
         {
             return ic.CustomIdeologiesSettingsChecker(viewNameTextBoxList,
                                                       eventViewNameTextBoxList,
                                                       aliasNameTextBoxList,
                                                       partyFullNameTextBoxList,
-                                                      partyAliasNameTextBoxList);
+                                                      partyAliasNameTextBoxList,
+                                                      bigFlagPathTextBoxList,
+                                                      mediumFlagPathTextBoxList,
+                                                      smallFlagPathTextBoxList);
         }
     }
 }
