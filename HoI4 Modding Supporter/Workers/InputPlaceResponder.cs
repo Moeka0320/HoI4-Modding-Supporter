@@ -154,7 +154,7 @@ namespace HoI4_Modding_Supporter.Workers
 			switch (tag)
 			{
 				case "FactionName_Internal":
-					return "[陣営名（内部処理用）]";
+					return "[陣営名(内部処理用)]";
 
 				case "FactionName":
 					return "[陣営名]";
