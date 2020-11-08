@@ -29,5 +29,17 @@ namespace HoI4_Modding_Supporter.Mediators
         {
             return ic.FactionSettingsChecker(textBoxes);
         }
+
+        /// <summary>
+        /// NationalLeaderSettings.csの入力チェック
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <param name="richTextBoxes"></param>
+        /// <param name="comboBoxes"></param>
+        /// <returns></returns>
+        public int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
+        {
+            return ic.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
+        }
     }
 }

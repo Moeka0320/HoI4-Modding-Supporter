@@ -275,6 +275,47 @@ namespace HoI4_Modding_Supporter.Workers
         }
 
         /// <summary>
+        /// NationalLeaderSettings.csの入力チェック処理
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <param name="richTextBoxes"></param>
+        /// <param name="comboBoxes"></param>
+        /// <returns></returns>
+        public int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
+        {
+            string inputPlace;
+
+            if (DirChecker() == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnNationalLeaderSettingsInputPlace(textBoxes[0].Tag.ToString());
+
+            if (IsNullOrWhiteSpace(textBoxes[0].Text, inputPlace) == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnNationalLeaderSettingsInputPlace(richTextBoxes[0].Tag.ToString());
+
+            if (IsNullOrWhiteSpace(richTextBoxes[0].Text, inputPlace) == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnNationalLeaderSettingsInputPlace(textBoxes[1].Tag.ToString());
+
+            if (IsNullOrWhiteSpace(textBoxes[1].Text, inputPlace) == 1)
+                return 1;
+
+            inputPlace = ipr.ReturnNationalLeaderSettingsInputPlace(comboBoxes[0].Tag.ToString());
+
+            if (comboBoxes[0].SelectedItem == null || comboBoxes[1].SelectedItem == null)
+            {
+                mbs.ErrorMessage(inputPlace + "が設定されていません。");
+                return 1;
+            }
+
+            mbs.InfoMessage("入力チェックが完了しました。");
+            return 0;
+        }
+
+        /// <summary>
         /// ファイル名に使用できない文字が存在するかどうかを判定
         /// </summary>
         /// <returns>使用できない文字が存在しない：false<br/>存在する：true</returns>

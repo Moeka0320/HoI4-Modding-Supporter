@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using HoI4_Modding_Supporter.Database;
 using HoI4_Modding_Supporter.Mediators;
@@ -8,6 +9,7 @@ namespace HoI4_Modding_Supporter.Forms
     public partial class NationalLeaderSettings : Form
     {
         InternalController ic = new InternalController();
+        UserController uc = new UserController();
 
         public NationalLeaderSettings()
         {
@@ -175,33 +177,16 @@ namespace HoI4_Modding_Supporter.Forms
         /// <returns></returns>
         private int Check()
         {
-            // 名前
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                ic.ErrorMessageShow("[名前]が無効です。");
-                return 1;
-            }
-            // 説明
-            else if (string.IsNullOrWhiteSpace(richTextBox1.Text))
-            {
-                ic.ErrorMessageShow("[説明]が無効です。");
-                return 1;
-            }
-            // 画像
-            else if (string.IsNullOrWhiteSpace(textBox17.Text))
-            {
-                ic.ErrorMessageShow("[画像]のファイルパスが無効です。");
-                return 1;
-            }
-            // イデオロギー
-            else if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
-            {
-                ic.ErrorMessageShow("[イデオロギー]が設定されていません。");
-                return 1;
-            }
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(textBox1);
+            textBoxes.Add(textBox17);
+            List<RichTextBox> richTextBoxes = new List<RichTextBox>();
+            richTextBoxes.Add(richTextBox1);
+            List<ComboBox> comboBoxes = new List<ComboBox>();
+            comboBoxes.Add(comboBox1);
+            comboBoxes.Add(comboBox2);
 
-            ic.InfoMessageShow("入力ミスのチェックが完了しました。");
-            return 0;
+            return uc.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
         }
 
         /// <summary>
@@ -389,11 +374,8 @@ namespace HoI4_Modding_Supporter.Forms
             }
             else
             {
-                int cResult = Check();
-                if (cResult == 1)
-                {
+                if (Check() == 1)
                     return;
-                }
                 else
                 {
                     DataAssignment();

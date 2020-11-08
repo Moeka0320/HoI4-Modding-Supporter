@@ -163,5 +163,34 @@ namespace HoI4_Modding_Supporter.Workers
 					return null;
 			}
 		}
+
+		/// <summary>
+		/// NationalLeaderSettings.cs
+		/// </summary>
+		/// <param name="tag">コントロールのTag</param>
+		/// <returns></returns>
+		public string ReturnNationalLeaderSettingsInputPlace(string tag)
+		{
+			switch(tag)
+			{
+				case "LeaderName":
+					return "[名前]";
+
+				case "LeaderDesc":
+					return "[説明]";
+
+				case "LeaderFilePath":
+					return "[画像]";
+
+				case "LeaderIdeology":
+					return "[イデオロギー]";
+
+				case "LeaderSecondIdeology":
+					return "[イデオロギー]";
+
+				default:
+					return null;
+			}
+		}
 	}
 }
