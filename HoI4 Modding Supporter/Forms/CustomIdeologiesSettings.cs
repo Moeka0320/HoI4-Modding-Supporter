@@ -10,6 +10,7 @@ namespace HoI4_Modding_Supporter.Forms
     public partial class CustomIdeologiesSettings : Form
     {
         InternalController ic = new InternalController();
+        UserController uc = new UserController();
 
         List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
         List<NumericUpDown> popularityNumericList = new List<NumericUpDown>();
@@ -542,46 +543,7 @@ namespace HoI4_Modding_Supporter.Forms
         /// <returns></returns>
         private int Check()
         {
-            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-            {
-                // 国名
-                // 表示名
-                if (string.IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text))
-                {
-                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [表示名]が無効です。");
-                    return 1;
-                }
-
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text))
-                {
-                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [イベント表示名]が無効です。");
-                    return 1;
-                }
-
-                // 通称名
-                if (string.IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text))
-                {
-                    ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]が無効です。");
-                    return 1;
-                }
-
-                // 国旗はファイルパスが指定されてなくてもOK
-
-                // 政党名は指定されてなくてもOK
-
-                if (partyFullNameTextBoxList[cnt].Text == "" || partyAliasNameTextBoxList[cnt].Text == "")
-                {
-                    if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
-                    {
-                        ic.ErrorMessageShow("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
-                        return 1;
-                    }
-                }
-            }
-
-            ic.InfoMessageShow("入力ミスのチェックが完了しました。");
-            return 0;
+            return uc.CustomIdeologiesSettingsChecker(viewNameTextBoxList, eventViewNameTextBoxList, aliasNameTextBoxList, partyFullNameTextBoxList, partyAliasNameTextBoxList);
         }
 
         private void button1_Click(object sender, EventArgs e)

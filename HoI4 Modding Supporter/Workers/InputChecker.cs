@@ -283,6 +283,8 @@ namespace HoI4_Modding_Supporter.Workers
         /// <returns></returns>
         public int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
         {
+            // TODO: 画像ファイルパスの入力チェック
+
             string inputPlace;
 
             if (DirChecker() == 1)
@@ -309,6 +311,46 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 mbs.ErrorMessage(inputPlace + "が設定されていません。");
                 return 1;
+            }
+
+            mbs.InfoMessage("入力チェックが完了しました。");
+            return 0;
+        }
+
+        /// <summary>
+        /// CustomIdeologiesSettings.csの入力チェック処理
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <returns></returns>
+        public int CustomIdeologiesSettingsChecker(List<TextBox> viewNameTextBoxList, 
+                                                   List<TextBox> eventViewNameTextBoxList, 
+                                                   List<TextBox> aliasNameTextBoxList, 
+                                                   List<TextBox> partyFullNameTextBoxList, 
+                                                   List<TextBox> partyAliasNameTextBoxList)
+        {
+            // TODO: 国旗ファイルパスの入力チェック
+
+            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
+            {
+                // 国名
+                if (IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [表示名]") == 1)
+                    return 1;
+
+                if (IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [正式名]") == 1)
+                    return 1;
+
+                if (IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]") == 1)
+                    return 1;
+
+                // 政党名
+                if (partyFullNameTextBoxList[cnt].Text == "" || partyAliasNameTextBoxList[cnt].Text == "")
+                {
+                    if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
+                    {
+                        mbs.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党名]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                        return 1;
+                    }
+                }
             }
 
             mbs.InfoMessage("入力チェックが完了しました。");

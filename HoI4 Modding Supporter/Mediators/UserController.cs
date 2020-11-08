@@ -41,5 +41,23 @@ namespace HoI4_Modding_Supporter.Mediators
         {
             return ic.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
         }
+
+        /// <summary>
+        /// CustomIdeologiesSettings.csの入力チェック
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        /// <returns></returns>
+        public int CustomIdeologiesSettingsChecker(List<TextBox> viewNameTextBoxList,
+                                                   List<TextBox> eventViewNameTextBoxList,
+                                                   List<TextBox> aliasNameTextBoxList,
+                                                   List<TextBox> partyFullNameTextBoxList,
+                                                   List<TextBox> partyAliasNameTextBoxList)
+        {
+            return ic.CustomIdeologiesSettingsChecker(viewNameTextBoxList,
+                                                      eventViewNameTextBoxList,
+                                                      aliasNameTextBoxList,
+                                                      partyFullNameTextBoxList,
+                                                      partyAliasNameTextBoxList);
+        }
     }
 }
