@@ -763,8 +763,7 @@ namespace HoI4_Modding_Supporter.Forms
 
             DataAssignment();
 
-            int gcResult = generate.GenerateCountry();
-            if (gcResult == 1)
+            if (generate.GenerateCountry() == 1)
                 return;
         }
 
@@ -819,12 +818,6 @@ namespace HoI4_Modding_Supporter.Forms
 
             // カスタムイデオロギー政党支持率の反映
             PartiesSupportTotal();
-        }
-
-        private void menuItem9_Click(object sender, EventArgs e)
-        {
-            IdeologyManager im = new IdeologyManager();
-            im.ShowDialog();
         }
     }
 }

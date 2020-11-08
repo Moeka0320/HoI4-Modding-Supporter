@@ -35,8 +35,6 @@
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
@@ -277,25 +275,12 @@
             // 
             this.menuItem3.Index = 1;
             this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem9,
-            this.menuItem8,
             this.menuItem5});
             this.menuItem3.Text = "ツール(&T)";
             // 
-            // menuItem9
-            // 
-            this.menuItem9.Index = 0;
-            this.menuItem9.Text = "イデオロギーの管理(&I)";
-            this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
-            // 
-            // menuItem8
-            // 
-            this.menuItem8.Index = 1;
-            this.menuItem8.Text = "-";
-            // 
             // menuItem5
             // 
-            this.menuItem5.Index = 2;
+            this.menuItem5.Index = 0;
             this.menuItem5.Text = "設定(&S)";
             this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
@@ -2420,8 +2405,6 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.MenuItem menuItem9;
-        private System.Windows.Forms.MenuItem menuItem8;
     }
 }
 

@@ -46,7 +46,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <returns></returns>
         public int MainGenrateChecker(List<TextBox> textBoxes, List<ComboBox> comboBoxes, List<CheckBox> checkBoxes)
         {
-            string inputPlace = null;
+            string inputPlace;
 
             if (DirChecker() == 1)
                 return 1;
