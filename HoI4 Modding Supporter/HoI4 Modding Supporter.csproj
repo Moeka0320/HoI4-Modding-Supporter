@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\52c3bf54912b70fa9cc65ef529b79389_xp.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -173,8 +173,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\52c3bf54912b70fa9cc65ef529b79389_xo.ico" />
-    <Content Include="Resources\52c3bf54912b70fa9cc65ef529b79389_xp.ico" />
+    <Content Include="Resources\icon_trans.ico" />
+    <Content Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
