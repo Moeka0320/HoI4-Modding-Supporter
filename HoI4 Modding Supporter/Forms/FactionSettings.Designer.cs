@@ -155,7 +155,7 @@
             // textBox3
             // 
             this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox3.Location = new System.Drawing.Point(103, 209);
             this.textBox3.MaxLength = 3;
             this.textBox3.Name = "textBox3";

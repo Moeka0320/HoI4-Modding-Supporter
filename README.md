@@ -14,11 +14,16 @@ hoi4のmod製作を支援するソフトです。<br>
 ## ダウンロード
 * .NET Framework 4.7.2以上が必要です
 
-[HoI4 Modding Supporter v1.5 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.5/HoI4-Modding-Supporter.zip)
+[HoI4 Modding Supporter v1.6 (zip)](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases/download/v1.6/HoI4-Modding-Supporter.zip)
 
 [旧バージョン](https://github.com/Zakki0925224/HoI4-Modding-Supporter/releases)
 
 ## 更新履歴
+
+### v1.6
+* アプリケーションアイコンを追加
+* ソースコードの大規模修正
+* バグの修正
 
 ### v1.5
 * 自身で定義したカスタムイデオロギーの設定を反映する機能（カスタムイデオロギー機能）を実装
