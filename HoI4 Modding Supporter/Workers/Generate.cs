@@ -1017,7 +1017,7 @@ namespace HoI4_Modding_Supporter.Workers
 
                 if (variable.FactionParticipatingCountries != null)
                 {
-                    for ( int cnt = 0; cnt <= variable.FactionParticipatingCountries.Length; cnt++ )
+                    for ( int cnt = 0; cnt < variable.FactionParticipatingCountries.Length; cnt++ )
                         File.AppendAllText(HistoryCountriesFilePath, "\nadd_to_faction = " + variable.FactionParticipatingCountries[cnt]);
                 }
             }
