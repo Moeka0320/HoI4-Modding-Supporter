@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class NationalLeaderSettings : Form
     {
+        InternalController ic = new InternalController();
+        UserController uc = new UserController();
+
         public NationalLeaderSettings()
         {
             InitializeComponent();
@@ -173,52 +172,27 @@ namespace HoI4_Modding_Supporter
         }
 
         /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
         /// 入力ミスなどを検知する
         /// </summary>
         /// <returns></returns>
-        public int Check()
+        private int Check()
         {
-            // 名前
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                ErrorMessage("[名前]が無効です。");
-                return 1;
-            }
-            // 説明
-            else if (string.IsNullOrWhiteSpace(richTextBox1.Text))
-            {
-                ErrorMessage("[説明]が無効です。");
-                return 1;
-            }
-            // 画像
-            else if (string.IsNullOrWhiteSpace(textBox17.Text))
-            {
-                ErrorMessage("[画像]のファイルパスが無効です。");
-                return 1;
-            }
-            // イデオロギー
-            else if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
-            {
-                ErrorMessage("[イデオロギー]が設定されていません。");
-                return 1;
-            }
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(textBox1);
+            textBoxes.Add(textBox17);
+            List<RichTextBox> richTextBoxes = new List<RichTextBox>();
+            richTextBoxes.Add(richTextBox1);
+            List<ComboBox> comboBoxes = new List<ComboBox>();
+            comboBoxes.Add(comboBox1);
+            comboBoxes.Add(comboBox2);
 
-            MessageBox.Show("入力ミスのチェックが完了しました。");
-            return 0;
+            return uc.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
         }
 
         /// <summary>
         /// データの変数化処理
         /// </summary>
-        public void DataAssignment()
+        private void DataAssignment()
         {
             Variable variable = new Variable();
 
@@ -356,7 +330,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 無効設定の反映
         /// </summary>
-        public void DisabledReflect()
+        private void DisabledReflect()
         {
             if (Properties.Settings.Default.neutralityDisabled == true)
             {
@@ -400,11 +374,8 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                int cResult = Check();
-                if (cResult == 1)
-                {
+                if (Check() == 1)
                     return;
-                }
                 else
                 {
                     DataAssignment();

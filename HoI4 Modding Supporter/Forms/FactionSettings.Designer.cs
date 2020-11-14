@@ -1,4 +1,4 @@
-﻿namespace HoI4_Modding_Supporter
+﻿namespace HoI4_Modding_Supporter.Forms
 {
     partial class FactionSettings
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FactionSettings));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.textBox1.Size = new System.Drawing.Size(173, 19);
             this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
+            this.textBox1.Tag = "FactionName_Internal";
             // 
             // label2
             // 
@@ -76,6 +78,7 @@
             this.textBox2.Size = new System.Drawing.Size(172, 19);
             this.textBox2.TabIndex = 4;
             this.textBox2.TabStop = false;
+            this.textBox2.Tag = "FactionName";
             // 
             // button1
             // 
@@ -152,7 +155,7 @@
             // textBox3
             // 
             this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox3.Location = new System.Drawing.Point(103, 209);
             this.textBox3.MaxLength = 3;
             this.textBox3.Name = "textBox3";
@@ -178,6 +181,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FactionSettings";

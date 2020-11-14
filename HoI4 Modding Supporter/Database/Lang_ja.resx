@@ -117,4 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="adj" xml:space="preserve">
+    <value>通称名</value>
+  </data>
+  <data name="anarchism" xml:space="preserve">
+    <value>無政府主義者</value>
+  </data>
+  <data name="anarchist_communism" xml:space="preserve">
+    <value>無政府共産主義者</value>
+  </data>
+  <data name="anti_revisionism" xml:space="preserve">
+    <value>反修正主義者</value>
+  </data>
+  <data name="centrism" xml:space="preserve">
+    <value>中道主義者</value>
+  </data>
+  <data name="communism" xml:space="preserve">
+    <value>共産主義</value>
+  </data>
+  <data name="convoy" xml:space="preserve">
+    <value>輸送船</value>
+  </data>
+  <data name="ctag" xml:space="preserve">
+    <value>国家タグ</value>
+  </data>
+  <data name="custom_ideology" xml:space="preserve">
+    <value>カスタムイデオロギー</value>
+  </data>
+  <data name="def" xml:space="preserve">
+    <value>正式名</value>
+  </data>
+  <data name="default" xml:space="preserve">
+    <value>初期</value>
+  </data>
+  <data name="democratic" xml:space="preserve">
+    <value>民主主義</value>
+  </data>
+  <data name="despotism" xml:space="preserve">
+    <value>独裁主義者</value>
+  </data>
+  <data name="dir" xml:space="preserve">
+    <value>ディレクトリ</value>
+  </data>
+  <data name="election" xml:space="preserve">
+    <value>選挙</value>
+  </data>
+  <data name="faction" xml:space="preserve">
+    <value>陣営</value>
+  </data>
+  <data name="falangism" xml:space="preserve">
+    <value>ファランジスト</value>
+  </data>
+  <data name="fascism" xml:space="preserve">
+    <value>ファシズム</value>
+  </data>
+  <data name="fascism_ideology" xml:space="preserve">
+    <value>ファシスト</value>
+  </data>
+  <data name="hms" xml:space="preserve">
+    <value>HoI4 Modding Supporter</value>
+  </data>
+  <data name="hoi4" xml:space="preserve">
+    <value>HoI4</value>
+  </data>
+  <data name="leninism" xml:space="preserve">
+    <value>レーニン主義者</value>
+  </data>
+  <data name="liberalism" xml:space="preserve">
+    <value>自由主義者</value>
+  </data>
+  <data name="marxism" xml:space="preserve">
+    <value>マルクス主義者</value>
+  </data>
+  <data name="mod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="moderatism" xml:space="preserve">
+    <value>近代主義者</value>
+  </data>
+  <data name="national_leader" xml:space="preserve">
+    <value>国家指導者</value>
+  </data>
+  <data name="nazism" xml:space="preserve">
+    <value>国家社会主義者</value>
+  </data>
+  <data name="neutrality" xml:space="preserve">
+    <value>中道主義</value>
+  </data>
+  <data name="oligarchism" xml:space="preserve">
+    <value>寡頭主義者</value>
+  </data>
+  <data name="party" xml:space="preserve">
+    <value>政党</value>
+  </data>
+  <data name="political_power" xml:space="preserve">
+    <value>政治力</value>
+  </data>
+  <data name="popularities" xml:space="preserve">
+    <value>政党支持率</value>
+  </data>
+  <data name="province" xml:space="preserve">
+    <value>プロヴィンス</value>
+  </data>
+  <data name="rexism" xml:space="preserve">
+    <value>レクシスト</value>
+  </data>
+  <data name="ruling_party" xml:space="preserve">
+    <value>与党</value>
+  </data>
+  <data name="socialism" xml:space="preserve">
+    <value>社会主義者</value>
+  </data>
+  <data name="stability" xml:space="preserve">
+    <value>安定度</value>
+  </data>
+  <data name="stalinism" xml:space="preserve">
+    <value>スターリン主義者</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>ステート</value>
+  </data>
+  <data name="teach_slot" xml:space="preserve">
+    <value>研究スロット</value>
+  </data>
+  <data name="vew" xml:space="preserve">
+    <value>表示名</value>
+  </data>
+  <data name="war_support" xml:space="preserve">
+    <value>戦争協力度</value>
+  </data>
 </root>

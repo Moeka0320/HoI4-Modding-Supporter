@@ -1,4 +1,4 @@
-﻿namespace HoI4_Modding_Supporter
+﻿namespace HoI4_Modding_Supporter.Forms
 {
     partial class Main
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
@@ -38,46 +39,41 @@
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label71 = new System.Windows.Forms.Label();
             this.textBox39 = new System.Windows.Forms.TextBox();
             this.label70 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
             this.textBox32 = new System.Windows.Forms.TextBox();
             this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox31 = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
             this.textBox36 = new System.Windows.Forms.TextBox();
-            this.button14 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label50 = new System.Windows.Forms.Label();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.label51 = new System.Windows.Forms.Label();
@@ -88,6 +84,7 @@
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
             this.label49 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label54 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -105,7 +102,6 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
@@ -114,11 +110,13 @@
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.label33 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label32 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label31 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
@@ -301,7 +299,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label71);
             this.panel1.Controls.Add(this.textBox39);
             this.panel1.Controls.Add(this.label70);
             this.panel1.Controls.Add(this.groupBox15);
@@ -319,32 +316,24 @@
             this.panel1.Size = new System.Drawing.Size(1162, 558);
             this.panel1.TabIndex = 1;
             // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(255, 15);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(180, 12);
-            this.label71.TabIndex = 17;
-            this.label71.Text = "※ファイル名の接頭語に使用されます";
-            // 
             // textBox39
             // 
             this.textBox39.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.textBox39.Location = new System.Drawing.Point(181, 12);
+            this.textBox39.Location = new System.Drawing.Point(210, 12);
             this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(68, 19);
+            this.textBox39.Size = new System.Drawing.Size(40, 19);
             this.textBox39.TabIndex = 16;
             this.textBox39.TabStop = false;
+            this.textBox39.Tag = "ModPrefix";
             // 
             // label70
             // 
             this.label70.AutoSize = true;
             this.label70.Location = new System.Drawing.Point(131, 15);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(44, 12);
+            this.label70.Size = new System.Drawing.Size(78, 12);
             this.label70.TabIndex = 15;
-            this.label70.Text = "Mod名：";
+            this.label70.Text = "Modの接頭語：";
             // 
             // groupBox15
             // 
@@ -361,16 +350,43 @@
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.label60);
-            this.groupBox18.Controls.Add(this.label61);
             this.groupBox18.Controls.Add(this.textBox32);
             this.groupBox18.Controls.Add(this.textBox33);
+            this.groupBox18.Controls.Add(this.label61);
+            this.groupBox18.Controls.Add(this.label60);
             this.groupBox18.Location = new System.Drawing.Point(8, 250);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(210, 71);
             this.groupBox18.TabIndex = 16;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "共産主義政党";
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(59, 43);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(145, 19);
+            this.textBox32.TabIndex = 3;
+            this.textBox32.TabStop = false;
+            this.textBox32.Tag = "PartyName_CommunismAdjectiveName";
+            // 
+            // textBox33
+            // 
+            this.textBox33.Location = new System.Drawing.Point(59, 18);
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(145, 19);
+            this.textBox33.TabIndex = 2;
+            this.textBox33.TabStop = false;
+            this.textBox33.Tag = "PartyName_CommunismViewName";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(6, 21);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(47, 12);
+            this.label61.TabIndex = 5;
+            this.label61.Text = "表示名：";
             // 
             // label60
             // 
@@ -381,43 +397,45 @@
             this.label60.TabIndex = 6;
             this.label60.Text = "正式名：";
             // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(6, 21);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(47, 12);
-            this.label61.TabIndex = 5;
-            this.label61.Text = "通称名：";
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(59, 43);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(145, 19);
-            this.textBox32.TabIndex = 3;
-            this.textBox32.TabStop = false;
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(59, 18);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(145, 19);
-            this.textBox33.TabIndex = 2;
-            this.textBox33.TabStop = false;
-            // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.label62);
-            this.groupBox19.Controls.Add(this.label63);
             this.groupBox19.Controls.Add(this.textBox34);
             this.groupBox19.Controls.Add(this.textBox35);
+            this.groupBox19.Controls.Add(this.label63);
+            this.groupBox19.Controls.Add(this.label62);
             this.groupBox19.Location = new System.Drawing.Point(8, 95);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(210, 71);
             this.groupBox19.TabIndex = 16;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "民主主義政党";
+            // 
+            // textBox34
+            // 
+            this.textBox34.Location = new System.Drawing.Point(59, 43);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(145, 19);
+            this.textBox34.TabIndex = 3;
+            this.textBox34.TabStop = false;
+            this.textBox34.Tag = "PartyName_DemocraticAdjectiveName";
+            // 
+            // textBox35
+            // 
+            this.textBox35.Location = new System.Drawing.Point(59, 18);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new System.Drawing.Size(145, 19);
+            this.textBox35.TabIndex = 2;
+            this.textBox35.TabStop = false;
+            this.textBox35.Tag = "PartyName_DemocraticViewName";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 21);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(47, 12);
+            this.label63.TabIndex = 5;
+            this.label63.Text = "表示名：";
             // 
             // label62
             // 
@@ -428,43 +446,45 @@
             this.label62.TabIndex = 6;
             this.label62.Text = "正式名：";
             // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 21);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(47, 12);
-            this.label63.TabIndex = 5;
-            this.label63.Text = "通称名：";
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(59, 43);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(145, 19);
-            this.textBox34.TabIndex = 3;
-            this.textBox34.TabStop = false;
-            // 
-            // textBox35
-            // 
-            this.textBox35.Location = new System.Drawing.Point(59, 18);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(145, 19);
-            this.textBox35.TabIndex = 2;
-            this.textBox35.TabStop = false;
-            // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.label56);
-            this.groupBox17.Controls.Add(this.label59);
             this.groupBox17.Controls.Add(this.textBox28);
             this.groupBox17.Controls.Add(this.textBox31);
+            this.groupBox17.Controls.Add(this.label59);
+            this.groupBox17.Controls.Add(this.label56);
             this.groupBox17.Location = new System.Drawing.Point(8, 172);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(210, 71);
             this.groupBox17.TabIndex = 16;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "ファシズム政党";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(59, 43);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(145, 19);
+            this.textBox28.TabIndex = 3;
+            this.textBox28.TabStop = false;
+            this.textBox28.Tag = "PartyName_FascismAdjectiveName";
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(59, 18);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(145, 19);
+            this.textBox31.TabIndex = 2;
+            this.textBox31.TabStop = false;
+            this.textBox31.Tag = "PartyName_FascismViewName";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(6, 21);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(47, 12);
+            this.label59.TabIndex = 5;
+            this.label59.Text = "表示名：";
             // 
             // label56
             // 
@@ -475,43 +495,45 @@
             this.label56.TabIndex = 6;
             this.label56.Text = "正式名：";
             // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(6, 21);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(47, 12);
-            this.label59.TabIndex = 5;
-            this.label59.Text = "通称名：";
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(59, 43);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(145, 19);
-            this.textBox28.TabIndex = 3;
-            this.textBox28.TabStop = false;
-            // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(59, 18);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(145, 19);
-            this.textBox31.TabIndex = 2;
-            this.textBox31.TabStop = false;
-            // 
             // groupBox16
             // 
-            this.groupBox16.Controls.Add(this.label57);
-            this.groupBox16.Controls.Add(this.label58);
             this.groupBox16.Controls.Add(this.textBox29);
             this.groupBox16.Controls.Add(this.textBox30);
+            this.groupBox16.Controls.Add(this.label58);
+            this.groupBox16.Controls.Add(this.label57);
             this.groupBox16.Location = new System.Drawing.Point(8, 18);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(210, 71);
             this.groupBox16.TabIndex = 15;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "中道主義政党";
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(59, 43);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(145, 19);
+            this.textBox29.TabIndex = 3;
+            this.textBox29.TabStop = false;
+            this.textBox29.Tag = "PartyName_NeutralityAdjectiveName";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(59, 18);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(145, 19);
+            this.textBox30.TabIndex = 2;
+            this.textBox30.TabStop = false;
+            this.textBox30.Tag = "PartyName_NeutralityViewName";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 21);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(47, 12);
+            this.label58.TabIndex = 5;
+            this.label58.Text = "表示名：";
             // 
             // label57
             // 
@@ -522,32 +544,6 @@
             this.label57.TabIndex = 6;
             this.label57.Text = "正式名：";
             // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 21);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(47, 12);
-            this.label58.TabIndex = 5;
-            this.label58.Text = "通称名：";
-            this.label58.Click += new System.EventHandler(this.label58_Click);
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(59, 43);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(145, 19);
-            this.textBox29.TabIndex = 3;
-            this.textBox29.TabStop = false;
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(59, 18);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(145, 19);
-            this.textBox30.TabIndex = 2;
-            this.textBox30.TabStop = false;
-            // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.button20);
@@ -555,16 +551,12 @@
             this.groupBox12.Controls.Add(this.checkBox3);
             this.groupBox12.Controls.Add(this.button18);
             this.groupBox12.Controls.Add(this.button17);
-            this.groupBox12.Controls.Add(this.button16);
             this.groupBox12.Controls.Add(this.textBox36);
-            this.groupBox12.Controls.Add(this.button14);
             this.groupBox12.Controls.Add(this.label64);
             this.groupBox12.Controls.Add(this.checkBox2);
-            this.groupBox12.Controls.Add(this.label50);
             this.groupBox12.Controls.Add(this.numericUpDown13);
             this.groupBox12.Controls.Add(this.groupBox14);
             this.groupBox12.Controls.Add(this.groupBox13);
-            this.groupBox12.Controls.Add(this.label37);
             this.groupBox12.Controls.Add(this.numericUpDown8);
             this.groupBox12.Controls.Add(this.label35);
             this.groupBox12.Controls.Add(this.numericUpDown7);
@@ -573,11 +565,13 @@
             this.groupBox12.Controls.Add(this.numericUpDown6);
             this.groupBox12.Controls.Add(this.label33);
             this.groupBox12.Controls.Add(this.numericUpDown4);
-            this.groupBox12.Controls.Add(this.label32);
             this.groupBox12.Controls.Add(this.numericUpDown5);
             this.groupBox12.Controls.Add(this.label31);
             this.groupBox12.Controls.Add(this.comboBox1);
             this.groupBox12.Controls.Add(this.label30);
+            this.groupBox12.Controls.Add(this.label37);
+            this.groupBox12.Controls.Add(this.label50);
+            this.groupBox12.Controls.Add(this.label32);
             this.groupBox12.Location = new System.Drawing.Point(772, 37);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(378, 467);
@@ -631,7 +625,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(116, 438);
+            this.button17.Location = new System.Drawing.Point(8, 435);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 23);
             this.button17.TabIndex = 17;
@@ -639,17 +633,6 @@
             this.button17.Text = "研究済技術の設定";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Visible = false;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(232, 438);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(110, 23);
-            this.button16.TabIndex = 16;
-            this.button16.TabStop = false;
-            this.button16.Text = "NFエディター";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Visible = false;
             // 
             // textBox36
             // 
@@ -662,18 +645,7 @@
             this.textBox36.Size = new System.Drawing.Size(40, 19);
             this.textBox36.TabIndex = 20;
             this.textBox36.TabStop = false;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(0, 438);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(110, 23);
-            this.button14.TabIndex = 15;
-            this.button14.TabStop = false;
-            this.button14.Text = "ユニットの設定";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Visible = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.textBox36.Tag = "SuzeraintyCountryTag";
             // 
             // label64
             // 
@@ -696,15 +668,6 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(6, 174);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(83, 12);
-            this.label50.TabIndex = 17;
-            this.label50.Text = "初期輸送船数：";
-            // 
             // numericUpDown13
             // 
             this.numericUpDown13.Location = new System.Drawing.Point(102, 172);
@@ -722,7 +685,6 @@
             // groupBox14
             // 
             this.groupBox14.Controls.Add(this.checkBox1);
-            this.groupBox14.Controls.Add(this.label54);
             this.groupBox14.Controls.Add(this.label55);
             this.groupBox14.Controls.Add(this.numericUpDown17);
             this.groupBox14.Controls.Add(this.label51);
@@ -733,6 +695,7 @@
             this.groupBox14.Controls.Add(this.numericUpDown14);
             this.groupBox14.Controls.Add(this.label49);
             this.groupBox14.Controls.Add(this.comboBox2);
+            this.groupBox14.Controls.Add(this.label54);
             this.groupBox14.Location = new System.Drawing.Point(164, 176);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(211, 142);
@@ -750,15 +713,6 @@
             this.checkBox1.TabStop = false;
             this.checkBox1.Text = "選挙なし";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(6, 86);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(87, 12);
-            this.label54.TabIndex = 18;
-            this.label54.Text = "選挙を行う間隔：";
             // 
             // label55
             // 
@@ -798,9 +752,9 @@
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(6, 44);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(134, 12);
+            this.label51.Size = new System.Drawing.Size(138, 12);
             this.label51.TabIndex = 18;
-            this.label51.Text = "前回の選挙(YYYY/M/D)：";
+            this.label51.Text = "前回の選挙 (YYYY/M/D)：";
             // 
             // numericUpDown16
             // 
@@ -910,6 +864,16 @@
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
             this.comboBox2.TabIndex = 17;
             this.comboBox2.TabStop = false;
+            this.comboBox2.Tag = "DefaultIdeology";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(6, 86);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(87, 12);
+            this.label54.TabIndex = 18;
+            this.label54.Text = "選挙を行う間隔：";
             // 
             // groupBox13
             // 
@@ -963,6 +927,7 @@
             this.textBox27.Size = new System.Drawing.Size(39, 19);
             this.textBox27.TabIndex = 16;
             this.textBox27.TabStop = false;
+            this.textBox27.Tag = "TotalPopularity";
             this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label47
@@ -1086,15 +1051,6 @@
             this.label39.TabIndex = 16;
             this.label39.Text = "民主主義：";
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(6, 149);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(71, 12);
-            this.label37.TabIndex = 13;
-            this.label37.Text = "初期政治力：";
-            // 
             // numericUpDown8
             // 
             this.numericUpDown8.Location = new System.Drawing.Point(102, 147);
@@ -1177,15 +1133,6 @@
             this.numericUpDown4.TabStop = false;
             this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 75);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(92, 12);
-            this.label32.TabIndex = 5;
-            this.label32.Text = "初期研究スロット：";
-            // 
             // numericUpDown5
             // 
             this.numericUpDown5.Location = new System.Drawing.Point(102, 73);
@@ -1236,6 +1183,7 @@
             this.comboBox1.Size = new System.Drawing.Size(171, 20);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.TabStop = false;
+            this.comboBox1.Tag = "RegionalSetting";
             // 
             // label30
             // 
@@ -1245,6 +1193,33 @@
             this.label30.Size = new System.Drawing.Size(152, 12);
             this.label30.TabIndex = 0;
             this.label30.Text = "汎用顔グラフィックの地域設定：";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(6, 149);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(71, 12);
+            this.label37.TabIndex = 13;
+            this.label37.Text = "初期政治力：";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(6, 174);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(83, 12);
+            this.label50.TabIndex = 17;
+            this.label50.Text = "初期輸送船数：";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(6, 75);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(92, 12);
+            this.label32.TabIndex = 5;
+            this.label32.Text = "初期研究スロット：";
             // 
             // groupBox11
             // 
@@ -1275,9 +1250,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(6, 78);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(13, 12);
+            this.label29.Size = new System.Drawing.Size(19, 12);
             this.label29.TabIndex = 2;
-            this.label29.Text = "B";
+            this.label29.Text = "B：";
             // 
             // numericUpDown3
             // 
@@ -1299,9 +1274,9 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(6, 53);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(13, 12);
+            this.label28.Size = new System.Drawing.Size(19, 12);
             this.label28.TabIndex = 1;
-            this.label28.Text = "G";
+            this.label28.Text = "G：";
             // 
             // numericUpDown2
             // 
@@ -1323,9 +1298,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 28);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(13, 12);
+            this.label15.Size = new System.Drawing.Size(19, 12);
             this.label15.TabIndex = 0;
-            this.label15.Text = "R";
+            this.label15.Text = "R：";
             // 
             // numericUpDown1
             // 
@@ -1384,9 +1359,9 @@
             this.label69.AutoSize = true;
             this.label69.Location = new System.Drawing.Point(73, 14);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(258, 24);
+            this.label69.Size = new System.Drawing.Size(230, 24);
             this.label69.TabIndex = 10;
-            this.label69.Text = "※国旗画像がModフォルダー内に既に存在する場合、\r\nこの設定は反映されません";
+            this.label69.Text = "※国旗画像がModディレクトリ内に既に存在する\r\n場合、この設定は反映されません";
             // 
             // label68
             // 
@@ -1483,6 +1458,7 @@
             this.textBox24.Size = new System.Drawing.Size(128, 19);
             this.textBox24.TabIndex = 4;
             this.textBox24.TabStop = false;
+            this.textBox24.Tag = "CountryFlag_CommunismSmallFlagPath";
             // 
             // textBox25
             // 
@@ -1492,6 +1468,7 @@
             this.textBox25.Size = new System.Drawing.Size(128, 19);
             this.textBox25.TabIndex = 3;
             this.textBox25.TabStop = false;
+            this.textBox25.Tag = "CountryFlag_CommunismMediumFlagPath";
             // 
             // textBox26
             // 
@@ -1501,6 +1478,7 @@
             this.textBox26.Size = new System.Drawing.Size(128, 19);
             this.textBox26.TabIndex = 2;
             this.textBox26.TabStop = false;
+            this.textBox26.Tag = "CountryFlag_CommunismBigFlagPath";
             // 
             // groupBox9
             // 
@@ -1588,6 +1566,7 @@
             this.textBox21.Size = new System.Drawing.Size(128, 19);
             this.textBox21.TabIndex = 4;
             this.textBox21.TabStop = false;
+            this.textBox21.Tag = "CountryFlag_DemocraticSmallFlagPath";
             // 
             // textBox22
             // 
@@ -1597,6 +1576,7 @@
             this.textBox22.Size = new System.Drawing.Size(128, 19);
             this.textBox22.TabIndex = 3;
             this.textBox22.TabStop = false;
+            this.textBox22.Tag = "CountryFlag_DemocraticMediumFlagPath";
             // 
             // textBox23
             // 
@@ -1606,6 +1586,7 @@
             this.textBox23.Size = new System.Drawing.Size(128, 19);
             this.textBox23.TabIndex = 2;
             this.textBox23.TabStop = false;
+            this.textBox23.Tag = "CountryFlag_DemocraticBigFlagPath";
             // 
             // groupBox8
             // 
@@ -1693,6 +1674,7 @@
             this.textBox18.Size = new System.Drawing.Size(128, 19);
             this.textBox18.TabIndex = 4;
             this.textBox18.TabStop = false;
+            this.textBox18.Tag = "CountryFlag_FascismSmallFlagPath";
             // 
             // textBox19
             // 
@@ -1702,6 +1684,7 @@
             this.textBox19.Size = new System.Drawing.Size(128, 19);
             this.textBox19.TabIndex = 3;
             this.textBox19.TabStop = false;
+            this.textBox19.Tag = "CountryFlag_FascismMediumFlagPath";
             // 
             // textBox20
             // 
@@ -1711,6 +1694,7 @@
             this.textBox20.Size = new System.Drawing.Size(128, 19);
             this.textBox20.TabIndex = 2;
             this.textBox20.TabStop = false;
+            this.textBox20.Tag = "CountryFlag_FascismBigFlagPath";
             // 
             // groupBox7
             // 
@@ -1798,6 +1782,7 @@
             this.textBox15.Size = new System.Drawing.Size(128, 19);
             this.textBox15.TabIndex = 4;
             this.textBox15.TabStop = false;
+            this.textBox15.Tag = "CountryFlag_NeutralitySmallFlagPath";
             // 
             // textBox16
             // 
@@ -1807,6 +1792,7 @@
             this.textBox16.Size = new System.Drawing.Size(128, 19);
             this.textBox16.TabIndex = 3;
             this.textBox16.TabStop = false;
+            this.textBox16.Tag = "CountryFlag_NeutralityMediumFlagPath";
             // 
             // textBox17
             // 
@@ -1816,6 +1802,7 @@
             this.textBox17.Size = new System.Drawing.Size(128, 19);
             this.textBox17.TabIndex = 2;
             this.textBox17.TabStop = false;
+            this.textBox17.Tag = "CountryFlag_NeutralityBigFlagPath";
             // 
             // groupBox1
             // 
@@ -1871,9 +1858,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(6, 46);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 12);
+            this.label13.Size = new System.Drawing.Size(47, 12);
             this.label13.TabIndex = 6;
-            this.label13.Text = "イベント表示名：";
+            this.label13.Text = "正式名：";
             // 
             // label14
             // 
@@ -1891,6 +1878,7 @@
             this.textBox12.Size = new System.Drawing.Size(151, 19);
             this.textBox12.TabIndex = 4;
             this.textBox12.TabStop = false;
+            this.textBox12.Tag = "CountryName_CommunismAdjectiveName";
             // 
             // textBox13
             // 
@@ -1899,6 +1887,7 @@
             this.textBox13.Size = new System.Drawing.Size(151, 19);
             this.textBox13.TabIndex = 3;
             this.textBox13.TabStop = false;
+            this.textBox13.Tag = "CountryName_CommunismDefineName";
             // 
             // textBox14
             // 
@@ -1907,6 +1896,7 @@
             this.textBox14.Size = new System.Drawing.Size(151, 19);
             this.textBox14.TabIndex = 2;
             this.textBox14.TabStop = false;
+            this.textBox14.Tag = "CountryName_CommunismViewName";
             // 
             // groupBox4
             // 
@@ -1937,9 +1927,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 46);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 12);
+            this.label10.Size = new System.Drawing.Size(47, 12);
             this.label10.TabIndex = 6;
-            this.label10.Text = "イベント表示名：";
+            this.label10.Text = "正式名：";
             // 
             // label11
             // 
@@ -1957,6 +1947,7 @@
             this.textBox9.Size = new System.Drawing.Size(151, 19);
             this.textBox9.TabIndex = 4;
             this.textBox9.TabStop = false;
+            this.textBox9.Tag = "CountryName_FascismAdjectiveName";
             // 
             // textBox10
             // 
@@ -1965,6 +1956,7 @@
             this.textBox10.Size = new System.Drawing.Size(151, 19);
             this.textBox10.TabIndex = 3;
             this.textBox10.TabStop = false;
+            this.textBox10.Tag = "CountryName_FascismDefineName";
             // 
             // textBox11
             // 
@@ -1973,6 +1965,7 @@
             this.textBox11.Size = new System.Drawing.Size(151, 19);
             this.textBox11.TabIndex = 2;
             this.textBox11.TabStop = false;
+            this.textBox11.Tag = "CountryName_FascismViewName";
             // 
             // groupBox3
             // 
@@ -2003,9 +1996,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 46);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 12);
+            this.label7.Size = new System.Drawing.Size(47, 12);
             this.label7.TabIndex = 6;
-            this.label7.Text = "イベント表示名：";
+            this.label7.Text = "正式名：";
             // 
             // label8
             // 
@@ -2023,6 +2016,7 @@
             this.textBox6.Size = new System.Drawing.Size(151, 19);
             this.textBox6.TabIndex = 4;
             this.textBox6.TabStop = false;
+            this.textBox6.Tag = "CountryName_DemocraticAdjectiveName";
             // 
             // textBox7
             // 
@@ -2031,6 +2025,7 @@
             this.textBox7.Size = new System.Drawing.Size(151, 19);
             this.textBox7.TabIndex = 3;
             this.textBox7.TabStop = false;
+            this.textBox7.Tag = "CountryName_DemocraticDefineName";
             // 
             // textBox8
             // 
@@ -2039,6 +2034,7 @@
             this.textBox8.Size = new System.Drawing.Size(151, 19);
             this.textBox8.TabIndex = 2;
             this.textBox8.TabStop = false;
+            this.textBox8.Tag = "CountryName_DemocraticViewName";
             // 
             // groupBox2
             // 
@@ -2062,6 +2058,7 @@
             this.textBox4.Size = new System.Drawing.Size(151, 19);
             this.textBox4.TabIndex = 3;
             this.textBox4.TabStop = false;
+            this.textBox4.Tag = "CountryName_NeutralityDefineName";
             // 
             // label5
             // 
@@ -2077,9 +2074,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 12);
+            this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 6;
-            this.label4.Text = "イベント表示名：";
+            this.label4.Text = "正式名：";
             // 
             // label3
             // 
@@ -2097,6 +2094,7 @@
             this.textBox5.Size = new System.Drawing.Size(151, 19);
             this.textBox5.TabIndex = 4;
             this.textBox5.TabStop = false;
+            this.textBox5.Tag = "CountryName_NeutralityAdjectiveName";
             // 
             // textBox3
             // 
@@ -2105,6 +2103,7 @@
             this.textBox3.Size = new System.Drawing.Size(151, 19);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
+            this.textBox3.Tag = "CountryName_NeutralityViewName";
             // 
             // textBox2
             // 
@@ -2114,6 +2113,7 @@
             this.textBox2.Size = new System.Drawing.Size(151, 19);
             this.textBox2.TabIndex = 1;
             this.textBox2.TabStop = false;
+            this.textBox2.Tag = "CountryName_Internal";
             // 
             // label2
             // 
@@ -2134,6 +2134,7 @@
             this.textBox1.Size = new System.Drawing.Size(40, 19);
             this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
+            this.textBox1.Tag = "CountryTag";
             // 
             // label1
             // 
@@ -2161,6 +2162,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Menu = this.mainMenu1;
             this.Name = "Main";
@@ -2395,11 +2397,8 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Label label71;
         private System.Windows.Forms.TextBox textBox39;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.MenuItem menuItem2;

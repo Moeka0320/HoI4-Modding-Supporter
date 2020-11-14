@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Settings : Form
     {
+        InternalController ic = new InternalController();
+
         public Settings()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// カスタムイデオロギーリストの追加
         /// </summary>
-        public void CustomIdeologyListAdd()
+        private void CustomIdeologyListAdd()
         {
             if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
             {
@@ -56,14 +58,14 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 設定を保存
         /// </summary>
-        public void SaveSettings()
+        private void SaveSettings()
         {
             // 再起動メッセージフラグ
             bool rebootMessage = false;
 
             if (textBox1.Text == "" || textBox2.Text == "")
             {
-                ErrorMessage("ディレクトリが選択されていません。");
+                ic.ErrorMessageShow("ディレクトリが選択されていません。");
                 return;
             }
 
@@ -77,7 +79,7 @@ namespace HoI4_Modding_Supporter
             }
             else
             {
-                ErrorMessage("HoI4本体のディレクトリが間違っています。正しいディレクトリを選択してください。");
+                ic.ErrorMessageShow("HoI4本体のディレクトリが間違っています。正しいディレクトリを選択してください。");
                 return;
             }
 
@@ -85,7 +87,7 @@ namespace HoI4_Modding_Supporter
             {  
                 if (checkBox6.Checked == false)
                 {
-                    ErrorMessage("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
+                    ic.ErrorMessageShow("デフォルトイデオロギーをすべて無効化するには、一つ以上カスタムイデオロギーを追加してください。");
                     return;
                 }
                 else
@@ -149,7 +151,7 @@ namespace HoI4_Modding_Supporter
                 }
                 else
                 {
-                    ErrorMessage("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
+                    ic.ErrorMessageShow("カスタムイデオロギーの追加が有効化されている場合、カスタムイデオロギーリストを空にすることはできません。");
                     return;
                 }
             }
@@ -157,7 +159,7 @@ namespace HoI4_Modding_Supporter
             // 再起動メッセージ
             if (rebootMessage == true)
             {
-                MessageBox.Show("反映に再起動が必要な設定が変更されました。\n再起動は[ファイル] - [再起動]で行えます。");
+                ic.InfoMessageShow("反映に再起動が必要な設定が変更されました。\n再起動は[ファイル] - [再起動]で行えます。");
             }
 
 
@@ -167,7 +169,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// チェックボックス変更時の処理
         /// </summary>
-        public void CheckboxChanged()
+        private void CheckboxChanged()
         {
             if (checkBox6.Checked == true)
             {
@@ -190,7 +192,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// カスタムイデオロギーの固定化（カスタムイデオロギーウィンドウでの変更時）
         /// </summary>
-        public void ControlInvalidation()
+        private void ControlInvalidation()
         {
             Variable variable = new Variable();
 
@@ -206,14 +208,6 @@ namespace HoI4_Modding_Supporter
                 button5.Enabled = true;
                 button6.Enabled = true;
             }
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button1_Click(object sender, EventArgs e)

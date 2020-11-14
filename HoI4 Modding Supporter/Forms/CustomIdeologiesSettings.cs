@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Schema;
+using HoI4_Modding_Supporter.Database;
+using HoI4_Modding_Supporter.Mediators;
 
-namespace HoI4_Modding_Supporter
+namespace HoI4_Modding_Supporter.Forms
 {
     public partial class CustomIdeologiesSettings : Form
     {
+        InternalController ic = new InternalController();
+        UserController uc = new UserController();
+
         List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
         List<NumericUpDown> popularityNumericList = new List<NumericUpDown>();
         List<TextBox> viewNameTextBoxList = new List<TextBox>();
@@ -35,7 +34,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 作成したイデオロギーの数だけタブページを作成
         /// </summary>
-        public void CreateNewTab()
+        private void CreateNewTab()
         {
             if (Properties.Settings.Default.customIdeologiesInternalName.Contains("temp") == false && Properties.Settings.Default.customIdeologiesName.Contains("temp") == false)
             {
@@ -72,7 +71,7 @@ namespace HoI4_Modding_Supporter
                     // ラベル「イベント表示名：」
                     Label eventViewNameLabel = new Label()
                     { 
-                        Text = "イベント表示名：",
+                        Text = "正式名：",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - EventViewNameLabel",
                         Location = new Point(6, 40),
                         Size = new Size(83, 12)
@@ -225,7 +224,7 @@ namespace HoI4_Modding_Supporter
                     // ラベル「通称名：」
                     Label partyAliasNameLabel = new Label()
                     {
-                        Text = "通称名：",
+                        Text = "表示名：",
                         Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyAliasNameLabel",
                         Size = new Size(47, 12),
                         Location = new Point(6, 15)
@@ -406,7 +405,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 政党支持率の合計を出力
         /// </summary>
-        public void PartyPopularityView()
+        private void PartyPopularityView()
         {
             Variable variable = new Variable();
             int totalPopularityValue = 0;
@@ -433,7 +432,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// ウィンドウ起動時の値の復元
         /// </summary>
-        public void ValueRecovery()
+        private void ValueRecovery()
         {
             Variable variable = new Variable();
 
@@ -482,7 +481,7 @@ namespace HoI4_Modding_Supporter
         /// <summary>
         /// 値の保存
         /// </summary>
-        public void ValueSave()
+        private void ValueSave()
         {
             Variable variable = new Variable();
 
@@ -511,7 +510,7 @@ namespace HoI4_Modding_Supporter
         /// tgaファイルの参照
         /// </summary>
         /// <param name="size">サイズ（大：0, 中：1, 小：2）</param>
-        public void OpenTGAFile(int size)
+        private void OpenTGAFile(int size)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { FileName = "Flag.tga", Filter = "TGAファイル|*.tga", RestoreDirectory = true, CheckFileExists = true, CheckPathExists = true })
             {
@@ -542,60 +541,9 @@ namespace HoI4_Modding_Supporter
         /// 入力ミスなどを検知
         /// </summary>
         /// <returns></returns>
-        public int Check()
+        private int Check()
         {
-            for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
-            {
-                // 国名
-                // 表示名
-                if (string.IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] +"] - [国名] - [表示名]が無効です。");
-                    return 1;
-                }
-
-                // イベント表示名
-                if (string.IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [イベント表示名]が無効です。");
-                    return 1;
-                }
-
-                // 通称名
-                if (string.IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]が無効です。");
-                    return 1;
-                }
-
-                // 国旗はファイルパスが指定されてなくてもOK
-
-                // 政党名
-                // 通称名
-                if (string.IsNullOrWhiteSpace(partyAliasNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [通称名]が無効です。");
-                    return 1;
-                }
-
-                // 正式名
-                if (string.IsNullOrWhiteSpace(partyFullNameTextBoxList[cnt].Text))
-                {
-                    ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [政党名] - [正式名]が無効です。");
-                    return 1;
-                }
-            }
-
-            MessageBox.Show("入力ミスのチェックが完了しました。");
-            return 0;
-        }
-
-        /// <summary>
-        /// エラーメッセージボックスを表示
-        /// </summary>
-        public void ErrorMessage(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return uc.CustomIdeologiesSettingsChecker(viewNameTextBoxList, eventViewNameTextBoxList, aliasNameTextBoxList, partyFullNameTextBoxList, partyAliasNameTextBoxList, bigFlagPathTextBoxList, mediumFlagPathTextBoxList, smallFlagPathTextBoxList);
         }
 
         private void button1_Click(object sender, EventArgs e)

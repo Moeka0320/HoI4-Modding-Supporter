@@ -1,4 +1,4 @@
-﻿namespace HoI4_Modding_Supporter
+﻿namespace HoI4_Modding_Supporter.Forms
 {
     partial class NationalLeaderSettings
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NationalLeaderSettings));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -103,6 +104,7 @@
             this.textBox1.Size = new System.Drawing.Size(146, 19);
             this.textBox1.TabIndex = 4;
             this.textBox1.TabStop = false;
+            this.textBox1.Tag = "LeaderName";
             // 
             // label2
             // 
@@ -120,6 +122,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(262, 78);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.TabStop = false;
+            this.richTextBox1.Tag = "LeaderDesc";
             this.richTextBox1.Text = "";
             // 
             // button3
@@ -150,6 +153,7 @@
             this.textBox17.Size = new System.Drawing.Size(181, 19);
             this.textBox17.TabIndex = 8;
             this.textBox17.TabStop = false;
+            this.textBox17.Tag = "LeaderFilePath";
             // 
             // label49
             // 
@@ -169,6 +173,7 @@
             this.comboBox2.Size = new System.Drawing.Size(128, 20);
             this.comboBox2.TabIndex = 19;
             this.comboBox2.TabStop = false;
+            this.comboBox2.Tag = "LeaderSecondIdeology";
             // 
             // comboBox1
             // 
@@ -179,6 +184,7 @@
             this.comboBox1.Size = new System.Drawing.Size(128, 20);
             this.comboBox1.TabIndex = 20;
             this.comboBox1.TabStop = false;
+            this.comboBox1.Tag = "LeaderIdeology";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label51
@@ -317,6 +323,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NationalLeaderSettings";
