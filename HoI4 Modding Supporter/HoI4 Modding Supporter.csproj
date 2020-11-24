@@ -87,6 +87,12 @@
     <Compile Include="Forms\CustomIdeologiesSettings.Designer.cs">
       <DependentUpon>CustomIdeologiesSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProjectEditorMainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProjectEditorMainWindow.Designer.cs">
+      <DependentUpon>ProjectEditorMainWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProjectEditorMainWindow.resx">
+      <DependentUpon>ProjectEditorMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>

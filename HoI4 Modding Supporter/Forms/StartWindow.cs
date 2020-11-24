@@ -48,5 +48,11 @@ namespace HoI4_Modding_Supporter.Forms
             Settings settings = new Settings();
             settings.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ProjectEditorMainWindow pemw = new ProjectEditorMainWindow();
+            pemw.Show();
+        }
     }
 }
