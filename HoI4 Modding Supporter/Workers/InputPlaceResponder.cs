@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading.Tasks;
-
-namespace HoI4_Modding_Supporter.Workers
+﻿namespace HoI4_Modding_Supporter.Workers
 {
-	/// <summary>
-	/// ユーザーによって入力される場所を返す
-	/// </summary>
-	class InputPlaceResponder
+    /// <summary>
+    /// ユーザーによって入力される場所を返す
+    /// </summary>
+    static class InputPlaceResponder
 	{
 		/// <summary>
 		/// Main.cs
 		/// </summary>
 		/// <param name="tag">コントロールのTag</param>
 		/// <returns></returns>
-		public string ReturnMainInputPlace(string tag)
+		public static string ReturnMainInputPlace(string tag)
 		{
 
 			switch (tag)
@@ -149,7 +142,7 @@ namespace HoI4_Modding_Supporter.Workers
 		/// </summary>
 		/// <param name="tag">コントロールのTag</param>
 		/// <returns></returns>
-		public string ReturnFactionSettingsInputPlace(string tag)
+		public static string ReturnFactionSettingsInputPlace(string tag)
 		{
 			switch (tag)
 			{
@@ -169,7 +162,7 @@ namespace HoI4_Modding_Supporter.Workers
 		/// </summary>
 		/// <param name="tag">コントロールのTag</param>
 		/// <returns></returns>
-		public string ReturnNationalLeaderSettingsInputPlace(string tag)
+		public static string ReturnNationalLeaderSettingsInputPlace(string tag)
 		{
 			switch(tag)
 			{

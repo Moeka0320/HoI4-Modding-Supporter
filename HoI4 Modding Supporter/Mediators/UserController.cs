@@ -1,10 +1,6 @@
-﻿using System;
+﻿using HoI4_Modding_Supporter.Workers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4_Modding_Supporter.Workers;
 
 namespace HoI4_Modding_Supporter.Mediators
 {

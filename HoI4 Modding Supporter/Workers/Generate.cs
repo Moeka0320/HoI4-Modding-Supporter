@@ -1,20 +1,15 @@
-﻿using System;
+﻿using HoI4_Modding_Supporter.Database;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security;
 using System.Text;
-using System.Windows.Forms;
-using HoI4_Modding_Supporter.Database;
-using HoI4_Modding_Supporter.Workers;
 
 namespace HoI4_Modding_Supporter.Workers
 {
     class Generate
     {
-        MessageBoxShower mbs = new MessageBoxShower();
-        FileSystemInterface fsi = new FileSystemInterface();
-
         /// <summary>
         /// 国家の生成（ファイル書き込み処理）
         /// </summary>
@@ -90,7 +85,7 @@ namespace HoI4_Modding_Supporter.Workers
                 string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.CountryTag + " - *.txt");
                 if (hoi4Files.Length != 0)
                 {
-                    mbs.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    MessageBoxShower.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
                 }
             }
@@ -101,7 +96,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is IOException ||
                                       e is DirectoryNotFoundException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 
@@ -113,7 +108,7 @@ namespace HoI4_Modding_Supporter.Workers
                     string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.CountryTag + "- *.txt");
                     if (modFiles.Length != 0)
                     {
-                        mbs.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        MessageBoxShower.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
                         return 1;
                     }
                 }
@@ -124,7 +119,7 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is IOException ||
                                           e is DirectoryNotFoundException)
                 {
-                    mbs.ErrorMessage(e.Message);
+                    MessageBoxShower.ErrorMessage(e.Message);
                     return 1;
                 }
             }
@@ -134,9 +129,9 @@ namespace HoI4_Modding_Supporter.Workers
             // MODDIR/common ディレクトリが存在しない場合
             if (Directory.Exists(commonDir) == false)
             {
-                if (fsi.FolderCreate(commonDir) == 1)
+                if (FileSystemInterface.FolderCreate(commonDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -144,9 +139,9 @@ namespace HoI4_Modding_Supporter.Workers
             // MODDIR/common/countries ディレクトリが存在しない場合
             if (Directory.Exists(commonCountriesDir) == false)
             {
-                if (fsi.FolderCreate(commonCountriesDir) == 1)
+                if (FileSystemInterface.FolderCreate(commonCountriesDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -154,15 +149,15 @@ namespace HoI4_Modding_Supporter.Workers
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
-                mbs.ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
             else
             {
-                if (fsi.FileCreate(commonCountryFilePath) == 1)
+                if (FileSystemInterface.FileCreate(commonCountryFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -178,8 +173,8 @@ namespace HoI4_Modding_Supporter.Workers
             catch (Exception e) when (e is ObjectDisposedException ||
                                       e is IOException)
             {
-                mbs.ErrorMessage(e.Message);
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage(e.Message);
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -189,9 +184,9 @@ namespace HoI4_Modding_Supporter.Workers
             // 既に存在する場合はそのファイルに書き込み
             if (File.Exists(commonColorsFilePath) == false)
             {
-                if (fsi.FileCopy(colorsHoi4FilePath, commonColorsFilePath) == 1)
+                if (FileSystemInterface.FileCopy(colorsHoi4FilePath, commonColorsFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -212,8 +207,8 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is NotSupportedException ||
                                       e is SecurityException)
             {
-                mbs.ErrorMessage(e.Message);
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage(e.Message);
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -222,9 +217,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../common/country_tagsディレクトリが存在しない場合
             if (Directory.Exists(commonCountry_tagsDir) == false)
             {
-                if (fsi.FolderCreate(commonCountry_tagsDir) == 1)
+                if (FileSystemInterface.FolderCreate(commonCountry_tagsDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -232,9 +227,9 @@ namespace HoI4_Modding_Supporter.Workers
             // 存在しない場合、../country_tags/01_countries.txtを作成
             if (File.Exists(commonCountriesFilePath) == false)
             {
-                if (fsi.FileCreate(commonCountriesFilePath) == 1)
+                if (FileSystemInterface.FileCreate(commonCountriesFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
 
@@ -249,8 +244,8 @@ namespace HoI4_Modding_Supporter.Workers
                 catch (Exception e) when (e is ObjectDisposedException ||
                                           e is IOException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -269,8 +264,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is NotSupportedException ||
                                           e is SecurityException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -280,9 +275,9 @@ namespace HoI4_Modding_Supporter.Workers
             // MODDIR/historyディレクトリが存在しない場合
             if (Directory.Exists(historyDir) == false)
             {
-                if (fsi.FolderCreate(historyDir) == 1)
+                if (FileSystemInterface.FolderCreate(historyDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -290,17 +285,17 @@ namespace HoI4_Modding_Supporter.Workers
             // MODDIR/hitsory/countriesディレクトリが存在しない場合
             if (Directory.Exists(historyCountriesDir) == false)
             {
-                if (fsi.FolderCreate(historyCountriesDir) == 1)
+                if (FileSystemInterface.FolderCreate(historyCountriesDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
 
             // 国家ファイルを作成
-            if (fsi.FileCreate(historyCountrisFilePath) == 1)
+            if (FileSystemInterface.FileCreate(historyCountrisFilePath) == 1)
             {
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -356,8 +351,8 @@ namespace HoI4_Modding_Supporter.Workers
             catch (Exception e) when (e is ObjectDisposedException ||
                                       e is IOException)
             {
-                mbs.ErrorMessage(e.Message);
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage(e.Message);
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -366,9 +361,9 @@ namespace HoI4_Modding_Supporter.Workers
             // localisationディレクトリが存在しない場合
             if (Directory.Exists(localisationDir) == false)
             {
-                if (fsi.FolderCreate(localisationDir) == 1)
+                if (FileSystemInterface.FolderCreate(localisationDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -376,9 +371,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../localisation/replaceディレクトリが存在しない場合
             if (Directory.Exists(localisationReplaceDir) == false)
             {
-                if (fsi.FolderCreate(localisationReplaceDir) == 1)
+                if (FileSystemInterface.FolderCreate(localisationReplaceDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -386,9 +381,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../localisation/replace/mod_countries_l_english.yml
             if (File.Exists(localisationReplaceCountriesFilePath) == false)
             {
-                if (fsi.FileCreate(localisationReplaceCountriesFilePath) == 1)
+                if (FileSystemInterface.FileCreate(localisationReplaceCountriesFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
 
@@ -436,8 +431,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is SecurityException ||
                                           e is ObjectDisposedException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -482,8 +477,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is NotSupportedException ||
                                           e is SecurityException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -491,9 +486,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../localisation/mod_parties_l_english.yml
             if (File.Exists(localisationReplacePartiesFilePath) == false)
             {
-                if (fsi.FileCreate(localisationReplacePartiesFilePath) == 1)
+                if (FileSystemInterface.FileCreate(localisationReplacePartiesFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
 
@@ -544,8 +539,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is SecurityException ||
                                           e is ObjectDisposedException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -590,8 +585,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is NotSupportedException ||
                                           e is SecurityException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -601,9 +596,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfxディレクトリが存在しない場合
             if (Directory.Exists(gfxDir) == false)
             {
-                if (fsi.FolderCreate(gfxDir) == 1)
+                if (FileSystemInterface.FolderCreate(gfxDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -611,9 +606,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfx/flagsディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsDir) == false)
             {
-                if (fsi.FolderCreate(gfxFlagsDir) == 1)
+                if (FileSystemInterface.FolderCreate(gfxFlagsDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -621,9 +616,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfx/flags/mediumディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsMediumDir) == false)
             {
-                if (fsi.FolderCreate(gfxFlagsMediumDir) == 1)
+                if (FileSystemInterface.FolderCreate(gfxFlagsMediumDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -631,9 +626,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfx/flags/smallディレクトリが存在しない場合
             if (Directory.Exists(gfxFlagsSmallDir) == false)
             {
-                if (fsi.FolderCreate(gfxFlagsSmallDir) == 1)
+                if (FileSystemInterface.FolderCreate(gfxFlagsSmallDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -645,9 +640,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.N_FlagBig != "")
                     {
-                        if (fsi.FileCopy(variable.N_FlagBig, n_Flags) == 1)
+                        if (FileSystemInterface.FileCopy(variable.N_FlagBig, n_Flags) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -657,9 +652,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.N_FlagMed != "")
                     {
-                        if (fsi.FileCopy(variable.N_FlagMed, n_FlagsMedium) == 1)
+                        if (FileSystemInterface.FileCopy(variable.N_FlagMed, n_FlagsMedium) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -669,9 +664,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.N_FlagSma != "")
                     {
-                        if (fsi.FileCopy(variable.N_FlagSma, n_FlagsSmall) == 1)
+                        if (FileSystemInterface.FileCopy(variable.N_FlagSma, n_FlagsSmall) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -684,9 +679,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.D_FlagBig != "")
                     {
-                        if (fsi.FileCopy(variable.D_FlagBig, d_Flags) == 1)
+                        if (FileSystemInterface.FileCopy(variable.D_FlagBig, d_Flags) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -696,9 +691,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.D_FlagMed != "")
                     {
-                        if (fsi.FileCopy(variable.D_FlagMed, d_FlagsMedium) == 1)
+                        if (FileSystemInterface.FileCopy(variable.D_FlagMed, d_FlagsMedium) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -708,9 +703,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.D_FlagSma != "")
                     {
-                        if (fsi.FileCopy(variable.D_FlagSma, d_FlagsSmall) == 1)
+                        if (FileSystemInterface.FileCopy(variable.D_FlagSma, d_FlagsSmall) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -723,9 +718,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.F_FlagBig != "")
                     {
-                        if (fsi.FileCopy(variable.F_FlagBig, f_Flags) == 1)
+                        if (FileSystemInterface.FileCopy(variable.F_FlagBig, f_Flags) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -735,9 +730,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.F_FlagMed != "")
                     {
-                        if (fsi.FileCopy(variable.F_FlagMed, f_FlagsMedium) == 1)
+                        if (FileSystemInterface.FileCopy(variable.F_FlagMed, f_FlagsMedium) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -747,9 +742,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.F_FlagSma != "")
                     {
-                        if (fsi.FileCopy(variable.F_FlagSma, f_FlagsSmall) == 1)
+                        if (FileSystemInterface.FileCopy(variable.F_FlagSma, f_FlagsSmall) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -762,9 +757,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.C_FlagBig != "")
                     {
-                        if (fsi.FileCopy(variable.C_FlagBig, c_Flags) == 1)
+                        if (FileSystemInterface.FileCopy(variable.C_FlagBig, c_Flags) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -774,9 +769,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.C_FlagMed != "")
                     {
-                        if (fsi.FileCopy(variable.C_FlagMed, c_FlagsMedium) == 1)
+                        if (FileSystemInterface.FileCopy(variable.C_FlagMed, c_FlagsMedium) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -786,9 +781,9 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if (variable.C_FlagSma != "")
                     {
-                        if (fsi.FileCopy(variable.C_FlagSma, c_FlagsSmall) == 1)
+                        if (FileSystemInterface.FileCopy(variable.C_FlagSma, c_FlagsSmall) == 1)
                         {
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -811,16 +806,16 @@ namespace HoI4_Modding_Supporter.Workers
                             {
                                 string countryFileName = rawCountryFile[0].Replace(variable.Hoi4dir + @"\history\countries", "");
                                 
-                                if (fsi.FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName) == 1)
+                                if (FileSystemInterface.FileCopy(rawCountryFile[0], historyCountriesDir + countryFileName) == 1)
                                 {
-                                    mbs.GenerateStoppedMessage();
+                                    MessageBoxShower.GenerateStoppedMessage();
                                     return 1;
                                 }
                             }
                             else
                             {
-                                mbs.ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
-                                mbs.GenerateStoppedMessage();
+                                MessageBoxShower.ErrorMessage("宗主国の国家ファイルが見つかりませんでした。");
+                                MessageBoxShower.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -831,8 +826,8 @@ namespace HoI4_Modding_Supporter.Workers
                                                   e is IOException ||
                                                   e is DirectoryNotFoundException)
                         {
-                            mbs.ErrorMessage(e.Message);
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.ErrorMessage(e.Message);
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
 
@@ -852,8 +847,8 @@ namespace HoI4_Modding_Supporter.Workers
                                                       e is NotSupportedException ||
                                                       e is SecurityException)
                             {
-                                mbs.ErrorMessage(e.Message);
-                                mbs.GenerateStoppedMessage();
+                                MessageBoxShower.ErrorMessage(e.Message);
+                                MessageBoxShower.GenerateStoppedMessage();
                                 return 1;
                             }
                         }
@@ -864,8 +859,8 @@ namespace HoI4_Modding_Supporter.Workers
                                                   e is IOException ||
                                                   e is DirectoryNotFoundException)
                         {
-                            mbs.ErrorMessage(e.Message);
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.ErrorMessage(e.Message);
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -884,8 +879,8 @@ namespace HoI4_Modding_Supporter.Workers
                                                   e is NotSupportedException ||
                                                   e is SecurityException)
                         {
-                            mbs.ErrorMessage(e.Message);
-                            mbs.GenerateStoppedMessage();
+                            MessageBoxShower.ErrorMessage(e.Message);
+                            MessageBoxShower.GenerateStoppedMessage();
                             return 1;
                         }
                     }
@@ -897,8 +892,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is IOException ||
                                           e is DirectoryNotFoundException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -927,7 +922,7 @@ namespace HoI4_Modding_Supporter.Workers
                     return 1;
             }
 
-            mbs.InfoMessage("生成が完了しました。");
+            MessageBoxShower.InfoMessage("生成が完了しました。");
 
             if (Properties.Settings.Default.afterOpenFolder == true)
                 Process.Start(variable.Moddir);
@@ -964,8 +959,8 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is NotSupportedException ||
                                       e is SecurityException)
             {
-                mbs.ErrorMessage(e.Message);
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage(e.Message);
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -973,9 +968,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfx/leadersディレクトリが存在しない場合にフォルダを作成
             if (Directory.Exists(GfxLeadersDir) == false)
             {
-                if (fsi.FolderCreate(GfxLeadersDir) == 1)
+                if (FileSystemInterface.FolderCreate(GfxLeadersDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -983,9 +978,9 @@ namespace HoI4_Modding_Supporter.Workers
             // ../gfx/leaders/[国家タグ]ディレクトリが存在しない場合にファルダを作成
             if (Directory.Exists(GfxLeadersTagDir) == false)
             {
-                if (fsi.FolderCreate(GfxLeadersTagDir) == 1)
+                if (FileSystemInterface.FolderCreate(GfxLeadersTagDir) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -993,9 +988,9 @@ namespace HoI4_Modding_Supporter.Workers
             // 画像ファイルを ../gfx/leaders/[国家タグ]/[国家指導者名].ddsにコピー
             string leaderPicturePath = GfxLeadersTagDir + @"\" + variable.LeaderPictureName;
 
-            if (fsi.FileCopy(variable.LeaderPicturePath, leaderPicturePath) == 1)
+            if (FileSystemInterface.FileCopy(variable.LeaderPicturePath, leaderPicturePath) == 1)
             {
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -1030,8 +1025,8 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is NotSupportedException ||
                                       e is SecurityException)
             {
-                mbs.ErrorMessage(e.Message);
-                mbs.GenerateStoppedMessage();
+                MessageBoxShower.ErrorMessage(e.Message);
+                MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
 
@@ -1040,9 +1035,9 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (File.Exists(localisationReplaceFactionsFilePath) == false)
             {
-                if (fsi.FileCreate(localisationReplaceFactionsFilePath) == 1)
+                if (FileSystemInterface.FileCreate(localisationReplaceFactionsFilePath) == 1)
                 {
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
 
@@ -1064,8 +1059,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is SecurityException ||
                                           e is ObjectDisposedException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1084,8 +1079,8 @@ namespace HoI4_Modding_Supporter.Workers
                                           e is NotSupportedException ||
                                           e is SecurityException)
                 {
-                    mbs.ErrorMessage(e.Message);
-                    mbs.GenerateStoppedMessage();
+                    MessageBoxShower.ErrorMessage(e.Message);
+                    MessageBoxShower.GenerateStoppedMessage();
                     return 1;
                 }
             }
@@ -1156,27 +1151,27 @@ namespace HoI4_Modding_Supporter.Workers
 
                 if (File.Exists(bigFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 3] != "")
                 {
-                    if (fsi.FileCopy(variable.CustomIdeologiesSettings[cnt, 3], bigFlagPath) == 1)
+                    if (FileSystemInterface.FileCopy(variable.CustomIdeologiesSettings[cnt, 3], bigFlagPath) == 1)
                     {
-                        mbs.GenerateStoppedMessage();
+                        MessageBoxShower.GenerateStoppedMessage();
                         return 1;
                     }
                 }
 
                 if (File.Exists(mediumFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 4] != "")
                 {
-                    if (fsi.FileCopy(variable.CustomIdeologiesSettings[cnt, 4], mediumFlagPath) == 1)
+                    if (FileSystemInterface.FileCopy(variable.CustomIdeologiesSettings[cnt, 4], mediumFlagPath) == 1)
                     {
-                        mbs.GenerateStoppedMessage();
+                        MessageBoxShower.GenerateStoppedMessage();
                         return 1;
                     }
                 }
 
                 if (File.Exists(smallFlagPath) == false && variable.CustomIdeologiesSettings[cnt, 5] != "")
                 {
-                    if (fsi.FileCopy(variable.CustomIdeologiesSettings[cnt, 5], smallFlagPath) == 1)
+                    if (FileSystemInterface.FileCopy(variable.CustomIdeologiesSettings[cnt, 5], smallFlagPath) == 1)
                     {
-                        mbs.GenerateStoppedMessage();
+                        MessageBoxShower.GenerateStoppedMessage();
                         return 1;
                     }
                 }
