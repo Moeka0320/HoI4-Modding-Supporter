@@ -53,7 +53,7 @@ namespace HoI4_Modding_Supporter.Forms
                     GroupBox nationNameGroup = new GroupBox()
                     {
                         Text = "国名",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - NationNameGroup",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - NationNameGroup",
                         Size = new Size(252, 90),
                         Location = new Point(3, 3)
                     };
@@ -62,7 +62,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label viewNameLabel = new Label()
                     {
                         Text = "表示名：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - ViewNameLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - ViewNameLabel",
                         Location = new Point(6, 15),
                         Size = new Size(47, 12)
                     };
@@ -71,7 +71,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label eventViewNameLabel = new Label()
                     { 
                         Text = "正式名：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - EventViewNameLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - EventViewNameLabel",
                         Location = new Point(6, 40),
                         Size = new Size(83, 12)
                     };
@@ -80,7 +80,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label aliasNameLabel = new Label()
                     {
                         Text = "通称名：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - AliasNameLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - AliasNameLabel",
                         Location = new Point(6, 65),
                         Size = new Size(47, 12)
                     };
@@ -88,7 +88,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（表示名）
                     TextBox viewNameTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - ViewNameTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - ViewNameTextBox",
                         Size = new Size(151, 19),
                         Location = new Point(93, 12),
                         TabStop = false
@@ -97,7 +97,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（イベント表示名）
                     TextBox eventViewNameTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - EventViewNameTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - EventViewNameTextBox",
                         Size = new Size(151, 19),
                         Location = new Point(93, 37),
                         TabStop = false
@@ -106,7 +106,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（通称名）
                     TextBox aliasNameTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - AliasNameTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - AliasNameTextBox",
                         Size = new Size(151, 19),
                         Location = new Point(93, 62),
                         TabStop = false
@@ -116,7 +116,7 @@ namespace HoI4_Modding_Supporter.Forms
                     GroupBox nationFlagGroup = new GroupBox()
                     {
                         Text = "国旗",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - NationFlagGroup",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - NationFlagGroup",
                         Size = new Size(252, 90),
                         Location = new Point(3, 99)
                     };
@@ -125,7 +125,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label bigLabel = new Label()
                     {
                         Text = "大：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - BigLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - BigLabel",
                         Size = new Size(23, 12),
                         Location = new Point(6, 15)
                     };
@@ -134,7 +134,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label mediumLabel = new Label()
                     {
                         Text = "中：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - MediumLabel",
                         Size = new Size(23, 12),
                         Location = new Point(6, 40)
                     };
@@ -143,7 +143,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label smallLabel = new Label()
                     {
                         Text = "小：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - SmallLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - SmallLabel",
                         Size = new Size(23, 12),
                         Location = new Point(6, 65)
                     };
@@ -151,7 +151,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（国旗大パス）
                     TextBox bigFlagPathTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - BigFlagPathTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - BigFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 12),
                         ReadOnly = true,
@@ -161,7 +161,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（国旗中パス）
                     TextBox mediumFlagPathTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumFlagPathTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - MediumFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 37),
                         ReadOnly = true,
@@ -171,7 +171,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（国旗小パス）
                     TextBox smallFlagPathTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - SmallFlagPathTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - SmallFlagPathTextBox",
                         Size = new Size(128, 19),
                         Location = new Point(35, 62),
                         ReadOnly = true,
@@ -181,7 +181,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // 参照ボタン（国旗大）
                     Button bigFlagPathButton = new Button()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - BigFlagPathButton",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - BigFlagPathButton",
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 10),
@@ -192,7 +192,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // 参照ボタン（国旗中）
                     Button mediumFlagPathButton = new Button()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - MediumFlagPathButton",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - MediumFlagPathButton",
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 35),
@@ -203,7 +203,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // 参照ボタン（国旗小）
                     Button smallFlagPathButton = new Button()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - SmallFlagPathButton",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - SmallFlagPathButton",
                         Text = "参照",
                         Size = new Size(75, 23),
                         Location = new Point(169, 60),
@@ -214,8 +214,8 @@ namespace HoI4_Modding_Supporter.Forms
                     // グループボックス「○○政党名」
                     GroupBox partyNameGroup = new GroupBox()
                     { 
-                        Text = Properties.Settings.Default.customIdeologiesName[cnt] + "政党名",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyNameGroup",
+                        Text = $"{Properties.Settings.Default.customIdeologiesName[cnt]}政党名",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PartyNameGroup",
                         Size = new Size(252, 66),
                         Location = new Point(3, 195)
                     };
@@ -224,7 +224,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label partyAliasNameLabel = new Label()
                     {
                         Text = "表示名：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyAliasNameLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PartyAliasNameLabel",
                         Size = new Size(47, 12),
                         Location = new Point(6, 15)
                     };
@@ -233,7 +233,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label partyFullNameLabel = new Label()
                     {
                         Text = "正式名：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyFullName",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PartyFullName",
                         Size = new Size(47, 12),
                         Location = new Point(6, 40)
                     };
@@ -241,7 +241,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（通称名）
                     TextBox partyAliasNameTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyAliasNameTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PartyAliasNameTextBox",
                         Size = new Size(185, 19),
                         Location = new Point(59, 12),
                         TabStop = false
@@ -250,7 +250,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス（正式名）
                     TextBox partyFullNameTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PartyFullNameTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PartyFullNameTextBox",
                         Size = new Size(185, 19),
                         Location = new Point(59, 37),
                         TabStop = false
@@ -260,7 +260,7 @@ namespace HoI4_Modding_Supporter.Forms
                     GroupBox popularitiesGroup = new GroupBox()
                     {
                         Text = "初期政党支持率",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularitiesGroup",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PopularitiesGroup",
                         Size = new Size(252, 67),
                         Location = new Point(3, 267)
                     };
@@ -268,8 +268,8 @@ namespace HoI4_Modding_Supporter.Forms
                     // ラベル「○○主義：」
                     Label popularityLabel = new Label()
                     {
-                        Text = Properties.Settings.Default.customIdeologiesName[cnt] + "：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularityLabel",
+                        Text = $"{Properties.Settings.Default.customIdeologiesName[cnt]}：",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PopularityLabel",
                         Location = new Point(6, 15)
 
                     };
@@ -278,7 +278,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label totalPopularityLabel = new Label()
                     {
                         Text = "合計：",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - TotalPopularityLabel",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - TotalPopularityLabel",
                         Size = new Size(35, 12),
                         Location = new Point(6, 41),
                         TextAlign = ContentAlignment.TopRight
@@ -290,7 +290,7 @@ namespace HoI4_Modding_Supporter.Forms
                         Value = 0,
                         Maximum = 100,
                         Minimum = 0,
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PopularityNumeric",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PopularityNumeric",
                         Size = new Size(39, 19),
                         Location = new Point(180, 13),
                         TextAlign = HorizontalAlignment.Right,
@@ -302,7 +302,7 @@ namespace HoI4_Modding_Supporter.Forms
                     // テキストボックス「政党支持率の合計」
                     TextBox totalPopularityTextBox = new TextBox()
                     {
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - TotalPopularityTextBox",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - TotalPopularityTextBox",
                         Size = new Size(39, 19),
                         Location = new Point(180, 38),
                         Enabled = false,
@@ -314,7 +314,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label percentLabel1 = new Label()
                     {
                         Text = "%",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PercentLabel1",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PercentLabel1",
                         Size = new Size(11, 12),
                         Location = new Point(225, 15)
                     };
@@ -322,7 +322,7 @@ namespace HoI4_Modding_Supporter.Forms
                     Label percentLabel2 = new Label()
                     {
                         Text = "%",
-                        Name = Properties.Settings.Default.customIdeologiesInternalName[cnt] + " - PercentLabel2",
+                        Name = $"{Properties.Settings.Default.customIdeologiesInternalName[cnt]} - PercentLabel2",
                         Size = new Size(11, 12),
                         Location = new Point(225, 41)
                     };

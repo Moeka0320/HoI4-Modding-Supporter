@@ -48,7 +48,7 @@ namespace HoI4_Modding_Supporter.Forms
                         if (internalNames[cnt] == null || names[cnt] == null)
                             break;
 
-                        listBox1.Items.Add(names[cnt] + " (" + internalNames[cnt] + ")");
+                        listBox1.Items.Add($"{names[cnt]} ({internalNames[cnt]})");
                     }
                 }
             }
@@ -241,7 +241,7 @@ namespace HoI4_Modding_Supporter.Forms
         {
             if (!string.IsNullOrWhiteSpace(textBox3.Text) && 
                 !string.IsNullOrWhiteSpace(textBox4.Text) && 
-                listBox1.Items.IndexOf(textBox4.Text + " (" + textBox3.Text + ")") == -1 &&
+                listBox1.Items.IndexOf($"{textBox4.Text} ({textBox3.Text})") == -1 &&
                 textBox3.Text != "neutrality" &&
                 textBox3.Text != "democratic" &&
                 textBox3.Text != "fascism" &&

@@ -82,10 +82,10 @@ namespace HoI4_Modding_Supporter.Workers
             // HOI4DIR/history/countries/内で国家タグが一致するファイルがあるかを検索
             try
             {
-                string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", variable.CountryTag + " - *.txt");
+                string[] hoi4Files = Directory.GetFileSystemEntries(variable.Hoi4dir + @"\history\countries", $"{variable.CountryTag} - *.txt");
                 if (hoi4Files.Length != 0)
                 {
-                    MessageBoxShower.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                    MessageBoxShower.ErrorMessage($"国家タグ\"{variable.CountryTag}\"は既に使用されています。別の国家タグを使用してください。");
                     return 1;
                 }
             }
@@ -105,10 +105,10 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 try
                 {
-                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, variable.CountryTag + "- *.txt");
+                    string[] modFiles = Directory.GetFileSystemEntries(historyCountriesDir, $"{variable.CountryTag} - *.txt");
                     if (modFiles.Length != 0)
                     {
-                        MessageBoxShower.ErrorMessage("国家タグ\"" + variable.CountryTag + "\"は既に使用されています。別の国家タグを使用してください。");
+                        MessageBoxShower.ErrorMessage($"国家タグ\"{variable.CountryTag}\"は既に使用されています。別の国家タグを使用してください。");
                         return 1;
                     }
                 }
@@ -149,7 +149,7 @@ namespace HoI4_Modding_Supporter.Workers
             // ../countries の中に国別ファイルを作成
             if (File.Exists(commonCountryFilePath) == true)
             {
-                MessageBoxShower.ErrorMessage("ファイル\"" + commonCountryFilePath + "\"は既に存在しています。\n別のファイル名を使用してください。");
+                MessageBoxShower.ErrorMessage($"ファイル\"{commonCountryFilePath}\"は既に存在しています。\n別のファイル名を使用してください。");
                 MessageBoxShower.GenerateStoppedMessage();
                 return 1;
             }
@@ -166,8 +166,8 @@ namespace HoI4_Modding_Supporter.Workers
             try
             {
                 StreamWriter sr = new StreamWriter(commonCountryFilePath, false);
-                sr.WriteLine("graphical_culture = " + variable.GraphicalCulture);
-                sr.WriteLine("graphical_culture_2d = " + variable.GraphicalCulture2d);
+                sr.WriteLine($"graphical_culture = {variable.GraphicalCulture}");
+                sr.WriteLine($"graphical_culture_2d = {variable.GraphicalCulture2d}");
                 sr.Close();
             }
             catch (Exception e) when (e is ObjectDisposedException ||
@@ -195,7 +195,7 @@ namespace HoI4_Modding_Supporter.Workers
             // colors.txtに追記
             try
             {
-                string color = variable.ColorR + " " + variable.ColorG + " " + variable.ColorB;
+                string color = $"{variable.ColorR} {variable.ColorG} {variable.ColorB}";
                 File.AppendAllText(commonColorsFilePath, "\n" + variable.CountryTag + " = {\n\tcolor = rgb { " + color + " }\n\tcolor_ui = rgb { " + color + " }\n}");
             }
             catch (Exception e) when (e is ArgumentException ||
@@ -238,7 +238,7 @@ namespace HoI4_Modding_Supporter.Workers
                 try
                 {
                     StreamWriter sw = new StreamWriter(commonCountriesFilePath, false);
-                    sw.WriteLine(variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
+                    sw.WriteLine($"{variable.CountryTag} = \"countries/{variable.CountryName}.txt\"");
                     sw.Close();
                 }
                 catch (Exception e) when (e is ObjectDisposedException ||
@@ -253,7 +253,7 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 try
                 {
-                    File.AppendAllText(commonCountriesFilePath, "\n" + variable.CountryTag + " = \"countries/" + variable.CountryName + ".txt\"");
+                    File.AppendAllText(commonCountriesFilePath, $"\n{variable.CountryTag} = \"countries/{variable.CountryName}.txt\"");
                 }
                 catch (Exception e) when (e is ArgumentException ||
                                           e is ArgumentNullException ||
@@ -305,24 +305,24 @@ namespace HoI4_Modding_Supporter.Workers
             {
                 StreamWriter sw = new StreamWriter(historyCountrisFilePath, false);
                 // 首都州ID
-                sw.WriteLine("capital = " + variable.StateIDWithCapital);
+                sw.WriteLine($"capital = {variable.StateIDWithCapital}");
                 // ユニットファイル（コメントアウト）
                 sw.WriteLine("#oob = \"\"");
                 // 研究スロット数
-                sw.WriteLine("set_research_slots = " + variable.StudySlot);
+                sw.WriteLine($"set_research_slots = {variable.StudySlot}");
                 // 安定度
-                sw.WriteLine("set_stability = " + variable.Stability);
+                sw.WriteLine($"set_stability = {variable.Stability}");
                 // 戦争協力度
-                sw.WriteLine("set_war_support = " + variable.WarCoop);
+                sw.WriteLine($"set_war_support = {variable.WarCoop}");
                 // 輸送船
-                sw.WriteLine("set_convoys = " + variable.TransportShip);
+                sw.WriteLine($"set_convoys = {variable.TransportShip}");
                 // 研究完了済み技術（コメントアウト）
                 sw.WriteLine("#set_technology = {}");
                 // 政党関連
                 sw.WriteLine("set_politics = {");
-                sw.WriteLine("\truling_party = " + variable.StartIdeology);
-                sw.WriteLine("\tlast_election = " + variable.LastElection);
-                sw.WriteLine("\telection_frequency = " + variable.ElectionFrequency);
+                sw.WriteLine($"\truling_party = {variable.StartIdeology}");
+                sw.WriteLine($"\tlast_election = {variable.LastElection}");
+                sw.WriteLine($"\telection_frequency = {variable.ElectionFrequency}");
 
                 if (variable.NoElection == true)
                     sw.WriteLine("\telections_allowed = no");
@@ -334,16 +334,16 @@ namespace HoI4_Modding_Supporter.Workers
                 sw.WriteLine("set_popularities = {");
 
                 if (Properties.Settings.Default.democraticDisabled == false)
-                    sw.WriteLine("\tdemocratic = " + variable.D_Popularity);
+                    sw.WriteLine($"\tdemocratic = {variable.D_Popularity}");
 
                 if (Properties.Settings.Default.fascismDisabled == false)
-                    sw.WriteLine("\tfascism = " + variable.F_Popularity);
+                    sw.WriteLine($"\tfascism = {variable.F_Popularity}");
 
                 if (Properties.Settings.Default.communismDisabled == false)
-                    sw.WriteLine("\tcommunism = " + variable.C_Popularity);
+                    sw.WriteLine($"\tcommunism = {variable.C_Popularity}");
                 
                 if (Properties.Settings.Default.neutralityDisabled == false)
-                    sw.WriteLine("\tneutrality = " + variable.N_Popularity);
+                    sw.WriteLine($"\tneutrality = {variable.N_Popularity}");
 
                 sw.WriteLine("}");
                 sw.Close();

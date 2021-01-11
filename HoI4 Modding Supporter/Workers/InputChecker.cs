@@ -53,21 +53,21 @@ namespace HoI4_Modding_Supporter.Workers
             if (textBoxes[0].Text.Length != 3)
             {
                 // テキスト文字数が3文字ではない
-                MessageBoxShower.ErrorMessage(inputPlace + "は3文字で構成されている必要があります。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}は3文字で構成されている必要があります。");
                 return 1;
             }
 
             if (!char.IsUpper(textBoxes[0].Text[0]) || !char.IsUpper(textBoxes[0].Text[1] ) || !char.IsUpper(textBoxes[0].Text[2]))
             {
                 // すべての文字が大文字ではない
-                MessageBoxShower.ErrorMessage(inputPlace + "はすべての文字が大文字で構成されている必要があります。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}はすべての文字が大文字で構成されている必要があります。");
                 return 1;
             }
 
             if (HaveInvaliedChars(textBoxes[0].Text) == true)
             {
                 // ファイル名に使用できない文字が使用されている
-                MessageBoxShower.ErrorMessage(inputPlace + "に使用できない文字が使用されています。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}に使用できない文字が使用されています。");
                 return 1;
             }
 
@@ -80,13 +80,13 @@ namespace HoI4_Modding_Supporter.Workers
             if (textBoxes[1].Text.IndexOf(" ") != -1)
             {
                 // テキストにスペースが含まれている
-                MessageBoxShower.ErrorMessage(inputPlace + "にスペースを含めることはできません。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}にスペースを含めることはできません。");
                 return 1;
             }
 
             if (HaveInvaliedChars(textBoxes[1].Text) == true)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "に使用できない文字が使用されています。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}に使用できない文字が使用されています。");
                 return 1;
             }
 
@@ -98,7 +98,7 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (HaveInvaliedChars(textBoxes[2].Text) == true)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "に使用できない文字が使用されています。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}に使用できない文字が使用されています。");
                 return 1;
             }
 
@@ -123,14 +123,14 @@ namespace HoI4_Modding_Supporter.Workers
                     // ファイルチェック
                     if (File.Exists(textBoxes[cnt].Text) == false)
                     {
-                        MessageBoxShower.ErrorMessage(inputPlace + "で指定されたファイルが存在しません。");
+                        MessageBoxShower.ErrorMessage($"{inputPlace}で指定されたファイルが存在しません。");
                         return 1;
                     }
 
                     // 拡張子チェック
                     if (Path.GetExtension(textBoxes[cnt].Text) != ".tga")
                     {
-                        MessageBoxShower.ErrorMessage(inputPlace + "で指定されたファイルの種類には対応していません。");
+                        MessageBoxShower.ErrorMessage($"{inputPlace}で指定されたファイルの種類には対応していません。");
                         return 1;
                     }
                 }
@@ -150,7 +150,7 @@ namespace HoI4_Modding_Supporter.Workers
                     {
                         if ((textBoxes[cnt].Text == "" && textBoxes[cnt].Text == "") == false)
                         {
-                            MessageBoxShower.ErrorMessage(InputPlaceResponder.ReturnMainInputPlace(textBoxes[cnt].Tag.ToString()) + "または" + InputPlaceResponder.ReturnMainInputPlace(textBoxes[cnt + 1].Tag.ToString()) + "の片方のみを空欄にすることはできません。\n" + inputPlace + "を設定しない場合、[表示名]と[正式名]の両方を空欄にする必要があります。");
+                            MessageBoxShower.ErrorMessage($"{InputPlaceResponder.ReturnMainInputPlace(textBoxes[cnt].Tag.ToString())}または{InputPlaceResponder.ReturnMainInputPlace(textBoxes[cnt + 1].Tag.ToString())}の片方のみを空欄にすることはできません。\n{inputPlace}を設定しない場合、[表示名]と[正式名]の両方を空欄にする必要があります。");
                             return 1;
                         }
                     }
@@ -174,21 +174,21 @@ namespace HoI4_Modding_Supporter.Workers
                 if (textBoxes[35].Text.Length != 3)
                 {
                     // テキスト文字数が3文字ではない
-                    MessageBoxShower.ErrorMessage(inputPlace + "は3文字で構成されている必要があります。");
+                    MessageBoxShower.ErrorMessage($"{inputPlace}は3文字で構成されている必要があります。");
                     return 1;
                 }
 
                 if (!char.IsUpper(textBoxes[35].Text[0]) || !char.IsUpper(textBoxes[35].Text[1]) || !char.IsUpper(textBoxes[35].Text[2]))
                 {
                     // すべての文字が大文字ではない
-                    MessageBoxShower.ErrorMessage(inputPlace + "はすべての文字が大文字で構成されている必要があります。");
+                    MessageBoxShower.ErrorMessage($"{inputPlace}はすべての文字が大文字で構成されている必要があります。");
                     return 1;
                 }
 
                 if (HaveInvaliedChars(textBoxes[35].Text) == true)
                 {
                     // ファイル名に使用できない文字が使用されている
-                    MessageBoxShower.ErrorMessage(inputPlace + "に使用できない文字が使用されています。");
+                    MessageBoxShower.ErrorMessage($"{inputPlace}に使用できない文字が使用されています。");
                     return 1;
                 }
             }
@@ -198,7 +198,7 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (comboBoxes[0].SelectedItem == null)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "が設定されていません。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}が設定されていません。");
                 return 1;
             }
 
@@ -207,7 +207,7 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (int.Parse(textBoxes[36].Text) != 100)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "が100%ではありません。各政党支持率の合計が100%になるように調整してください。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}が100%ではありません。各政党支持率の合計が100%になるように調整してください。");
                 return 1;
             }
 
@@ -216,7 +216,7 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (comboBoxes[1].SelectedItem == null)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "が設定されていません。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}が設定されていません。");
                 return 1;
             }
 
@@ -286,14 +286,14 @@ namespace HoI4_Modding_Supporter.Workers
                 // ファイルチェック
                 if (!File.Exists(textBoxes[1].Text))
                 {
-                    MessageBoxShower.ErrorMessage(inputPlace + "で指定されたファイルが存在しません。");
+                    MessageBoxShower.ErrorMessage($"{inputPlace}で指定されたファイルが存在しません。");
                     return 1;
                 }
 
                 // 拡張子チェック
                 if (Path.GetExtension(textBoxes[1].Text) != ".dds")
                 {
-                    MessageBoxShower.ErrorMessage(inputPlace + "で指定されたファイルの種類には対応していません。");
+                    MessageBoxShower.ErrorMessage($"{inputPlace}で指定されたファイルの種類には対応していません。");
                     return 1;
                 }
             }
@@ -302,7 +302,7 @@ namespace HoI4_Modding_Supporter.Workers
 
             if (comboBoxes[0].SelectedItem == null || comboBoxes[1].SelectedItem == null)
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "が設定されていません。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}が設定されていません。");
                 return 1;
             }
 
@@ -329,13 +329,13 @@ namespace HoI4_Modding_Supporter.Workers
             for (int cnt = 0; cnt < Properties.Settings.Default.customIdeologiesName.Count - 1; cnt++)
             {
                 // 国名
-                if (IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [表示名]") == 1)
+                if (IsNullOrWhiteSpace(viewNameTextBoxList[cnt].Text, $"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国名] - [表示名]") == 1)
                     return 1;
 
-                if (IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [正式名]") == 1)
+                if (IsNullOrWhiteSpace(eventViewNameTextBoxList[cnt].Text, $"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国名] - [正式名]") == 1)
                     return 1;
 
-                if (IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text, "[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国名] - [通称名]") == 1)
+                if (IsNullOrWhiteSpace(aliasNameTextBoxList[cnt].Text, $"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国名] - [通称名]") == 1)
                     return 1;
 
                 // 政党名
@@ -343,7 +343,7 @@ namespace HoI4_Modding_Supporter.Workers
                 {
                     if ((partyFullNameTextBoxList[cnt].Text == "" && partyAliasNameTextBoxList[cnt].Text == "") == false)
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [" + Properties.Settings.Default.customIdeologiesName[cnt] + "政党名]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [{Properties.Settings.Default.customIdeologiesName[cnt]}政党名]を設定しない場合、通称名と正式名の両方を空欄にする必要があります。");
                         return 1;
                     }
                 }
@@ -354,14 +354,14 @@ namespace HoI4_Modding_Supporter.Workers
                     // ファイルチェック
                     if (!File.Exists(bigFlagPathTextBoxList[cnt].Text))
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [大]で指定されたファイルが存在しません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [大]で指定されたファイルが存在しません。");
                         return 1;
                     }
 
                     // 拡張子チェック
                     if (Path.GetExtension(bigFlagPathTextBoxList[cnt].Text) != ".dds")
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [大]で指定されたファイルの種類には対応していません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [大]で指定されたファイルの種類には対応していません。");
                         return 1;
                     }
                 }
@@ -371,14 +371,14 @@ namespace HoI4_Modding_Supporter.Workers
                     // ファイルチェック
                     if (!File.Exists(mediumFlagPathTextBoxList[cnt].Text))
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [中]で指定されたファイルが存在しません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [中]で指定されたファイルが存在しません。");
                         return 1;
                     }
 
                     // 拡張子チェック
                     if (Path.GetExtension(mediumFlagPathTextBoxList[cnt].Text) != ".dds")
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [中]で指定されたファイルの種類には対応していません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [中]で指定されたファイルの種類には対応していません。");
                         return 1;
                     }
                 }
@@ -388,14 +388,14 @@ namespace HoI4_Modding_Supporter.Workers
                     // ファイルチェック
                     if (!File.Exists(smallFlagPathTextBoxList[cnt].Text))
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [小]で指定されたファイルが存在しません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [小]で指定されたファイルが存在しません。");
                         return 1;
                     }
 
                     // 拡張子チェック
                     if (Path.GetExtension(smallFlagPathTextBoxList[cnt].Text) != ".dds")
                     {
-                        MessageBoxShower.ErrorMessage("[" + Properties.Settings.Default.customIdeologiesName[cnt] + "] - [国旗] - [小]で指定されたファイルの種類には対応していません。");
+                        MessageBoxShower.ErrorMessage($"[{Properties.Settings.Default.customIdeologiesName[cnt]}] - [国旗] - [小]で指定されたファイルの種類には対応していません。");
                         return 1;
                     }
                 }
@@ -430,7 +430,7 @@ namespace HoI4_Modding_Supporter.Workers
         {
             if (string.IsNullOrWhiteSpace(text))
             {
-                MessageBoxShower.ErrorMessage(inputPlace + "が入力されていないか、スペースのみで構成されています。");
+                MessageBoxShower.ErrorMessage($"{inputPlace}が入力されていないか、スペースのみで構成されています。");
                 return 1;
             }
             else
