@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HoI4_Modding_Supporter.Workers
 {
     /// <summary>
     /// ファイル・フォルダを操作する処理
     /// </summary>
-    class FileSystemInterface
+    static class FileSystemInterface
     {
-        MessageBoxShower mbs = new MessageBoxShower();
-
         /// <summary>
         /// ファイルをコピー
         /// </summary>
         /// <param name="source">コピー元ファイルパス</param>
         /// <param name="dest">コピー先ファイルパス</param>
-        public int FileCopy(string source, string dest)
+        public static int FileCopy(string source, string dest)
         {
             try
             {
@@ -35,7 +30,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is IOException ||
                                       e is NotSupportedException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 
@@ -47,7 +42,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// </summary>
         /// <param name="folderPath">フォルダーパス</param>
         /// <returns></returns>
-        public int FolderCreate(string folderPath)
+        public static int FolderCreate(string folderPath)
         {
             try
             {
@@ -61,7 +56,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is DirectoryNotFoundException ||
                                       e is NotSupportedException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 
@@ -73,7 +68,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// </summary>
         /// <param name="filePath">ファイルパス</param>
         /// <returns></returns>
-        public int FileCreate(string filePath)
+        public static int FileCreate(string filePath)
         {
             try
             {
@@ -88,7 +83,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is IOException ||
                                       e is NotSupportedException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 
@@ -103,7 +98,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <param name="parm">true -> 既存テキストを残したまま末尾に追加<br/>false -> 既存テキストを抹消した後に追加</param>
         /// <param name="enc">エンコード指定（未指定でも可）<br/>UTF-8が指定された場合はBOM付きになる</param>
         /// <returns></returns>
-        public int FileWriteLine(string path, string text, bool parm, Encoding enc = null)
+        public static int FileWriteLine(string path, string text, bool parm, Encoding enc = null)
         {
             
             try
@@ -127,7 +122,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is SecurityException ||
                                       e is ObjectDisposedException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 
@@ -142,7 +137,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <param name="parm">true -> 既存テキストを残したまま末尾に追加<br/>false -> 既存テキストを抹消した後に追加</param>
         /// <param name="enc">エンコード指定（未指定でも可）<br/>UTF-8が指定された場合はBOM付きになる</param>
         /// <returns></returns>
-        public int FileWrite(string path, string text, bool parm, Encoding enc = null)
+        public static int FileWrite(string path, string text, bool parm, Encoding enc = null)
         {
 
             try
@@ -167,7 +162,7 @@ namespace HoI4_Modding_Supporter.Workers
                                       e is ObjectDisposedException ||
                                       e is NotSupportedException)
             {
-                mbs.ErrorMessage(e.Message);
+                MessageBoxShower.ErrorMessage(e.Message);
                 return 1;
             }
 

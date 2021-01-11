@@ -8,7 +8,6 @@ namespace HoI4_Modding_Supporter.Forms
 {
     public partial class NationalLeaderSettings : Form
     {
-        InternalController ic = new InternalController();
         UserController uc = new UserController();
 
         public NationalLeaderSettings()
@@ -205,7 +204,7 @@ namespace HoI4_Modding_Supporter.Forms
             // 画像
             variable.LeaderPicturePath = textBox17.Text;
             // 画像ファイル名（指導者名がファイル名になります）
-            variable.LeaderPictureName = variable.LeaderName.Replace(" ", "_") + ".dds";
+            variable.LeaderPictureName = $"{variable.LeaderName.Replace(" ", "_")}.dds";
             // イデオロギー
             if (comboBox1.SelectedItem.ToString() == "中道主義")
             {
@@ -307,7 +306,7 @@ namespace HoI4_Modding_Supporter.Forms
             }
 
             // 登場しなくなる年月日 (YYYY/M/D)
-            variable.WillNotAppear = numericUpDown16.Value.ToString() + "." + numericUpDown15.Value.ToString() + "." + numericUpDown14.Value.ToString();
+            variable.WillNotAppear = $"{numericUpDown16.Value}.{numericUpDown15.Value}.{numericUpDown14.Value}";
         }
 
         /// <summary>

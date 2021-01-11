@@ -11,7 +11,6 @@ namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Main : Form
     {
-        InternalController ic = new InternalController();
         UserController uc = new UserController();
         Variable variable = new Variable();
 
@@ -524,7 +523,7 @@ namespace HoI4_Modding_Supporter.Forms
             // DD
             variable.LastElectionD = (int)numericUpDown14.Value;
             // YYYY.MM.DD
-            variable.LastElection = variable.LastElectionYYYY.ToString() + "." + variable.LastElectionM.ToString() + "." + variable.LastElectionD.ToString();
+            variable.LastElection = $"{variable.LastElectionYYYY}.{variable.LastElectionM}.{variable.LastElectionD}";
 
             // 選挙を行う間隔
             variable.ElectionFrequency = (int)numericUpDown17.Value;
