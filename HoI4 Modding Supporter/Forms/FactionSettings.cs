@@ -10,7 +10,6 @@ namespace HoI4_Modding_Supporter.Forms
 {
     public partial class FactionSettings : Form
     {
-        InternalController ic = new InternalController();
         UserController uc = new UserController();
 
         public FactionSettings()

@@ -9,7 +9,6 @@ namespace HoI4_Modding_Supporter.Forms
 {
     public partial class CustomIdeologiesSettings : Form
     {
-        InternalController ic = new InternalController();
         UserController uc = new UserController();
 
         List<TextBox> totalPopularityTextBoxList = new List<TextBox>();
