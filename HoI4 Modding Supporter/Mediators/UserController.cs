@@ -6,14 +6,12 @@ namespace HoI4_Modding_Supporter.Mediators
 {
     class UserController
     {
-        InputChecker ic = new InputChecker();
-
         /// <summary>
         /// Main.csの入力チェック
         /// </summary>
         public int MainGenerateChecker(List<TextBox> textBoxes, List<ComboBox> comboBoxes, List<CheckBox> checkBoxes)
         {
-            return ic.MainGenrateChecker(textBoxes, comboBoxes, checkBoxes);
+            return InputChecker.MainGenrateChecker(textBoxes, comboBoxes, checkBoxes);
         }
 
         /// <summary>
@@ -23,7 +21,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int FactionSettingsChecker(List<TextBox> textBoxes)
         {
-            return ic.FactionSettingsChecker(textBoxes);
+            return InputChecker.FactionSettingsChecker(textBoxes);
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace HoI4_Modding_Supporter.Mediators
         /// <returns></returns>
         public int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
         {
-            return ic.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
+            return InputChecker.NationalLeaderSettingsChecker(textBoxes, richTextBoxes, comboBoxes);
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace HoI4_Modding_Supporter.Mediators
                                                    List<TextBox> mediumFlagPathTextBoxList,
                                                    List<TextBox> smallFlagPathTextBoxList)
         {
-            return ic.CustomIdeologiesSettingsChecker(viewNameTextBoxList,
+            return InputChecker.CustomIdeologiesSettingsChecker(viewNameTextBoxList,
                                                       eventViewNameTextBoxList,
                                                       aliasNameTextBoxList,
                                                       partyFullNameTextBoxList,

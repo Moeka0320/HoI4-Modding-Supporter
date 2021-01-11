@@ -7,13 +7,13 @@ namespace HoI4_Modding_Supporter.Workers
     /// <summary>
     /// 入力をチェック
     /// </summary>
-    class InputChecker
+    static class InputChecker
     {
         /// <summary>
         /// hoi4ディレクトリ・modディレクトリチェック
         /// </summary>
         /// <returns></returns>
-        public int DirChecker()
+        public static int DirChecker()
         {
             if (Properties.Settings.Default.hoi4dir == "")
             {
@@ -37,7 +37,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <param name="comboBoxes"></param>
         /// <param name="checkBoxes"></param>
         /// <returns></returns>
-        public int MainGenrateChecker(List<TextBox> textBoxes, List<ComboBox> comboBoxes, List<CheckBox> checkBoxes)
+        public static int MainGenrateChecker(List<TextBox> textBoxes, List<ComboBox> comboBoxes, List<CheckBox> checkBoxes)
         {
             string inputPlace;
 
@@ -229,7 +229,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// </summary>
         /// <param name="textBoxes"></param>
         /// <returns></returns>
-        public int FactionSettingsChecker(List<TextBox> textBoxes)
+        public static int FactionSettingsChecker(List<TextBox> textBoxes)
         {
             string inputPlace;
 
@@ -257,7 +257,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <param name="richTextBoxes"></param>
         /// <param name="comboBoxes"></param>
         /// <returns></returns>
-        public int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
+        public static int NationalLeaderSettingsChecker(List<TextBox> textBoxes, List<RichTextBox> richTextBoxes, List<ComboBox> comboBoxes)
         {
             // TODO: 画像ファイルパスの入力チェック
 
@@ -315,7 +315,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// </summary>
         /// <param name="textBoxes"></param>
         /// <returns></returns>
-        public int CustomIdeologiesSettingsChecker(List<TextBox> viewNameTextBoxList, 
+        public static int CustomIdeologiesSettingsChecker(List<TextBox> viewNameTextBoxList, 
                                                    List<TextBox> eventViewNameTextBoxList, 
                                                    List<TextBox> aliasNameTextBoxList, 
                                                    List<TextBox> partyFullNameTextBoxList, 
@@ -409,7 +409,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// ファイル名に使用できない文字が存在するかどうかを判定
         /// </summary>
         /// <returns>使用できない文字が存在しない：false<br/>存在する：true</returns>
-        private bool HaveInvaliedChars(string text)
+        private static bool HaveInvaliedChars(string text)
         {
             // ファイル名に使用できない文字を取得
             char[] invaliedChars = Path.GetInvalidFileNameChars();
@@ -426,7 +426,7 @@ namespace HoI4_Modding_Supporter.Workers
         /// <param name="text"></param>
         /// <param name="inputPlace"></param>
         /// <returns></returns>
-        private int IsNullOrWhiteSpace(string text, string inputPlace)
+        private static int IsNullOrWhiteSpace(string text, string inputPlace)
         {
             if (string.IsNullOrWhiteSpace(text))
             {

@@ -8,9 +8,6 @@ namespace HoI4_Modding_Supporter.Mediators
     /// </summary>
     static class InternalController
     {
-
-        // MessageBoxShower.cs
-
         /// <summary>
         /// エラーメッセージを表示
         /// </summary>
