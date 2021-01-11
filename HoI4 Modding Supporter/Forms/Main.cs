@@ -11,7 +11,6 @@ namespace HoI4_Modding_Supporter.Forms
 {
     public partial class Main : Form
     {
-        InternalController ic = new InternalController();
         UserController uc = new UserController();
         Variable variable = new Variable();
 
